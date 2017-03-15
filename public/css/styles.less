@@ -1,0 +1,208 @@
+@import (inline) "vendor/normalize.css";
+
+@color-font-main: #202020;
+
+*,
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+	color: @color-font-main;
+}
+
+/* apply a natural box layout model to all elements, but allowing components to change */
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+	position: relative;
+	font-family: 'Roboto', 'Noto', sans-serif;
+	font-size: 13px;
+	line-height: 1;
+	color: @color-font-main;
+}
+
+.wrapper {
+	width: 1440px;
+	margin: 0 auto;
+}
+
+.row {
+  .clearfix();
+}
+
+// Clearfix
+//
+// For modern browsers
+// 1. The space content is one way to avoid an Opera bug when the
+//    contenteditable attribute is included anywhere else in the document.
+//    Otherwise it causes space to appear at the top and bottom of elements
+//    that are clearfixed.
+// 2. The use of `table` rather than `block` is only necessary if using
+//    `:before` to contain the top-margins of child elements.
+//
+// Source: http://nicolasgallagher.com/micro-clearfix-hack/
+.clearfix() {
+  &:before,
+  &:after {
+    content: " "; // 1
+    display: table; // 2
+  }
+	
+  &:after {
+    clear: both;
+  }
+}
+
+header.page {
+	.topline {
+		position: relative;
+		padding: 26px 0;
+
+		h1 { 
+			text-align: center; 
+			font-size: 16px;
+			font-weight: 600;
+			letter-spacing: 0.3em;
+		}
+
+		.cart {
+			position: absolute;
+			right: 24px;
+    	top: 20px;
+			display: inline-block;
+			width: 24px;
+			height: 24px;
+		}
+	}
+
+	nav {
+		padding: 11px 0;
+		padding-bottom: 14px;
+
+		ul {
+			text-align: center;
+
+			li {
+				display: inline-block;
+				margin: 0 10px;
+
+				a {
+					display: inline-block;
+					padding: 12px 5px;
+					font-weight: 500;
+
+					&.active {
+						padding-bottom: 10px;
+						border-bottom: 2px solid @color-font-main;
+					}
+				}
+			}
+		}
+	}
+}
+
+footer.page {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	line-height: 24px;
+	text-align: center;
+
+	a {
+		display: block;
+		color: #757575;
+		text-decoration: none;
+
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+
+	.demo-label {
+    width: 120px;
+    padding: 6px;
+    margin: 8px auto 0;
+    background-color: @color-font-main;
+    color: #fff;
+    text-transform: uppercase;
+}
+}
+
+section.main {
+	padding-bottom: 64px;
+
+	.content.index {
+		.category {
+			padding-bottom: 40px;
+			text-align: center;
+
+			.banner {
+				display: block;
+				height: 320px;
+			}
+
+			&.mens_outerwear .banner {
+				background: url(/img/mens_outerwear.jpg) no-repeat 50% 50%;
+			}
+
+			&.ladies_outerwear .banner {
+				background: url(/img/ladies_outerwear.jpg) no-repeat 50% 50%;
+			}
+
+			&.mens_tshirts .banner {
+				background: url(/img/mens_tshirts.jpg) no-repeat 50% 50%;
+			}
+
+			&.ladies_tshirts .banner {
+				background: url(/img/ladies_tshirts.jpg) no-repeat 50% 50%;
+			}
+
+			h2 {
+				font-size: 1.3em;
+				font-weight: 500;
+				line-height: 1.5;
+				margin: 32px 0;
+			}
+
+			.btn {
+				display: inline-block;
+				padding: 8px 44px;
+				border: 2px solid #000;
+				background-color: #FFF;
+				text-align: center;
+				font-size: 14px;
+				font-weight: 500;
+				line-height: 1.5;
+
+				&:active {
+					background-color: #000;
+					color: #fff;
+				}
+			}
+		}
+
+		.category.half-width {
+			float: left;
+			width: 50%;
+
+			h2 {
+				font-size: 1.1em;
+			}
+		}
+	}
+}
+
