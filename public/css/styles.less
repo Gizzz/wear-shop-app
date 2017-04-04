@@ -208,18 +208,19 @@ section.main .content.index {
 }
 
 section.main .content.list {
+	padding-bottom: 30px;
 	text-align: center;
 
-	section.billboard {
-		padding-bottom: 32px;
+	.billboard {
+		height: 320px;
 
-		.banner {
-			height: 320px;
-		}
-
-		&.mens_outerwear .banner {
+		&.mens_outerwear {
 			background: url(/img/mens_outerwear.jpg) no-repeat 50% 50%;
 		}
+	}
+
+	.heading {
+		padding-bottom: 32px;
 
 		h2 {
 			margin: 32px 0 5px;
@@ -233,44 +234,39 @@ section.main .content.list {
 			line-height: 1.5;
 			color: #757575;
 		}
-
 	}
 
-	section.items {
-		padding-bottom: 30px;
+	ul.items {
+		.clearfix();
+		margin-left: 10px;
+		margin-right: 10px;
 
-		ul {
-			.clearfix();
-			margin-left: 10px;
-			margin-right: 10px;
+		li {
+			float: left;
+			width: calc(~"100% / 3");
 
-			li {
-				float: left;
-				width: calc(~"100% / 3");
+			&:nth-child(n + 4) {
+				margin-top: 35px;
+			}
 
-				&:nth-child(n + 4) {
-					margin-top: 35px;
+			a {
+				display: block;
+				width: 100%;
+
+				img {
+					width: 300px;
+					height: 300px;
 				}
 
-				a {
-					display: block;
-					width: 100%;
+				.title {
+					margin-top: 87px;
+					font-weight: bold;
+					line-height: 1.5;
+				}
 
-					img {
-						width: 300px;
-						height: 300px;
-					}
-
-					.title {
-						margin-top: 87px;
-						font-weight: bold;
-						line-height: 1.5;
-					}
-
-					.price {
-						color: #757575;
-						line-height: 1.5;
-					}
+				.price {
+					color: #757575;
+					line-height: 1.5;
 				}
 			}
 		}
