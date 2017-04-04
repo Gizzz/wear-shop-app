@@ -1,15 +1,21 @@
 {
   "name": "wear-shop-app",
   "version": "1.0.0",
-  "description": "",
+  "description": "Wear shop app inspired by polymer project demo",
   "main": "index.js",
   "scripts": {
     "start": "node app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint ./",
+    "lint-fix": "eslint ./ --fix"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "express": "^4.15.2"
+  },
+  "devDependencies": {
+    "eslint": "^3.19.0",
+    "eslint-plugin-react": "^6.10.3"
   }
 }
