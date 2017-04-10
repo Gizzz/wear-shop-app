@@ -1,21 +1,30 @@
 {
   "name": "wear-shop-app",
   "version": "1.0.0",
-  "description": "Wear shop app inspired by polymer project demo",
+  "description": "Wear shop app inspired by polymer demo project",
   "main": "index.js",
   "scripts": {
     "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint ./",
-    "lint-fix": "eslint ./ --fix"
+    "lint-fix": "eslint ./ --fix",
+    "build": "webpack",
+    "watch": "webpack --watch"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.15.2"
+    "express": "^4.15.2",
+    "react": "^15.5.3",
+    "react-dom": "^15.5.3"
   },
   "devDependencies": {
+    "babel-core": "^6.24.0",
+    "babel-loader": "^6.4.1",
+    "babel-preset-es2015": "^6.24.0",
+    "babel-preset-react": "^6.23.0",
     "eslint": "^3.19.0",
-    "eslint-plugin-react": "^6.10.3"
+    "eslint-plugin-react": "^6.10.3",
+    "webpack": "^2.3.3"
   }
 }
