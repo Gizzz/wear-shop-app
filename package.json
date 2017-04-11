@@ -16,7 +16,8 @@
   "dependencies": {
     "express": "^4.15.2",
     "react": "^15.5.3",
-    "react-dom": "^15.5.3"
+    "react-dom": "^15.5.3",
+    "react-router-dom": "^4.0.0"
   },
   "devDependencies": {
     "babel-core": "^6.24.0",

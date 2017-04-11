@@ -1,10 +1,15 @@
-import React from "react";
-import ReactDOM from "react-dom";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { BrowserRouter, Route, Link } from 'react-router-dom';
 
-class HelloMessage extends React.Component {
-  render() {
-    return <div>Hello {this.props.name}</div>;
-  }
-}
+import Header from "./Header.jsx";
 
-ReactDOM.render(<HelloMessage name="Johny" />, document.getElementById("root"));
+const App = () => (
+  <BrowserRouter>
+    <div className="app">
+      <Header></Header>
+    </div>
+  </BrowserRouter>
+);
+
+ReactDOM.render(<App />, document.getElementById("root"));

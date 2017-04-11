@@ -7,7 +7,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 
 app.get("/", (req, res) => {
-	res.sendFile(`${__dirname}/public/html/index.html`);
+	res.sendFile(`${__dirname}/public/index.html`);
 });
 
 app.get("/list/:list_name", (req, res) => {
