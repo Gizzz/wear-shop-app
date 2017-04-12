@@ -14,7 +14,7 @@
   "pre-commit": [
     "lint"
   ],
-  "author": "",
+  "author": "Bulat Husainov",
   "license": "ISC",
   "dependencies": {
     "express": "^4.15.2",
@@ -32,5 +32,9 @@
     "eslint-plugin-react": "^6.10.3",
     "pre-commit": "^1.2.2",
     "webpack": "^2.3.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Gizzz/wear-shop-app.git"
   }
 }
