@@ -11,6 +11,9 @@
     "build": "webpack",
     "watch": "webpack --watch"
   },
+  "pre-commit": [
+    "lint"
+  ],
   "author": "",
   "license": "ISC",
   "dependencies": {
@@ -27,6 +30,7 @@
     "babel-preset-react": "^6.23.0",
     "eslint": "^3.19.0",
     "eslint-plugin-react": "^6.10.3",
+    "pre-commit": "^1.2.2",
     "webpack": "^2.3.3"
   }
 }
