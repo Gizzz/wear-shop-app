@@ -6,8 +6,8 @@
   "scripts": {
     "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint ./ --ext .js,.jsx",
-    "lint-fix": "eslint ./ --fix --ext .js,.jsx",
+    "lint": "eslint ./",
+    "lint-fix": "eslint ./ --fix",
     "build": "webpack",
     "watch": "webpack --watch"
   },
