@@ -14,8 +14,11 @@ const Header = () => (
 		<nav>
 			<ul>
 				<li><NavLink to="/list/mens_outerwear">Men's Outerwear</NavLink></li>
+				&nbsp;
 				<li><NavLink to="/list/ladies_outerwear">Ladies Outerwear</NavLink></li>
+				&nbsp;
 				<li><NavLink to="/list/mens_tshirts">Men's T-Shirts</NavLink></li>
+				&nbsp;
 				<li><NavLink to="/list/ladies_tshirts">Ladies T-Shirts</NavLink></li>
 			</ul>
 		</nav>
