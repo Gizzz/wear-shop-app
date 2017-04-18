@@ -51,7 +51,7 @@ class ShopItems extends React.Component {
 			shopItems = shopItems.map((item) => (
 				<li key={item.name}>
 					<Link to={ `/detail/${this.props.category}/${item.name}` }>
-						<img src="/img/content/10-15068B.jpg" alt="" />
+						<img src={ item.image } alt="" />
 						<div className="title">{ item.title }</div>
 						<span className="price">${ item.price.toFixed(2) }</span>
 					</Link>
