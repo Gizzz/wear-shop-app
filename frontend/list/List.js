@@ -34,7 +34,6 @@ class List extends React.Component {
 
 	render() {
 		const category = this.props.match.params.category;
-
 		let shopItems = this.state.shopItems;
 
 		const isItemsLoaded = shopItems != null;
