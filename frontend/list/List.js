@@ -24,7 +24,7 @@ class List extends React.Component {
 	}
 
 	loadData(category) {
-		fetch(`/data/${category}.jsons`)
+		fetch(`/data/${category}.json`)
 			.then(response => response.json())
 			.then((json) => {
 				this.setState({ shopItems: json });
