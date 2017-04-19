@@ -1,135 +1,142 @@
-section.main .content.index {
-	.category {
-		padding-bottom: 40px;
+section.main {
+
+	// --------------------
+	// page specific styles
+	// --------------------
+
+	.content.index {
+		.category {
+			padding-bottom: 40px;
+			text-align: center;
+
+			.banner {
+				display: block;
+				height: 320px;
+			}
+
+			&.mens_outerwear .banner {
+				background: url(/img/mens_outerwear.jpg) no-repeat 50% 50%;
+			}
+
+			&.ladies_outerwear .banner {
+				background: url(/img/ladies_outerwear.jpg) no-repeat 50% 50%;
+			}
+
+			&.mens_tshirts .banner {
+				background: url(/img/mens_tshirts.jpg) no-repeat 50% 50%;
+			}
+
+			&.ladies_tshirts .banner {
+				background: url(/img/ladies_tshirts.jpg) no-repeat 50% 50%;
+			}
+
+			h2 {
+				margin: 32px 0;
+				font-size: 1.3em;
+				font-weight: 500;
+				line-height: 1.5;
+			}
+
+			.btn {
+				display: inline-block;
+				padding: 8px 44px;
+				border: 2px solid #000;
+				background-color: #FFF;
+				text-align: center;
+				font-size: 14px;
+				font-weight: 500;
+				line-height: 1.5;
+
+				&:active {
+					background-color: #000;
+					color: #fff;
+				}
+			}
+		}
+
+		.category.half-width {
+			float: left;
+			width: 50%;
+
+			h2 {
+				font-size: 1.1em;
+			}
+		}
+	}
+
+	.content.list {
+		padding-bottom: 30px;
 		text-align: center;
 
-		.banner {
-			display: block;
+		.billboard {
 			height: 320px;
-		}
 
-		&.mens_outerwear .banner {
-			background: url(/img/mens_outerwear.jpg) no-repeat 50% 50%;
-		}
-
-		&.ladies_outerwear .banner {
-			background: url(/img/ladies_outerwear.jpg) no-repeat 50% 50%;
-		}
-
-		&.mens_tshirts .banner {
-			background: url(/img/mens_tshirts.jpg) no-repeat 50% 50%;
-		}
-
-		&.ladies_tshirts .banner {
-			background: url(/img/ladies_tshirts.jpg) no-repeat 50% 50%;
-		}
-
-		h2 {
-			margin: 32px 0;
-			font-size: 1.3em;
-			font-weight: 500;
-			line-height: 1.5;
-		}
-
-		.btn {
-			display: inline-block;
-			padding: 8px 44px;
-			border: 2px solid #000;
-			background-color: #FFF;
-			text-align: center;
-			font-size: 14px;
-			font-weight: 500;
-			line-height: 1.5;
-
-			&:active {
-				background-color: #000;
-				color: #fff;
-			}
-		}
-	}
-
-	.category.half-width {
-		float: left;
-		width: 50%;
-
-		h2 {
-			font-size: 1.1em;
-		}
-	}
-}
-
-section.main .content.list {
-	padding-bottom: 30px;
-	text-align: center;
-
-	.billboard {
-		height: 320px;
-
-		&.mens_outerwear {
-			background: url(/img/mens_outerwear.jpg) no-repeat 50% 50%;
-		}
-
-		&.ladies_outerwear {
-			background: url(/img/ladies_outerwear.jpg) no-repeat 50% 50%;
-		}
-
-		&.mens_tshirts {
-			background: url(/img/mens_tshirts.jpg) no-repeat 50% 50%;
-		}
-
-		&.ladies_tshirts {
-			background: url(/img/ladies_tshirts.jpg) no-repeat 50% 50%;
-		}
-	}
-
-	.heading {
-		padding-bottom: 32px;
-
-		h2 {
-			margin: 32px 0 5px;
-			font-size: 1.3em;
-			font-weight: 500;
-			line-height: 1.5;
-		}
-
-		span {
-			font-size: 12px;
-			line-height: 1.5;
-			color: #757575;
-		}
-	}
-
-	ul.items {
-		.clearfix();
-		margin-left: 10px;
-		margin-right: 10px;
-
-		li {
-			float: left;
-			width: calc(~"100% / 3");
-
-			&:nth-child(n + 4) {
-				margin-top: 35px;
+			&.mens_outerwear {
+				background: url(/img/mens_outerwear.jpg) no-repeat 50% 50%;
 			}
 
-			a {
-				display: block;
-				width: 100%;
+			&.ladies_outerwear {
+				background: url(/img/ladies_outerwear.jpg) no-repeat 50% 50%;
+			}
 
-				img {
-					width: 300px;
-					height: 300px;
+			&.mens_tshirts {
+				background: url(/img/mens_tshirts.jpg) no-repeat 50% 50%;
+			}
+
+			&.ladies_tshirts {
+				background: url(/img/ladies_tshirts.jpg) no-repeat 50% 50%;
+			}
+		}
+
+		.heading {
+			padding-bottom: 32px;
+
+			h2 {
+				margin: 32px 0 5px;
+				font-size: 1.3em;
+				font-weight: 500;
+				line-height: 1.5;
+			}
+
+			span {
+				font-size: 12px;
+				line-height: 1.5;
+				color: #757575;
+			}
+		}
+
+		ul.items {
+			.clearfix();
+			margin-left: 10px;
+			margin-right: 10px;
+
+			li {
+				float: left;
+				width: calc(~"100% / 3");
+
+				&:nth-child(n + 4) {
+					margin-top: 35px;
 				}
 
-				.title {
-					margin-top: 87px;
-					font-weight: bold;
-					line-height: 1.5;
-				}
+				a {
+					display: block;
+					width: 100%;
 
-				.price {
-					color: #757575;
-					line-height: 1.5;
+					img {
+						width: 300px;
+						height: 300px;
+					}
+
+					.title {
+						margin-top: 87px;
+						font-weight: bold;
+						line-height: 1.5;
+					}
+
+					.price {
+						color: #757575;
+						line-height: 1.5;
+					}
 				}
 			}
 		}
