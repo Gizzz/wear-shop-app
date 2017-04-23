@@ -36,22 +36,6 @@ section.main {
 				font-weight: 500;
 				line-height: 1.5;
 			}
-
-			.btn {
-				display: inline-block;
-				padding: 8px 44px;
-				border: 2px solid #000;
-				background-color: #FFF;
-				text-align: center;
-				font-size: 14px;
-				font-weight: 500;
-				line-height: 1.5;
-
-				&:active {
-					background-color: #000;
-					color: #fff;
-				}
-			}
 		}
 
 		.category.half-width {
@@ -137,6 +121,104 @@ section.main {
 						color: #757575;
 						line-height: 1.5;
 					}
+				}
+			}
+		}
+	}
+
+	.content.detail {
+		.row {
+			width: 1128px;
+			margin: 0 auto;
+
+			.col {
+				float: left;
+				margin: 64px 32px;
+			}
+
+			.col.image {
+				width: 600px;
+
+				img {
+					width: 600px;
+					height: 600px;
+				}
+			}
+
+			.col.text {
+				width: 400px;
+
+				h1 {
+					font-size: 24px;
+					font-weight: 500;
+					line-height: 28px;
+				}
+
+				.price {
+					margin: 16px 0 40px;
+					font-size: 16px;
+					line-height: 1.5;
+					color: #757575;
+				}
+
+				.size,
+				.quantity {
+					position: relative;
+					display: block;
+					height: 52px;
+
+					label {
+						line-height: 52px;
+						color: #757575;
+					}
+
+					select {
+						position: absolute;
+						right: 0;
+						top: 0;
+						border: 0;
+						width: 335px;
+						height: 50px;
+						font-family: Arial;
+						font-size: 16px;
+						color: #202020;
+					}
+				}
+
+				.size {
+					border-top: 1px solid #ccc;
+					border-bottom: 1px solid #ccc;
+				}
+
+				.quantity {
+					border-bottom: 1px solid #ccc;
+				}
+
+				.description {
+					margin-top: 32px;
+					line-height: 1.5;
+
+					h2 {
+						margin: 16px 0;
+    				font-size: 13px;
+					}
+
+					.desc {
+						color: #757575;
+
+						ul {
+							margin-top: 13px;
+							padding-left: 40px;
+
+							li {
+								list-style: disc;
+							}
+						}
+					}
+				}
+
+				.btn {
+					margin-top: 32px;
 				}
 			}
 		}
