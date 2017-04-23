@@ -6,6 +6,7 @@ import Header from "./Header";
 import Footer from "./Footer";
 import Home from "./Home";
 import List from "./list/List";
+import Detail from "./Detail";
 
 const App = () => (
 	<BrowserRouter>
@@ -15,6 +16,7 @@ const App = () => (
 				<div className="wrapper">
 					<Route exact path="/" component={ Home } />
 					<Route path="/list/:category" component={ List } />
+					<Route path="/detail/:category/:itemName" component={ Detail } />
 				</div>
 			</section>
 			<Footer />
