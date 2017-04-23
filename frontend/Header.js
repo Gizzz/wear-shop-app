@@ -13,16 +13,40 @@ const Header = () => (
 		</div>
 		<nav>
 			<ul>
-				<li><NavLink to="/list/mens_outerwear">Men's Outerwear</NavLink></li>
+				<li><NavLink to="/list/mens_outerwear" isActive={ checkMensOuterwear }>Men's Outerwear</NavLink></li>
 				&nbsp;
-				<li><NavLink to="/list/ladies_outerwear">Ladies Outerwear</NavLink></li>
+				<li><NavLink to="/list/ladies_outerwear" isActive={ checkLadiesOuterwear }>Ladies Outerwear</NavLink></li>
 				&nbsp;
-				<li><NavLink to="/list/mens_tshirts">Men's T-Shirts</NavLink></li>
+				<li><NavLink to="/list/mens_tshirts" isActive={ checkMensTshirts }>Men's T-Shirts</NavLink></li>
 				&nbsp;
-				<li><NavLink to="/list/ladies_tshirts">Ladies T-Shirts</NavLink></li>
+				<li><NavLink to="/list/ladies_tshirts" isActive={ checkLadiesTshirts }>Ladies T-Shirts</NavLink></li>
 			</ul>
 		</nav>
 	</header>
 );
+
+function checkMensOuterwear(match, location) {
+	if (match) return true;
+	if (location.pathname.includes("mens_outerwear")) return true;
+	return false;
+}
+
+function checkLadiesOuterwear(match, location) {
+	if (match) return true;
+	if (location.pathname.includes("ladies_outerwear")) return true;
+	return false;
+}
+
+function checkMensTshirts(match, location) {
+	if (match) return true;
+	if (location.pathname.includes("mens_tshirts")) return true;
+	return false;
+}
+
+function checkLadiesTshirts(match, location) {
+	if (match) return true;
+	if (location.pathname.includes("ladies_tshirts")) return true;
+	return false;
+}
 
 export default Header;
