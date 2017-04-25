@@ -4,9 +4,9 @@ import { BrowserRouter, Route } from "react-router-dom";
 
 import Header from "./Header";
 import Footer from "./Footer";
-import Home from "./Home";
-import List from "./list/List";
-import Detail from "./Detail";
+import Home from "./pages/Home";
+import List from "./pages/list/List";
+import Detail from "./pages/Detail";
 
 const App = () => (
 	<BrowserRouter>
