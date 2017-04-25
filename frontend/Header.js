@@ -26,26 +26,24 @@ const Header = () => (
 );
 
 function checkMensOuterwear(match, location) {
-	if (match) return true;
-	if (location.pathname.includes("mens_outerwear")) return true;
-	return false;
+	return checkRouteMatch(match, location, "mens_outerwear");
 }
 
 function checkLadiesOuterwear(match, location) {
-	if (match) return true;
-	if (location.pathname.includes("ladies_outerwear")) return true;
-	return false;
+	return checkRouteMatch(match, location, "ladies_outerwear");
 }
 
 function checkMensTshirts(match, location) {
-	if (match) return true;
-	if (location.pathname.includes("mens_tshirts")) return true;
-	return false;
+	return checkRouteMatch(match, location, "mens_tshirts");
 }
 
 function checkLadiesTshirts(match, location) {
+	return checkRouteMatch(match, location, "ladies_tshirts");
+}
+
+function checkRouteMatch(match, location, category) {
 	if (match) return true;
-	if (location.pathname.includes("ladies_tshirts")) return true;
+	if (location.pathname.includes(category)) return true;
 	return false;
 }
 
