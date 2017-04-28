@@ -45,7 +45,7 @@ class Detail extends React.Component {
 					<div className="col image">
 						<img 
 							src={ this.state.itemData ? this.state.itemData.largeImage : "" } 
-							alt={ !this.state.itemData ? loadingText : "" }
+							alt={ loadingText }
 						/>
 					</div>
 					<div className="col text">
