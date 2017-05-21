@@ -9,21 +9,25 @@ import List from "./pages/list/List";
 import Detail from "./pages/Detail";
 import Cart from "./pages/Cart";
 
-const App = () => (
-	<BrowserRouter>
-		<div className="app">
-			<Header />
-			<section className="main">
-				<div className="wrapper">
-					<Route exact path="/" component={ Home } />
-					<Route path="/list/:category" component={ List } />
-					<Route path="/detail/:category/:itemName" component={ Detail } />
-					<Route path="/cart" component={ Cart } />
+class App extends React.Component {
+	render() {
+		return (
+			<BrowserRouter>
+				<div className="app">
+					<Header />
+					<section className="main">
+						<div className="wrapper">
+							<Route exact path="/" component={ Home } />
+							<Route path="/list/:category" component={ List } />
+							<Route path="/detail/:category/:itemName" component={ Detail } />
+							<Route path="/cart" component={ Cart } />
+						</div>
+					</section>
+					<Footer />
 				</div>
-			</section>
-			<Footer />
-		</div>
-	</BrowserRouter>
-);
+			</BrowserRouter>
+		);
+	}
+}
 
 ReactDOM.render(<App />, document.getElementById("root"));
