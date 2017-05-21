@@ -7,6 +7,7 @@ import Footer from "./Footer";
 import Home from "./pages/Home";
 import List from "./pages/list/List";
 import Detail from "./pages/Detail";
+import Cart from "./pages/Cart";
 
 const App = () => (
 	<BrowserRouter>
@@ -17,6 +18,7 @@ const App = () => (
 					<Route exact path="/" component={ Home } />
 					<Route path="/list/:category" component={ List } />
 					<Route path="/detail/:category/:itemName" component={ Detail } />
+					<Route path="/cart" component={ Cart } />
 				</div>
 			</section>
 			<Footer />
