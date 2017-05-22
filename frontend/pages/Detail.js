@@ -4,7 +4,10 @@ import PropTypes from "prop-types";
 class Detail extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = {};
+		
+		this.state = {
+			itemData: undefined,
+		};
 	}
 
 	componentDidMount() {
