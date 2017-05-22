@@ -7,7 +7,7 @@ import Footer from "./Footer";
 import Home from "./pages/Home";
 import List from "./pages/list/List";
 import Detail from "./pages/Detail";
-import Cart from "./pages/Cart";
+import Cart from "./pages/cart/Cart";
 
 class App extends React.Component {
 	constructor(props) {
