@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 import CartItem from "./CartItem";
 
@@ -57,7 +58,7 @@ class Cart extends React.Component {
 				</ul>
 				<div className="checkout-box">
 					Total: <span className="subtotal">${ totalPrice.toFixed(2) }</span>
-					<a className="btn" href="/checkout">checkout</a>
+					<Link className="btn" to="/checkout">checkout</Link>
 				</div>
 			</div>
 		);
