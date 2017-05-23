@@ -7,10 +7,15 @@ class Cart extends React.Component {
 	constructor(props) {
 		super(props);
 		this.handleQuantityChange = this.handleQuantityChange.bind(this);
+		this.handleRemove = this.handleRemove.bind(this);
 	}
 
 	handleQuantityChange(itemName, quantity) {
 		this.props.onQuantityChange(itemName, quantity);
+	}
+
+	handleRemove(itemName) {
+		this.props.onRemove(itemName);
 	}
 
 	render() {
@@ -31,7 +36,10 @@ class Cart extends React.Component {
 		const itemsCountText = `(${items.length} ${itemOrItems})`;
 
 		const itemsMarkup = items.map((item) => (
-			<CartItem key={ item.itemData.name } item={ item } onQuantityChange={ this.handleQuantityChange } />
+			<CartItem key={ item.itemData.name } item={ item } 
+				onQuantityChange={ this.handleQuantityChange } 
+				onRemove={ this.handleRemove } 
+			/>
 		));
 
 		const totalPrice = items.reduce((sum, item) => {
@@ -59,6 +67,7 @@ class Cart extends React.Component {
 Cart.propTypes = {
 	items: PropTypes.array.isRequired,
 	onQuantityChange: PropTypes.func.isRequired,
+	onRemove: PropTypes.func.isRequired,
 };
 
 export default Cart;

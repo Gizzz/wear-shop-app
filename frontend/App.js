@@ -13,6 +13,7 @@ class App extends React.Component {
 	constructor(props) {
 		super(props);
 		this.updateCartItemQuantity = this.updateCartItemQuantity.bind(this);
+		this.removeCartItem = this.removeCartItem.bind(this);
 
 		this.state = {
 			cartItems: [ 
@@ -47,9 +48,6 @@ class App extends React.Component {
 	}
 
 	updateCartItemQuantity(itemName, quantity) {
-		const cartItemToUpdate = this.state.cartItems.find(item => item.itemData.name === itemName);
-		if (!cartItemToUpdate) return;
-
 		this.setState((prevState) => {
 			return { 
 				cartItems: prevState.cartItems.map((cartItem) => {
@@ -58,8 +56,15 @@ class App extends React.Component {
 					}
 
 					return cartItem;
-				}) 
+				}),
 			};
+		});
+	}
+
+	removeCartItem(itemName) {
+		this.setState((prevState) => {
+			const cartItems = prevState.cartItems.filter(cartItem => cartItem.itemData.name !== itemName);
+			return { cartItems };
 		});
 	}
 
@@ -73,7 +78,9 @@ class App extends React.Component {
 							<Route exact path="/" component={ Home } />
 							<Route path="/list/:category" component={ List } />
 							<Route path="/detail/:category/:itemName" component={ Detail } />
-							<Route path="/cart" render={ () => (<Cart items={ this.state.cartItems } onQuantityChange={ this.updateCartItemQuantity } />) } />
+							<Route path="/cart" render={ () => (
+								<Cart items={ this.state.cartItems } onQuantityChange={ this.updateCartItemQuantity } onRemove={ this.removeCartItem } />
+							) } />
 						</div>
 					</section>
 					<Footer />

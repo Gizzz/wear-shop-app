@@ -6,6 +6,7 @@ class CartItem extends React.Component {
 	constructor(props) {
 		super(props);
 		this.handleChange = this.handleChange.bind(this);
+		this.handleClick = this.handleClick.bind(this);
 	}
 
 	handleChange(event) {
@@ -13,6 +14,11 @@ class CartItem extends React.Component {
 		const quantity = parseInt(event.target.value);
 
 		this.props.onQuantityChange(itemName, quantity);
+	}
+
+	handleClick() {
+		const itemName = this.props.item.itemData.name;
+		this.props.onRemove(itemName);
 	}
 
 	render() {
@@ -43,7 +49,7 @@ class CartItem extends React.Component {
 						Size: <span>{ this.props.item.size }</span>
 					</div>
 					<div className="price">${ this.props.item.itemData.price.toFixed(2) }</div>
-					<button className="delete"></button>
+					<button className="delete" onClick={ this.handleClick }></button>
 				</div>
 			</li>
 		);
@@ -52,7 +58,8 @@ class CartItem extends React.Component {
 
 CartItem.propTypes = {
 	item: PropTypes.object.isRequired,
-	onQuantityChange: PropTypes.func.isRequired
+	onQuantityChange: PropTypes.func.isRequired,
+	onRemove: PropTypes.func.isRequired,
 };
 
 export default CartItem;
