@@ -4,8 +4,17 @@ import PropTypes from "prop-types";
 import CartItem from "./CartItem";
 
 class Cart extends React.Component {
+	constructor(props) {
+		super(props);
+		this.handleQuantityChange = this.handleQuantityChange.bind(this);
+	}
+
+	handleQuantityChange(itemName, quantity) {
+		this.props.onQuantityChange(itemName, quantity);
+	}
+
 	render() {
-		const isCartEmpty = !this.props.items;
+		const isCartEmpty = !this.props.items || !this.props.items.length;
 		if (isCartEmpty) {
 			return (
 				<div className="content cart">
@@ -17,8 +26,12 @@ class Cart extends React.Component {
 		}
 
 		const items = this.props.items;
+
+		const itemOrItems = items.length === 1 ? "item" : "items";
+		const itemsCountText = `(${items.length} ${itemOrItems})`;
+
 		const itemsMarkup = items.map((item) => (
-			<CartItem key={ item.itemData.name } item={ item } />
+			<CartItem key={ item.itemData.name } item={ item } onQuantityChange={ this.handleQuantityChange } />
 		));
 
 		const totalPrice = items.reduce((sum, item) => {
@@ -29,14 +42,14 @@ class Cart extends React.Component {
 			<div className="content cart">
 				<div className="heading">
 					<h1>Your Cart</h1>
-					<span>(2 items)</span>
+					<span>{ itemsCountText }</span>
 				</div>
 				<ul className="items">
 					{ itemsMarkup }
 				</ul>
 				<div className="checkout-box">
 					Total: <span className="subtotal">${ totalPrice.toFixed(2) }</span>
-					<a className="btn" href="#">checkout</a>
+					<a className="btn" href="/checkout">checkout</a>
 				</div>
 			</div>
 		);
@@ -44,7 +57,8 @@ class Cart extends React.Component {
 }
 
 Cart.propTypes = {
-	items: PropTypes.array,
+	items: PropTypes.array.isRequired,
+	onQuantityChange: PropTypes.func.isRequired,
 };
 
 export default Cart;

@@ -12,6 +12,7 @@ import Cart from "./pages/cart/Cart";
 class App extends React.Component {
 	constructor(props) {
 		super(props);
+		this.updateCartItemQuantity = this.updateCartItemQuantity.bind(this);
 
 		this.state = {
 			cartItems: [ 
@@ -45,6 +46,23 @@ class App extends React.Component {
 		};
 	}
 
+	updateCartItemQuantity(itemName, quantity) {
+		const cartItemToUpdate = this.state.cartItems.find(item => item.itemData.name === itemName);
+		if (!cartItemToUpdate) return;
+
+		this.setState((prevState) => {
+			return { 
+				cartItems: prevState.cartItems.map((cartItem) => {
+					if (cartItem.itemData.name === itemName) {
+						return Object.assign({}, cartItem, { quantity });
+					}
+
+					return cartItem;
+				}) 
+			};
+		});
+	}
+
 	render() {
 		return (
 			<BrowserRouter>
@@ -55,7 +73,7 @@ class App extends React.Component {
 							<Route exact path="/" component={ Home } />
 							<Route path="/list/:category" component={ List } />
 							<Route path="/detail/:category/:itemName" component={ Detail } />
-							<Route path="/cart" render={ () => (<Cart items={ this.state.cartItems } />) } />
+							<Route path="/cart" render={ () => (<Cart items={ this.state.cartItems } onQuantityChange={ this.updateCartItemQuantity } />) } />
 						</div>
 					</section>
 					<Footer />

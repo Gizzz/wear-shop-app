@@ -3,9 +3,21 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 class CartItem extends React.Component {
+	constructor(props) {
+		super(props);
+		this.handleChange = this.handleChange.bind(this);
+	}
+
+	handleChange(event) {
+		const itemName = this.props.item.itemData.name;
+		const quantity = parseInt(event.target.value);
+
+		this.props.onQuantityChange(itemName, quantity);
+	}
+
 	render() {
 		return (
-			<li key={ this.props.item.itemData.name }>
+			<li>
 				<div className="left">
 					<Link className="image" to={ `/detail/${this.props.item.itemData.category}/${this.props.item.itemData.name}` }>
 						<img src={ this.props.item.itemData.image } />
@@ -18,7 +30,7 @@ class CartItem extends React.Component {
 					<div className="quantity">
 						<label>
 							Qty:
-							<select name="quantity" defaultValue={ this.props.item.quantity }>
+							<select name="quantity" defaultValue={ this.props.item.quantity } onChange={ this.handleChange }>
 								<option value="1">1</option>
 								<option value="2">2</option>
 								<option value="3">3</option>
@@ -39,7 +51,8 @@ class CartItem extends React.Component {
 }
 
 CartItem.propTypes = {
-	item: PropTypes.object,
+	item: PropTypes.object.isRequired,
+	onQuantityChange: PropTypes.func.isRequired
 };
 
 export default CartItem;
