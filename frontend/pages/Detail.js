@@ -2,17 +2,42 @@ import React from "react";
 import PropTypes from "prop-types";
 
 class Detail extends React.Component {
+	static propTypes = {
+		match: PropTypes.object.isRequired,
+		onAddBtnClick: PropTypes.func.isRequired,
+	}
+
 	constructor(props) {
 		super(props);
 		
 		this.state = {
 			itemData: undefined,
+			size: "M",
+			quantity: 1,
 		};
 	}
 
 	componentDidMount() {
 		const category = this.props.match.params.category;
 		this.loadData(category);
+	}
+
+	handleSizeChange = (e) => {
+		const size = e.target.value;
+		this.setState(() => ({ size }));
+	}
+
+	handleQuantityChange = (e) => {
+		const quantity = parseInt(e.target.value);
+		this.setState(() => ({ quantity }));
+	}
+
+	handleAddBtnClick = () => {
+		this.props.onAddBtnClick(
+			this.state.itemData, 
+			this.state.size,
+			this.state.quantity
+		);
 	}
 
 	loadData(category) {
@@ -58,10 +83,10 @@ class Detail extends React.Component {
 						<div className="price">
 							{ this.state.itemData ? "$" + this.state.itemData.price.toFixed(2) : loadingText }
 						</div>
-						<form action="#">
+						<form onSubmit={ e => e.preventDefault() }>
 							<div className="size">
 								<label htmlFor="size">Size</label>
-								<select name="size" id="size" defaultValue="M">
+								<select id="size" defaultValue={ this.state.size } onChange={ this.handleSizeChange }>
 									<option value="XS">XS</option>
 									<option value="S">S</option>
 									<option value="M">M</option>
@@ -71,7 +96,7 @@ class Detail extends React.Component {
 							</div>
 							<div className="quantity">
 								<label htmlFor="quantity">Quantity</label>
-								<select name="quantity" id="quantity">
+								<select id="quantity" defaultValue={ this.state.quantity } onChange={ this.handleQuantityChange }>
 									<option value="1">1</option>
 									<option value="2">2</option>
 									<option value="3">3</option>
@@ -83,7 +108,7 @@ class Detail extends React.Component {
 								<h2>Description</h2>
 								<div className="desc" dangerouslySetInnerHTML={ this.createDescriptionMarkup() }></div>
 							</div>
-							<button className="btn">Add to Cart</button>
+							<button className="btn" onClick={ this.handleAddBtnClick }>Add to Cart</button>
 						</form>
 					</div>
 				</div>
@@ -91,9 +116,5 @@ class Detail extends React.Component {
 		);
 	}
 }
-
-Detail.propTypes = {
-	match: PropTypes.object,
-};
 
 export default Detail;
