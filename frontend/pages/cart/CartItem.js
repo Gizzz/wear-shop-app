@@ -11,9 +11,10 @@ class CartItem extends React.Component {
 
 	handleChange(event) {
 		const itemName = this.props.item.itemData.name;
+		const size = this.props.item.size;
 		const quantity = parseInt(event.target.value);
 
-		this.props.onQuantityChange(itemName, quantity);
+		this.props.onQuantityChange(itemName, size, quantity);
 	}
 
 	handleClick() {
@@ -42,6 +43,11 @@ class CartItem extends React.Component {
 								<option value="3">3</option>
 								<option value="4">4</option>
 								<option value="5">5</option>
+								<option value="6">6</option>
+								<option value="7">7</option>
+								<option value="8">8</option>
+								<option value="9">9</option>
+								<option value="10">10</option>
 							</select>
 						</label>
 					</div>

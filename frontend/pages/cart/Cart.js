@@ -11,8 +11,8 @@ class Cart extends React.Component {
 		this.handleRemove = this.handleRemove.bind(this);
 	}
 
-	handleQuantityChange(itemName, quantity) {
-		this.props.onQuantityChange(itemName, quantity);
+	handleQuantityChange(itemName, size, quantity) {
+		this.props.onQuantityChange(itemName, size, quantity);
 	}
 
 	handleRemove(itemName) {
@@ -37,7 +37,7 @@ class Cart extends React.Component {
 		const itemsCountText = `(${items.length} ${itemOrItems})`;
 
 		const itemsMarkup = items.map((item) => (
-			<CartItem key={ item.itemData.name } item={ item } 
+			<CartItem key={ `name=${item.itemData.name}&size=${item.size}` } item={ item } 
 				onQuantityChange={ this.handleQuantityChange } 
 				onRemove={ this.handleRemove } 
 			/>

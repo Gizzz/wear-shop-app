@@ -81,11 +81,11 @@ class App extends React.Component {
 		});
 	}
 
-	updateCartItemQuantity(itemName, quantity) {
+	updateCartItemQuantity(itemName, size, quantity) {
 		this.setState((prevState) => {
 			return { 
 				cartItems: prevState.cartItems.map((cartItem) => {
-					if (cartItem.itemData.name === itemName) {
+					if (cartItem.itemData.name === itemName && cartItem.size === size) {
 						return Object.assign({}, cartItem, { quantity });
 					}
 
