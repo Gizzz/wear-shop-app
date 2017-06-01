@@ -7,6 +7,10 @@ class Detail extends React.Component {
 		onAddBtnClick: PropTypes.func.isRequired,
 	}
 
+	static contextTypes = {
+		router: PropTypes.object
+	}
+
 	constructor(props) {
 		super(props);
 		
@@ -38,6 +42,8 @@ class Detail extends React.Component {
 			this.state.size,
 			this.state.quantity
 		);
+
+		this.context.router.history.push("/cart");
 	}
 
 	loadData(category) {
