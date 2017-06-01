@@ -36,7 +36,10 @@ class Detail extends React.Component {
 		this.setState(() => ({ quantity }));
 	}
 
-	handleAddBtnClick = () => {
+	handleAddBtnClick = (e) => {
+		// prevent form submission
+		e.preventDefault();
+
 		this.props.onAddBtnClick(
 			this.state.itemData, 
 			this.state.size,
