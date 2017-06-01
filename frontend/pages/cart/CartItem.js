@@ -19,7 +19,9 @@ class CartItem extends React.Component {
 
 	handleClick() {
 		const itemName = this.props.item.itemData.name;
-		this.props.onRemove(itemName);
+		const size = this.props.item.size;
+		
+		this.props.onRemove(itemName, size);
 	}
 
 	render() {

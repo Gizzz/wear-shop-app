@@ -95,9 +95,13 @@ class App extends React.Component {
 		});
 	}
 
-	removeCartItem(itemName) {
+	removeCartItem(itemName, size) {
 		this.setState((prevState) => {
-			const cartItems = prevState.cartItems.filter(cartItem => cartItem.itemData.name !== itemName);
+			const cartItems = prevState.cartItems.filter(cartItem => {
+				if (cartItem.itemData.name !== itemName) return true;
+				if (cartItem.size !== size) return true;
+				return false;
+			});
 			return { cartItems };
 		});
 	}

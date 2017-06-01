@@ -15,8 +15,8 @@ class Cart extends React.Component {
 		this.props.onQuantityChange(itemName, size, quantity);
 	}
 
-	handleRemove(itemName) {
-		this.props.onRemove(itemName);
+	handleRemove(itemName, size) {
+		this.props.onRemove(itemName, size);
 	}
 
 	render() {
