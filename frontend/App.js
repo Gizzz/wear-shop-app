@@ -17,34 +17,7 @@ class App extends React.Component {
 		this.removeCartItem = this.removeCartItem.bind(this);
 
 		this.state = {
-			cartItems: [ 
-				// {
-				// 	itemData: {
-				// 		"name":"Men+s+Tech+Shell+Full-Zip",
-				// 		"title":"Men's Tech Shell Full-Zip",
-				// 		"category":"mens_outerwear",
-				// 		"price":50.20,
-				// 		"description":"A versatile full-zip that you can wear all day long and even to the gym. This technical shell features moisture-wicking fabric, added stretch and a hidden pocket for your smartphone or media player.&amp;nbsp;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Features:&lt;/div&gt;&lt;div&gt;&lt;ul&gt;&lt;li&gt;100% polyester.&lt;/li&gt;&lt;li&gt;Smooth, technical front with textured mesh back.&lt;/li&gt;&lt;li&gt;Drawstring bottom for adjustable fit.&lt;/li&gt;&lt;li&gt;Raglan sleeves.&lt;/li&gt;&lt;li&gt;Available in forest green with the white Google logo embroidered at left chest.&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;",
-				// 		"image":"/img/content/10-15068B.jpg",
-				// 		"largeImage":"/img/content/10-15068A.jpg"
-				// 	},
-				// 	quantity: 2,
-				// 	size: "S",
-				// },
-				// {
-				// 	itemData: {
-				// 		"name":"Anvil+L+S+Crew+Neck+-+Grey",
-				// 		"title":"Anvil L/S Crew Neck - Grey",
-				// 		"category":"mens_outerwear",
-				// 		"price":22.15,
-				// 		"description":"You'll be swooning over this crew neck as soon as you feel how soft it is.&amp;nbsp;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Features:&lt;/div&gt;&lt;div&gt;&lt;ul&gt;&lt;li&gt;40% preshrunk ring-spun cotton, 60% polyester terry fleece.&amp;nbsp;&lt;/li&gt;&lt;li&gt;Available in dark heather charcoal with the white Google logo screen printed across center chest.&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;",
-				// 		"image":"/img/content/10-14154B.jpg",
-				// 		"largeImage":"/img/content/10-14154A.jpg"
-				// 	},
-				// 	quantity: 4,
-				// 	size: "L",
-				// },
-			],
+			cartItems: [],
 		};
 	}
 
