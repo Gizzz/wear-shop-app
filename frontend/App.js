@@ -8,6 +8,14 @@ import Home from "./pages/Home";
 import List from "./pages/list/List";
 import Detail from "./pages/Detail";
 import Cart from "./pages/cart/Cart";
+import Checkout from "./pages/Checkout";
+
+import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
+import injectTapEventPlugin from "react-tap-event-plugin";
+
+// Needed for onTouchTap
+// http://stackoverflow.com/a/34015469/988941
+injectTapEventPlugin();
 
 class App extends React.Component {
 	constructor(props) {
@@ -81,24 +89,27 @@ class App extends React.Component {
 
 	render() {
 		return (
-			<BrowserRouter>
-				<div className="app">
-					<Header />
-					<section className="main">
-						<div className="wrapper">
-							<Route exact path="/" component={ Home } />
-							<Route path="/list/:category" component={ List } />
-							<Route path="/detail/:category/:itemName" render={ ({ match }) => (
-								<Detail match={ match } onAddBtnClick={ this.addCartItem } />
-							) } />
-							<Route path="/cart" render={ () => (
-								<Cart items={ this.state.cartItems } onQuantityChange={ this.updateCartItemQuantity } onRemove={ this.removeCartItem } />
-							) } />
-						</div>
-					</section>
-					<Footer />
-				</div>
-			</BrowserRouter>
+			<MuiThemeProvider>
+				<BrowserRouter>
+					<div className="app">
+						<Header />
+						<section className="main">
+							<div className="wrapper">
+								<Route exact path="/" component={ Home } />
+								<Route path="/list/:category" component={ List } />
+								<Route path="/detail/:category/:itemName" render={ ({ match }) => (
+									<Detail match={ match } onAddBtnClick={ this.addCartItem } />
+								) } />
+								<Route path="/cart" render={ () => (
+									<Cart items={ this.state.cartItems } onQuantityChange={ this.updateCartItemQuantity } onRemove={ this.removeCartItem } />
+								) } />
+								<Route path="/checkout" component={ Checkout } />
+							</div>
+						</section>
+						<Footer />
+					</div>
+				</BrowserRouter>
+			</MuiThemeProvider>
 		);
 	}
 }
