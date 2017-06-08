@@ -37,9 +37,20 @@ const selectFieldDefaultProps = {
 class Checkout extends React.Component {
 	state = {
 		value: 1,
+		showBillingAddressArea: false,
 	}
 
 	handleChange = (event, index, value) => this.setState({value})
+
+	handle_billingAddressCheckbox_check = (e) => {
+		const isChecked = e.target.checked;
+
+		this.setState(() => {
+			return {
+				showBillingAddressArea: isChecked
+			};
+		});
+	}
 
 	render() {
 		return (
@@ -84,26 +95,29 @@ class Checkout extends React.Component {
 								label="Use different billing address"
 								style={{ marginTop: "29px" }}
 								iconStyle={{ fill: "#202020" }}
+								onCheck={ this.handle_billingAddressCheckbox_check }
 							/>
-							<TextField { ...textFieldDefaultProps } floatingLabelText="Address" />
-							<TextField { ...textFieldDefaultProps } floatingLabelText="City" />
-							<div className="row">
-								<div className="col half-width">
-									<TextField { ...textFieldDefaultProps } floatingLabelText="State/Province" />
+							<div style={{ display: this.state.showBillingAddressArea ? "block" : "none" }}>
+								<TextField { ...textFieldDefaultProps } floatingLabelText="Address" />
+								<TextField { ...textFieldDefaultProps } floatingLabelText="City" />
+								<div className="row">
+									<div className="col half-width">
+										<TextField { ...textFieldDefaultProps } floatingLabelText="State/Province" />
+									</div>
+									<div className="col half-width">
+										<TextField { ...textFieldDefaultProps } floatingLabelText="Zip/Postal Code" />
+									</div>
 								</div>
-								<div className="col half-width">
-									<TextField { ...textFieldDefaultProps } floatingLabelText="Zip/Postal Code" />
-								</div>
+								<SelectField
+									{ ...selectFieldDefaultProps }
+									floatingLabelText="Country"
+									value={this.state.value} 
+									onChange={this.handleChange}
+								>
+									<MenuItem value={1} primaryText="United States" />
+									<MenuItem value={2} primaryText="Canada" />
+								</SelectField>
 							</div>
-							<SelectField
-								{ ...selectFieldDefaultProps }
-								floatingLabelText="Country"
-								value={this.state.value} 
-								onChange={this.handleChange}
-							>
-								<MenuItem value={1} primaryText="United States" />
-								<MenuItem value={2} primaryText="Canada" />
-							</SelectField>
 						</div>
 					</section>
 					<section className="right">
