@@ -5,6 +5,9 @@ import MenuItem from "material-ui/MenuItem";
 import Checkbox from "material-ui/Checkbox";
 
 const styles = {
+	floatingLabelStyle: { 
+		color: "rgba(0, 0, 0, 0.3)", 
+	},
 	floatingLabelFocusStyle: {
 		color: "#202020", 
 		opacity: ".7",
@@ -85,6 +88,7 @@ class Checkout extends React.Component {
 							<SelectField
 								fullWidth
 								floatingLabelText="Country"
+								floatingLabelStyle={ styles.floatingLabelStyle }
 								selectedMenuItemStyle={styles.selectedMenuItemStyle}
 								underlineFocusStyle={styles.underlineFocusStyle}
 								value={this.state.value}
@@ -134,6 +138,7 @@ class Checkout extends React.Component {
 							<SelectField
 								fullWidth
 								floatingLabelText="Country"
+								floatingLabelStyle={ styles.floatingLabelStyle }
 								selectedMenuItemStyle={styles.selectedMenuItemStyle}
 								underlineFocusStyle={styles.underlineFocusStyle}
 								value={this.state.value}
@@ -165,6 +170,7 @@ class Checkout extends React.Component {
 									<SelectField
 										fullWidth
 										floatingLabelText="Expiry Month"
+										floatingLabelStyle={ styles.floatingLabelStyle }
 										selectedMenuItemStyle={styles.selectedMenuItemStyle}
 										underlineFocusStyle={styles.underlineFocusStyle}
 										value={this.state.value}
@@ -178,6 +184,7 @@ class Checkout extends React.Component {
 									<SelectField
 										fullWidth
 										floatingLabelText="Expiry Year"
+										floatingLabelStyle={ styles.floatingLabelStyle }
 										selectedMenuItemStyle={styles.selectedMenuItemStyle}
 										underlineFocusStyle={styles.underlineFocusStyle}
 										value={this.state.value}
