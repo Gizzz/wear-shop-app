@@ -398,6 +398,35 @@ section.main {
 							margin-right: 10px;
 						}
 					}
+
+					.col.third-width {
+						float: left;
+						width: 130px;
+
+						&:not(:first-child) {
+							margin-left: 10px;
+						}
+					}
+				}
+
+				.order-summary {
+					padding-top: 14px;
+
+					.row {
+						display: flex;
+						flex-direction: row;
+						align-items: flex-end;
+						line-height: 24px;
+
+						&.total {
+							margin: 30px 0;
+						}
+
+						.flex {
+							flex: 1;
+							flex-basis: 0.000000001px;
+						}
+					}
 				}
 			}
 		}
