@@ -21,6 +21,19 @@ const styles = {
 	}
 };
 
+const textFieldDefaultProps = {
+	fullWidth: true,
+	floatingLabelFocusStyle: styles.floatingLabelFocusStyle,
+	underlineFocusStyle: styles.underlineFocusStyle
+};
+
+const selectFieldDefaultProps = {
+	fullWidth: true,
+	floatingLabelStyle: styles.floatingLabelStyle,
+	selectedMenuItemStyle: styles.selectedMenuItemStyle,
+	underlineFocusStyle: styles.underlineFocusStyle
+};
+
 class Checkout extends React.Component {
 	state = {
 		value: 1,
@@ -39,59 +52,26 @@ class Checkout extends React.Component {
 					<section className="left">
 						<h2>Account Information</h2>
 						<div className="accout-information">
-							<TextField
-								fullWidth
-								floatingLabelText="Email"
-								floatingLabelFocusStyle={ styles.floatingLabelFocusStyle }
-								underlineFocusStyle={ styles.underlineFocusStyle }
-							/>
+							<TextField { ...textFieldDefaultProps } floatingLabelText="Email" />
 							<br />
-							<TextField
-								fullWidth
-								floatingLabelText="Phone Number"
-								floatingLabelFocusStyle={ styles.floatingLabelFocusStyle }
-								underlineFocusStyle={ styles.underlineFocusStyle }
-							/>
+							<TextField { ...textFieldDefaultProps } floatingLabelText="Phone Number" />
 						</div>
 						<h2>Shipping Address</h2>
 						<div className="shipping-address">
-							<TextField
-								fullWidth
-								floatingLabelText="Address"
-								floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
-								underlineFocusStyle={styles.underlineFocusStyle}
-							/>
-							<TextField
-								fullWidth
-								floatingLabelText="City"
-								floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
-								underlineFocusStyle={styles.underlineFocusStyle}
-							/>
+							<TextField { ...textFieldDefaultProps } floatingLabelText="Address" />
+							<TextField { ...textFieldDefaultProps } floatingLabelText="City" />
 							<div className="row">
 								<div className="col half-width">
-									<TextField
-										fullWidth
-										floatingLabelText="State/Province"
-										floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
-										underlineFocusStyle={styles.underlineFocusStyle}
-									/>
+									<TextField { ...textFieldDefaultProps } floatingLabelText="State/Province" />
 								</div>
 								<div className="col half-width">
-									<TextField
-										fullWidth
-										floatingLabelText="Zip/Postal Code"
-										floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
-										underlineFocusStyle={styles.underlineFocusStyle}
-									/>
+									<TextField { ...textFieldDefaultProps } floatingLabelText="Zip/Postal Code" />
 								</div>
 							</div>
 							<SelectField
-								fullWidth
+								{ ...selectFieldDefaultProps }
 								floatingLabelText="Country"
-								floatingLabelStyle={ styles.floatingLabelStyle }
-								selectedMenuItemStyle={styles.selectedMenuItemStyle}
-								underlineFocusStyle={styles.underlineFocusStyle}
-								value={this.state.value}
+								value={this.state.value} 
 								onChange={this.handleChange}
 							>
 								<MenuItem value={1} primaryText="United States" />
@@ -105,43 +85,20 @@ class Checkout extends React.Component {
 								style={{ marginTop: "29px" }}
 								iconStyle={{ fill: "#202020" }}
 							/>
-							<TextField
-								fullWidth
-								floatingLabelText="Address"
-								floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
-								underlineFocusStyle={styles.underlineFocusStyle}
-							/>
-							<TextField
-								fullWidth
-								floatingLabelText="City"
-								floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
-								underlineFocusStyle={styles.underlineFocusStyle}
-							/>
+							<TextField { ...textFieldDefaultProps } floatingLabelText="Address" />
+							<TextField { ...textFieldDefaultProps } floatingLabelText="City" />
 							<div className="row">
 								<div className="col half-width">
-									<TextField
-										fullWidth
-										floatingLabelText="State/Province"
-										floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
-										underlineFocusStyle={styles.underlineFocusStyle}
-									/>
+									<TextField { ...textFieldDefaultProps } floatingLabelText="State/Province" />
 								</div>
 								<div className="col half-width">
-									<TextField
-										fullWidth
-										floatingLabelText="Zip/Postal Code"
-										floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
-										underlineFocusStyle={styles.underlineFocusStyle}
-									/>
+									<TextField { ...textFieldDefaultProps } floatingLabelText="Zip/Postal Code" />
 								</div>
 							</div>
 							<SelectField
-								fullWidth
+								{ ...selectFieldDefaultProps }
 								floatingLabelText="Country"
-								floatingLabelStyle={ styles.floatingLabelStyle }
-								selectedMenuItemStyle={styles.selectedMenuItemStyle}
-								underlineFocusStyle={styles.underlineFocusStyle}
-								value={this.state.value}
+								value={this.state.value} 
 								onChange={this.handleChange}
 							>
 								<MenuItem value={1} primaryText="United States" />
@@ -152,27 +109,14 @@ class Checkout extends React.Component {
 					<section className="right">
 						<h2>Payment Method</h2>
 						<div className="payment-method">
-							<TextField
-								fullWidth
-								floatingLabelText="Cardholder Name"
-								floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
-								underlineFocusStyle={styles.underlineFocusStyle}
-							/>
+							<TextField { ...textFieldDefaultProps } floatingLabelText="Cardholder Name" />
 							<br />
-							<TextField
-								fullWidth
-								floatingLabelText="Card Number"
-								floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
-								underlineFocusStyle={styles.underlineFocusStyle}
-							/>
+							<TextField { ...textFieldDefaultProps } floatingLabelText="Card Number" />
 							<div className="row">
 								<div className="col third-width">
 									<SelectField
-										fullWidth
+										{ ...selectFieldDefaultProps }
 										floatingLabelText="Expiry Month"
-										floatingLabelStyle={ styles.floatingLabelStyle }
-										selectedMenuItemStyle={styles.selectedMenuItemStyle}
-										underlineFocusStyle={styles.underlineFocusStyle}
 										value={this.state.value}
 										onChange={this.handleChange}
 									>
@@ -182,11 +126,8 @@ class Checkout extends React.Component {
 								</div>
 								<div className="col third-width">
 									<SelectField
-										fullWidth
+										{ ...selectFieldDefaultProps }
 										floatingLabelText="Expiry Year"
-										floatingLabelStyle={ styles.floatingLabelStyle }
-										selectedMenuItemStyle={styles.selectedMenuItemStyle}
-										underlineFocusStyle={styles.underlineFocusStyle}
 										value={this.state.value}
 										onChange={this.handleChange}
 									>
@@ -195,12 +136,7 @@ class Checkout extends React.Component {
 									</SelectField>
 								</div>
 								<div className="col third-width">
-									<TextField
-										fullWidth
-										floatingLabelText="CVV"
-										floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
-										underlineFocusStyle={styles.underlineFocusStyle}
-									/>
+									<TextField { ...textFieldDefaultProps } floatingLabelText="CVV" />
 								</div>
 							</div>
 						</div>
