@@ -1,4 +1,6 @@
 import React from "react";
+import PropTypes from "prop-types";
+
 import TextField from "material-ui/TextField";
 import SelectField from "material-ui/SelectField";
 import MenuItem from "material-ui/MenuItem";
@@ -18,7 +20,7 @@ const styles = {
 	selectedMenuItemStyle: {
 		fontWeight: "bold", 
 		color: "#000",
-	}
+	},
 };
 
 const textFieldDefaultProps = {
@@ -35,9 +37,17 @@ const selectFieldDefaultProps = {
 };
 
 class Checkout extends React.Component {
-	state = {
-		value: 1,
-		showBillingAddressArea: false,
+	static propTypes = {
+		cartItems: PropTypes.object.isRequired,
+	}
+
+	constructor(props) {
+		super(props);
+
+		this.state = {
+			value: 1,
+			showBillingAddressArea: false,
+		};
 	}
 
 	handleChange = (event, index, value) => this.setState({value})
@@ -155,20 +165,7 @@ class Checkout extends React.Component {
 							</div>
 						</div>
 						<h2>Order Summary</h2>
-						<div className="order-summary">
-							<div className="row">
-								<div className="flex">Men's Tech Shell Full-Zip</div>
-								<div>$50.20</div>
-							</div>
-							<div className="row">
-								<div className="flex">Men's Tech Shell Full-Zip</div>
-								<div>$50.20</div>
-							</div>
-							<div className="row total">
-								<div className="flex">Total</div>
-								<div>$72.35</div>
-							</div>
-						</div>
+						<OrderSummary cartItems={ this.props.cartItems } />
 						<button className="btn">Place Order</button>
 					</section>
 				</div>
@@ -176,5 +173,35 @@ class Checkout extends React.Component {
 		);
 	}
 }
+
+const OrderSummary = ({ cartItems }) => {
+	const cartItemsDom = cartItems.map((ci) => {
+		return (
+			<div className="row">
+				<div className="flex">{ ci.itemData.title }</div>
+				<div>${ (ci.itemData.price * ci.quantity).toFixed(2) }</div>
+			</div>
+		);
+	});
+
+	const totalPrice = cartItems.reduce((acc, cartItem) => {
+		return acc + cartItem.itemData.price * cartItem.quantity;
+	}, 0);
+
+	return (
+		<div className="order-summary">
+			{ cartItemsDom }
+
+			<div className="row total">
+				<div className="flex">Total</div>
+				<div>${ totalPrice.toFixed(2) }</div>
+			</div>
+		</div>
+	);
+};
+
+OrderSummary.propTypes = {
+	cartItems: PropTypes.object.isRequired,
+};
 
 export default Checkout;
