@@ -8,7 +8,7 @@ import Home from "./pages/Home";
 import List from "./pages/list/List";
 import Detail from "./pages/Detail";
 import Cart from "./pages/cart/Cart";
-import Checkout from "./pages/Checkout";
+import Checkout from "./pages/checkout/Checkout";
 
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import injectTapEventPlugin from "react-tap-event-plugin";
