@@ -28,7 +28,7 @@ const OrderSummary = ({ cartItems }) => {
 };
 
 OrderSummary.propTypes = {
-	cartItems: PropTypes.object.isRequired,
+	cartItems: PropTypes.array.isRequired,
 };
 
 export default OrderSummary;

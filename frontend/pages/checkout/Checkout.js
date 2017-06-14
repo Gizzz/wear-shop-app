@@ -40,7 +40,7 @@ const selectFieldDefaultProps = {
 
 class Checkout extends React.Component {
 	static propTypes = {
-		cartItems: PropTypes.object.isRequired,
+		cartItems: PropTypes.array.isRequired,
 	}
 
 	constructor(props) {
