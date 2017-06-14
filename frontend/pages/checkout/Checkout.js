@@ -6,6 +6,7 @@ import SelectField from "material-ui/SelectField";
 import MenuItem from "material-ui/MenuItem";
 import Checkbox from "material-ui/Checkbox";
 
+import AccountInformation from "./AccountInformation";
 import OrderSummary from "./OrderSummary";
 
 const styles = {
@@ -38,6 +39,9 @@ const selectFieldDefaultProps = {
 	underlineFocusStyle: styles.underlineFocusStyle
 };
 
+const emailRegex = /.+\@.+\..+/;
+const phoneNumberRegex = /\d{10,}/;
+
 class Checkout extends React.Component {
 	static propTypes = {
 		cartItems: PropTypes.array.isRequired,
@@ -49,10 +53,12 @@ class Checkout extends React.Component {
 		this.state = {
 			value: 1,
 			showBillingAddressArea: false,
-			email: "",
-			isEmailValid: true,
-			phoneNumber: "",
-			isPhoneNumberValid: true,
+			accountInformation: {
+				email: "",
+				isEmailValid: true,
+				phoneNumber: "",
+				isPhoneNumberValid: true,
+			},
 		};
 	}
 
@@ -71,36 +77,51 @@ class Checkout extends React.Component {
 	}
 
 	handleEmailChange = (e, newValue) => {
-		const pattern = /.+\@.+\..+/;
-		const isEmailValid = pattern.test(newValue);
+		const isEmailValid = emailRegex.test(newValue);
 
-		this.setState({ 
-			email: newValue, 
-			isEmailValid,
+		this.setState((prevState) => {
+			return {
+				accountInformation: {
+					...prevState.accountInformation,
+					email: newValue, 
+					isEmailValid,
+				}
+			};
 		});
 	}
 
 	handlePhoneNumberChange = (e, newValue) => {
-		const pattern = /\d{10,}/;
-		const isPhoneNumberValid = pattern.test(newValue);
+		const isPhoneNumberValid = phoneNumberRegex.test(newValue);
 
-		this.setState({ 
-			phoneNumber: newValue, 
-			isPhoneNumberValid,
+		this.setState((prevState) => {
+			return {
+				accountInformation: {
+					...prevState.accountInformation,
+					phoneNumber: newValue, 
+					isPhoneNumberValid,
+				}
+			};
 		});
 	}	
 
 	handle_placeOrderBtn_click = () => {
 		this.validateForm();
-
-		// console.log(this.state)
-
 	}
 
 	validateForm = () => {
-		const pattern = /.+\@.+\..+/;
-		const isEmailValid = pattern.test(this.state.email);
-		this.setState({ isEmailValid });
+		const email = this.state.accountInformation.email;
+		const isEmailValid = emailRegex.test(email);
+		const phoneNumber = this.state.accountInformation.phoneNumber;
+		const isPhoneNumberValid = phoneNumberRegex.test(phoneNumber);
+
+		this.setState({ 
+			accountInformation: {
+				email,
+				isEmailValid,
+				phoneNumber,
+				isPhoneNumberValid,
+			} 
+		});
 	}
 
 	render() {
@@ -113,23 +134,12 @@ class Checkout extends React.Component {
 				<div className="checkout-form row">
 					<section className="left">
 						<h2>Account Information</h2>
-						<div className="accout-information">
-							<TextField 
-								{ ...textFieldDefaultProps } 
-								floatingLabelText="Email" 
-								errorText={ this.state.isEmailValid ? "" : "Invalid Email. Example: account@example.com" }
-								value={ this.state.email } 
-								onChange={ this.handleEmailChange }
-							/>
-							<br />
-							<TextField 
-								{ ...textFieldDefaultProps } 
-								floatingLabelText="Phone Number" 
-								errorText={ this.state.isPhoneNumberValid ? "" : "error" }
-								value={ this.state.phoneNumber }
-								onChange={ this.handlePhoneNumberChange }
-							/>
-						</div>
+						<AccountInformation 
+							textFieldDefaultProps={ textFieldDefaultProps } 
+							accountInformation={ this.state.accountInformation } 
+							onEmailChange={ this.handleEmailChange }
+							onPhoneNumberChange={ this.handlePhoneNumberChange }
+						/>
 						<h2>Shipping Address</h2>
 						<div className="shipping-address">
 							<TextField { ...textFieldDefaultProps } floatingLabelText="Address" />
