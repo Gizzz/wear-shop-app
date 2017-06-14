@@ -49,10 +49,16 @@ class Checkout extends React.Component {
 		this.state = {
 			value: 1,
 			showBillingAddressArea: false,
+			email: "",
+			isEmailValid: true,
+			phoneNumber: "",
+			isPhoneNumberValid: true,
 		};
 	}
 
-	handleChange = (event, index, value) => this.setState({value})
+	handleChange = (event, index, value) => {
+		this.setState({value});
+	}
 
 	handle_billingAddressCheckbox_check = (e) => {
 		const isChecked = e.target.checked;
@@ -62,6 +68,39 @@ class Checkout extends React.Component {
 				showBillingAddressArea: isChecked
 			};
 		});
+	}
+
+	handleEmailChange = (e, newValue) => {
+		const pattern = /.+\@.+\..+/;
+		const isEmailValid = pattern.test(newValue);
+
+		this.setState({ 
+			email: newValue, 
+			isEmailValid,
+		});
+	}
+
+	handlePhoneNumberChange = (e, newValue) => {
+		const pattern = /\d{10,}/;
+		const isPhoneNumberValid = pattern.test(newValue);
+
+		this.setState({ 
+			phoneNumber: newValue, 
+			isPhoneNumberValid,
+		});
+	}	
+
+	handle_placeOrderBtn_click = () => {
+		this.validateForm();
+
+		// console.log(this.state)
+
+	}
+
+	validateForm = () => {
+		const pattern = /.+\@.+\..+/;
+		const isEmailValid = pattern.test(this.state.email);
+		this.setState({ isEmailValid });
 	}
 
 	render() {
@@ -75,9 +114,21 @@ class Checkout extends React.Component {
 					<section className="left">
 						<h2>Account Information</h2>
 						<div className="accout-information">
-							<TextField { ...textFieldDefaultProps } floatingLabelText="Email" />
+							<TextField 
+								{ ...textFieldDefaultProps } 
+								floatingLabelText="Email" 
+								errorText={ this.state.isEmailValid ? "" : "Invalid Email. Example: account@example.com" }
+								value={ this.state.email } 
+								onChange={ this.handleEmailChange }
+							/>
 							<br />
-							<TextField { ...textFieldDefaultProps } floatingLabelText="Phone Number" />
+							<TextField 
+								{ ...textFieldDefaultProps } 
+								floatingLabelText="Phone Number" 
+								errorText={ this.state.isPhoneNumberValid ? "" : "error" }
+								value={ this.state.phoneNumber }
+								onChange={ this.handlePhoneNumberChange }
+							/>
 						</div>
 						<h2>Shipping Address</h2>
 						<div className="shipping-address">
@@ -168,7 +219,7 @@ class Checkout extends React.Component {
 						</div>
 						<h2>Order Summary</h2>
 						<OrderSummary cartItems={ this.props.cartItems } />
-						<button className="btn">Place Order</button>
+						<button className="btn" onClick={ this.handle_placeOrderBtn_click }>Place Order</button>
 					</section>
 				</div>
 			</div>
