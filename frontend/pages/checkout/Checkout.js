@@ -141,12 +141,12 @@ class Checkout extends React.Component {
 		});
 	}
 
-	handleShippingCountryChange = (event, index, newValue) => {
+	handleSelectFieldChange = (newValue, stateKey, fieldName) => {
 		this.setState((prevState) => {
 			return {
-				shippingAddress: {
-					...prevState.shippingAddress,
-					country: newValue,
+				[stateKey]: {
+					...prevState[stateKey],
+					[fieldName]: newValue, 
 				}
 			};
 		});
@@ -194,7 +194,7 @@ class Checkout extends React.Component {
 							selectFieldDefaultProps={ selectFieldDefaultProps }
 							addressData={ this.state.shippingAddress }
 							onTextFieldChange={ this.handleTextFieldChange }
-							onCountryChange={ this.handleShippingCountryChange }
+							onSelectFieldChange={ this.handleSelectFieldChange }
 						/>
 						<h2>Billing Address</h2>
 						<div className="billing-address">

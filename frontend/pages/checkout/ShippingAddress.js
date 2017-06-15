@@ -5,7 +5,7 @@ import TextField from "material-ui/TextField";
 import SelectField from "material-ui/SelectField";
 import MenuItem from "material-ui/MenuItem";
 
-const ShippingAddress = ({ textFieldDefaultProps, selectFieldDefaultProps, addressData, onTextFieldChange, onCountryChange }) => {
+const ShippingAddress = ({ textFieldDefaultProps, selectFieldDefaultProps, addressData, onTextFieldChange, onSelectFieldChange }) => {
 	const handleAddressChange = (e, newValue) => {
 		onTextFieldChange(newValue, "shippingAddress", "address");
 	};
@@ -20,6 +20,10 @@ const ShippingAddress = ({ textFieldDefaultProps, selectFieldDefaultProps, addre
 
 	const handleZipCodeChange = (e, newValue) => {
 		onTextFieldChange(newValue, "shippingAddress", "zipCode");
+	};
+
+	const handleCountryChange = (e, i, newValue) => {
+		onSelectFieldChange(newValue, "shippingAddress", "country");
 	};
 
 	return (
@@ -62,7 +66,7 @@ const ShippingAddress = ({ textFieldDefaultProps, selectFieldDefaultProps, addre
 				{ ...selectFieldDefaultProps }
 				floatingLabelText="Country"
 				value={ addressData.country } 
-				onChange={ onCountryChange }
+				onChange={ handleCountryChange }
 			>
 				<MenuItem value="United States" primaryText="United States" />
 				<MenuItem value="Canada" primaryText="Canada" />
@@ -76,7 +80,7 @@ ShippingAddress.propTypes = {
 	selectFieldDefaultProps: PropTypes.object.isRequired,
 	addressData: PropTypes.object.isRequired,
 	onTextFieldChange: PropTypes.func.isRequired,
-	onCountryChange: PropTypes.func.isRequired,
+	onSelectFieldChange: PropTypes.func.isRequired,
 };
 
 export default ShippingAddress;
