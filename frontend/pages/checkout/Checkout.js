@@ -7,6 +7,7 @@ import MenuItem from "material-ui/MenuItem";
 import Checkbox from "material-ui/Checkbox";
 
 import AccountInformation from "./AccountInformation";
+import ShippingAddress from "./ShippingAddress";
 import OrderSummary from "./OrderSummary";
 
 const styles = {
@@ -29,18 +30,25 @@ const styles = {
 const textFieldDefaultProps = {
 	fullWidth: true,
 	floatingLabelFocusStyle: styles.floatingLabelFocusStyle,
-	underlineFocusStyle: styles.underlineFocusStyle
+	underlineFocusStyle: styles.underlineFocusStyle,
 };
 
 const selectFieldDefaultProps = {
 	fullWidth: true,
 	floatingLabelStyle: styles.floatingLabelStyle,
 	selectedMenuItemStyle: styles.selectedMenuItemStyle,
-	underlineFocusStyle: styles.underlineFocusStyle
+	underlineFocusStyle: styles.underlineFocusStyle,
 };
 
 const emailRegex = /.+\@.+\..+/;
 const phoneNumberRegex = /\d{10,}/;
+
+const validationRegexes = {
+	address: /.{5,}/,
+	city: /.{2,}/,
+	state: /.{2,}/,
+	zipCode: /.{4,}/,
+};
 
 class Checkout extends React.Component {
 	static propTypes = {
@@ -59,11 +67,25 @@ class Checkout extends React.Component {
 				phoneNumber: "",
 				isPhoneNumberValid: true,
 			},
+			shippingAddress: {
+				address: "",
+				isAddressValid: true,
+				city: "",
+				isCityValid: true,
+				state: "",
+				isStateValid: true,
+				zipCode: "",
+				isZipCodeValid: true,
+				country: "United States",
+			},
 		};
 	}
 
 	handleChange = (event, index, value) => {
 		this.setState({value});
+
+		console.log("todo: remove me");
+
 	}
 
 	handle_billingAddressCheckbox_check = (e) => {
@@ -102,7 +124,33 @@ class Checkout extends React.Component {
 				}
 			};
 		});
-	}	
+	}
+
+	handleTextFieldChange = (newValue, stateKey, fieldName) => {
+		const isFieldValid = validationRegexes[fieldName].test(newValue);
+		const fieldNameInPascalCase = fieldName[0].toUpperCase() + fieldName.slice(1);
+
+		this.setState((prevState) => {
+			return {
+				[stateKey]: {
+					...prevState[stateKey],
+					[fieldName]: newValue, 
+					[`is${fieldNameInPascalCase}Valid`]: isFieldValid,
+				}
+			};
+		});
+	}
+
+	handleShippingCountryChange = (event, index, newValue) => {
+		this.setState((prevState) => {
+			return {
+				shippingAddress: {
+					...prevState.shippingAddress,
+					country: newValue,
+				}
+			};
+		});
+	}
 
 	handle_placeOrderBtn_click = () => {
 		this.validateForm();
@@ -141,27 +189,13 @@ class Checkout extends React.Component {
 							onPhoneNumberChange={ this.handlePhoneNumberChange }
 						/>
 						<h2>Shipping Address</h2>
-						<div className="shipping-address">
-							<TextField { ...textFieldDefaultProps } floatingLabelText="Address" />
-							<TextField { ...textFieldDefaultProps } floatingLabelText="City" />
-							<div className="row">
-								<div className="col half-width">
-									<TextField { ...textFieldDefaultProps } floatingLabelText="State/Province" />
-								</div>
-								<div className="col half-width">
-									<TextField { ...textFieldDefaultProps } floatingLabelText="Zip/Postal Code" />
-								</div>
-							</div>
-							<SelectField
-								{ ...selectFieldDefaultProps }
-								floatingLabelText="Country"
-								value={this.state.value} 
-								onChange={this.handleChange}
-							>
-								<MenuItem value={1} primaryText="United States" />
-								<MenuItem value={2} primaryText="Canada" />
-							</SelectField>
-						</div>
+						<ShippingAddress 
+							textFieldDefaultProps={ textFieldDefaultProps }
+							selectFieldDefaultProps={ selectFieldDefaultProps }
+							addressData={ this.state.shippingAddress }
+							onTextFieldChange={ this.handleTextFieldChange }
+							onCountryChange={ this.handleShippingCountryChange }
+						/>
 						<h2>Billing Address</h2>
 						<div className="billing-address">
 							<Checkbox
