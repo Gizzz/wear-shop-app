@@ -78,6 +78,17 @@ class Checkout extends React.Component {
 				isZipCodeValid: true,
 				country: "United States",
 			},
+			billingAddress: {
+				address: "",
+				isAddressValid: true,
+				city: "",
+				isCityValid: true,
+				state: "",
+				isStateValid: true,
+				zipCode: "",
+				isZipCodeValid: true,
+				country: "United States",
+			},
 		};
 	}
 
@@ -215,6 +226,7 @@ class Checkout extends React.Component {
 							textFieldDefaultProps={ textFieldDefaultProps }
 							selectFieldDefaultProps={ selectFieldDefaultProps }
 							addressData={ this.state.shippingAddress }
+							stateKey="shippingAddress"
 							onTextFieldChange={ this.handleTextFieldChange }
 							onSelectFieldChange={ this.handleSelectFieldChange }
 						/>
@@ -227,25 +239,14 @@ class Checkout extends React.Component {
 								onCheck={ this.handle_billingAddressCheckbox_check }
 							/>
 							<div style={{ display: this.state.showBillingAddressArea ? "block" : "none" }}>
-								<TextField { ...textFieldDefaultProps } floatingLabelText="Address" />
-								<TextField { ...textFieldDefaultProps } floatingLabelText="City" />
-								<div className="row">
-									<div className="col half-width">
-										<TextField { ...textFieldDefaultProps } floatingLabelText="State/Province" />
-									</div>
-									<div className="col half-width">
-										<TextField { ...textFieldDefaultProps } floatingLabelText="Zip/Postal Code" />
-									</div>
-								</div>
-								<SelectField
-									{ ...selectFieldDefaultProps }
-									floatingLabelText="Country"
-									value={this.state.value} 
-									onChange={this.handleChange}
-								>
-									<MenuItem value={1} primaryText="United States" />
-									<MenuItem value={2} primaryText="Canada" />
-								</SelectField>
+								<AddressInformation 
+									textFieldDefaultProps={ textFieldDefaultProps }
+									selectFieldDefaultProps={ selectFieldDefaultProps }
+									addressData={ this.state.billingAddress }
+									stateKey="billingAddress"
+									onTextFieldChange={ this.handleTextFieldChange }
+									onSelectFieldChange={ this.handleSelectFieldChange }
+								/>
 							</div>
 						</div>
 					</section>

@@ -5,25 +5,25 @@ import TextField from "material-ui/TextField";
 import SelectField from "material-ui/SelectField";
 import MenuItem from "material-ui/MenuItem";
 
-const AddressInformation = ({ textFieldDefaultProps, selectFieldDefaultProps, addressData, onTextFieldChange, onSelectFieldChange }) => {
+const AddressInformation = ({ textFieldDefaultProps, selectFieldDefaultProps, addressData, stateKey, onTextFieldChange, onSelectFieldChange }) => {
 	const handleAddressChange = (e, newValue) => {
-		onTextFieldChange(newValue, "shippingAddress", "address");
+		onTextFieldChange(newValue, stateKey, "address");
 	};
 
 	const handleCityChange = (e, newValue) => {
-		onTextFieldChange(newValue, "shippingAddress", "city");
+		onTextFieldChange(newValue, stateKey, "city");
 	};
 
 	const handleStateChange = (e, newValue) => {
-		onTextFieldChange(newValue, "shippingAddress", "state");
+		onTextFieldChange(newValue, stateKey, "state");
 	};
 
 	const handleZipCodeChange = (e, newValue) => {
-		onTextFieldChange(newValue, "shippingAddress", "zipCode");
+		onTextFieldChange(newValue, stateKey, "zipCode");
 	};
 
 	const handleCountryChange = (e, i, newValue) => {
-		onSelectFieldChange(newValue, "shippingAddress", "country");
+		onSelectFieldChange(newValue, stateKey, "country");
 	};
 
 	return (
@@ -79,6 +79,7 @@ AddressInformation.propTypes = {
 	textFieldDefaultProps: PropTypes.object.isRequired,
 	selectFieldDefaultProps: PropTypes.object.isRequired,
 	addressData: PropTypes.object.isRequired,
+	stateKey: PropTypes.string.isRequired,
 	onTextFieldChange: PropTypes.func.isRequired,
 	onSelectFieldChange: PropTypes.func.isRequired,
 };
