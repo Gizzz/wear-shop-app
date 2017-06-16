@@ -7,7 +7,7 @@ import MenuItem from "material-ui/MenuItem";
 import Checkbox from "material-ui/Checkbox";
 
 import AccountInformation from "./AccountInformation";
-import ShippingAddress from "./ShippingAddress";
+import AddressInformation from "./AddressInformation";
 import OrderSummary from "./OrderSummary";
 
 const styles = {
@@ -211,7 +211,7 @@ class Checkout extends React.Component {
 							onPhoneNumberChange={ this.handlePhoneNumberChange }
 						/>
 						<h2>Shipping Address</h2>
-						<ShippingAddress 
+						<AddressInformation 
 							textFieldDefaultProps={ textFieldDefaultProps }
 							selectFieldDefaultProps={ selectFieldDefaultProps }
 							addressData={ this.state.shippingAddress }

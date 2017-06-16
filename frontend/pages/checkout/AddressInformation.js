@@ -5,7 +5,7 @@ import TextField from "material-ui/TextField";
 import SelectField from "material-ui/SelectField";
 import MenuItem from "material-ui/MenuItem";
 
-const ShippingAddress = ({ textFieldDefaultProps, selectFieldDefaultProps, addressData, onTextFieldChange, onSelectFieldChange }) => {
+const AddressInformation = ({ textFieldDefaultProps, selectFieldDefaultProps, addressData, onTextFieldChange, onSelectFieldChange }) => {
 	const handleAddressChange = (e, newValue) => {
 		onTextFieldChange(newValue, "shippingAddress", "address");
 	};
@@ -75,7 +75,7 @@ const ShippingAddress = ({ textFieldDefaultProps, selectFieldDefaultProps, addre
 	);
 };
 
-ShippingAddress.propTypes = {
+AddressInformation.propTypes = {
 	textFieldDefaultProps: PropTypes.object.isRequired,
 	selectFieldDefaultProps: PropTypes.object.isRequired,
 	addressData: PropTypes.object.isRequired,
@@ -83,4 +83,4 @@ ShippingAddress.propTypes = {
 	onSelectFieldChange: PropTypes.func.isRequired,
 };
 
-export default ShippingAddress;
+export default AddressInformation;
