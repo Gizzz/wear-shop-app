@@ -170,6 +170,28 @@ class Checkout extends React.Component {
 				isPhoneNumberValid,
 			} 
 		});
+
+		const shippingAddressKeys = [
+			"address",
+			"city",
+			"state",
+			"zipCode",
+		];
+
+		const shippingAddressNewValue = {};
+
+		shippingAddressKeys.forEach((key) => {
+			const currentValue = this.state.shippingAddress[key];
+			const keyInPascalCase = key[0].toUpperCase() + key.slice(1);
+			const validationKey = `is${keyInPascalCase}Valid`;
+
+			shippingAddressNewValue[key] = currentValue;
+			shippingAddressNewValue[validationKey] = validationRegexes[key].test(currentValue);
+		});
+
+		shippingAddressNewValue["country"] = this.state.shippingAddress["country"];
+
+		this.setState({ shippingAddress: shippingAddressNewValue });
 	}
 
 	render() {
