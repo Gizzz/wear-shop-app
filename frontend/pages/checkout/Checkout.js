@@ -40,10 +40,13 @@ const selectFieldDefaultProps = {
 	underlineFocusStyle: styles.underlineFocusStyle,
 };
 
+// TODO: remove this (rewrite occurences)
 const emailRegex = /.+\@.+\..+/;
 const phoneNumberRegex = /\d{10,}/;
 
 const validationRegexes = {
+	email: /.+\@.+\..+/,
+	phoneNumber: /\d{10,}/,
 	address: /.{5,}/,
 	city: /.{2,}/,
 	state: /.{2,}/,
@@ -168,41 +171,48 @@ class Checkout extends React.Component {
 	}
 
 	validateForm = () => {
-		const email = this.state.accountInformation.email;
-		const isEmailValid = emailRegex.test(email);
-		const phoneNumber = this.state.accountInformation.phoneNumber;
-		const isPhoneNumberValid = phoneNumberRegex.test(phoneNumber);
+		const stateValidationMap = {
+			accountInformation: [
+				"email",
+				"phoneNumber",
+			],
+			shippingAddress: [
+				"address",
+				"city",
+				"state",
+				"zipCode",
+			],
+			billingAddress: [
+				"address",
+				"city",
+				"state",
+				"zipCode",
+			],
+		};
 
-		this.setState({ 
-			accountInformation: {
-				email,
-				isEmailValid,
-				phoneNumber,
-				isPhoneNumberValid,
-			} 
+		const newState = {
+			accountInformation: {},
+			shippingAddress: {},
+			billingAddress: {},	
+		};
+
+		Object.keys(stateValidationMap).forEach((rootLevelKey) => {
+			const subKeysToValidate = stateValidationMap[rootLevelKey];
+			subKeysToValidate.forEach((subKey) => {
+				const currentValue = this.state[rootLevelKey][subKey];
+				const keyInPascalCase = subKey[0].toUpperCase() + subKey.slice(1);
+				const validationKey = `is${keyInPascalCase}Valid`;
+
+				newState[rootLevelKey][subKey] = currentValue;
+				newState[rootLevelKey][validationKey] = validationRegexes[subKey].test(currentValue);
+			});
 		});
 
-		const shippingAddressKeys = [
-			"address",
-			"city",
-			"state",
-			"zipCode",
-		];
+		// add other fields to preserve them in state
+		newState.shippingAddress["country"] = this.state.shippingAddress["country"];
+		newState.billingAddress["country"] = this.state.billingAddress["country"];
 
-		const shippingAddressNewValue = {};
-
-		shippingAddressKeys.forEach((key) => {
-			const currentValue = this.state.shippingAddress[key];
-			const keyInPascalCase = key[0].toUpperCase() + key.slice(1);
-			const validationKey = `is${keyInPascalCase}Valid`;
-
-			shippingAddressNewValue[key] = currentValue;
-			shippingAddressNewValue[validationKey] = validationRegexes[key].test(currentValue);
-		});
-
-		shippingAddressNewValue["country"] = this.state.shippingAddress["country"];
-
-		this.setState({ shippingAddress: shippingAddressNewValue });
+		this.setState(newState);
 	}
 
 	render() {
