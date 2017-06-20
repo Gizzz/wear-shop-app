@@ -40,10 +40,6 @@ const selectFieldDefaultProps = {
 	underlineFocusStyle: styles.underlineFocusStyle,
 };
 
-// TODO: remove this (rewrite occurences)
-const emailRegex = /.+\@.+\..+/;
-const phoneNumberRegex = /\d{10,}/;
-
 const validationRegexes = {
 	email: /.+\@.+\..+/,
 	phoneNumber: /\d{10,}/,
@@ -62,6 +58,7 @@ class Checkout extends React.Component {
 		super(props);
 
 		this.state = {
+			// TODO: remove me
 			value: 1,
 			showBillingAddressArea: false,
 			accountInformation: {
@@ -95,11 +92,9 @@ class Checkout extends React.Component {
 		};
 	}
 
+	// TODO: remove me
 	handleChange = (event, index, value) => {
 		this.setState({value});
-
-		console.log("todo: remove me");
-
 	}
 
 	handle_billingAddressCheckbox_check = (e) => {
@@ -108,34 +103,6 @@ class Checkout extends React.Component {
 		this.setState(() => {
 			return {
 				showBillingAddressArea: isChecked
-			};
-		});
-	}
-
-	handleEmailChange = (e, newValue) => {
-		const isEmailValid = emailRegex.test(newValue);
-
-		this.setState((prevState) => {
-			return {
-				accountInformation: {
-					...prevState.accountInformation,
-					email: newValue, 
-					isEmailValid,
-				}
-			};
-		});
-	}
-
-	handlePhoneNumberChange = (e, newValue) => {
-		const isPhoneNumberValid = phoneNumberRegex.test(newValue);
-
-		this.setState((prevState) => {
-			return {
-				accountInformation: {
-					...prevState.accountInformation,
-					phoneNumber: newValue, 
-					isPhoneNumberValid,
-				}
 			};
 		});
 	}
@@ -208,7 +175,7 @@ class Checkout extends React.Component {
 			});
 		});
 
-		// add other fields to preserve them in state
+		// add select field values to preserve them in state
 		newState.shippingAddress["country"] = this.state.shippingAddress["country"];
 		newState.billingAddress["country"] = this.state.billingAddress["country"];
 
@@ -228,8 +195,7 @@ class Checkout extends React.Component {
 						<AccountInformation 
 							textFieldDefaultProps={ textFieldDefaultProps } 
 							accountInformation={ this.state.accountInformation } 
-							onEmailChange={ this.handleEmailChange }
-							onPhoneNumberChange={ this.handlePhoneNumberChange }
+							onTextFieldChange={ this.handleTextFieldChange }
 						/>
 						<h2>Shipping Address</h2>
 						<AddressInformation 

@@ -6,8 +6,15 @@ export default class AccountInformation extends React.Component {
 	static propTypes = {
 		textFieldDefaultProps: PropTypes.object.isRequired,
 		accountInformation: PropTypes.object.isRequired,
-		onEmailChange: PropTypes.func.isRequired,
-		onPhoneNumberChange: PropTypes.func.isRequired,
+		onTextFieldChange: PropTypes.func.isRequired,
+	}
+
+	handleEmailChange = (e, newValue) => {
+		this.props.onTextFieldChange(newValue, "accountInformation", "email");
+	}
+
+	handlePhoneNumberChange = (e, newValue) => {
+		this.props.onTextFieldChange(newValue, "accountInformation", "phoneNumber");
 	}
 
 	render() {
@@ -18,7 +25,7 @@ export default class AccountInformation extends React.Component {
 					floatingLabelText="Email" 
 					errorText={ this.props.accountInformation.isEmailValid ? "" : "Invalid Email. Example: account@example.com" }
 					value={ this.props.accountInformation.email } 
-					onChange={ this.props.onEmailChange }
+					onChange={ this.handleEmailChange }
 				/>
 				<br />
 				<TextField 
@@ -26,7 +33,7 @@ export default class AccountInformation extends React.Component {
 					floatingLabelText="Phone Number" 
 					errorText={ this.props.accountInformation.isPhoneNumberValid ? "" : "Invalid Phone Number. Example: 9234567890" }
 					value={ this.props.accountInformation.phoneNumber }
-					onChange={ this.props.onPhoneNumberChange }
+					onChange={ this.handlePhoneNumberChange }
 				/>
 			</div>
 		);
