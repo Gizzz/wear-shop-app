@@ -19,7 +19,7 @@ export default class AccountInformation extends React.Component {
 
 	render() {
 		return (
-			<div className="accout-information">
+			<div>
 				<TextField 
 					{ ...this.props.textFieldDefaultProps } 
 					floatingLabelText="Email" 
