@@ -1,13 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
-
-import TextField from "material-ui/TextField";
-import SelectField from "material-ui/SelectField";
-import MenuItem from "material-ui/MenuItem";
 import Checkbox from "material-ui/Checkbox";
 
 import AccountInformation from "./AccountInformation";
 import AddressInformation from "./AddressInformation";
+import PaymentMethod from "./PaymentMethod";
 import OrderSummary from "./OrderSummary";
 
 const styles = {
@@ -47,6 +44,9 @@ const validationRegexes = {
 	city: /.{2,}/,
 	state: /.{2,}/,
 	zipCode: /.{4,}/,
+	cardholderName: /.{3,}/,
+	cardNumber: /[\d\s]{15,}/,
+	cvv: /\d{3,4}/,
 };
 
 class Checkout extends React.Component {
@@ -58,43 +58,46 @@ class Checkout extends React.Component {
 		super(props);
 
 		this.state = {
-			// TODO: remove me
-			value: 1,
 			showBillingAddressArea: false,
 			accountInformation: {
 				email: "",
-				isEmailValid: true,
 				phoneNumber: "",
+				isEmailValid: true,
 				isPhoneNumberValid: true,
 			},
 			shippingAddress: {
 				address: "",
-				isAddressValid: true,
 				city: "",
-				isCityValid: true,
 				state: "",
-				isStateValid: true,
 				zipCode: "",
-				isZipCodeValid: true,
 				country: "United States",
+				isAddressValid: true,
+				isCityValid: true,
+				isStateValid: true,
+				isZipCodeValid: true,
 			},
 			billingAddress: {
 				address: "",
-				isAddressValid: true,
 				city: "",
-				isCityValid: true,
 				state: "",
-				isStateValid: true,
 				zipCode: "",
-				isZipCodeValid: true,
 				country: "United States",
+				isAddressValid: true,
+				isCityValid: true,
+				isStateValid: true,
+				isZipCodeValid: true,
+			},
+			paymentMethod: {
+				cardholderName: "",
+				cardNumber: "",
+				expiryMonth: "1",
+				expiryYear: "2017",
+				cvv: "",
+				isCardholderNameValid: true,
+				isCardNumberValid: true,
+				isCvvValid: true,
 			},
 		};
-	}
-
-	// TODO: remove me
-	handleChange = (event, index, value) => {
-		this.setState({value});
 	}
 
 	handle_billingAddressCheckbox_check = (e) => {
@@ -155,12 +158,18 @@ class Checkout extends React.Component {
 				"state",
 				"zipCode",
 			],
+			paymentMethod: [
+				"cardholderName",
+				"cardNumber",
+				"cvv",
+			]
 		};
 
 		const newState = {
 			accountInformation: {},
 			shippingAddress: {},
 			billingAddress: {},	
+			paymentMethod: {},
 		};
 
 		Object.keys(stateValidationMap).forEach((rootLevelKey) => {
@@ -228,38 +237,13 @@ class Checkout extends React.Component {
 					</section>
 					<section className="right">
 						<h2>Payment Method</h2>
-						<div className="payment-method">
-							<TextField { ...textFieldDefaultProps } floatingLabelText="Cardholder Name" />
-							<br />
-							<TextField { ...textFieldDefaultProps } floatingLabelText="Card Number" />
-							<div className="row">
-								<div className="col third-width">
-									<SelectField
-										{ ...selectFieldDefaultProps }
-										floatingLabelText="Expiry Month"
-										value={this.state.value}
-										onChange={this.handleChange}
-									>
-										<MenuItem value={1} primaryText="Jan" />
-										<MenuItem value={2} primaryText="Feb" />
-									</SelectField>
-								</div>
-								<div className="col third-width">
-									<SelectField
-										{ ...selectFieldDefaultProps }
-										floatingLabelText="Expiry Year"
-										value={this.state.value}
-										onChange={this.handleChange}
-									>
-										<MenuItem value={1} primaryText="2016" />
-										<MenuItem value={2} primaryText="2017" />
-									</SelectField>
-								</div>
-								<div className="col third-width">
-									<TextField { ...textFieldDefaultProps } floatingLabelText="CVV" />
-								</div>
-							</div>
-						</div>
+						<PaymentMethod
+							textFieldDefaultProps={ textFieldDefaultProps }
+							selectFieldDefaultProps={ selectFieldDefaultProps }
+							formData={ this.state.paymentMethod }
+							onTextFieldChange={ this.handleTextFieldChange }
+							onSelectFieldChange={ this.handleSelectFieldChange }
+						/>
 						<h2>Order Summary</h2>
 						<OrderSummary cartItems={ this.props.cartItems } />
 						<button className="btn" onClick={ this.handle_placeOrderBtn_click }>Place Order</button>
