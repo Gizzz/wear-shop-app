@@ -18,6 +18,10 @@ class Checkout extends React.Component {
 		cartItems: PropTypes.array.isRequired,
 	}
 
+	static contextTypes = {
+		router: PropTypes.object
+	}
+
 	constructor(props) {
 		super(props);
 
@@ -101,10 +105,61 @@ class Checkout extends React.Component {
 	}
 
 	handle_placeOrderBtn_click = () => {
-		this.validateForm();
+		const isFormValid = this.checkFormValidity();
+
+		if (isFormValid) {
+			this.context.router.history.push("/checkout/success");
+		} else {
+			this.setValidationErrors();
+		}
 	}
 
-	validateForm = () => {
+	checkFormValidity = () => {
+		let isFormValid = true;
+
+		const stateValidationMap = {
+			accountInformation: [
+				"email",
+				"phoneNumber",
+			],
+			shippingAddress: [
+				"address",
+				"city",
+				"state",
+				"zipCode",
+			],
+			billingAddress: [
+				"address",
+				"city",
+				"state",
+				"zipCode",
+			],
+			paymentMethod: [
+				"cardholderName",
+				"cardNumber",
+				"cvv",
+			]
+		};
+
+		Object.keys(stateValidationMap).forEach((rootLevelKey) => {
+			const subKeysToValidate = stateValidationMap[rootLevelKey];
+			subKeysToValidate.forEach((subKey) => {
+				const skipFieldValidation = rootLevelKey === "billingAddress" && !this.state.showBillingAddressArea;
+				if (skipFieldValidation) return;
+
+				const currentValue = this.state[rootLevelKey][subKey];
+				const isFieldValid = validationRegexes[subKey].test(currentValue);
+
+				if (!isFieldValid) {
+					isFormValid = false;
+				}
+			});
+		});
+
+		return isFormValid;
+	}
+
+	setValidationErrors = () => {
 		const stateValidationMap = {
 			accountInformation: [
 				"email",

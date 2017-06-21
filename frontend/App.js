@@ -103,7 +103,7 @@ class App extends React.Component {
 								<Route path="/cart" render={ () => (
 									<Cart items={ this.state.cartItems } onQuantityChange={ this.updateCartItemQuantity } onRemove={ this.removeCartItem } />
 								) } />
-								<Route path="/checkout" render={ () => (
+								<Route exact path="/checkout" render={ () => (
 									<Checkout cartItems={ this.state.cartItems } />
 								) } />
 							</div>
