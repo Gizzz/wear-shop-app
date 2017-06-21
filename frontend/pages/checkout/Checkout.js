@@ -151,6 +151,8 @@ class Checkout extends React.Component {
 		// add select field values to preserve them in state
 		newState.shippingAddress["country"] = this.state.shippingAddress["country"];
 		newState.billingAddress["country"] = this.state.billingAddress["country"];
+		newState.paymentMethod["expiryMonth"] = this.state.paymentMethod["expiryMonth"];
+		newState.paymentMethod["expiryYear"] = this.state.paymentMethod["expiryYear"];
 
 		this.setState(newState);
 	}
