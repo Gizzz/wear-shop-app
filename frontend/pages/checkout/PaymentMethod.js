@@ -11,6 +11,8 @@ export default class PaymentMethod extends React.Component {
 		selectFieldDefaultProps: PropTypes.object.isRequired,
 		formData: PropTypes.object.isRequired,
 		onTextFieldChange: PropTypes.func.isRequired,
+		onTextFieldFocus: PropTypes.func.isRequired,
+		onTextFieldBlur: PropTypes.func.isRequired,
 		onSelectFieldChange: PropTypes.func.isRequired,
 	}
 
@@ -18,9 +20,29 @@ export default class PaymentMethod extends React.Component {
 		this.props.onTextFieldChange(newValue, "paymentMethod", "cardholderName");
 	}
 
+	handleCardholderNameFocus = () => {
+		this.props.onTextFieldFocus("paymentMethod", "cardholderName");
+	}
+
+	handleCardholderNameBlur = (e) => {
+		const newValue = e.target.value;
+		this.props.onTextFieldBlur(newValue, "paymentMethod", "cardholderName");
+	}
+
+
 	handleCardNumberChange = (e, newValue) => {
 		this.props.onTextFieldChange(newValue, "paymentMethod", "cardNumber");
 	}
+
+	handleCardNumberFocus = () => {
+		this.props.onTextFieldFocus("paymentMethod", "cardNumber");
+	}
+
+	handleCardNumberBlur = (e) => {
+		const newValue = e.target.value;
+		this.props.onTextFieldBlur(newValue, "paymentMethod", "cardNumber");
+	}
+
 
 	handleExpiryMonthChange = (e, i, newValue) => {
 		this.props.onSelectFieldChange(newValue, "paymentMethod", "expiryMonth");
@@ -30,8 +52,18 @@ export default class PaymentMethod extends React.Component {
 		this.props.onSelectFieldChange(newValue, "paymentMethod", "expiryYear");
 	};
 
+
 	handleCvvChange = (e, newValue) => {
 		this.props.onTextFieldChange(newValue, "paymentMethod", "cvv");
+	}
+
+	handleCvvFocus = () => {
+		this.props.onTextFieldFocus("paymentMethod", "cvv");
+	}
+
+	handleCvvBlur = (e) => {
+		const newValue = e.target.value;
+		this.props.onTextFieldBlur(newValue, "paymentMethod", "cvv");
 	}
 
 	render() {
@@ -43,6 +75,8 @@ export default class PaymentMethod extends React.Component {
 					errorText={ this.props.formData.isCardholderNameValid ? "" : "Invalid Cardholder Name. Example: JOHN SMITH" }
 					value={ this.props.formData.cardholderName } 
 					onChange={ this.handleCardholderNameChange }
+					onFocus={ this.handleCardholderNameFocus }
+					onBlur={ this.handleCardholderNameBlur }
 				/>
 				<br />
 				<TextField 
@@ -51,6 +85,8 @@ export default class PaymentMethod extends React.Component {
 					errorText={ this.props.formData.isCardNumberValid ? "" : "Invalid Card Number. Example: 1020 3040 5060 7080" }
 					value={ this.props.formData.cardNumber } 
 					onChange={ this.handleCardNumberChange }
+					onFocus={ this.handleCardNumberFocus }
+					onBlur={ this.handleCardNumberBlur }
 				/>
 				<div className="row">
 					<div className="col third-width">
@@ -97,9 +133,11 @@ export default class PaymentMethod extends React.Component {
 						<TextField 
 							{ ...this.props.textFieldDefaultProps } 
 							floatingLabelText="CVV" 
-							errorText={ this.props.formData.isCvvValid ? "" : "Invalid CVV. Example: 123" }
+							errorText={ this.props.formData.isCvvValid ? "" : "Invalid CVV" }
 							value={ this.props.formData.cvv } 
 							onChange={ this.handleCvvChange }
+							onFocus={ this.handleCvvFocus }
+							onBlur={ this.handleCvvBlur }
 						/>
 					</div>
 				</div>

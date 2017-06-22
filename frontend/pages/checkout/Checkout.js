@@ -79,6 +79,32 @@ class Checkout extends React.Component {
 	}
 
 	handleTextFieldChange = (newValue, stateKey, fieldName) => {
+		this.setState((prevState) => {
+			return {
+				[stateKey]: {
+					...prevState[stateKey],
+					[fieldName]: newValue, 
+				}
+			};
+		});
+	}
+
+	handleTextFieldFocus = (stateKey, fieldName) => {
+		const fieldNameInPascalCase = fieldName[0].toUpperCase() + fieldName.slice(1);
+
+		this.setState((prevState) => {
+			return {
+				[stateKey]: {
+					...prevState[stateKey],
+					[`is${fieldNameInPascalCase}Valid`]: true,
+				}
+			};
+		});
+	}
+
+	handleTextFieldBlur = (newValue, stateKey, fieldName) => {
+		if (newValue.trim() === "") return;
+
 		const isFieldValid = validationRegexes[fieldName].test(newValue);
 		const fieldNameInPascalCase = fieldName[0].toUpperCase() + fieldName.slice(1);
 
@@ -86,7 +112,6 @@ class Checkout extends React.Component {
 			return {
 				[stateKey]: {
 					...prevState[stateKey],
-					[fieldName]: newValue, 
 					[`is${fieldNameInPascalCase}Valid`]: isFieldValid,
 				}
 			};
@@ -226,6 +251,8 @@ class Checkout extends React.Component {
 							textFieldDefaultProps={ textFieldDefaultProps } 
 							accountInformation={ this.state.accountInformation } 
 							onTextFieldChange={ this.handleTextFieldChange }
+							onTextFieldFocus={ this.handleTextFieldFocus }
+							onTextFieldBlur={ this.handleTextFieldBlur }
 						/>
 						<h2>Shipping Address</h2>
 						<AddressInformation 
@@ -234,6 +261,8 @@ class Checkout extends React.Component {
 							addressData={ this.state.shippingAddress }
 							stateKey="shippingAddress"
 							onTextFieldChange={ this.handleTextFieldChange }
+							onTextFieldFocus={ this.handleTextFieldFocus }
+							onTextFieldBlur={ this.handleTextFieldBlur }
 							onSelectFieldChange={ this.handleSelectFieldChange }
 						/>
 						<h2>Billing Address</h2>
@@ -251,6 +280,8 @@ class Checkout extends React.Component {
 									addressData={ this.state.billingAddress }
 									stateKey="billingAddress"
 									onTextFieldChange={ this.handleTextFieldChange }
+									onTextFieldFocus={ this.handleTextFieldFocus }
+									onTextFieldBlur={ this.handleTextFieldBlur }
 									onSelectFieldChange={ this.handleSelectFieldChange }
 								/>
 							</div>
@@ -263,6 +294,8 @@ class Checkout extends React.Component {
 							selectFieldDefaultProps={ selectFieldDefaultProps }
 							formData={ this.state.paymentMethod }
 							onTextFieldChange={ this.handleTextFieldChange }
+							onTextFieldFocus={ this.handleTextFieldFocus }
+							onTextFieldBlur={ this.handleTextFieldBlur }
 							onSelectFieldChange={ this.handleSelectFieldChange }
 						/>
 						<h2>Order Summary</h2>
