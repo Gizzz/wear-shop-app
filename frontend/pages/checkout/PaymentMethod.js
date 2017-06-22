@@ -17,7 +17,8 @@ export default class PaymentMethod extends React.Component {
 	}
 
 	handleCardholderNameChange = (e, newValue) => {
-		this.props.onTextFieldChange(newValue, "paymentMethod", "cardholderName");
+		const formattedInput = newValue.toUpperCase();
+		this.props.onTextFieldChange(formattedInput, "paymentMethod", "cardholderName");
 	}
 
 	handleCardholderNameFocus = () => {
