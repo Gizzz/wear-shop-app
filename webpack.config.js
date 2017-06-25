@@ -2,7 +2,7 @@ const path = require("path");
 
 module.exports = {
 	context: __dirname,
-	entry: "./frontend/App.js",
+	entry: "./frontend/index.js",
 	devtool: "source-map",
 	output: {
 		path: path.join(__dirname, "/public"),

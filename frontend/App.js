@@ -1,5 +1,4 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import { BrowserRouter, Route } from "react-router-dom";
 
 import Header from "./Header";
@@ -10,14 +9,7 @@ import Detail from "./pages/Detail";
 import Cart from "./pages/cart/Cart";
 import Checkout from "./pages/checkout/Checkout";
 
-import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
-import injectTapEventPlugin from "react-tap-event-plugin";
-
-// Needed for onTouchTap
-// http://stackoverflow.com/a/34015469/988941
-injectTapEventPlugin();
-
-class App extends React.Component {
+export default class App extends React.Component {
 	constructor(props) {
 		super(props);
 		this.addCartItem = this.addCartItem.bind(this);
@@ -89,31 +81,27 @@ class App extends React.Component {
 
 	render() {
 		return (
-			<MuiThemeProvider>
-				<BrowserRouter>
-					<div className="app">
-						<Header />
-						<section className="main">
-							<div className="wrapper">
-								<Route exact path="/" component={ Home } />
-								<Route path="/list/:category" component={ List } />
-								<Route path="/detail/:category/:itemName" render={ ({ match }) => (
-									<Detail match={ match } onAddBtnClick={ this.addCartItem } />
-								) } />
-								<Route path="/cart" render={ () => (
-									<Cart items={ this.state.cartItems } onQuantityChange={ this.updateCartItemQuantity } onRemove={ this.removeCartItem } />
-								) } />
-								<Route exact path="/checkout" render={ () => (
-									<Checkout cartItems={ this.state.cartItems } />
-								) } />
-							</div>
-						</section>
-						<Footer />
-					</div>
-				</BrowserRouter>
-			</MuiThemeProvider>
+			<BrowserRouter>
+				<div className="app">
+					<Header />
+					<section className="main">
+						<div className="wrapper">
+							<Route exact path="/" component={ Home } />
+							<Route path="/list/:category" component={ List } />
+							<Route path="/detail/:category/:itemName" render={ ({ match }) => (
+								<Detail match={ match } onAddBtnClick={ this.addCartItem } />
+							) } />
+							<Route path="/cart" render={ () => (
+								<Cart items={ this.state.cartItems } onQuantityChange={ this.updateCartItemQuantity } onRemove={ this.removeCartItem } />
+							) } />
+							<Route exact path="/checkout" render={ () => (
+								<Checkout cartItems={ this.state.cartItems } />
+							) } />
+						</div>
+					</section>
+					<Footer />
+				</div>
+			</BrowserRouter>
 		);
 	}
 }
-
-ReactDOM.render(<App />, document.getElementById("root"));
