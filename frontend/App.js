@@ -16,6 +16,7 @@ export default class App extends React.Component {
 		this.addCartItem = this.addCartItem.bind(this);
 		this.updateCartItemQuantity = this.updateCartItemQuantity.bind(this);
 		this.removeCartItem = this.removeCartItem.bind(this);
+		this.clearCart = this.clearCart.bind(this);
 
 		this.state = {
 			cartItems: [],
@@ -80,6 +81,12 @@ export default class App extends React.Component {
 		});
 	}
 
+	clearCart() {
+		this.setState({
+			cartItems: [],
+		});
+	}
+
 	render() {
 		return (
 			<BrowserRouter>
@@ -96,7 +103,7 @@ export default class App extends React.Component {
 								<Cart items={ this.state.cartItems } onQuantityChange={ this.updateCartItemQuantity } onRemove={ this.removeCartItem } />
 							) } />
 							<Route exact path="/checkout" render={ () => (
-								<Checkout cartItems={ this.state.cartItems } />
+								<Checkout cartItems={ this.state.cartItems } onPlaceOrder={ this.clearCart } />
 							) } />
 							<Route path="/checkout/success" component={ CheckoutSuccess } />
 						</div>

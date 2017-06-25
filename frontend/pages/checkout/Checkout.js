@@ -16,6 +16,7 @@ import {
 class Checkout extends React.Component {
 	static propTypes = {
 		cartItems: PropTypes.array.isRequired,
+		onPlaceOrder: PropTypes.func.isRequired,
 	}
 
 	static contextTypes = {
@@ -133,6 +134,7 @@ class Checkout extends React.Component {
 		const isFormValid = this.checkFormValidity();
 
 		if (isFormValid) {
+			this.props.onPlaceOrder();
 			this.context.router.history.push("/checkout/success");
 		} else {
 			this.setValidationErrors();
