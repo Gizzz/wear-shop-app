@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 const OrderSummary = ({ cartItems }) => {
 	const cartItemsDom = cartItems.map((ci) => {
 		return (
-			<div className="row">
+			<div key={ `${ci.itemData.name}-${ci.size}-${ci.quantity}` } className="row">
 				<div className="flex">{ ci.itemData.title }</div>
 				<div>${ (ci.itemData.price * ci.quantity).toFixed(2) }</div>
 			</div>
