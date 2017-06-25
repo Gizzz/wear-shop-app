@@ -8,6 +8,7 @@ import List from "./pages/list/List";
 import Detail from "./pages/Detail";
 import Cart from "./pages/cart/Cart";
 import Checkout from "./pages/checkout/Checkout";
+import CheckoutSuccess from "./pages/CheckoutSuccess";
 
 export default class App extends React.Component {
 	constructor(props) {
@@ -97,6 +98,7 @@ export default class App extends React.Component {
 							<Route exact path="/checkout" render={ () => (
 								<Checkout cartItems={ this.state.cartItems } />
 							) } />
+							<Route path="/checkout/success" component={ CheckoutSuccess } />
 						</div>
 					</section>
 					<Footer />
