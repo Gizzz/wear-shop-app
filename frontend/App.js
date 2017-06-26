@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import Header from "./Header";
 import Footer from "./Footer";
@@ -9,6 +9,7 @@ import Detail from "./pages/Detail";
 import Cart from "./pages/cart/Cart";
 import Checkout from "./pages/checkout/Checkout";
 import CheckoutSuccess from "./pages/CheckoutSuccess";
+import PageNotFound from "./pages/PageNotFound";
 
 export default class App extends React.Component {
 	constructor(props) {
@@ -94,18 +95,21 @@ export default class App extends React.Component {
 					<Header />
 					<section className="main">
 						<div className="wrapper">
-							<Route exact path="/" component={ Home } />
-							<Route path="/list/:category" component={ List } />
-							<Route path="/detail/:category/:itemName" render={ ({ match }) => (
-								<Detail match={ match } onAddBtnClick={ this.addCartItem } />
-							) } />
-							<Route path="/cart" render={ () => (
-								<Cart items={ this.state.cartItems } onQuantityChange={ this.updateCartItemQuantity } onRemove={ this.removeCartItem } />
-							) } />
-							<Route exact path="/checkout" render={ () => (
-								<Checkout cartItems={ this.state.cartItems } onPlaceOrder={ this.clearCart } />
-							) } />
-							<Route path="/checkout/success" component={ CheckoutSuccess } />
+							<Switch>
+								<Route exact path="/" component={ Home } />
+								<Route path="/list/:category" component={ List } />
+								<Route path="/detail/:category/:itemName" render={ ({ match }) => (
+									<Detail match={ match } onAddBtnClick={ this.addCartItem } />
+								) } />
+								<Route path="/cart" render={ () => (
+									<Cart items={ this.state.cartItems } onQuantityChange={ this.updateCartItemQuantity } onRemove={ this.removeCartItem } />
+								) } />
+								<Route exact path="/checkout" render={ () => (
+									<Checkout cartItems={ this.state.cartItems } onPlaceOrder={ this.clearCart } />
+								) } />
+								<Route path="/checkout/success" component={ CheckoutSuccess } />
+								<Route component={ PageNotFound }/>
+							</Switch>
 						</div>
 					</section>
 					<Footer />
