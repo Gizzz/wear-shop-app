@@ -61,7 +61,8 @@ class Detail extends React.Component {
 	}
 
 	createDescriptionMarkup() {
-		let descriptionText = "Loading data...";
+		// empty loading text to prevent flickering
+		let descriptionText = "";
 
 		if (this.state.itemData) {
 			// hack: use textarea to decode html entities
@@ -74,7 +75,8 @@ class Detail extends React.Component {
 	}
 
 	render() {
-		const loadingText = "Loading data...";
+		// empty loading text to prevent flickering
+		const loadingText = "";
 
 		return (
 			<div className="content detail">

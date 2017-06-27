@@ -12,7 +12,8 @@ const Heading = (props) => {
 	};
 	const categoryTitle = categoryName_to_title[category];
 
-	let itemsCountText = "Loading items...";
+	// empty loading text to prevent flickering
+	let itemsCountText = "";
 
 	if (props.itemsCount !== null) {
 		itemsCountText = props.itemsCount === 1 
