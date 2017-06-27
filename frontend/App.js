@@ -11,6 +11,8 @@ import Checkout from "./pages/checkout/Checkout";
 import CheckoutSuccess from "./pages/CheckoutSuccess";
 import PageNotFound from "./pages/PageNotFound";
 
+import storageHelper from "./utils/storageHelper";
+
 export default class App extends React.Component {
 	constructor(props) {
 		super(props);
@@ -22,6 +24,19 @@ export default class App extends React.Component {
 		this.state = {
 			cartItems: [],
 		};
+	}
+
+	componentDidMount() {
+		// restore app state from storage
+		const restoredState = storageHelper.loadState();
+		if (restoredState) {
+			this.setState(restoredState);
+		}
+
+		// save app state to storage on window.beforeunload
+		window.addEventListener("beforeunload", () => {
+			storageHelper.saveState(this.state);
+		});
 	}
 
 	addCartItem(itemData, size, quantity) {
