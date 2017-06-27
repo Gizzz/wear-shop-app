@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
+import {Tabs, Tab} from "material-ui/Tabs";
 
 const Header = () => (
 	<header className="page">
@@ -18,8 +19,32 @@ const Header = () => (
 				<li><NavLink to="/list/ladies_tshirts" isActive={ checkLadiesTshirts }>Ladies T-Shirts</NavLink></li>
 			</ul>
 		</nav>
+		<div style={{ width: "1440px", margin: "auto" }}>
+			<Tabs 
+				inkBarStyle={{ backgroundColor: "black" }}
+				tabItemContainerStyle={{ backgroundColor: "#ccc" }}
+				initialSelectedIndex={ getSelectedTabIndex() }
+			>
+				<Tab label="Men's Outerwear" style={{ color: "black" }}>
+				</Tab>
+				<Tab label="Ladies Outerwear" style={{ color: "black" }}>
+				</Tab>
+				<Tab label="Men's T-Shirts" style={{ color: "black" }}>
+				</Tab>
+				<Tab label="Ladies T-Shirts" style={{ color: "black" }}>
+				</Tab>
+			</Tabs>
+		</div>
 	</header>
 );
+
+function getSelectedTabIndex() {
+	const pathname = window.location.pathname;
+
+	if (pathname.startsWith("/list/ladies_outerwear")) return 1;
+
+	return 0;
+}
 
 function isNavigationVisible() {
 	const pathname = window.location.pathname;
