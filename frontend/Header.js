@@ -7,7 +7,7 @@ const Header = () => (
 			<h1><Link to="/" className="logo">SHOP</Link></h1>
 			<Link to="/cart" className="cart"></Link>
 		</div>
-		<nav>
+		<nav style={{ visibility: isNavigationVisible() ? "visible" : "hidden" }}>
 			<ul>
 				<li><NavLink to="/list/mens_outerwear" isActive={ checkMensOuterwear }>Men's Outerwear</NavLink></li>
 				&nbsp;
@@ -20,6 +20,16 @@ const Header = () => (
 		</nav>
 	</header>
 );
+
+function isNavigationVisible() {
+	const pathname = window.location.pathname;
+
+	if (pathname === "/") return true;
+	if (pathname.startsWith("/list")) return true;
+	if (pathname.startsWith("/detail")) return true;
+	
+	return false;
+}
 
 function checkMensOuterwear(match, location) {
 	return checkRouteMatch(match, location, "mens_outerwear");
