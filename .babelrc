@@ -1,7 +1,14 @@
 {
   "presets": [
-    "react", 
-		"es2017"
+    ["react"],
+    /* es2017 preset - for development (stable in webpack watch cycles) */
+    ["es2017"]
+    /* env preset - for production (add necessary transformations for relevant browsers) */
+		// ["env", {
+    //   "targets": {
+    //     "browsers": ["last 4 Chrome versions", "last 4 Firefox versions"]
+    //   }
+    // }]
   ],
   "plugins": [
     "transform-class-properties",

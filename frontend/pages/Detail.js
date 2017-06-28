@@ -1,7 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-class Detail extends React.Component {
+import Dialog from "material-ui/Dialog";
+import FlatButton from "material-ui/FlatButton";
+
+export default class Detail extends React.Component {
 	static propTypes = {
 		match: PropTypes.object.isRequired,
 		onAddBtnClick: PropTypes.func.isRequired,
@@ -11,14 +14,11 @@ class Detail extends React.Component {
 		router: PropTypes.object
 	}
 
-	constructor(props) {
-		super(props);
-		
-		this.state = {
-			itemData: undefined,
-			size: "M",
-			quantity: 1,
-		};
+	state = {
+		itemData: undefined,
+		size: "M",
+		quantity: 1,
+		isDialogOpen: false,
 	}
 
 	componentDidMount() {
@@ -46,7 +46,23 @@ class Detail extends React.Component {
 			this.state.quantity
 		);
 
+		this.openDialog();
+	}
+
+	openDialog = () => {
+		this.setState({isDialogOpen: true});
+	}
+
+	closeDialog = () => {
+		this.setState({isDialogOpen: false});
+	}
+
+	handle_viewCartBtn_click = () => {
 		this.context.router.history.push("/cart");
+	}
+
+	handle_checkoutBtn_click = () => {
+		this.context.router.history.push("/checkout");
 	}
 
 	loadData(category) {
@@ -61,7 +77,6 @@ class Detail extends React.Component {
 	}
 
 	createDescriptionMarkup() {
-		// empty loading text to prevent flickering
 		let descriptionText = "";
 
 		if (this.state.itemData) {
@@ -77,6 +92,17 @@ class Detail extends React.Component {
 	render() {
 		// empty loading text to prevent flickering
 		const loadingText = "";
+
+		const actions = [
+			<FlatButton
+				label="View Cart"
+				onTouchTap={this.handle_viewCartBtn_click}
+			/>,
+			<FlatButton
+				label="Checkout"
+				onTouchTap={this.handle_checkoutBtn_click}
+			/>,
+		];
 
 		return (
 			<div className="content detail">
@@ -123,9 +149,13 @@ class Detail extends React.Component {
 						</form>
 					</div>
 				</div>
+				<Dialog
+					title="Item added to cart"
+          actions={actions}
+          open={this.state.isDialogOpen}
+          onRequestClose={this.closeDialog}
+        />
 			</div>
 		);
 	}
 }
-
-export default Detail;
