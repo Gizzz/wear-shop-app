@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import Dialog from "material-ui/Dialog";
 import FlatButton from "material-ui/FlatButton";
 
-class Detail extends React.Component {
+export default class Detail extends React.Component {
 	static propTypes = {
 		match: PropTypes.object.isRequired,
 		onAddBtnClick: PropTypes.func.isRequired,
@@ -14,15 +14,11 @@ class Detail extends React.Component {
 		router: PropTypes.object
 	}
 
-	constructor(props) {
-		super(props);
-		
-		this.state = {
-			itemData: undefined,
-			size: "M",
-			quantity: 1,
-			isDialogOpen: false,
-		};
+	state = {
+		itemData: undefined,
+		size: "M",
+		quantity: 1,
+		isDialogOpen: false,
 	}
 
 	componentDidMount() {
@@ -164,5 +160,3 @@ class Detail extends React.Component {
 		);
 	}
 }
-
-export default Detail;
