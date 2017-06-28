@@ -77,7 +77,6 @@ export default class Detail extends React.Component {
 	}
 
 	createDescriptionMarkup() {
-		// empty loading text to prevent flickering
 		let descriptionText = "";
 
 		if (this.state.itemData) {
