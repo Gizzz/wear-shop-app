@@ -11,21 +11,37 @@ export default class Header extends React.Component {
 	constructor(props) {
 		super(props);
 
-		let initialSelectedTabIndex = -1;
 		const pathname = window.location.pathname;
+		let value = "not_selected";
 
 		if (pathname.includes("mens_outerwear")) {
-			initialSelectedTabIndex = 0;
+			value = "mens_outerwear";
 		} else if (pathname.includes("ladies_outerwear")) {
-			initialSelectedTabIndex = 1;
+			value = "ladies_outerwear";
 		} else if (pathname.includes("mens_tshirts")) {
-			initialSelectedTabIndex = 2;
+			value = "mens_tshirts";
 		} else if (pathname.includes("ladies_tshirts")) {
-			initialSelectedTabIndex = 3;
+			value = "ladies_tshirts";
 		}
 
-		this.state = { initialSelectedTabIndex };
+		this.state = { value };
 	}
+
+	handleChange = (value) => {
+		this.setState({ value });
+
+		if (value === "mens_outerwear") {
+			this.context.router.history.push("/list/mens_outerwear");
+		} else if (value === "ladies_outerwear") {
+			this.context.router.history.push("/list/ladies_outerwear");
+		} else if (value === "mens_tshirts") {
+			this.context.router.history.push("/list/mens_tshirts");
+		} else if (value === "ladies_tshirts") {
+			this.context.router.history.push("/list/ladies_tshirts");
+		} else {
+			console.error(`Unexpected tab value: ${value}`);
+		}
+	};
 
 	isNavigationVisible = () => {
 		const pathname = window.location.pathname;
@@ -35,20 +51,6 @@ export default class Header extends React.Component {
 		if (pathname.startsWith("/detail")) return true;
 
 		return false;
-	}
-
-	handleTabActivation = (activatedTab) => {
-		if (activatedTab.props.label.toLowerCase() === "men's outerwear") {
-			this.context.router.history.push("/list/mens_outerwear");
-		} else if (activatedTab.props.label.toLowerCase() === "ladies outerwear") {
-			this.context.router.history.push("/list/ladies_outerwear");
-		} else if (activatedTab.props.label.toLowerCase() === "men's t-shirts") {
-			this.context.router.history.push("/list/mens_tshirts");
-		} else if (activatedTab.props.label.toLowerCase() === "ladies t-shirts") {
-			this.context.router.history.push("/list/ladies_tshirts");
-		} else {
-			console.error(`Unexpected tab label name: ${activatedTab.props.label}`);
-		}
 	}
 
 	render() {
@@ -62,12 +64,13 @@ export default class Header extends React.Component {
 					<Tabs 
 						inkBarStyle={{ backgroundColor: "rgba(255, 255, 255, .7)", height: "6px", marginTop: "-6px", borderBottom: "4px solid black" }}
 						tabItemContainerStyle={{ backgroundColor: "#202020", color: "red" }}
-						initialSelectedIndex={ this.state.initialSelectedTabIndex }				
+						value={ this.state.value }	
+						onChange={ this.handleChange }
 					>
-						<Tab label="Men's Outerwear" onActive={ this.handleTabActivation } />
-						<Tab label="Ladies Outerwear" onActive={ this.handleTabActivation } />
-						<Tab label="Men's T-Shirts" onActive={ this.handleTabActivation } />
-						<Tab label="Ladies T-Shirts" onActive={ this.handleTabActivation } />
+						<Tab label="Men's Outerwear" value="mens_outerwear" />
+						<Tab label="Ladies Outerwear" value="ladies_outerwear" />
+						<Tab label="Men's T-Shirts" value="mens_tshirts" />
+						<Tab label="Ladies T-Shirts" value="ladies_tshirts" />
 					</Tabs>
 				</div>
 			</header>
