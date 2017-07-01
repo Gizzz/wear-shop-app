@@ -8,7 +8,7 @@ const Header = () => (
 			<h1><Link to="/" className="logo">SHOP</Link></h1>
 			<Link to="/cart" className="cart"></Link>
 		</div>
-		<nav style={{ opacity: "1" }}>
+		<nav style={{ display: "none" }}>
 			<ul>
 				<li><NavLink to="/list/mens_outerwear" isActive={ checkMensOuterwear }>Men's Outerwear</NavLink></li>
 				&nbsp;
@@ -19,11 +19,11 @@ const Header = () => (
 				<li><NavLink to="/list/ladies_tshirts" isActive={ checkLadiesTshirts }>Ladies T-Shirts</NavLink></li>
 			</ul>
 		</nav>
-		<div style={{ width: "1440px", margin: "auto", marginBottom: "20px", visibility: isNavigationVisible() ? "visible" : "hidden" }}>
+		<div style={{ width: "1440px", margin: "auto", marginBottom: "0px", paddingTop: "30px", visibility: isNavigationVisible() ? "visible" : "hidden" }}>
 			<Tabs 
-				inkBarStyle={{ backgroundColor: "rgba(0, 0, 0, .99)", height: "3px", marginTop: "-3px" }}
-				tabItemContainerStyle={{ backgroundColor: "rgba(0, 0, 0, .6)", color: "red" }}
-				initialSelectedIndex={ getSelectedTabIndex() }
+				inkBarStyle={{ backgroundColor: "rgba(255, 255, 255, .7)", height: "6px", marginTop: "-6px", borderBottom: "4px solid black" }}
+				tabItemContainerStyle={{ backgroundColor: "rgba(0, 0, 0, .99)", color: "red" }}
+				initialSelectedIndex={ getSelectedTabIndex() }				
 			>
 				<Tab label="Men's Outerwear">
 				</Tab>
