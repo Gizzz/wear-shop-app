@@ -47,7 +47,7 @@ class Header extends React.Component {
 		}
 	}
 
-	handleChange = (value) => {
+	handleTabClick = (value) => {
 		this.setState({ value });
 
 		if (value === "mens_outerwear") {
@@ -85,12 +85,11 @@ class Header extends React.Component {
 						inkBarStyle={{ backgroundColor: "rgba(255, 255, 255, .7)", height: "6px", marginTop: "-6px", borderBottom: "4px solid black" }}
 						tabItemContainerStyle={{ backgroundColor: "#202020", color: "red" }}
 						value={ this.state.value }	
-						onChange={ this.handleChange }
 					>
-						<Tab label="Men's Outerwear" value="mens_outerwear" />
-						<Tab label="Ladies Outerwear" value="ladies_outerwear" />
-						<Tab label="Men's T-Shirts" value="mens_tshirts" />
-						<Tab label="Ladies T-Shirts" value="ladies_tshirts" />
+						<Tab label="Men's Outerwear" value="mens_outerwear" onClick={ () => { this.handleTabClick("mens_outerwear"); } } />
+						<Tab label="Ladies Outerwear" value="ladies_outerwear" onClick={ () => { this.handleTabClick("ladies_outerwear"); } } />
+						<Tab label="Men's T-Shirts" value="mens_tshirts" onClick={ () => { this.handleTabClick("mens_tshirts"); } } />
+						<Tab label="Ladies T-Shirts" value="ladies_tshirts" onClick={ () => { this.handleTabClick("ladies_tshirts"); } } />
 					</Tabs>
 				</div>
 			</header>
