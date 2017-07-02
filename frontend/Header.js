@@ -9,7 +9,7 @@ class Header extends React.Component {
 	}
 
 	static contextTypes = {
-		router: PropTypes.object
+		router: PropTypes.object,
 	}
 
 	constructor(props) {
@@ -74,22 +74,33 @@ class Header extends React.Component {
 	}
 
 	render() {
+		const inkBarStyle = { 
+			marginTop: "-6px", 
+			height: "6px", 
+			borderBottom: "4px solid black",
+			backgroundColor: "rgba(255, 255, 255, .7)", 
+		};
+
+		const tabItemContainerStyle = {
+			backgroundColor: "#202020", 
+		};
+
 		return (
 			<header className="page">
 				<div className="topline">
 					<h1><Link to="/" className="logo">SHOP</Link></h1>
 					<Link to="/cart" className="cart"></Link>
 				</div>
-				<div style={{ width: "1440px", margin: "auto", marginBottom: "0px", paddingTop: "14px", visibility: this.isNavigationVisible() ? "visible" : "hidden" }}>
+				<div className="nav" style={{ visibility: this.isNavigationVisible() ? "visible" : "hidden" }}>
 					<Tabs 
-						inkBarStyle={{ backgroundColor: "rgba(255, 255, 255, .7)", height: "6px", marginTop: "-6px", borderBottom: "4px solid black" }}
-						tabItemContainerStyle={{ backgroundColor: "#202020", color: "red" }}
+						inkBarStyle={ inkBarStyle }
+						tabItemContainerStyle={ tabItemContainerStyle }
 						value={ this.state.selectedTabValue }	
 					>
-						<Tab label="Men's Outerwear" value="mens_outerwear" onClick={ () => { this.handleTabClick("mens_outerwear"); } } />
-						<Tab label="Ladies Outerwear" value="ladies_outerwear" onClick={ () => { this.handleTabClick("ladies_outerwear"); } } />
-						<Tab label="Men's T-Shirts" value="mens_tshirts" onClick={ () => { this.handleTabClick("mens_tshirts"); } } />
-						<Tab label="Ladies T-Shirts" value="ladies_tshirts" onClick={ () => { this.handleTabClick("ladies_tshirts"); } } />
+						<Tab label="Men's Outerwear" value="mens_outerwear" onClick={() => { this.handleTabClick("mens_outerwear"); }} />
+						<Tab label="Ladies Outerwear" value="ladies_outerwear" onClick={() => { this.handleTabClick("ladies_outerwear"); }} />
+						<Tab label="Men's T-Shirts" value="mens_tshirts" onClick={() => { this.handleTabClick("mens_tshirts"); }} />
+						<Tab label="Ladies T-Shirts" value="ladies_tshirts" onClick={() => { this.handleTabClick("ladies_tshirts"); }} />
 					</Tabs>
 				</div>
 			</header>
