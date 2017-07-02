@@ -1,9 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import { Tabs, Tab } from "material-ui/Tabs";
 
-export default class Header extends React.Component {
+class Header extends React.Component {
 	static contextTypes = {
 		router: PropTypes.object
 	}
@@ -25,6 +25,22 @@ export default class Header extends React.Component {
 		}
 
 		this.state = { value };
+	}
+
+	componentWillReceiveProps() {
+		const pathname = window.location.pathname;
+
+		if (!pathname.startsWith("/list") && !pathname.startsWith("/detail")) {
+			this.setState({ value: "not_selected" });
+		} else if (pathname.includes("mens_outerwear")) {
+			this.setState({ value: "mens_outerwear" });
+		} else if (pathname.includes("ladies_outerwear")) {
+			this.setState({ value: "ladies_outerwear" });
+		} else if (pathname.includes("mens_tshirts")) {
+			this.setState({ value: "mens_tshirts" });
+		} else if (pathname.includes("ladies_tshirts")) {
+			this.setState({ value: "ladies_tshirts" });
+		}
 	}
 
 	handleChange = (value) => {
@@ -60,7 +76,7 @@ export default class Header extends React.Component {
 					<h1><Link to="/" className="logo">SHOP</Link></h1>
 					<Link to="/cart" className="cart"></Link>
 				</div>
-				<div style={{ width: "1440px", margin: "auto", marginBottom: "0px", paddingTop: "30px", visibility: this.isNavigationVisible() ? "visible" : "hidden" }}>
+				<div style={{ width: "1440px", margin: "auto", marginBottom: "0px", paddingTop: "14px", visibility: this.isNavigationVisible() ? "visible" : "hidden" }}>
 					<Tabs 
 						inkBarStyle={{ backgroundColor: "rgba(255, 255, 255, .7)", height: "6px", marginTop: "-6px", borderBottom: "4px solid black" }}
 						tabItemContainerStyle={{ backgroundColor: "#202020", color: "red" }}
@@ -77,6 +93,10 @@ export default class Header extends React.Component {
 		);
 	}
 }
+
+// eslint-disable-next-line no-class-assign
+Header = withRouter(Header);
+export default Header;
 
 // const Header = () => (
 // 	<header className="page">
