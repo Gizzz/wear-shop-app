@@ -4,6 +4,10 @@ import { Link, withRouter } from "react-router-dom";
 import { Tabs, Tab } from "material-ui/Tabs";
 
 class Header extends React.Component {
+	static propTypes = {
+		location: PropTypes.object.isRequired,
+	}
+
 	static contextTypes = {
 		router: PropTypes.object
 	}
@@ -11,7 +15,7 @@ class Header extends React.Component {
 	constructor(props) {
 		super(props);
 
-		const pathname = window.location.pathname;
+		const pathname = this.props.location.pathname;
 		let value = "not_selected";
 
 		if (pathname.includes("mens_outerwear")) {
@@ -27,8 +31,8 @@ class Header extends React.Component {
 		this.state = { value };
 	}
 
-	componentWillReceiveProps() {
-		const pathname = window.location.pathname;
+	componentWillReceiveProps(nextProps) {
+		const pathname = nextProps.location.pathname;
 
 		if (!pathname.startsWith("/list") && !pathname.startsWith("/detail")) {
 			this.setState({ value: "not_selected" });
@@ -60,7 +64,7 @@ class Header extends React.Component {
 	};
 
 	isNavigationVisible = () => {
-		const pathname = window.location.pathname;
+		const pathname = this.props.location.pathname;
 
 		if (pathname === "/") return true;
 		if (pathname.startsWith("/list")) return true;
