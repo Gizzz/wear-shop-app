@@ -16,50 +16,50 @@ class Header extends React.Component {
 		super(props);
 
 		const pathname = this.props.location.pathname;
-		let value = "not_selected";
+		let selectedTabValue = "not_selected";
 
 		if (pathname.includes("mens_outerwear")) {
-			value = "mens_outerwear";
+			selectedTabValue = "mens_outerwear";
 		} else if (pathname.includes("ladies_outerwear")) {
-			value = "ladies_outerwear";
+			selectedTabValue = "ladies_outerwear";
 		} else if (pathname.includes("mens_tshirts")) {
-			value = "mens_tshirts";
+			selectedTabValue = "mens_tshirts";
 		} else if (pathname.includes("ladies_tshirts")) {
-			value = "ladies_tshirts";
+			selectedTabValue = "ladies_tshirts";
 		}
 
-		this.state = { value };
+		this.state = { selectedTabValue };
 	}
 
 	componentWillReceiveProps(nextProps) {
 		const pathname = nextProps.location.pathname;
 
 		if (!pathname.startsWith("/list") && !pathname.startsWith("/detail")) {
-			this.setState({ value: "not_selected" });
+			this.setState({ selectedTabValue: "not_selected" });
 		} else if (pathname.includes("mens_outerwear")) {
-			this.setState({ value: "mens_outerwear" });
+			this.setState({ selectedTabValue: "mens_outerwear" });
 		} else if (pathname.includes("ladies_outerwear")) {
-			this.setState({ value: "ladies_outerwear" });
+			this.setState({ selectedTabValue: "ladies_outerwear" });
 		} else if (pathname.includes("mens_tshirts")) {
-			this.setState({ value: "mens_tshirts" });
+			this.setState({ selectedTabValue: "mens_tshirts" });
 		} else if (pathname.includes("ladies_tshirts")) {
-			this.setState({ value: "ladies_tshirts" });
+			this.setState({ selectedTabValue: "ladies_tshirts" });
 		}
 	}
 
-	handleTabClick = (value) => {
-		this.setState({ value });
+	handleTabClick = (newValue) => {
+		this.setState({ selectedTabValue: newValue });
 
-		if (value === "mens_outerwear") {
+		if (newValue === "mens_outerwear") {
 			this.context.router.history.push("/list/mens_outerwear");
-		} else if (value === "ladies_outerwear") {
+		} else if (newValue === "ladies_outerwear") {
 			this.context.router.history.push("/list/ladies_outerwear");
-		} else if (value === "mens_tshirts") {
+		} else if (newValue === "mens_tshirts") {
 			this.context.router.history.push("/list/mens_tshirts");
-		} else if (value === "ladies_tshirts") {
+		} else if (newValue === "ladies_tshirts") {
 			this.context.router.history.push("/list/ladies_tshirts");
 		} else {
-			console.error(`Unexpected tab value: ${value}`);
+			console.error(`Unexpected tab value: ${newValue}`);
 		}
 	};
 
@@ -84,7 +84,7 @@ class Header extends React.Component {
 					<Tabs 
 						inkBarStyle={{ backgroundColor: "rgba(255, 255, 255, .7)", height: "6px", marginTop: "-6px", borderBottom: "4px solid black" }}
 						tabItemContainerStyle={{ backgroundColor: "#202020", color: "red" }}
-						value={ this.state.value }	
+						value={ this.state.selectedTabValue }	
 					>
 						<Tab label="Men's Outerwear" value="mens_outerwear" onClick={ () => { this.handleTabClick("mens_outerwear"); } } />
 						<Tab label="Ladies Outerwear" value="ladies_outerwear" onClick={ () => { this.handleTabClick("ladies_outerwear"); } } />
