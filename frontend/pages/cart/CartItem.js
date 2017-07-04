@@ -1,6 +1,30 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import SelectField from "material-ui/SelectField";
+import MenuItem from "material-ui/MenuItem";
+
+const styles = {
+	selectField: {
+		floatingLabelStyle: { 
+			color: "rgba(0, 0, 0, 0.3)", 
+		},
+		selectedMenuItemStyle: {
+			fontWeight: "bold", 
+			color: "#202020",
+		},
+		underlineFocusStyle: {
+			borderColor: "#202020",
+		},
+	},
+};
+
+const selectFieldDefaultProps = {
+	fullWidth: true,
+	// floatingLabelStyle: styles.selectField.floatingLabelStyle,
+	selectedMenuItemStyle: styles.selectField.selectedMenuItemStyle,
+	// underlineFocusStyle: styles.selectField.underlineFocusStyle,
+};
 
 class CartItem extends React.Component {
 	constructor(props) {
@@ -9,10 +33,10 @@ class CartItem extends React.Component {
 		this.handleClick = this.handleClick.bind(this);
 	}
 
-	handleChange(event) {
+	handleChange(e, i, newValue) {
 		const itemName = this.props.item.itemData.name;
 		const size = this.props.item.size;
-		const quantity = parseInt(event.target.value);
+		const quantity = parseInt(newValue);
 
 		this.props.onQuantityChange(itemName, size, quantity);
 	}
@@ -37,21 +61,24 @@ class CartItem extends React.Component {
 				</div>
 				<div className="right">
 					<div className="quantity">
-						<label>
-							Qty:
-							<select name="quantity" defaultValue={ this.props.item.quantity } onChange={ this.handleChange }>
-								<option value="1">1</option>
-								<option value="2">2</option>
-								<option value="3">3</option>
-								<option value="4">4</option>
-								<option value="5">5</option>
-								<option value="6">6</option>
-								<option value="7">7</option>
-								<option value="8">8</option>
-								<option value="9">9</option>
-								<option value="10">10</option>
-							</select>
-						</label>
+						<div className="label">Qty:</div>
+						<SelectField
+							{ ...selectFieldDefaultProps }
+							underlineStyle={{ visibility: "hidden" }}
+							value={ this.props.item.quantity }
+							onChange={ this.handleChange }
+						>
+							<MenuItem value={ 1 } primaryText="1" />
+							<MenuItem value={ 2 } primaryText="2" />
+							<MenuItem value={ 3 } primaryText="3" />
+							<MenuItem value={ 4 } primaryText="4" />
+							<MenuItem value={ 5 } primaryText="5" />
+							<MenuItem value={ 6 } primaryText="6" />
+							<MenuItem value={ 7 } primaryText="7" />
+							<MenuItem value={ 8 } primaryText="8" />
+							<MenuItem value={ 9 } primaryText="9" />
+							<MenuItem value={ 10 } primaryText="10" />
+						</SelectField>
 					</div>
 					<div className="size">
 						Size: <span>{ this.props.item.size }</span>

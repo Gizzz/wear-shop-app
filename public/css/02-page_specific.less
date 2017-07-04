@@ -257,9 +257,9 @@ section.main {
 				}
 
 				.right {
+					position: relative;
 					float: right;
 
-					.quantity,
 					.size,
 					.price,
 					.delete {
@@ -269,13 +269,16 @@ section.main {
 					}
 
 					.quantity {
-						width: 160px;
+						position: absolute;
+						top: 11px;
+						left: -134px;
+						width: 65px;
 
-						select {
-							margin-left: 5px;
-							border: none;
-							width: 42px;
-							font-size: 16px;
+						.label {
+							position: absolute;
+							top: 18px;
+    					left: -37px;
+							color: #757575;
 						}
 					}
 
