@@ -3,6 +3,30 @@ import PropTypes from "prop-types";
 
 import Dialog from "material-ui/Dialog";
 import FlatButton from "material-ui/FlatButton";
+import SelectField from "material-ui/SelectField";
+import MenuItem from "material-ui/MenuItem";
+
+const styles = {
+	selectField: {
+		floatingLabelStyle: { 
+			color: "rgba(0, 0, 0, 0.3)", 
+		},
+		selectedMenuItemStyle: {
+			fontWeight: "bold", 
+			color: "#202020",
+		},
+		underlineFocusStyle: {
+			borderColor: "#202020",
+		},
+	},
+};
+
+const selectFieldDefaultProps = {
+	fullWidth: true,
+	floatingLabelStyle: styles.selectField.floatingLabelStyle,
+	selectedMenuItemStyle: styles.selectField.selectedMenuItemStyle,
+	underlineFocusStyle: styles.selectField.underlineFocusStyle,
+};
 
 export default class Detail extends React.Component {
 	static propTypes = {
@@ -26,14 +50,12 @@ export default class Detail extends React.Component {
 		this.loadData(category);
 	}
 
-	handleSizeChange = (e) => {
-		const size = e.target.value;
-		this.setState(() => ({ size }));
+	handleSizeChange = (e, i, newValue) => {
+		this.setState(() => ({ size: newValue }));
 	}
 
-	handleQuantityChange = (e) => {
-		const quantity = parseInt(e.target.value);
-		this.setState(() => ({ quantity }));
+	handleQuantityChange = (e, i, newValue) => {
+		this.setState(() => ({ quantity: newValue }));
 	}
 
 	handleAddBtnClick = (e) => {
@@ -122,24 +144,32 @@ export default class Detail extends React.Component {
 						</div>
 						<form onSubmit={ e => e.preventDefault() }>
 							<div className="size">
-								<label htmlFor="size">Size</label>
-								<select id="size" defaultValue={ this.state.size } onChange={ this.handleSizeChange }>
-									<option value="XS">XS</option>
-									<option value="S">S</option>
-									<option value="M">M</option>
-									<option value="L">L</option>
-									<option value="XL">XL</option>
-								</select>
+								<SelectField
+									{ ...selectFieldDefaultProps }
+									floatingLabelText="Size"
+									value={ this.state.size }
+									onChange={ this.handleSizeChange }
+								>
+									<MenuItem value={ "XS" } primaryText="XS" />
+									<MenuItem value={ "S" } primaryText="S" />
+									<MenuItem value={ "M" } primaryText="M" />
+									<MenuItem value={ "L" } primaryText="L" />
+									<MenuItem value={ "XL" } primaryText="XL" />
+								</SelectField>
 							</div>
 							<div className="quantity">
-								<label htmlFor="quantity">Quantity</label>
-								<select id="quantity" defaultValue={ this.state.quantity } onChange={ this.handleQuantityChange }>
-									<option value="1">1</option>
-									<option value="2">2</option>
-									<option value="3">3</option>
-									<option value="4">4</option>
-									<option value="5">5</option>
-								</select>
+								<SelectField
+									{ ...selectFieldDefaultProps }
+									floatingLabelText="Quantity"
+									value={ this.state.quantity }
+									onChange={ this.handleQuantityChange }
+								>
+									<MenuItem value={ 1 } primaryText="1" />
+									<MenuItem value={ 2 } primaryText="2" />
+									<MenuItem value={ 3 } primaryText="3" />
+									<MenuItem value={ 4 } primaryText="4" />
+									<MenuItem value={ 5 } primaryText="5" />
+								</SelectField>
 							</div>
 							<div className="description">
 								<h2>Description</h2>
