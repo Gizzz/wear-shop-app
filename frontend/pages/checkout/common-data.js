@@ -11,7 +11,7 @@ const styles = {
 	},
 	selectedMenuItemStyle: {
 		fontWeight: "bold", 
-		color: "#000",
+		color: "#202020",
 	},
 };
 
