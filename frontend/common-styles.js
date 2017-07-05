@@ -1,4 +1,14 @@
 const styles = {
+	raisedButton: {
+		buttonStyle: { 
+			border: "1px solid black",
+		},
+		labelStyle: { 
+			paddingLeft: "45px", 
+			paddingRight: "45px", 
+			lineHeight: 1 
+		},
+	},
 	selectField: {
 		floatingLabelStyle: { 
 			color: "rgba(0, 0, 0, 0.3)", 
@@ -20,6 +30,11 @@ const styles = {
 			borderColor: "#202020",
 		},
 	},
+};
+
+export const raisedButtonDefaultProps = {
+	buttonStyle: styles.raisedButton.buttonStyle,
+	labelStyle: styles.raisedButton.labelStyle,
 };
 
 export const selectFieldDefaultProps = {

@@ -1,7 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import RaisedButton from "material-ui/RaisedButton";
 
+import { raisedButtonDefaultProps } from "../../common-styles";
 import CartItem from "./CartItem";
 
 class Cart extends React.Component {
@@ -58,7 +60,9 @@ class Cart extends React.Component {
 				</ul>
 				<div className="checkout-box">
 					Total: <span className="subtotal">${ totalPrice.toFixed(2) }</span>
-					<Link className="btn" to="/checkout">checkout</Link>
+					<Link to="/checkout">
+						<RaisedButton { ...raisedButtonDefaultProps } label="Checkout" />
+					</Link>
 				</div>
 			</div>
 		);

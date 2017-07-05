@@ -3,10 +3,11 @@ import PropTypes from "prop-types";
 
 import Dialog from "material-ui/Dialog";
 import FlatButton from "material-ui/FlatButton";
+import RaisedButton from "material-ui/RaisedButton";
 import SelectField from "material-ui/SelectField";
 import MenuItem from "material-ui/MenuItem";
 
-import { selectFieldDefaultProps } from "../common-styles";
+import { raisedButtonDefaultProps, selectFieldDefaultProps } from "../common-styles";
 
 export default class Detail extends React.Component {
 	static propTypes = {
@@ -38,10 +39,7 @@ export default class Detail extends React.Component {
 		this.setState(() => ({ quantity: newValue }));
 	}
 
-	handleAddBtnClick = (e) => {
-		// prevent form submission
-		e.preventDefault();
-
+	handleAddBtnClick = () => {
 		this.props.onAddBtnClick(
 			this.state.itemData, 
 			this.state.size,
@@ -155,7 +153,12 @@ export default class Detail extends React.Component {
 								<h2>Description</h2>
 								<div className="desc" dangerouslySetInnerHTML={ this.createDescriptionMarkup() }></div>
 							</div>
-							<button className="btn" onClick={ this.handleAddBtnClick }>Add to Cart</button>
+							<RaisedButton 
+								{ ...raisedButtonDefaultProps } 
+								className="add_to_cart-btn"
+								label="Add to Cart" 
+								onClick={ this.handleAddBtnClick } 
+							/>
 						</form>
 					</div>
 				</div>

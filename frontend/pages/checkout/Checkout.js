@@ -1,7 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Checkbox from "material-ui/Checkbox";
+import RaisedButton from "material-ui/RaisedButton";
 
+import { raisedButtonDefaultProps } from "../../common-styles";
 import AccountInformation from "./AccountInformation";
 import AddressInformation from "./AddressInformation";
 import PaymentMethod from "./PaymentMethod";
@@ -301,7 +303,11 @@ class Checkout extends React.Component {
 						/>
 						<h2>Order Summary</h2>
 						<OrderSummary cartItems={ this.props.cartItems } />
-						<button className="btn" onClick={ this.handle_placeOrderBtn_click }>Place Order</button>
+						<RaisedButton 
+							{ ...raisedButtonDefaultProps } 
+							label="Place Order" 
+							onClick={ this.handle_placeOrderBtn_click } 
+						/>
 					</section>
 				</div>
 			</div>
