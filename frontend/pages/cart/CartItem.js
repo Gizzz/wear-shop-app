@@ -4,27 +4,7 @@ import { Link } from "react-router-dom";
 import SelectField from "material-ui/SelectField";
 import MenuItem from "material-ui/MenuItem";
 
-const styles = {
-	selectField: {
-		floatingLabelStyle: { 
-			color: "rgba(0, 0, 0, 0.3)", 
-		},
-		selectedMenuItemStyle: {
-			fontWeight: "bold", 
-			color: "#202020",
-		},
-		underlineFocusStyle: {
-			borderColor: "#202020",
-		},
-	},
-};
-
-const selectFieldDefaultProps = {
-	fullWidth: true,
-	// floatingLabelStyle: styles.selectField.floatingLabelStyle,
-	selectedMenuItemStyle: styles.selectField.selectedMenuItemStyle,
-	// underlineFocusStyle: styles.selectField.underlineFocusStyle,
-};
+import { selectFieldDefaultProps } from "../../common-styles";
 
 class CartItem extends React.Component {
 	constructor(props) {
