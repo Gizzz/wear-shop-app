@@ -7,9 +7,17 @@ import AddressInformation from "./AddressInformation";
 import PaymentMethod from "./PaymentMethod";
 import OrderSummary from "./OrderSummary";
 
-import { 
-	validationRegexes 
-} from "./common-data";
+const validationRegexes = {
+	email: /.+\@.+\..+/,
+	phoneNumber: /\d{10,}/,
+	address: /.{5,}/,
+	city: /.{2,}/,
+	state: /.{2,}/,
+	zipCode: /.{4,}/,
+	cardholderName: /.{3,}/,
+	cardNumber: /[\d\s]{15,}/,
+	cvv: /\d{3,4}/,
+};
 
 class Checkout extends React.Component {
 	static propTypes = {
