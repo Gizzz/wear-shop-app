@@ -9,7 +9,6 @@ import OrderSummary from "./OrderSummary";
 
 import { 
 	textFieldDefaultProps, 
-	selectFieldDefaultProps, 
 	validationRegexes 
 } from "./common-data";
 
@@ -259,7 +258,6 @@ class Checkout extends React.Component {
 						<h2>Shipping Address</h2>
 						<AddressInformation 
 							textFieldDefaultProps={ textFieldDefaultProps }
-							selectFieldDefaultProps={ selectFieldDefaultProps }
 							addressData={ this.state.shippingAddress }
 							stateKey="shippingAddress"
 							onTextFieldChange={ this.handleTextFieldChange }
@@ -278,7 +276,6 @@ class Checkout extends React.Component {
 							<div style={{ display: this.state.showBillingAddressArea ? "block" : "none" }}>
 								<AddressInformation 
 									textFieldDefaultProps={ textFieldDefaultProps }
-									selectFieldDefaultProps={ selectFieldDefaultProps }
 									addressData={ this.state.billingAddress }
 									stateKey="billingAddress"
 									onTextFieldChange={ this.handleTextFieldChange }
@@ -293,7 +290,6 @@ class Checkout extends React.Component {
 						<h2>Payment Method</h2>
 						<PaymentMethod
 							textFieldDefaultProps={ textFieldDefaultProps }
-							selectFieldDefaultProps={ selectFieldDefaultProps }
 							formData={ this.state.paymentMethod }
 							onTextFieldChange={ this.handleTextFieldChange }
 							onTextFieldFocus={ this.handleTextFieldFocus }

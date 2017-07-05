@@ -5,10 +5,11 @@ import TextField from "material-ui/TextField";
 import SelectField from "material-ui/SelectField";
 import MenuItem from "material-ui/MenuItem";
 
+import { selectFieldDefaultProps } from "../../common-styles";
+
 export default class PaymentMethod extends React.Component {
 	static propTypes = {
 		textFieldDefaultProps: PropTypes.object.isRequired,
-		selectFieldDefaultProps: PropTypes.object.isRequired,
 		formData: PropTypes.object.isRequired,
 		onTextFieldChange: PropTypes.func.isRequired,
 		onTextFieldFocus: PropTypes.func.isRequired,
@@ -92,7 +93,7 @@ export default class PaymentMethod extends React.Component {
 				<div className="row">
 					<div className="col third-width">
 						<SelectField
-							{ ...this.props.selectFieldDefaultProps }
+							{ ...selectFieldDefaultProps }
 							floatingLabelText="Expiry Month"
 							value={ this.props.formData.expiryMonth }
 							onChange={ this.handleExpiryMonthChange }
@@ -113,7 +114,7 @@ export default class PaymentMethod extends React.Component {
 					</div>
 					<div className="col third-width">
 						<SelectField
-							{ ...this.props.selectFieldDefaultProps }
+							{ ...selectFieldDefaultProps }
 							floatingLabelText="Expiry Year"
 							value={ this.props.formData.expiryYear }
 							onChange={ this.handleExpiryYearChange }

@@ -5,9 +5,10 @@ import TextField from "material-ui/TextField";
 import SelectField from "material-ui/SelectField";
 import MenuItem from "material-ui/MenuItem";
 
+import { selectFieldDefaultProps } from "../../common-styles";
+
 const AddressInformation = ({ 
 	textFieldDefaultProps, 
-	selectFieldDefaultProps, 
 	addressData, 
 	stateKey, 
 	onTextFieldChange, 
@@ -134,7 +135,6 @@ const AddressInformation = ({
 
 AddressInformation.propTypes = {
 	textFieldDefaultProps: PropTypes.object.isRequired,
-	selectFieldDefaultProps: PropTypes.object.isRequired,
 	addressData: PropTypes.object.isRequired,
 	stateKey: PropTypes.string.isRequired,
 	onTextFieldChange: PropTypes.func.isRequired,

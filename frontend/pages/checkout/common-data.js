@@ -21,13 +21,6 @@ export const textFieldDefaultProps = {
 	underlineFocusStyle: styles.underlineFocusStyle,
 };
 
-export const selectFieldDefaultProps = {
-	fullWidth: true,
-	floatingLabelStyle: styles.floatingLabelStyle,
-	selectedMenuItemStyle: styles.selectedMenuItemStyle,
-	underlineFocusStyle: styles.underlineFocusStyle,
-};
-
 export const validationRegexes = {
 	email: /.+\@.+\..+/,
 	phoneNumber: /\d{10,}/,
