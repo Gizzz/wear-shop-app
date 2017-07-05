@@ -164,10 +164,10 @@ export default class Detail extends React.Component {
 				</div>
 				<Dialog
 					title="Item added to cart"
-          actions={actions}
-          open={this.state.isDialogOpen}
-          onRequestClose={this.closeDialog}
-        />
+					actions={actions}
+					open={this.state.isDialogOpen}
+					onRequestClose={this.closeDialog}
+				/>
 			</div>
 		);
 	}

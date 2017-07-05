@@ -10,7 +10,7 @@ import PaymentMethod from "./PaymentMethod";
 import OrderSummary from "./OrderSummary";
 
 const validationRegexes = {
-	email: /.+\@.+\..+/,
+	email: /.+@.+\..+/,
 	phoneNumber: /\d{10,}/,
 	address: /.{5,}/,
 	city: /.{2,}/,
