@@ -2,9 +2,10 @@ import React from "react";
 import PropTypes from "prop-types";
 import TextField from "material-ui/TextField";
 
+import { textFieldDefaultProps } from "../../common-styles";
+
 export default class AccountInformation extends React.Component {
 	static propTypes = {
-		textFieldDefaultProps: PropTypes.object.isRequired,
 		accountInformation: PropTypes.object.isRequired,
 		onTextFieldChange: PropTypes.func.isRequired,
 		onTextFieldFocus: PropTypes.func.isRequired,
@@ -41,7 +42,7 @@ export default class AccountInformation extends React.Component {
 		return (
 			<div>
 				<TextField 
-					{ ...this.props.textFieldDefaultProps } 
+					{ ...textFieldDefaultProps } 
 					floatingLabelText="Email" 
 					errorText={ this.props.accountInformation.isEmailValid ? "" : "Invalid Email. Example: account@example.com" }
 					value={ this.props.accountInformation.email } 
@@ -52,7 +53,7 @@ export default class AccountInformation extends React.Component {
 				/>
 				<br />
 				<TextField 
-					{ ...this.props.textFieldDefaultProps } 
+					{ ...textFieldDefaultProps } 
 					floatingLabelText="Phone Number" 
 					errorText={ this.props.accountInformation.isPhoneNumberValid ? "" : "Invalid Phone Number. Example: 9234567890" }
 					value={ this.props.accountInformation.phoneNumber }

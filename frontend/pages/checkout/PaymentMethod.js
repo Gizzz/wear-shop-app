@@ -5,11 +5,10 @@ import TextField from "material-ui/TextField";
 import SelectField from "material-ui/SelectField";
 import MenuItem from "material-ui/MenuItem";
 
-import { selectFieldDefaultProps } from "../../common-styles";
+import { selectFieldDefaultProps, textFieldDefaultProps } from "../../common-styles";
 
 export default class PaymentMethod extends React.Component {
 	static propTypes = {
-		textFieldDefaultProps: PropTypes.object.isRequired,
 		formData: PropTypes.object.isRequired,
 		onTextFieldChange: PropTypes.func.isRequired,
 		onTextFieldFocus: PropTypes.func.isRequired,
@@ -72,7 +71,7 @@ export default class PaymentMethod extends React.Component {
 		return (
 			<div>
 				<TextField 
-					{ ...this.props.textFieldDefaultProps } 
+					{ ...textFieldDefaultProps } 
 					floatingLabelText="Cardholder Name"  
 					errorText={ this.props.formData.isCardholderNameValid ? "" : "Invalid Cardholder Name. Example: JOHN SMITH" }
 					value={ this.props.formData.cardholderName } 
@@ -82,7 +81,7 @@ export default class PaymentMethod extends React.Component {
 				/>
 				<br />
 				<TextField 
-					{ ...this.props.textFieldDefaultProps } 
+					{ ...textFieldDefaultProps } 
 					floatingLabelText="Card Number" 
 					errorText={ this.props.formData.isCardNumberValid ? "" : "Invalid Card Number. Example: 1020 3040 5060 7080" }
 					value={ this.props.formData.cardNumber } 
@@ -133,7 +132,7 @@ export default class PaymentMethod extends React.Component {
 					</div>
 					<div className="col third-width">
 						<TextField 
-							{ ...this.props.textFieldDefaultProps } 
+							{ ...textFieldDefaultProps } 
 							floatingLabelText="CVV" 
 							errorText={ this.props.formData.isCvvValid ? "" : "Invalid CVV" }
 							value={ this.props.formData.cvv } 

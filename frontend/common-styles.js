@@ -11,6 +11,15 @@ const styles = {
 			borderColor: "#202020",
 		},
 	},
+	textField: {
+		floatingLabelFocusStyle: {
+			color: "#202020", 
+			opacity: ".7",
+		},
+		underlineFocusStyle: {
+			borderColor: "#202020",
+		},
+	},
 };
 
 export const selectFieldDefaultProps = {
@@ -18,4 +27,10 @@ export const selectFieldDefaultProps = {
 	floatingLabelStyle: styles.selectField.floatingLabelStyle,
 	selectedMenuItemStyle: styles.selectField.selectedMenuItemStyle,
 	underlineFocusStyle: styles.selectField.underlineFocusStyle,
+};
+
+export const textFieldDefaultProps = {
+	fullWidth: true,
+	floatingLabelFocusStyle: styles.textField.floatingLabelFocusStyle,
+	underlineFocusStyle: styles.textField.underlineFocusStyle,
 };

@@ -1,26 +1,3 @@
-const styles = {
-	floatingLabelStyle: { 
-		color: "rgba(0, 0, 0, 0.3)", 
-	},
-	floatingLabelFocusStyle: {
-		color: "#202020", 
-		opacity: ".7",
-	},
-	underlineFocusStyle: {
-		borderColor: "#202020",
-	},
-	selectedMenuItemStyle: {
-		fontWeight: "bold", 
-		color: "#202020",
-	},
-};
-
-export const textFieldDefaultProps = {
-	fullWidth: true,
-	floatingLabelFocusStyle: styles.floatingLabelFocusStyle,
-	underlineFocusStyle: styles.underlineFocusStyle,
-};
-
 export const validationRegexes = {
 	email: /.+\@.+\..+/,
 	phoneNumber: /\d{10,}/,

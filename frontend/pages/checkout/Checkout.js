@@ -8,7 +8,6 @@ import PaymentMethod from "./PaymentMethod";
 import OrderSummary from "./OrderSummary";
 
 import { 
-	textFieldDefaultProps, 
 	validationRegexes 
 } from "./common-data";
 
@@ -249,7 +248,6 @@ class Checkout extends React.Component {
 					<section className="left">
 						<h2>Account Information</h2>
 						<AccountInformation 
-							textFieldDefaultProps={ textFieldDefaultProps } 
 							accountInformation={ this.state.accountInformation } 
 							onTextFieldChange={ this.handleTextFieldChange }
 							onTextFieldFocus={ this.handleTextFieldFocus }
@@ -257,7 +255,6 @@ class Checkout extends React.Component {
 						/>
 						<h2>Shipping Address</h2>
 						<AddressInformation 
-							textFieldDefaultProps={ textFieldDefaultProps }
 							addressData={ this.state.shippingAddress }
 							stateKey="shippingAddress"
 							onTextFieldChange={ this.handleTextFieldChange }
@@ -275,7 +272,6 @@ class Checkout extends React.Component {
 							/>
 							<div style={{ display: this.state.showBillingAddressArea ? "block" : "none" }}>
 								<AddressInformation 
-									textFieldDefaultProps={ textFieldDefaultProps }
 									addressData={ this.state.billingAddress }
 									stateKey="billingAddress"
 									onTextFieldChange={ this.handleTextFieldChange }
@@ -289,7 +285,6 @@ class Checkout extends React.Component {
 					<section className="right">
 						<h2>Payment Method</h2>
 						<PaymentMethod
-							textFieldDefaultProps={ textFieldDefaultProps }
 							formData={ this.state.paymentMethod }
 							onTextFieldChange={ this.handleTextFieldChange }
 							onTextFieldFocus={ this.handleTextFieldFocus }
