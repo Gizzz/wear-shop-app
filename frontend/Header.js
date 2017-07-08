@@ -9,6 +9,7 @@ import HeaderCart from "./HeaderCart";
 class Header extends React.Component {
 	static propTypes = {
 		location: PropTypes.object.isRequired,
+		cartItems: PropTypes.array.isRequired,
 	}
 
 	static contextTypes = {
@@ -73,6 +74,17 @@ class Header extends React.Component {
 		}
 	};
 
+	calculateCartItemsCount = () => {
+		const cartItems = this.props.cartItems;		
+		if (!cartItems.length) return 0;
+
+		const itemsCount = cartItems.reduce((count, cartItem) => {
+			return count + cartItem.quantity;
+		}, 0);
+
+		return itemsCount;
+	}
+
 	isNavigationVisible = () => {
 		const pathname = this.props.location.pathname;
 
@@ -99,7 +111,7 @@ class Header extends React.Component {
 			<header className="page">
 				<div className="topline">
 					<h1><Link to="/" className="logo">SHOP</Link></h1>
-					<HeaderCart itemsCount={ 0 } />
+					<HeaderCart itemsCount={ this.calculateCartItemsCount() } />
 				</div>
 				<div className="nav" style={{ visibility: this.isNavigationVisible() ? "visible" : "hidden" }}>
 					<Tabs 

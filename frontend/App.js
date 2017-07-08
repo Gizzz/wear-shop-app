@@ -22,7 +22,15 @@ export default class App extends React.Component {
 		this.clearCart = this.clearCart.bind(this);
 
 		this.state = {
-			cartItems: [],
+			cartItems: [
+				// expample cart item:
+				// =================== 
+				// {
+				// 	itemData: {},
+				// 	size: "M",
+				// 	quantity: 1,
+				// },
+			],
 		};
 	}
 
@@ -107,7 +115,7 @@ export default class App extends React.Component {
 		return (
 			<BrowserRouter>
 				<div className="app">
-					<Header />
+					<Header cartItems={ this.state.cartItems } />
 					<section className="main">
 						<div className="wrapper">
 							<Switch>
