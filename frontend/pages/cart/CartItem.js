@@ -14,14 +14,18 @@ const DeleteIcon = (props) => (
 	</SvgIcon>
 );
 
-class CartItem extends React.Component {
-	constructor(props) {
-		super(props);
-		this.handleChange = this.handleChange.bind(this);
-		this.handleDeleteBtnClick = this.handleDeleteBtnClick.bind(this);
+export default class CartItem extends React.Component {
+	static propTypes = {
+		item: PropTypes.object.isRequired,
+		onQuantityChange: PropTypes.func.isRequired,
+		onRemove: PropTypes.func.isRequired,
 	}
 
-	handleChange(e, i, newValue) {
+	constructor(props) {
+		super(props);
+	}
+
+	handleQuantityChange = (e, i, newValue) => {
 		const itemName = this.props.item.itemData.name;
 		const size = this.props.item.size;
 		const quantity = parseInt(newValue);
@@ -29,7 +33,7 @@ class CartItem extends React.Component {
 		this.props.onQuantityChange(itemName, size, quantity);
 	}
 
-	handleDeleteBtnClick() {
+	handleDeleteBtnClick = () => {
 		const itemName = this.props.item.itemData.name;
 		const size = this.props.item.size;
 		
@@ -54,7 +58,7 @@ class CartItem extends React.Component {
 							{ ...selectFieldDefaultProps }
 							underlineStyle={{ visibility: "hidden" }}
 							value={ this.props.item.quantity }
-							onChange={ this.handleChange }
+							onChange={ this.handleQuantityChange }
 						>
 							<MenuItem value={ 1 } primaryText="1" />
 							<MenuItem value={ 2 } primaryText="2" />
@@ -85,11 +89,3 @@ class CartItem extends React.Component {
 		);
 	}
 }
-
-CartItem.propTypes = {
-	item: PropTypes.object.isRequired,
-	onQuantityChange: PropTypes.func.isRequired,
-	onRemove: PropTypes.func.isRequired,
-};
-
-export default CartItem;
