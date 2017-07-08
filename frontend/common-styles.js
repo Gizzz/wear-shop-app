@@ -1,7 +1,11 @@
+const colors = {
+	fontPrimary: "#202020",
+};
+
 const styles = {
 	raisedButton: {
 		buttonStyle: { 
-			border: "1px solid black",
+			border: `1px solid ${colors.fontPrimary}`,
 		},
 		labelStyle: { 
 			paddingLeft: "45px", 
@@ -15,19 +19,19 @@ const styles = {
 		},
 		selectedMenuItemStyle: {
 			fontWeight: "bold", 
-			color: "#202020",
+			color: colors.fontPrimary,
 		},
 		underlineFocusStyle: {
-			borderColor: "#202020",
+			borderColor: colors.fontPrimary,
 		},
 	},
 	textField: {
 		floatingLabelFocusStyle: {
-			color: "#202020", 
+			color: colors.fontPrimary, 
 			opacity: ".7",
 		},
 		underlineFocusStyle: {
-			borderColor: "#202020",
+			borderColor: colors.fontPrimary,
 		},
 	},
 };
@@ -49,3 +53,5 @@ export const textFieldDefaultProps = {
 	floatingLabelFocusStyle: styles.textField.floatingLabelFocusStyle,
 	underlineFocusStyle: styles.textField.underlineFocusStyle,
 };
+
+export { colors };

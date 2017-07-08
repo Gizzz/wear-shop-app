@@ -5,6 +5,7 @@ import { Tabs, Tab } from "material-ui/Tabs";
 import IconButton from "material-ui/IconButton";
 
 import CartIcon from "./CartIcon";
+import { colors } from "./common-styles";
 
 class Header extends React.Component {
 	static propTypes = {
@@ -92,7 +93,7 @@ class Header extends React.Component {
 		};
 
 		const tabItemContainerStyle = {
-			backgroundColor: "#202020", 
+			backgroundColor: colors.fontPrimary, 
 		};
 
 		return (
