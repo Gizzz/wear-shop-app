@@ -48,6 +48,7 @@ class Header extends React.Component {
 	}
 
 	componentDidUpdate(prevProps) {
+		// if location changed - scroll to window top
 		if (this.props.location.pathname !== prevProps.location.pathname) {
 			window.scrollTo(0, 0);
 		}
