@@ -2,10 +2,9 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Link, withRouter } from "react-router-dom";
 import { Tabs, Tab } from "material-ui/Tabs";
-import IconButton from "material-ui/IconButton";
 
-import CartIcon from "./CartIcon";
 import { colors } from "./common-styles";
+import HeaderCart from "./HeaderCart";
 
 class Header extends React.Component {
 	static propTypes = {
@@ -100,11 +99,7 @@ class Header extends React.Component {
 			<header className="page">
 				<div className="topline">
 					<h1><Link to="/" className="logo">SHOP</Link></h1>
-					<Link to="/cart" className="cart">
-						<IconButton>
-							<CartIcon />
-						</IconButton>
-					</Link>
+					<HeaderCart itemsCount={ 0 } />
 				</div>
 				<div className="nav" style={{ visibility: this.isNavigationVisible() ? "visible" : "hidden" }}>
 					<Tabs 
