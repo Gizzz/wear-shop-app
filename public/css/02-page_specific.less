@@ -259,31 +259,31 @@ section.main {
 				.right {
 					position: relative;
 					float: right;
+					width: 396px;
 
+					.quantity .label,
 					.size,
 					.price,
 					.delete {
-						display: inline-block;
-						margin-top: 22px;
 						color: #757575;
 					}
 
 					.quantity {
 						position: absolute;
 						top: 11px;
-						left: -134px;
 						width: 65px;
 
 						.label {
 							position: absolute;
-							top: 18px;
     					left: -37px;
-							color: #757575;
+							top: 18px;
 						}
 					}
 
 					.size {
-						width: 144px;
+						position: absolute;
+						left: 134px;
+						top: 29px;
 
 						span {
 							margin-left: 10px;
@@ -291,12 +291,15 @@ section.main {
 					}
 
 					.price {
-						width: 100px;
+						position: absolute;
+						left: 278px;
+						top: 29px;
 					}
 
 					button.delete {
-						position: relative;
-						top: 3px;
+						position: absolute;
+						left: 378px;
+						top: 26px;
 						border: none;
 						width: 18px;
 						height: 18px;
