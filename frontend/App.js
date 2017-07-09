@@ -123,7 +123,7 @@ export default class App extends React.Component {
 						<div className="wrapper">
 							<Route render={ ({ location }) => (
 								<CSSTransitionGroup
-									transitionName="example"
+									transitionName="route_change"
 									transitionAppear={ true }
 									transitionAppearTimeout={ transitionDuration }
 									transitionEnterTimeout={ transitionDuration }
