@@ -172,6 +172,16 @@ section.main {
 }
 
 // from documentation on transition animation
+
+.example-appear {
+  opacity: 0.01;
+}
+
+.example-appear.example-appear-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
 .example-enter {
   opacity: 0.01;
 }

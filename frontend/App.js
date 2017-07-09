@@ -113,6 +113,8 @@ export default class App extends React.Component {
 	}
 
 	render() {
+		const transitionDuration = 500;
+		
 		return (
 			<BrowserRouter>
 				<div className="app">
@@ -122,8 +124,10 @@ export default class App extends React.Component {
 							<Route render={ ({ location }) => (
 								<CSSTransitionGroup
 									transitionName="example"
-									transitionEnterTimeout={ 500 }
-									transitionLeaveTimeout={ 500 }
+									transitionAppear={ true }
+									transitionAppearTimeout={ transitionDuration }
+									transitionEnterTimeout={ transitionDuration }
+									transitionLeaveTimeout={ transitionDuration }
 								>	
 									<Switch location={ location } key={ location.key }>
 										<Route exact path="/" component={ Home } />
