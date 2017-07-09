@@ -173,13 +173,16 @@ section.main {
 
 // styles for react-transition-group transitions
 // 
+@transition-duration: 400ms;
+@transition-easing: ease-out;
+
 .route_change-appear {
   opacity: 0.01;
 }
 
 .route_change-appear.route_change-appear-active {
   opacity: 1;
-  transition: opacity 500ms ease-in;
+  transition: opacity @transition-duration @transition-easing;
 }
 
 .route_change-enter {
@@ -188,7 +191,7 @@ section.main {
 
 .route_change-enter.route_change-enter-active {
   opacity: 1;
-  transition: opacity 500ms ease-in;
+  transition: opacity @transition-duration @transition-easing;
 }
 
 .route_change-leave {
@@ -197,5 +200,5 @@ section.main {
 
 .route_change-leave.route_change-leave-active {
   opacity: 0.01;
-  transition: opacity 500ms ease-in;
+  transition: opacity @transition-duration @transition-easing;
 }

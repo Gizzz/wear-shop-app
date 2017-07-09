@@ -113,7 +113,7 @@ export default class App extends React.Component {
 	}
 
 	render() {
-		const transitionDuration = 500;
+		const transitionDuration = 400;
 		
 		return (
 			<BrowserRouter>
