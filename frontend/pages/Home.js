@@ -4,7 +4,7 @@ import RaisedButton from "material-ui/RaisedButton";
 
 import { raisedButtonDefaultProps } from "../common-styles";
 
-const IndexPageContent = () => (
+const Home = () => (
 	<div className="content index">
 		<div className="category mens_outerwear">
 			<Link className="banner" to="/list/mens_outerwear"></Link>
@@ -39,4 +39,4 @@ const IndexPageContent = () => (
 	</div>
 );
 
-export default IndexPageContent;
+export default Home;
