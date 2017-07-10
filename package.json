@@ -2,7 +2,7 @@
   "name": "wear-shop-app",
   "version": "0.1.0",
   "description": "Wear shop app inspired by polymer demo project",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1",
