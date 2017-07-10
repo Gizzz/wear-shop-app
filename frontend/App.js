@@ -118,34 +118,34 @@ export default class App extends React.Component {
 		return (
 			<BrowserRouter>
 				<div className="app">
-					<Header cartItems={ this.state.cartItems } />
+					<Header cartItems={this.state.cartItems} />
 					<section className="main">
 						<div className="wrapper">
-							<Route render={ ({ location }) => (
+							<Route render={({ location }) => (
 								<CSSTransitionGroup
 									transitionName="route_change"
-									transitionAppear={ true }
-									transitionAppearTimeout={ transitionDuration }
-									transitionEnterTimeout={ transitionDuration }
-									transitionLeaveTimeout={ transitionDuration }
+									transitionAppear={true}
+									transitionAppearTimeout={transitionDuration}
+									transitionEnterTimeout={transitionDuration}
+									transitionLeaveTimeout={transitionDuration}
 								>	
-									<Switch location={ location } key={ location.key }>
-										<Route exact path="/" component={ Home } />
-										<Route path="/list/:category" component={ List } />
-										<Route path="/detail/:category/:itemName" render={ ({ match }) => (
-											<Detail match={ match } onAddBtnClick={ this.addCartItem } />
-										) } />
-										<Route path="/cart" render={ () => (
-											<Cart items={ this.state.cartItems } onQuantityChange={ this.updateCartItemQuantity } onRemove={ this.removeCartItem } />
-										) } />
-										<Route exact path="/checkout" render={ () => (
-											<Checkout cartItems={ this.state.cartItems } onPlaceOrder={ this.clearCart } />
-										) } />
-										<Route path="/checkout/success" component={ CheckoutSuccess } />
-										<Route component={ PageNotFound }/>
+									<Switch location={location} key={location.key}>
+										<Route exact path="/" component={Home} />
+										<Route path="/list/:category" component={List} />
+										<Route path="/detail/:category/:itemName" render={({ match }) => (
+											<Detail match={match} onAddBtnClick={this.addCartItem} />
+										)} />
+										<Route path="/cart" render={() => (
+											<Cart items={this.state.cartItems} onQuantityChange={this.updateCartItemQuantity} onRemove={this.removeCartItem} />
+										)} />
+										<Route exact path="/checkout" render={() => (
+											<Checkout cartItems={this.state.cartItems} onPlaceOrder={this.clearCart} />
+										)} />
+										<Route path="/checkout/success" component={CheckoutSuccess} />
+										<Route component={PageNotFound}/>
 									</Switch>
 								</CSSTransitionGroup>
-							) } />
+							)} />
 						</div>
 					</section>
 					<Footer />
