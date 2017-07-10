@@ -13,13 +13,16 @@ const CartIcon = (props) => (
 );
 
 const HeaderCart = (props, context) => {
-	const handleCartIconClick = () => {
-		context.router.history.push("/cart");
+	const handleCartLinkClick = (e) => {
+		const pathname = context.router.history.location.pathname;
+		if (pathname === "/cart") {
+			e.preventDefault();
+		}
 	};
 
 	return (
-		<Link to="/cart" className="cart">
-			<IconButton onTouchTap={ handleCartIconClick }>
+		<Link to="/cart" className="cart" onClick={ handleCartLinkClick }>
+			<IconButton>
 				<CartIcon />
 			</IconButton>
 			<i className="cart-badge" style={{ display: props.itemsCount ? "flex" : "none" }}>

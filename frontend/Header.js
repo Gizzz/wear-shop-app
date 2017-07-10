@@ -59,6 +59,13 @@ class Header extends React.Component {
 	}
 
 	handleTabClick = (newValue) => {
+		const oldValue = this.state.selectedTabValue;
+		const pathname = this.props.location.pathname;
+		if (
+			newValue === oldValue &&
+			pathname.startsWith("/list")
+		) return;
+
 		this.setState({ selectedTabValue: newValue });
 
 		if (newValue === "mens_outerwear") {
@@ -73,6 +80,13 @@ class Header extends React.Component {
 			console.error(`Unexpected tab value: ${newValue}`);
 		}
 	};
+
+	handleSiteLogoClick = (e) => {
+		const pathname = this.props.location.pathname;
+		if (pathname === "/") {
+			e.preventDefault();
+		}
+	}
 
 	calculateCartItemsCount = () => {
 		const cartItems = this.props.cartItems;		
@@ -110,7 +124,9 @@ class Header extends React.Component {
 		return (
 			<header className="page">
 				<div className="topline">
-					<h1><Link to="/" className="logo">SHOP</Link></h1>
+					<h1>
+						<Link to="/" className="logo" onClick={ this.handleSiteLogoClick }>SHOP</Link>
+					</h1>
 					<HeaderCart itemsCount={ this.calculateCartItemsCount() } />
 				</div>
 				<div className="nav" style={{ visibility: this.isNavigationVisible() ? "visible" : "hidden" }}>
