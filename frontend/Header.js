@@ -125,15 +125,15 @@ class Header extends React.Component {
 			<header className="page">
 				<div className="topline">
 					<h1>
-						<Link to="/" className="logo" onClick={ this.handleSiteLogoClick }>SHOP</Link>
+						<Link to="/" className="logo" onClick={this.handleSiteLogoClick}>SHOP</Link>
 					</h1>
-					<HeaderCart itemsCount={ this.calculateCartItemsCount() } />
+					<HeaderCart itemsCount={this.calculateCartItemsCount()} />
 				</div>
 				<div className="nav" style={{ visibility: this.isNavigationVisible() ? "visible" : "hidden" }}>
 					<Tabs 
-						inkBarStyle={ inkBarStyle }
-						tabItemContainerStyle={ tabItemContainerStyle }
-						value={ this.state.selectedTabValue }	
+						inkBarStyle={inkBarStyle}
+						tabItemContainerStyle={tabItemContainerStyle}
+						value={this.state.selectedTabValue}	
 					>
 						<Tab label="Men's Outerwear" value="mens_outerwear" onClick={() => { this.handleTabClick("mens_outerwear"); }} />
 						<Tab label="Ladies Outerwear" value="ladies_outerwear" onClick={() => { this.handleTabClick("ladies_outerwear"); }} />
