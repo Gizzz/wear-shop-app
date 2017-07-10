@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Link, withRouter } from "react-router-dom";
+import FlatButton from "material-ui/FlatButton";
 import { Tabs, Tab } from "material-ui/Tabs";
 
 import { colors } from "./common-styles";
@@ -110,6 +111,12 @@ class Header extends React.Component {
 	}
 
 	render() {
+		const labelStyle = {
+			fontSize: "16px", 
+			fontWeight: "600", 
+			letterSpacing: "0.3em",
+		};
+
 		const inkBarStyle = { 
 			marginTop: "-6px", 
 			height: "6px", 
@@ -125,7 +132,9 @@ class Header extends React.Component {
 			<header className="page">
 				<div className="topline">
 					<h1>
-						<Link to="/" className="logo" onClick={this.handleSiteLogoClick}>SHOP</Link>
+						<Link to="/" className="logo" onClick={this.handleSiteLogoClick}>
+							<FlatButton label="SHOP" hoverColor="white" rippleColor="silver" labelStyle={labelStyle} />
+						</Link>
 					</h1>
 					<HeaderCart itemsCount={this.calculateCartItemsCount()} />
 				</div>
