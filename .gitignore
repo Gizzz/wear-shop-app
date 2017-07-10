@@ -1,7 +1,7 @@
 node_modules/
 .vscode/
 
-public/bundle.js
-public/bundle.js.map
+# public/bundle.js
+# public/bundle.js.map
 npm-debug.log
 project.todo.txt
