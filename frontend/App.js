@@ -113,6 +113,7 @@ export default class App extends React.Component {
 	}
 
 	render() {
+		// don't forget to change css
 		const transitionDuration = 400;
 		
 		return (
