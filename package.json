@@ -10,7 +10,7 @@
     "lint-fix": "eslint ./ --fix",
     "build": "webpack",
     "watch": "webpack --watch",
-    "heroku-postbuild": "webpack --config ./webpack.config.js --progress"
+    "heroku-postbuild": "webpack -p --config ./webpack.config.js --progress"
   },
   "pre-commit": [
     "lint"
