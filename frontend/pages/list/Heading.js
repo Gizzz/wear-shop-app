@@ -12,8 +12,7 @@ const Heading = (props) => {
 	};
 	const categoryTitle = categoryName_to_title[category];
 
-	// empty loading text to prevent flickering
-	let itemsCountText = "";
+	let itemsCountText = "Loading data...";
 
 	if (props.itemsCount !== null) {
 		itemsCountText = props.itemsCount === 1 
@@ -24,7 +23,7 @@ const Heading = (props) => {
 	return (
 		<div className="heading">
 			<h2>{ categoryTitle }</h2>
-			<span>({ itemsCountText })</span>
+			<span>{ itemsCountText }</span>
 		</div>
 	);
 };

@@ -77,7 +77,7 @@ export default class Detail extends React.Component {
 	}
 
 	createDescriptionMarkup() {
-		let descriptionText = "";
+		let descriptionText = "Loading data...";
 
 		if (this.state.itemData) {
 			// hack: use textarea to decode html entities
@@ -90,8 +90,7 @@ export default class Detail extends React.Component {
 	}
 
 	render() {
-		// empty loading text to prevent flickering
-		const loadingText = "";
+		const loadingText = "Loading data...";
 
 		const actions = [
 			<FlatButton
