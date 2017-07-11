@@ -21,6 +21,7 @@
     "node": "8.1.2"
   },
   "dependencies": {
+    "babel-loader": "^7.1.1",
     "express": "^4.15.2",
     "material-ui": "^0.18.1",
     "prop-types": "^15.5.8",
@@ -34,7 +35,6 @@
   "devDependencies": {
     "babel-core": "^6.24.0",
     "babel-eslint": "^7.2.3",
-    "babel-loader": "^6.4.1",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-object-rest-spread": "^6.23.0",
     "babel-preset-env": "^1.5.2",
