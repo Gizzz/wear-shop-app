@@ -21,7 +21,6 @@
     "node": "8.1.2"
   },
   "dependencies": {
-    "babel-loader": "^7.1.1",
     "express": "^4.15.2",
     "material-ui": "^0.18.1",
     "prop-types": "^15.5.8",
@@ -29,12 +28,12 @@
     "react-dom": "^15.5.3",
     "react-router-dom": "^4.1.1",
     "react-tap-event-plugin": "^2.0.1",
-    "react-transition-group": "^1.2.0",
-    "webpack": "^2.6.1"
+    "react-transition-group": "^1.2.0"
   },
   "devDependencies": {
     "babel-core": "^6.24.0",
     "babel-eslint": "^7.2.3",
+    "babel-loader": "^7.1.1",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-object-rest-spread": "^6.23.0",
     "babel-preset-env": "^1.5.2",
@@ -43,7 +42,8 @@
     "babel-preset-react": "^6.23.0",
     "eslint": "^4.1.1",
     "eslint-plugin-react": "^6.10.3",
-    "pre-commit": "^1.2.2"
+    "pre-commit": "^1.2.2",
+    "webpack": "^3.1.0"
   },
   "repository": {
     "type": "git",
