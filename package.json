@@ -1,6 +1,6 @@
 {
   "name": "wear-shop-app",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Wear shop app inspired by polymer demo project",
   "main": "app.js",
   "scripts": {
