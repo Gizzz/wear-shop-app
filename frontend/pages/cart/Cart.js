@@ -1,10 +1,10 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
-import RaisedButton from "material-ui/RaisedButton";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+import RaisedButton from 'material-ui/RaisedButton';
 
-import { raisedButtonDefaultProps } from "../../common-styles";
-import CartItem from "./CartItem";
+import { raisedButtonDefaultProps } from '../../common-styles';
+import CartItem from './CartItem';
 
 class Cart extends React.Component {
   constructor(props) {
@@ -35,7 +35,7 @@ class Cart extends React.Component {
 
     const items = this.props.items;
 
-    const itemOrItems = items.length === 1 ? "item" : "items";
+    const itemOrItems = items.length === 1 ? 'item' : 'items';
     const itemsCountText = `(${items.length} ${itemOrItems})`;
 
     const itemsMarkup = items.map((item) => (

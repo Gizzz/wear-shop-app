@@ -1,19 +1,19 @@
-import React from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
-import { CSSTransitionGroup } from "react-transition-group";
+import React from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { CSSTransitionGroup } from 'react-transition-group';
 
-import Header from "./Header";
-import Footer from "./Footer";
-import Home from "./pages/Home";
-import List from "./pages/list/List";
-import Detail from "./pages/Detail";
-import Cart from "./pages/cart/Cart";
-import Checkout from "./pages/checkout/Checkout";
-import CheckoutSuccess from "./pages/CheckoutSuccess";
-import PageNotFound from "./pages/PageNotFound";
+import Header from './Header';
+import Footer from './Footer';
+import Home from './pages/Home';
+import List from './pages/list/List';
+import Detail from './pages/Detail';
+import Cart from './pages/cart/Cart';
+import Checkout from './pages/checkout/Checkout';
+import CheckoutSuccess from './pages/CheckoutSuccess';
+import PageNotFound from './pages/PageNotFound';
 
-import storageHelper from "./utils/storage-helper";
-import "../public/styles/bundle.less";
+import storageHelper from './utils/storage-helper';
+import '../public/styles/bundle.less';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -44,7 +44,7 @@ export default class App extends React.Component {
     }
 
     // save app state to storage on window.beforeunload
-    window.addEventListener("beforeunload", () => {
+    window.addEventListener('beforeunload', () => {
       storageHelper.saveState(this.state);
     });
   }

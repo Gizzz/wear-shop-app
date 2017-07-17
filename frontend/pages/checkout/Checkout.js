@@ -1,13 +1,13 @@
-import React from "react";
-import PropTypes from "prop-types";
-import Checkbox from "material-ui/Checkbox";
-import RaisedButton from "material-ui/RaisedButton";
+import React from 'react';
+import PropTypes from 'prop-types';
+import Checkbox from 'material-ui/Checkbox';
+import RaisedButton from 'material-ui/RaisedButton';
 
-import { raisedButtonDefaultProps } from "../../common-styles";
-import AccountInformation from "./AccountInformation";
-import AddressInformation from "./AddressInformation";
-import PaymentMethod from "./PaymentMethod";
-import OrderSummary from "./OrderSummary";
+import { raisedButtonDefaultProps } from '../../common-styles';
+import AccountInformation from './AccountInformation';
+import AddressInformation from './AddressInformation';
+import PaymentMethod from './PaymentMethod';
+import OrderSummary from './OrderSummary';
 
 const validationRegexes = {
   email: /.+@.+\..+/,
@@ -37,39 +37,39 @@ class Checkout extends React.Component {
     this.state = {
       showBillingAddressArea: false,
       accountInformation: {
-        email: "",
-        phoneNumber: "",
+        email: '',
+        phoneNumber: '',
         isEmailValid: true,
         isPhoneNumberValid: true,
       },
       shippingAddress: {
-        address: "",
-        city: "",
-        state: "",
-        zipCode: "",
-        country: "United States",
+        address: '',
+        city: '',
+        state: '',
+        zipCode: '',
+        country: 'United States',
         isAddressValid: true,
         isCityValid: true,
         isStateValid: true,
         isZipCodeValid: true,
       },
       billingAddress: {
-        address: "",
-        city: "",
-        state: "",
-        zipCode: "",
-        country: "United States",
+        address: '',
+        city: '',
+        state: '',
+        zipCode: '',
+        country: 'United States',
         isAddressValid: true,
         isCityValid: true,
         isStateValid: true,
         isZipCodeValid: true,
       },
       paymentMethod: {
-        cardholderName: "",
-        cardNumber: "",
-        expiryMonth: "1",
-        expiryYear: "2017",
-        cvv: "",
+        cardholderName: '',
+        cardNumber: '',
+        expiryMonth: '1',
+        expiryYear: '2017',
+        cvv: '',
         isCardholderNameValid: true,
         isCardNumberValid: true,
         isCvvValid: true,
@@ -112,7 +112,7 @@ class Checkout extends React.Component {
  }
 
  handleTextFieldBlur = (newValue, stateKey, fieldName) => {
-   if (newValue.trim() === "") return;
+   if (newValue.trim() === '') return;
 
    const isFieldValid = validationRegexes[fieldName].test(newValue);
    const fieldNameInPascalCase = fieldName[0].toUpperCase() + fieldName.slice(1);
@@ -143,7 +143,7 @@ class Checkout extends React.Component {
 
    if (isFormValid) {
      this.props.onPlaceOrder();
-     this.context.router.history.push("/checkout/success");
+     this.context.router.history.push('/checkout/success');
    } else {
      this.setValidationErrors();
    }
@@ -154,32 +154,32 @@ class Checkout extends React.Component {
 
    const stateValidationMap = {
      accountInformation: [
-       "email",
-       "phoneNumber",
+       'email',
+       'phoneNumber',
      ],
      shippingAddress: [
-       "address",
-       "city",
-       "state",
-       "zipCode",
+       'address',
+       'city',
+       'state',
+       'zipCode',
      ],
      billingAddress: [
-       "address",
-       "city",
-       "state",
-       "zipCode",
+       'address',
+       'city',
+       'state',
+       'zipCode',
      ],
      paymentMethod: [
-       "cardholderName",
-       "cardNumber",
-       "cvv",
+       'cardholderName',
+       'cardNumber',
+       'cvv',
      ]
    };
 
    Object.keys(stateValidationMap).forEach((rootLevelKey) => {
      const subKeysToValidate = stateValidationMap[rootLevelKey];
      subKeysToValidate.forEach((subKey) => {
-       const skipFieldValidation = rootLevelKey === "billingAddress" && !this.state.showBillingAddressArea;
+       const skipFieldValidation = rootLevelKey === 'billingAddress' && !this.state.showBillingAddressArea;
        if (skipFieldValidation) return;
 
        const currentValue = this.state[rootLevelKey][subKey];
@@ -197,25 +197,25 @@ class Checkout extends React.Component {
  setValidationErrors = () => {
    const stateValidationMap = {
      accountInformation: [
-       "email",
-       "phoneNumber",
+       'email',
+       'phoneNumber',
      ],
      shippingAddress: [
-       "address",
-       "city",
-       "state",
-       "zipCode",
+       'address',
+       'city',
+       'state',
+       'zipCode',
      ],
      billingAddress: [
-       "address",
-       "city",
-       "state",
-       "zipCode",
+       'address',
+       'city',
+       'state',
+       'zipCode',
      ],
      paymentMethod: [
-       "cardholderName",
-       "cardNumber",
-       "cvv",
+       'cardholderName',
+       'cardNumber',
+       'cvv',
      ]
    };
 
@@ -239,10 +239,10 @@ class Checkout extends React.Component {
    });
 
    // add select field values to preserve them in state
-   newState.shippingAddress["country"] = this.state.shippingAddress["country"];
-   newState.billingAddress["country"] = this.state.billingAddress["country"];
-   newState.paymentMethod["expiryMonth"] = this.state.paymentMethod["expiryMonth"];
-   newState.paymentMethod["expiryYear"] = this.state.paymentMethod["expiryYear"];
+   newState.shippingAddress['country'] = this.state.shippingAddress['country'];
+   newState.billingAddress['country'] = this.state.billingAddress['country'];
+   newState.paymentMethod['expiryMonth'] = this.state.paymentMethod['expiryMonth'];
+   newState.paymentMethod['expiryYear'] = this.state.paymentMethod['expiryYear'];
 
    this.setState(newState);
  }
@@ -276,11 +276,11 @@ class Checkout extends React.Component {
             <div className="billing-address">
               <Checkbox
                 label="Use different billing address"
-                style={{ marginTop: "29px" }}
-                iconStyle={{ fill: "#202020" }}
+                style={{ marginTop: '29px' }}
+                iconStyle={{ fill: '#202020' }}
                 onCheck={ this.handle_billingAddressCheckbox_check }
               />
-              <div style={{ display: this.state.showBillingAddressArea ? "block" : "none" }}>
+              <div style={{ display: this.state.showBillingAddressArea ? 'block' : 'none' }}>
                 <AddressInformation 
                   addressData={ this.state.billingAddress }
                   stateKey="billingAddress"

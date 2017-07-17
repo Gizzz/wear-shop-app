@@ -1,13 +1,13 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
-import Dialog from "material-ui/Dialog";
-import FlatButton from "material-ui/FlatButton";
-import RaisedButton from "material-ui/RaisedButton";
-import SelectField from "material-ui/SelectField";
-import MenuItem from "material-ui/MenuItem";
+import Dialog from 'material-ui/Dialog';
+import FlatButton from 'material-ui/FlatButton';
+import RaisedButton from 'material-ui/RaisedButton';
+import SelectField from 'material-ui/SelectField';
+import MenuItem from 'material-ui/MenuItem';
 
-import { raisedButtonDefaultProps, selectFieldDefaultProps } from "../common-styles";
+import { raisedButtonDefaultProps, selectFieldDefaultProps } from '../common-styles';
 
 export default class Detail extends React.Component {
  static propTypes = {
@@ -21,7 +21,7 @@ export default class Detail extends React.Component {
 
  state = {
    itemData: undefined,
-   size: "M",
+   size: 'M',
    quantity: 1,
    isDialogOpen: false,
  }
@@ -58,11 +58,11 @@ export default class Detail extends React.Component {
  }
 
  handle_viewCartBtn_click = () => {
-   this.context.router.history.push("/cart");
+   this.context.router.history.push('/cart');
  }
 
  handle_checkoutBtn_click = () => {
-   this.context.router.history.push("/checkout");
+   this.context.router.history.push('/checkout');
  }
 
  loadData(category) {
@@ -77,11 +77,11 @@ export default class Detail extends React.Component {
   }
 
  createDescriptionMarkup() {
-    let descriptionText = "Loading data...";
+    let descriptionText = 'Loading data...';
 
     if (this.state.itemData) {
       // hack: use textarea to decode html entities
-      const textarea = document.createElement("textarea");
+      const textarea = document.createElement('textarea');
       textarea.innerHTML = this.state.itemData.description;
       descriptionText = textarea.value;
     }
@@ -90,7 +90,7 @@ export default class Detail extends React.Component {
   }
 
  render() {
-    const loadingText = "Loading data...";
+    const loadingText = 'Loading data...';
 
     const actions = [
       <FlatButton
@@ -108,7 +108,7 @@ export default class Detail extends React.Component {
         <div className="row">
           <div className="col image">
             <img 
-              src={ this.state.itemData ? this.state.itemData.largeImage : "" } 
+              src={ this.state.itemData ? this.state.itemData.largeImage : '' } 
               alt={ loadingText }
             />
           </div>
@@ -117,7 +117,7 @@ export default class Detail extends React.Component {
               { this.state.itemData ? this.state.itemData.title : loadingText }
             </h1>
             <div className="price">
-              { this.state.itemData ? "$" + this.state.itemData.price.toFixed(2) : loadingText }
+              { this.state.itemData ? '$' + this.state.itemData.price.toFixed(2) : loadingText }
             </div>
             <form onSubmit={ e => e.preventDefault() }>
               <div className="size">
@@ -127,11 +127,11 @@ export default class Detail extends React.Component {
                   value={ this.state.size }
                   onChange={ this.handleSizeChange }
                 >
-                  <MenuItem value={ "XS" } primaryText="XS" />
-                  <MenuItem value={ "S" } primaryText="S" />
-                  <MenuItem value={ "M" } primaryText="M" />
-                  <MenuItem value={ "L" } primaryText="L" />
-                  <MenuItem value={ "XL" } primaryText="XL" />
+                  <MenuItem value={ 'XS' } primaryText="XS" />
+                  <MenuItem value={ 'S' } primaryText="S" />
+                  <MenuItem value={ 'M' } primaryText="M" />
+                  <MenuItem value={ 'L' } primaryText="L" />
+                  <MenuItem value={ 'XL' } primaryText="XL" />
                 </SelectField>
               </div>
               <div className="quantity">

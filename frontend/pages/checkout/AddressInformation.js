@@ -1,11 +1,11 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
-import TextField from "material-ui/TextField";
-import SelectField from "material-ui/SelectField";
-import MenuItem from "material-ui/MenuItem";
+import TextField from 'material-ui/TextField';
+import SelectField from 'material-ui/SelectField';
+import MenuItem from 'material-ui/MenuItem';
 
-import { selectFieldDefaultProps, textFieldDefaultProps } from "../../common-styles";
+import { selectFieldDefaultProps, textFieldDefaultProps } from '../../common-styles';
 
 const AddressInformation = ({ 
   addressData, 
@@ -16,63 +16,63 @@ const AddressInformation = ({
   onSelectFieldChange 
 }) => {
   const handleAddressChange = (e, newValue) => {
-    onTextFieldChange(newValue, stateKey, "address");
+    onTextFieldChange(newValue, stateKey, 'address');
   };
 
   const handleAddressFocus = () => {
-    onTextFieldFocus(stateKey, "address");
+    onTextFieldFocus(stateKey, 'address');
   };
 
   const handleAddressBlur = (e) => {
     const newValue = e.target.value;
-    onTextFieldBlur(newValue, stateKey, "address");
+    onTextFieldBlur(newValue, stateKey, 'address');
   };
 
 
   const handleCityChange = (e, newValue) => {
-    onTextFieldChange(newValue, stateKey, "city");
+    onTextFieldChange(newValue, stateKey, 'city');
   };
 
   const handleCityFocus = () => {
-    onTextFieldFocus(stateKey, "city");
+    onTextFieldFocus(stateKey, 'city');
   };
 
   const handleCityBlur = (e) => {
     const newValue = e.target.value;
-    onTextFieldBlur(newValue, stateKey, "city");
+    onTextFieldBlur(newValue, stateKey, 'city');
   };
 
 
   const handleStateChange = (e, newValue) => {
-    onTextFieldChange(newValue, stateKey, "state");
+    onTextFieldChange(newValue, stateKey, 'state');
   };
 
   const handleStateFocus = () => {
-    onTextFieldFocus(stateKey, "state");
+    onTextFieldFocus(stateKey, 'state');
   };
 
   const handleStateBlur = (e) => {
     const newValue = e.target.value;
-    onTextFieldBlur(newValue, stateKey, "state");
+    onTextFieldBlur(newValue, stateKey, 'state');
   };
 
 
   const handleZipCodeChange = (e, newValue) => {
-    onTextFieldChange(newValue, stateKey, "zipCode");
+    onTextFieldChange(newValue, stateKey, 'zipCode');
   };
 
   const handleZipCodeFocus = () => {
-    onTextFieldFocus(stateKey, "zipCode");
+    onTextFieldFocus(stateKey, 'zipCode');
   };
 
   const handleZipCodeBlur = (e) => {
     const newValue = e.target.value;
-    onTextFieldBlur(newValue, stateKey, "zipCode");
+    onTextFieldBlur(newValue, stateKey, 'zipCode');
   };
 
 
   const handleCountryChange = (e, i, newValue) => {
-    onSelectFieldChange(newValue, stateKey, "country");
+    onSelectFieldChange(newValue, stateKey, 'country');
   };
 
   return (
@@ -80,7 +80,7 @@ const AddressInformation = ({
       <TextField 
         { ...textFieldDefaultProps } 
         floatingLabelText="Address" 
-        errorText={ addressData.isAddressValid ? "" : "Invalid Address. Example: 345 Spear Street" }
+        errorText={ addressData.isAddressValid ? '' : 'Invalid Address. Example: 345 Spear Street' }
         value={ addressData.address } 
         onChange={ handleAddressChange }
         onFocus={ handleAddressFocus }
@@ -89,7 +89,7 @@ const AddressInformation = ({
       <TextField 
         { ...textFieldDefaultProps } 
         floatingLabelText="City" 
-        errorText={ addressData.isCityValid ? "" : "Invalid City. Example: San Francisco" }
+        errorText={ addressData.isCityValid ? '' : 'Invalid City. Example: San Francisco' }
         value={ addressData.city } 
         onChange={ handleCityChange }
         onFocus={ handleCityFocus }
@@ -100,7 +100,7 @@ const AddressInformation = ({
           <TextField 
             { ...textFieldDefaultProps } 
             floatingLabelText="State" 
-            errorText={ addressData.isStateValid ? "" : "Invalid State. Example: CA" }
+            errorText={ addressData.isStateValid ? '' : 'Invalid State. Example: CA' }
             value={ addressData.state } 
             onChange={ handleStateChange }
             onFocus={ handleStateFocus }
@@ -111,7 +111,7 @@ const AddressInformation = ({
           <TextField 
             { ...textFieldDefaultProps } 
             floatingLabelText="Zip Code" 
-            errorText={ addressData.isZipCodeValid ? "" : "Invalid Zip Code. Example: 94105" }
+            errorText={ addressData.isZipCodeValid ? '' : 'Invalid Zip Code. Example: 94105' }
             value={ addressData.zipCode } 
             onChange={ handleZipCodeChange }
             onFocus={ handleZipCodeFocus }

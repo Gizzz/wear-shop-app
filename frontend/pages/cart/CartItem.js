@@ -1,12 +1,12 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
-import SelectField from "material-ui/SelectField";
-import MenuItem from "material-ui/MenuItem";
-import IconButton from "material-ui/IconButton";
-import SvgIcon from "material-ui/SvgIcon";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+import SelectField from 'material-ui/SelectField';
+import MenuItem from 'material-ui/MenuItem';
+import IconButton from 'material-ui/IconButton';
+import SvgIcon from 'material-ui/SvgIcon';
 
-import { selectFieldDefaultProps } from "../../common-styles";
+import { selectFieldDefaultProps } from '../../common-styles';
 
 const DeleteIcon = (props) => (
   <SvgIcon { ...props }>
@@ -56,7 +56,7 @@ export default class CartItem extends React.Component {
             <div className="label">Qty:</div>
             <SelectField
               { ...selectFieldDefaultProps }
-              underlineStyle={{ visibility: "hidden" }}
+              underlineStyle={{ visibility: 'hidden' }}
               value={ this.props.item.quantity }
               onChange={ this.handleQuantityChange }
             >
@@ -78,7 +78,7 @@ export default class CartItem extends React.Component {
           <div className="price">${ this.props.item.itemData.price.toFixed(2) }</div>
           <div className="delete">
             <IconButton 
-              iconStyle={{ width: "18px", height: "18px", }} 
+              iconStyle={{ width: '18px', height: '18px', }} 
               onTouchTap={ this.handleDeleteBtnClick }
             >
               <DeleteIcon />

@@ -1,29 +1,29 @@
-const path = require("path");
+const path = require('path');
 
 module.exports = {
   context: __dirname,
-  entry: "./frontend/index.js",
-  devtool: "source-map",
+  entry: './frontend/index.js',
+  devtool: 'source-map',
   output: {
-    path: path.join(__dirname, "/public"),
-    filename: "bundle.js"
+    path: path.join(__dirname, '/public'),
+    filename: 'bundle.js'
   },
   module: {
     rules: [
       {
         test: /\.js$/, 
         exclude: /node_modules/, 
-        loader: "babel-loader" 
+        loader: 'babel-loader' 
       },
       {
         test: /\.less$/,
         use: [
-          { loader: "style-loader" 	}, 
+          { loader: 'style-loader' 	}, 
           {
-            loader: "css-loader", 
+            loader: 'css-loader', 
             options: { url: false },
           }, 
-          { loader: "less-loader" },
+          { loader: 'less-loader' },
         ]
       }
     ]

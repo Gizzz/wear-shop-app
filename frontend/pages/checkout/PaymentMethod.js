@@ -1,11 +1,11 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
-import TextField from "material-ui/TextField";
-import SelectField from "material-ui/SelectField";
-import MenuItem from "material-ui/MenuItem";
+import TextField from 'material-ui/TextField';
+import SelectField from 'material-ui/SelectField';
+import MenuItem from 'material-ui/MenuItem';
 
-import { selectFieldDefaultProps, textFieldDefaultProps } from "../../common-styles";
+import { selectFieldDefaultProps, textFieldDefaultProps } from '../../common-styles';
 
 export default class PaymentMethod extends React.Component {
  static propTypes = {
@@ -18,53 +18,53 @@ export default class PaymentMethod extends React.Component {
 
  handleCardholderNameChange = (e, newValue) => {
    const formattedInput = newValue.toUpperCase();
-   this.props.onTextFieldChange(formattedInput, "paymentMethod", "cardholderName");
+   this.props.onTextFieldChange(formattedInput, 'paymentMethod', 'cardholderName');
  }
 
  handleCardholderNameFocus = () => {
-   this.props.onTextFieldFocus("paymentMethod", "cardholderName");
+   this.props.onTextFieldFocus('paymentMethod', 'cardholderName');
  }
 
  handleCardholderNameBlur = (e) => {
    const newValue = e.target.value;
-   this.props.onTextFieldBlur(newValue, "paymentMethod", "cardholderName");
+   this.props.onTextFieldBlur(newValue, 'paymentMethod', 'cardholderName');
  }
 
 
  handleCardNumberChange = (e, newValue) => {
-   this.props.onTextFieldChange(newValue, "paymentMethod", "cardNumber");
+   this.props.onTextFieldChange(newValue, 'paymentMethod', 'cardNumber');
  }
 
  handleCardNumberFocus = () => {
-   this.props.onTextFieldFocus("paymentMethod", "cardNumber");
+   this.props.onTextFieldFocus('paymentMethod', 'cardNumber');
  }
 
  handleCardNumberBlur = (e) => {
    const newValue = e.target.value;
-   this.props.onTextFieldBlur(newValue, "paymentMethod", "cardNumber");
+   this.props.onTextFieldBlur(newValue, 'paymentMethod', 'cardNumber');
  }
 
 
  handleExpiryMonthChange = (e, i, newValue) => {
-   this.props.onSelectFieldChange(newValue, "paymentMethod", "expiryMonth");
+   this.props.onSelectFieldChange(newValue, 'paymentMethod', 'expiryMonth');
  };
 
  handleExpiryYearChange = (e, i, newValue) => {
-   this.props.onSelectFieldChange(newValue, "paymentMethod", "expiryYear");
+   this.props.onSelectFieldChange(newValue, 'paymentMethod', 'expiryYear');
  };
 
 
  handleCvvChange = (e, newValue) => {
-   this.props.onTextFieldChange(newValue, "paymentMethod", "cvv");
+   this.props.onTextFieldChange(newValue, 'paymentMethod', 'cvv');
  }
 
  handleCvvFocus = () => {
-   this.props.onTextFieldFocus("paymentMethod", "cvv");
+   this.props.onTextFieldFocus('paymentMethod', 'cvv');
  }
 
  handleCvvBlur = (e) => {
    const newValue = e.target.value;
-   this.props.onTextFieldBlur(newValue, "paymentMethod", "cvv");
+   this.props.onTextFieldBlur(newValue, 'paymentMethod', 'cvv');
  }
 
  render() {
@@ -73,7 +73,7 @@ export default class PaymentMethod extends React.Component {
         <TextField 
           { ...textFieldDefaultProps } 
           floatingLabelText="Cardholder Name"  
-          errorText={ this.props.formData.isCardholderNameValid ? "" : "Invalid Cardholder Name. Example: JOHN SMITH" }
+          errorText={ this.props.formData.isCardholderNameValid ? '' : 'Invalid Cardholder Name. Example: JOHN SMITH' }
           value={ this.props.formData.cardholderName } 
           onChange={ this.handleCardholderNameChange }
           onFocus={ this.handleCardholderNameFocus }
@@ -83,7 +83,7 @@ export default class PaymentMethod extends React.Component {
         <TextField 
           { ...textFieldDefaultProps } 
           floatingLabelText="Card Number" 
-          errorText={ this.props.formData.isCardNumberValid ? "" : "Invalid Card Number. Example: 1020 3040 5060 7080" }
+          errorText={ this.props.formData.isCardNumberValid ? '' : 'Invalid Card Number. Example: 1020 3040 5060 7080' }
           value={ this.props.formData.cardNumber } 
           onChange={ this.handleCardNumberChange }
           onFocus={ this.handleCardNumberFocus }
@@ -134,7 +134,7 @@ export default class PaymentMethod extends React.Component {
             <TextField 
               { ...textFieldDefaultProps } 
               floatingLabelText="CVV" 
-              errorText={ this.props.formData.isCvvValid ? "" : "Invalid CVV" }
+              errorText={ this.props.formData.isCvvValid ? '' : 'Invalid CVV' }
               value={ this.props.formData.cvv } 
               onChange={ this.handleCvvChange }
               onFocus={ this.handleCvvFocus }

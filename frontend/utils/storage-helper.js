@@ -2,7 +2,7 @@
  * Save app state to and restore from window.localStorage
  */
 
-const storageKey = "wear-shop-app";
+const storageKey = 'wear-shop-app';
 
 const storageHelper = {
   loadState() {

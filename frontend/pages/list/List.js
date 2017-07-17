@@ -1,8 +1,8 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
-import Heading from "./Heading";
+import Heading from './Heading';
 
 class List extends React.Component {
   constructor(props) {

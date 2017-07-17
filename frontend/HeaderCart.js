@@ -1,10 +1,10 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
-import IconButton from "material-ui/IconButton";
-import SvgIcon from "material-ui/SvgIcon";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+import IconButton from 'material-ui/IconButton';
+import SvgIcon from 'material-ui/SvgIcon';
 
-import { colors } from "./common-styles";
+import { colors } from './common-styles';
 
 const CartIcon = (props) => (
   <SvgIcon { ...props }>
@@ -15,7 +15,7 @@ const CartIcon = (props) => (
 const HeaderCart = (props, context) => {
   const handleCartLinkClick = (e) => {
     const pathname = context.router.history.location.pathname;
-    if (pathname === "/cart") {
+    if (pathname === '/cart') {
       e.preventDefault();
     }
   };
@@ -25,7 +25,7 @@ const HeaderCart = (props, context) => {
       <IconButton>
         <CartIcon />
       </IconButton>
-      <i className="cart-badge" style={{ display: props.itemsCount ? "flex" : "none" }}>
+      <i className="cart-badge" style={{ display: props.itemsCount ? 'flex' : 'none' }}>
         { props.itemsCount }
       </i>						
     </Link>
