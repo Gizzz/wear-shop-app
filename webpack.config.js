@@ -18,12 +18,18 @@ module.exports = {
       {
         test: /\.less$/,
         use: [
-          { loader: 'style-loader' 	}, 
+          { loader: 'style-loader' }, 
           {
             loader: 'css-loader', 
-            options: { url: false },
+            options: { 
+              url: false, 
+              sourceMap: true, 
+            },
           }, 
-          { loader: 'less-loader' },
+          { 
+            loader: 'less-loader',
+            options: { sourceMap: true },
+          },
         ]
       }
     ]
