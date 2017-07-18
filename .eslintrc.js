@@ -34,6 +34,10 @@ module.exports = {
       "error", 
       "prefer-double"
     ],
+    "react/jsx-curly-spacing": [
+      "error",
+      "never"
+    ],
     "semi": [
       "error",
       "always"
