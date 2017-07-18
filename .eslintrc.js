@@ -26,13 +26,14 @@ module.exports = {
       "error",
       "windows"
     ],
-    "quotes": [
-      "error",
-      "single"
-    ],
+    "no-console": "off",
     "jsx-quotes": [
       "error", 
       "prefer-double"
+    ],
+    "quotes": [
+      "error",
+      "single"
     ],
     "react/jsx-curly-spacing": [
       "error",
@@ -42,6 +43,5 @@ module.exports = {
       "error",
       "always"
     ],
-    "no-console": "off"
-  }
+  },
 };
