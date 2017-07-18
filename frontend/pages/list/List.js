@@ -40,8 +40,8 @@ class List extends React.Component {
     if (isItemsLoaded) {
       shopItems = shopItems.map((item) => (
         <li key={item.name}>
-          <Link to={ `/detail/${category}/${item.name}` }>
-            <img src={ item.image } alt="" />
+          <Link to={`/detail/${category}/${item.name}`}>
+            <img src={item.image} alt="" />
             <div className="title">{ item.title }</div>
             <span className="price">${ item.price.toFixed(2) }</span>
           </Link>
@@ -53,8 +53,8 @@ class List extends React.Component {
 
     return (
       <div className="content list">
-        <div className={ `billboard ${category}` }></div>
-        <Heading category={ category } itemsCount={ itemsCount } />
+        <div className={`billboard ${category}`}></div>
+        <Heading category={category} itemsCount={itemsCount} />
         <ul className="items">
           { shopItems }
         </ul>

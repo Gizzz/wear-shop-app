@@ -11,7 +11,7 @@ const CheckoutSuccess = () => {
       <p>Demo checkout process complete.</p>
       <Link to="/">
         <RaisedButton 
-          { ...raisedButtonDefaultProps } 
+          {...raisedButtonDefaultProps} 
           className="finish-btn" 
           label="Finish" 
         />

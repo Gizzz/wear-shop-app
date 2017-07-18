@@ -10,7 +10,7 @@ const PageNotFound = () => {
       <i className="error"></i>
       <h1>Sorry, we couldn't find that page</h1>
       <Link to="/">
-        <RaisedButton { ...raisedButtonDefaultProps } label="Go to the home page" />
+        <RaisedButton {...raisedButtonDefaultProps} label="Go to the home page" />
       </Link>
     </div>
   );

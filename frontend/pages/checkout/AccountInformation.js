@@ -42,24 +42,24 @@ export default class AccountInformation extends React.Component {
     return (
       <div>
         <TextField 
-          { ...textFieldDefaultProps } 
+          {...textFieldDefaultProps} 
           floatingLabelText="Email" 
-          errorText={ this.props.accountInformation.isEmailValid ? '' : 'Invalid Email. Example: account@example.com' }
-          value={ this.props.accountInformation.email } 
-          onChange={ this.handleEmailChange }
-          onFocus={ this.handleEmailFocus }
-          onBlur={ this.handleEmailBlur }
+          errorText={this.props.accountInformation.isEmailValid ? '' : 'Invalid Email. Example: account@example.com'}
+          value={this.props.accountInformation.email} 
+          onChange={this.handleEmailChange}
+          onFocus={this.handleEmailFocus}
+          onBlur={this.handleEmailBlur}
 
         />
         <br />
         <TextField 
-          { ...textFieldDefaultProps } 
+          {...textFieldDefaultProps} 
           floatingLabelText="Phone Number" 
-          errorText={ this.props.accountInformation.isPhoneNumberValid ? '' : 'Invalid Phone Number. Example: 9234567890' }
-          value={ this.props.accountInformation.phoneNumber }
-          onChange={ this.handlePhoneNumberChange }
-          onFocus={ this.handlePhoneNumberFocus }
-          onBlur={ this.handlePhoneNumberBlur }
+          errorText={this.props.accountInformation.isPhoneNumberValid ? '' : 'Invalid Phone Number. Example: 9234567890'}
+          value={this.props.accountInformation.phoneNumber}
+          onChange={this.handlePhoneNumberChange}
+          onFocus={this.handlePhoneNumberFocus}
+          onBlur={this.handlePhoneNumberBlur}
         />
       </div>
     );

@@ -71,31 +71,31 @@ export default class PaymentMethod extends React.Component {
     return (
       <div>
         <TextField 
-          { ...textFieldDefaultProps } 
+          {...textFieldDefaultProps} 
           floatingLabelText="Cardholder Name"  
-          errorText={ this.props.formData.isCardholderNameValid ? '' : 'Invalid Cardholder Name. Example: JOHN SMITH' }
-          value={ this.props.formData.cardholderName } 
-          onChange={ this.handleCardholderNameChange }
-          onFocus={ this.handleCardholderNameFocus }
-          onBlur={ this.handleCardholderNameBlur }
+          errorText={this.props.formData.isCardholderNameValid ? '' : 'Invalid Cardholder Name. Example: JOHN SMITH'}
+          value={this.props.formData.cardholderName} 
+          onChange={this.handleCardholderNameChange}
+          onFocus={this.handleCardholderNameFocus}
+          onBlur={this.handleCardholderNameBlur}
         />
         <br />
         <TextField 
-          { ...textFieldDefaultProps } 
+          {...textFieldDefaultProps} 
           floatingLabelText="Card Number" 
-          errorText={ this.props.formData.isCardNumberValid ? '' : 'Invalid Card Number. Example: 1020 3040 5060 7080' }
-          value={ this.props.formData.cardNumber } 
-          onChange={ this.handleCardNumberChange }
-          onFocus={ this.handleCardNumberFocus }
-          onBlur={ this.handleCardNumberBlur }
+          errorText={this.props.formData.isCardNumberValid ? '' : 'Invalid Card Number. Example: 1020 3040 5060 7080'}
+          value={this.props.formData.cardNumber} 
+          onChange={this.handleCardNumberChange}
+          onFocus={this.handleCardNumberFocus}
+          onBlur={this.handleCardNumberBlur}
         />
         <div className="row">
           <div className="col third-width">
             <SelectField
-              { ...selectFieldDefaultProps }
+              {...selectFieldDefaultProps}
               floatingLabelText="Expiry Month"
-              value={ this.props.formData.expiryMonth }
-              onChange={ this.handleExpiryMonthChange }
+              value={this.props.formData.expiryMonth}
+              onChange={this.handleExpiryMonthChange}
             >
               <MenuItem value="1" primaryText="Jan" />
               <MenuItem value="2" primaryText="Feb" />
@@ -113,10 +113,10 @@ export default class PaymentMethod extends React.Component {
           </div>
           <div className="col third-width">
             <SelectField
-              { ...selectFieldDefaultProps }
+              {...selectFieldDefaultProps}
               floatingLabelText="Expiry Year"
-              value={ this.props.formData.expiryYear }
-              onChange={ this.handleExpiryYearChange }
+              value={this.props.formData.expiryYear}
+              onChange={this.handleExpiryYearChange}
             >
               <MenuItem value="2017" primaryText="2017" />
               <MenuItem value="2018" primaryText="2018" />
@@ -132,13 +132,13 @@ export default class PaymentMethod extends React.Component {
           </div>
           <div className="col third-width">
             <TextField 
-              { ...textFieldDefaultProps } 
+              {...textFieldDefaultProps} 
               floatingLabelText="CVV" 
-              errorText={ this.props.formData.isCvvValid ? '' : 'Invalid CVV' }
-              value={ this.props.formData.cvv } 
-              onChange={ this.handleCvvChange }
-              onFocus={ this.handleCvvFocus }
-              onBlur={ this.handleCvvBlur }
+              errorText={this.props.formData.isCvvValid ? '' : 'Invalid CVV'}
+              value={this.props.formData.cvv} 
+              onChange={this.handleCvvChange}
+              onFocus={this.handleCvvFocus}
+              onBlur={this.handleCvvBlur}
             />
           </div>
         </div>

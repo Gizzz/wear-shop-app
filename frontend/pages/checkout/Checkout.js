@@ -258,19 +258,19 @@ class Checkout extends React.Component {
           <section className="left">
             <h2>Account Information</h2>
             <AccountInformation 
-              accountInformation={ this.state.accountInformation } 
-              onTextFieldChange={ this.handleTextFieldChange }
-              onTextFieldFocus={ this.handleTextFieldFocus }
-              onTextFieldBlur={ this.handleTextFieldBlur }
+              accountInformation={this.state.accountInformation} 
+              onTextFieldChange={this.handleTextFieldChange}
+              onTextFieldFocus={this.handleTextFieldFocus}
+              onTextFieldBlur={this.handleTextFieldBlur}
             />
             <h2>Shipping Address</h2>
             <AddressInformation 
-              addressData={ this.state.shippingAddress }
+              addressData={this.state.shippingAddress}
               stateKey="shippingAddress"
-              onTextFieldChange={ this.handleTextFieldChange }
-              onTextFieldFocus={ this.handleTextFieldFocus }
-              onTextFieldBlur={ this.handleTextFieldBlur }
-              onSelectFieldChange={ this.handleSelectFieldChange }
+              onTextFieldChange={this.handleTextFieldChange}
+              onTextFieldFocus={this.handleTextFieldFocus}
+              onTextFieldBlur={this.handleTextFieldBlur}
+              onSelectFieldChange={this.handleSelectFieldChange}
             />
             <h2>Billing Address</h2>
             <div className="billing-address">
@@ -278,16 +278,16 @@ class Checkout extends React.Component {
                 label="Use different billing address"
                 style={{ marginTop: '29px' }}
                 iconStyle={{ fill: '#202020' }}
-                onCheck={ this.handle_billingAddressCheckbox_check }
+                onCheck={this.handle_billingAddressCheckbox_check}
               />
               <div style={{ display: this.state.showBillingAddressArea ? 'block' : 'none' }}>
                 <AddressInformation 
-                  addressData={ this.state.billingAddress }
+                  addressData={this.state.billingAddress}
                   stateKey="billingAddress"
-                  onTextFieldChange={ this.handleTextFieldChange }
-                  onTextFieldFocus={ this.handleTextFieldFocus }
-                  onTextFieldBlur={ this.handleTextFieldBlur }
-                  onSelectFieldChange={ this.handleSelectFieldChange }
+                  onTextFieldChange={this.handleTextFieldChange}
+                  onTextFieldFocus={this.handleTextFieldFocus}
+                  onTextFieldBlur={this.handleTextFieldBlur}
+                  onSelectFieldChange={this.handleSelectFieldChange}
                 />
               </div>
             </div>
@@ -295,18 +295,18 @@ class Checkout extends React.Component {
           <section className="right">
             <h2>Payment Method</h2>
             <PaymentMethod
-              formData={ this.state.paymentMethod }
-              onTextFieldChange={ this.handleTextFieldChange }
-              onTextFieldFocus={ this.handleTextFieldFocus }
-              onTextFieldBlur={ this.handleTextFieldBlur }
-              onSelectFieldChange={ this.handleSelectFieldChange }
+              formData={this.state.paymentMethod}
+              onTextFieldChange={this.handleTextFieldChange}
+              onTextFieldFocus={this.handleTextFieldFocus}
+              onTextFieldBlur={this.handleTextFieldBlur}
+              onSelectFieldChange={this.handleSelectFieldChange}
             />
             <h2>Order Summary</h2>
-            <OrderSummary cartItems={ this.props.cartItems } />
+            <OrderSummary cartItems={this.props.cartItems} />
             <RaisedButton 
-              { ...raisedButtonDefaultProps } 
+              {...raisedButtonDefaultProps} 
               label="Place Order" 
-              onClick={ this.handle_placeOrderBtn_click } 
+              onClick={this.handle_placeOrderBtn_click} 
             />
           </section>
         </div>

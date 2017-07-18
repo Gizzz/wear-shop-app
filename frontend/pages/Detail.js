@@ -108,8 +108,8 @@ export default class Detail extends React.Component {
         <div className="row">
           <div className="col image">
             <img 
-              src={ this.state.itemData ? this.state.itemData.largeImage : '' } 
-              alt={ loadingText }
+              src={this.state.itemData ? this.state.itemData.largeImage : ''} 
+              alt={loadingText}
             />
           </div>
           <div className="col text">
@@ -119,44 +119,44 @@ export default class Detail extends React.Component {
             <div className="price">
               { this.state.itemData ? '$' + this.state.itemData.price.toFixed(2) : loadingText }
             </div>
-            <form onSubmit={ e => e.preventDefault() }>
+            <form onSubmit={e => e.preventDefault()}>
               <div className="size">
                 <SelectField
-                  { ...selectFieldDefaultProps }
+                  {...selectFieldDefaultProps}
                   floatingLabelText="Size"
-                  value={ this.state.size }
-                  onChange={ this.handleSizeChange }
+                  value={this.state.size}
+                  onChange={this.handleSizeChange}
                 >
-                  <MenuItem value={ 'XS' } primaryText="XS" />
-                  <MenuItem value={ 'S' } primaryText="S" />
-                  <MenuItem value={ 'M' } primaryText="M" />
-                  <MenuItem value={ 'L' } primaryText="L" />
-                  <MenuItem value={ 'XL' } primaryText="XL" />
+                  <MenuItem value={'XS'} primaryText="XS" />
+                  <MenuItem value={'S'} primaryText="S" />
+                  <MenuItem value={'M'} primaryText="M" />
+                  <MenuItem value={'L'} primaryText="L" />
+                  <MenuItem value={'XL'} primaryText="XL" />
                 </SelectField>
               </div>
               <div className="quantity">
                 <SelectField
-                  { ...selectFieldDefaultProps }
+                  {...selectFieldDefaultProps}
                   floatingLabelText="Quantity"
-                  value={ this.state.quantity }
-                  onChange={ this.handleQuantityChange }
+                  value={this.state.quantity}
+                  onChange={this.handleQuantityChange}
                 >
-                  <MenuItem value={ 1 } primaryText="1" />
-                  <MenuItem value={ 2 } primaryText="2" />
-                  <MenuItem value={ 3 } primaryText="3" />
-                  <MenuItem value={ 4 } primaryText="4" />
-                  <MenuItem value={ 5 } primaryText="5" />
+                  <MenuItem value={1} primaryText="1" />
+                  <MenuItem value={2} primaryText="2" />
+                  <MenuItem value={3} primaryText="3" />
+                  <MenuItem value={4} primaryText="4" />
+                  <MenuItem value={5} primaryText="5" />
                 </SelectField>
               </div>
               <div className="description">
                 <h2>Description</h2>
-                <div className="desc" dangerouslySetInnerHTML={ this.createDescriptionMarkup() }></div>
+                <div className="desc" dangerouslySetInnerHTML={this.createDescriptionMarkup()}></div>
               </div>
               <RaisedButton 
-                { ...raisedButtonDefaultProps } 
+                {...raisedButtonDefaultProps} 
                 className="add_to_cart-btn"
                 label="Add to Cart" 
-                onClick={ this.handleAddBtnClick } 
+                onClick={this.handleAddBtnClick} 
               />
             </form>
           </div>

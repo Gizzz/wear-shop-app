@@ -9,7 +9,7 @@ import SvgIcon from 'material-ui/SvgIcon';
 import { selectFieldDefaultProps } from '../../common-styles';
 
 const DeleteIcon = (props) => (
-  <SvgIcon { ...props }>
+  <SvgIcon {...props}>
     <path fill="#757575" d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path>
   </SvgIcon>
 );
@@ -44,10 +44,10 @@ export default class CartItem extends React.Component {
     return (
       <li>
         <div className="left">
-          <Link className="image" to={ `/detail/${this.props.item.itemData.category}/${this.props.item.itemData.name}` }>
-            <img src={ this.props.item.itemData.image } />
+          <Link className="image" to={`/detail/${this.props.item.itemData.category}/${this.props.item.itemData.name}`}>
+            <img src={this.props.item.itemData.image} />
           </Link>
-          <Link className="name" to={ `/detail/${this.props.item.itemData.category}/${this.props.item.itemData.name}` }>
+          <Link className="name" to={`/detail/${this.props.item.itemData.category}/${this.props.item.itemData.name}`}>
             { this.props.item.itemData.title }
           </Link>
         </div>
@@ -55,21 +55,21 @@ export default class CartItem extends React.Component {
           <div className="quantity">
             <div className="label">Qty:</div>
             <SelectField
-              { ...selectFieldDefaultProps }
+              {...selectFieldDefaultProps}
               underlineStyle={{ visibility: 'hidden' }}
-              value={ this.props.item.quantity }
-              onChange={ this.handleQuantityChange }
+              value={this.props.item.quantity}
+              onChange={this.handleQuantityChange}
             >
-              <MenuItem value={ 1 } primaryText="1" />
-              <MenuItem value={ 2 } primaryText="2" />
-              <MenuItem value={ 3 } primaryText="3" />
-              <MenuItem value={ 4 } primaryText="4" />
-              <MenuItem value={ 5 } primaryText="5" />
-              <MenuItem value={ 6 } primaryText="6" />
-              <MenuItem value={ 7 } primaryText="7" />
-              <MenuItem value={ 8 } primaryText="8" />
-              <MenuItem value={ 9 } primaryText="9" />
-              <MenuItem value={ 10 } primaryText="10" />
+              <MenuItem value={1} primaryText="1" />
+              <MenuItem value={2} primaryText="2" />
+              <MenuItem value={3} primaryText="3" />
+              <MenuItem value={4} primaryText="4" />
+              <MenuItem value={5} primaryText="5" />
+              <MenuItem value={6} primaryText="6" />
+              <MenuItem value={7} primaryText="7" />
+              <MenuItem value={8} primaryText="8" />
+              <MenuItem value={9} primaryText="9" />
+              <MenuItem value={10} primaryText="10" />
             </SelectField>
           </div>
           <div className="size">
@@ -79,7 +79,7 @@ export default class CartItem extends React.Component {
           <div className="delete">
             <IconButton 
               iconStyle={{ width: '18px', height: '18px', }} 
-              onTouchTap={ this.handleDeleteBtnClick }
+              onTouchTap={this.handleDeleteBtnClick}
             >
               <DeleteIcon />
             </IconButton>

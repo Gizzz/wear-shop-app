@@ -78,52 +78,52 @@ const AddressInformation = ({
   return (
     <div>
       <TextField 
-        { ...textFieldDefaultProps } 
+        {...textFieldDefaultProps} 
         floatingLabelText="Address" 
-        errorText={ addressData.isAddressValid ? '' : 'Invalid Address. Example: 345 Spear Street' }
-        value={ addressData.address } 
-        onChange={ handleAddressChange }
-        onFocus={ handleAddressFocus }
-        onBlur={ handleAddressBlur }
+        errorText={addressData.isAddressValid ? '' : 'Invalid Address. Example: 345 Spear Street'}
+        value={addressData.address} 
+        onChange={handleAddressChange}
+        onFocus={handleAddressFocus}
+        onBlur={handleAddressBlur}
       />
       <TextField 
-        { ...textFieldDefaultProps } 
+        {...textFieldDefaultProps} 
         floatingLabelText="City" 
-        errorText={ addressData.isCityValid ? '' : 'Invalid City. Example: San Francisco' }
-        value={ addressData.city } 
-        onChange={ handleCityChange }
-        onFocus={ handleCityFocus }
-        onBlur={ handleCityBlur }
+        errorText={addressData.isCityValid ? '' : 'Invalid City. Example: San Francisco'}
+        value={addressData.city} 
+        onChange={handleCityChange}
+        onFocus={handleCityFocus}
+        onBlur={handleCityBlur}
       />
       <div className="row">
         <div className="col half-width">
           <TextField 
-            { ...textFieldDefaultProps } 
+            {...textFieldDefaultProps} 
             floatingLabelText="State" 
-            errorText={ addressData.isStateValid ? '' : 'Invalid State. Example: CA' }
-            value={ addressData.state } 
-            onChange={ handleStateChange }
-            onFocus={ handleStateFocus }
-            onBlur={ handleStateBlur }
+            errorText={addressData.isStateValid ? '' : 'Invalid State. Example: CA'}
+            value={addressData.state} 
+            onChange={handleStateChange}
+            onFocus={handleStateFocus}
+            onBlur={handleStateBlur}
           />
         </div>
         <div className="col half-width">
           <TextField 
-            { ...textFieldDefaultProps } 
+            {...textFieldDefaultProps} 
             floatingLabelText="Zip Code" 
-            errorText={ addressData.isZipCodeValid ? '' : 'Invalid Zip Code. Example: 94105' }
-            value={ addressData.zipCode } 
-            onChange={ handleZipCodeChange }
-            onFocus={ handleZipCodeFocus }
-            onBlur={ handleZipCodeBlur }
+            errorText={addressData.isZipCodeValid ? '' : 'Invalid Zip Code. Example: 94105'}
+            value={addressData.zipCode} 
+            onChange={handleZipCodeChange}
+            onFocus={handleZipCodeFocus}
+            onBlur={handleZipCodeBlur}
           />
         </div>
       </div>
       <SelectField
-        { ...selectFieldDefaultProps }
+        {...selectFieldDefaultProps}
         floatingLabelText="Country"
-        value={ addressData.country } 
-        onChange={ handleCountryChange }
+        value={addressData.country} 
+        onChange={handleCountryChange}
       >
         <MenuItem value="United States" primaryText="United States" />
         <MenuItem value="Canada" primaryText="Canada" />
