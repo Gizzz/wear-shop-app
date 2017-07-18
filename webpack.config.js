@@ -21,15 +21,9 @@ module.exports = {
           { loader: 'style-loader' }, 
           {
             loader: 'css-loader', 
-            options: { 
-              url: false, 
-              sourceMap: true, 
-            },
+            options: { url: false },
           }, 
-          { 
-            loader: 'less-loader',
-            options: { sourceMap: true },
-          },
+          { loader: 'less-loader' },
         ]
       }
     ]
