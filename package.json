@@ -4,8 +4,8 @@
   "description": "Wear shop app inspired by polymer demo project",
   "main": "app.js",
   "scripts": {
-    "start": "node backend/app.js",
-    "dev": "nodemon backend/app.js",
+    "start": "node src/backend/app.js",
+    "dev": "nodemon src/backend/app.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint ./",
     "lint-fix": "eslint ./ --fix",
