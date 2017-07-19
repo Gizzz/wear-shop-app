@@ -2,7 +2,7 @@
 Wear shop app written on React and inspired by polymer demo project.
 
 ## Installation and usage
-Installing all dependencies:
+Install all dependencies:
 ```
 npm i
 ```
