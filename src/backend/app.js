@@ -3,11 +3,15 @@ const path = require('path');
 
 const app = express();
 
+// middleware
+
 app.use(
   express.static(
     path.resolve(__dirname, '../../dist')
   )
 );
+
+// routing
 
 app.get('/api/shop_items/category/:category', (req, res) => {
   const category = req.params.category;
@@ -31,6 +35,8 @@ app.get('/*', (req, res) => {
     path.resolve(__dirname, '../../dist/index.html')
   );
 });
+
+// app settings and bootstrap
 
 app.set('port', (process.env.PORT || 3000));
 
