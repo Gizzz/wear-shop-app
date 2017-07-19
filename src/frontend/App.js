@@ -13,7 +13,7 @@ import CheckoutSuccess from './pages/CheckoutSuccess';
 import PageNotFound from './pages/PageNotFound';
 
 import storageHelper from './utils/storage-helper';
-import '../../public/styles/bundle.less';
+import '../../dist/styles/bundle.less';
 
 export default class App extends React.Component {
   constructor(props) {
