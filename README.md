@@ -9,7 +9,7 @@ npm i
 
 Build assets with webpack:
 ```
-npm run build
+npm run build:prod
 ```
 
 App now is ready to start:
