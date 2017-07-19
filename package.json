@@ -9,9 +9,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint ./",
     "lint-fix": "eslint ./ --fix",
-    "build": "webpack",
+    "build": "webpack -p --progress",
     "watch": "webpack --watch",
-    "heroku-postbuild": "webpack -p --config ./webpack.config.js --progress"
+    "heroku-postbuild": "webpack -p"
   },
   "pre-commit": [
     "lint"
