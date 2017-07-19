@@ -9,6 +9,23 @@ app.use(
   )
 );
 
+app.get('/api/shop_items/category/:category', (req, res) => {
+  const category = req.params.category;
+  const categories = [
+    'mens_outerwear',
+    'ladies_outerwear',
+    'mens_tshirts',
+    'ladies_tshirts',
+  ];
+
+  if (!categories.includes(category)) {
+    res.status(400).send(`unexpected category param: ${category}`);
+  }
+
+  const data = require(`./data/${category}.json`);
+  res.send(data);
+});
+
 app.get('/*', (req, res) => {
   res.sendFile(
     path.resolve(__dirname, '../../dist/index.html')
