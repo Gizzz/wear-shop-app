@@ -9,7 +9,7 @@
     "dev": "nodemon src/backend/app.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint ./",
-    "lint-fix": "eslint ./ --fix",    
+    "lint-fix": "eslint ./ --fix",
     "build:dev": "webpack --env=dev --progress",
     "build:prod": "webpack --env=prod --progress",
     "heroku-postbuild": "npm run build:prod",
@@ -45,13 +45,14 @@
     "less-loader": "^4.0.5",
     "pre-commit": "^1.2.2",
     "style-loader": "^0.18.2",
-    "webpack": "^3.1.0"
+    "webpack": "^3.1.0",
+    "webpack-merge": "^4.1.0"
   },
   "engines": {
     "node": "8.1.4",
     "npm": "5.0.3"
   },
-  "author": "Bulat Husainov",  
+  "author": "Bulat Husainov",
   "repository": {
     "type": "git",
     "url": "https://github.com/Gizzz/wear-shop-app.git"
