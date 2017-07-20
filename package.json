@@ -12,8 +12,8 @@
     "lint-fix": "eslint ./ --fix",
     "build:dev": "webpack --env=dev --progress",
     "build:prod": "webpack --env=prod --progress",
-    "heroku-postbuild": "npm run build:prod",
-    "watch": "npm run build:dev -- --watch"
+    "heroku-postbuild": "webpack --env=prod",
+    "watch": "webpack --env=dev --watch"
   },
   "pre-commit": [
     "lint"
