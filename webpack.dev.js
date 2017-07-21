@@ -8,7 +8,7 @@ module.exports = {
   devtool: 'source-map',
   entry: './src/frontend/js/index.js',
   output: {
-    path: path.join(__dirname, '/build'),
+    path: path.join(__dirname, '/dist'),
     filename: 'bundle.js'
   },
   module: {
