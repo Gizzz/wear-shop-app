@@ -1,7 +1,6 @@
 node_modules/
 .vscode/
+dist/
 
-dist/bundle.js
-dist/bundle.js.map
 npm-debug.log
 project.todo.txt

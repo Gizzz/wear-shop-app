@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
@@ -45,6 +46,11 @@ module.exports = {
   },
   plugins: [
     new CleanWebpackPlugin(['dist']),
+    new CopyWebpackPlugin([
+      { from: './src/frontend/img', to: 'img' },
+      { from: './src/frontend/favicon.ico' },
+      { from: './src/frontend/service-worker.js' },
+    ]),
     new HtmlWebpackPlugin({
       template: './src/frontend/index.html',
     }),
