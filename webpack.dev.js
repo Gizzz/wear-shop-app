@@ -31,13 +31,16 @@ module.exports = {
         test: /\.less$/,
         use: [
           { loader: 'style-loader' }, 
-          {
-            loader: 'css-loader', 
-            options: { url: false },
-          }, 
+          { loader: 'css-loader' }, 
           { loader: 'less-loader' },
         ]
-      }
+      },      
+      {
+        test: /\.woff$/,
+        use: [
+          'file-loader'
+        ]
+      },
     ]
   },
   plugins: [
