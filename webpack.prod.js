@@ -1,5 +1,8 @@
 const path = require('path');
 const webpack = require('webpack');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   context: __dirname,
@@ -7,7 +10,8 @@ module.exports = {
   entry: './src/frontend/js/index.js',
   output: {
     path: path.join(__dirname, '/dist'),
-    filename: 'bundle.js'
+    filename: 'bundle.js',
+    publicPath: '/',
   },
   module: {
     rules: [
@@ -30,16 +34,28 @@ module.exports = {
         test: /\.less$/,
         use: [
           { loader: 'style-loader' }, 
-          {
-            loader: 'css-loader', 
-            options: { url: false },
-          }, 
+          { loader: 'css-loader' }, 
           { loader: 'less-loader' },
         ]
-      }
+      },
+      {
+        test: /\.woff$/,
+        use: [
+          'file-loader'
+        ]
+      },
     ]
   },
   plugins: [
+    new CleanWebpackPlugin(['dist']),
+    new CopyWebpackPlugin([
+      { from: './src/frontend/img', to: 'img' },
+      { from: './src/frontend/favicon.ico' },
+      { from: './src/frontend/service-worker.js' },
+    ]),
+    new HtmlWebpackPlugin({
+      template: './src/frontend/index.html',
+    }),
     new webpack.LoaderOptionsPlugin({
       minimize: true,
       debug: false,
