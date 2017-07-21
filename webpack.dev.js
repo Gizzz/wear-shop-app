@@ -35,7 +35,7 @@ module.exports = {
           { loader: 'css-loader' }, 
           { loader: 'less-loader' },
         ]
-      },      
+      },
       {
         test: /\.woff$/,
         use: [
