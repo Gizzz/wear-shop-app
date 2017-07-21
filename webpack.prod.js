@@ -14,7 +14,17 @@ module.exports = {
       {
         test: /\.js$/, 
         exclude: /node_modules/, 
-        loader: 'babel-loader' 
+        loader: 'babel-loader',
+        options: {
+          'presets': [
+            ['react'],
+            ['es2015', { 'modules': false }],
+          ],
+          'plugins': [
+            'transform-class-properties',
+            'transform-object-rest-spread',
+          ]
+        },
       },
       {
         test: /\.less$/,
