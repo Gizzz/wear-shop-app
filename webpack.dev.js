@@ -4,7 +4,7 @@ const webpack = require('webpack');
 module.exports = {
   context: __dirname,
   devtool: 'source-map',
-  entry: './src/frontend/index.js',
+  entry: './src/frontend/js/index.js',
   output: {
     path: path.join(__dirname, '/dist'),
     filename: 'bundle.js'
