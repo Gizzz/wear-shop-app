@@ -1,12 +1,13 @@
 const path = require('path');
 const webpack = require('webpack');
+const htmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   context: __dirname,
   devtool: 'source-map',
   entry: './src/frontend/js/index.js',
   output: {
-    path: path.join(__dirname, '/dist'),
+    path: path.join(__dirname, '/build'),
     filename: 'bundle.js'
   },
   module: {
@@ -39,6 +40,9 @@ module.exports = {
     ]
   },
   plugins: [
+    new htmlWebpackPlugin({
+      template: './src/frontend/index.html',
+    }),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('development'),
     }),

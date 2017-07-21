@@ -41,6 +41,7 @@
     "css-loader": "^0.28.4",
     "eslint": "^4.1.1",
     "eslint-plugin-react": "^6.10.3",
+    "html-webpack-plugin": "^2.29.0",
     "less": "^2.7.2",
     "less-loader": "^4.0.5",
     "pre-commit": "^1.2.2",
