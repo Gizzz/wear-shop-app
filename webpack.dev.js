@@ -10,7 +10,7 @@ module.exports = {
   entry: './src/frontend/js/index.js',
   output: {
     path: path.join(__dirname, '/dist'),
-    filename: 'bundle.js',
+    filename: 'bundle.[hash].js',
     publicPath: '/',
   },
   module: {
