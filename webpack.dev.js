@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const cleanWebpackPlugin = require('clean-webpack-plugin');
 const htmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
@@ -40,6 +41,7 @@ module.exports = {
     ]
   },
   plugins: [
+    new cleanWebpackPlugin(['dist']),
     new htmlWebpackPlugin({
       template: './src/frontend/index.html',
     }),
