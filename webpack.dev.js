@@ -54,7 +54,7 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(['dist']),
     new CopyWebpackPlugin([
-      { from: './src/frontend/img', to: 'img' },
+      { from: './src/frontend/img/content', to: 'img/content' },
       { from: './src/frontend/favicon.ico' },
       { from: './src/frontend/service-worker.js' },
     ]),
