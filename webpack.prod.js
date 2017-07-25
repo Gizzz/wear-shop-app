@@ -44,6 +44,12 @@ module.exports = {
           'file-loader'
         ]
       },
+      {
+        test: /\.(jpg|png|svg|gif)$/,
+        use: [
+          'file-loader'
+        ]
+      },
     ]
   },
   plugins: [
