@@ -5,7 +5,7 @@ import TextField from 'material-ui/TextField';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 
-import { selectFieldDefaultProps, textFieldDefaultProps } from '../../common-styles';
+import { selectFieldDefaultProps, textFieldDefaultProps } from '../../../common-styles';
 
 export default class PaymentMethod extends React.Component {
  static propTypes = {

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import TextField from 'material-ui/TextField';
 
-import { textFieldDefaultProps } from '../../common-styles';
+import { textFieldDefaultProps } from '../../../common-styles';
 
 export default class AccountInformation extends React.Component {
  static propTypes = {

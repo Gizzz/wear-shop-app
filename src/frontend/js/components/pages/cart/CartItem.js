@@ -6,7 +6,7 @@ import MenuItem from 'material-ui/MenuItem';
 import IconButton from 'material-ui/IconButton';
 import SvgIcon from 'material-ui/SvgIcon';
 
-import { selectFieldDefaultProps } from '../../common-styles';
+import { selectFieldDefaultProps } from '../../../common-styles';
 
 const DeleteIcon = (props) => (
   <SvgIcon {...props}>

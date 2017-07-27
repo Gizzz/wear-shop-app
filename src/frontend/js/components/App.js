@@ -12,8 +12,8 @@ import Checkout from './pages/checkout/Checkout';
 import CheckoutSuccess from './pages/CheckoutSuccess';
 import PageNotFound from './pages/PageNotFound';
 
-import storageHelper from './utils/storage-helper';
-import '../styles/bundle.less';
+import storageHelper from '../utils/storage-helper';
+import '../../styles/bundle.less';
 
 export default class App extends React.Component {
   constructor(props) {

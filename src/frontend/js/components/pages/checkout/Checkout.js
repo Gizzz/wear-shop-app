@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Checkbox from 'material-ui/Checkbox';
 import RaisedButton from 'material-ui/RaisedButton';
 
-import { raisedButtonDefaultProps } from '../../common-styles';
+import { raisedButtonDefaultProps } from '../../../common-styles';
 import AccountInformation from './AccountInformation';
 import AddressInformation from './AddressInformation';
 import PaymentMethod from './PaymentMethod';

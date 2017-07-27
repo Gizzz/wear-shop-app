@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import IconButton from 'material-ui/IconButton';
 import SvgIcon from 'material-ui/SvgIcon';
 
-import { colors } from './common-styles';
+import { colors } from '../common-styles';
 
 const CartIcon = (props) => (
   <SvgIcon {...props}>

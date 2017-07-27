@@ -4,7 +4,7 @@ import { Link, withRouter } from 'react-router-dom';
 import FlatButton from 'material-ui/FlatButton';
 import { Tabs, Tab } from 'material-ui/Tabs';
 
-import { colors } from './common-styles';
+import { colors } from '../common-styles';
 import HeaderCart from './HeaderCart';
 
 class Header extends React.Component {
