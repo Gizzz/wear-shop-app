@@ -14,6 +14,7 @@ module.exports = {
       '/api': 'http://localhost:3000',
     },
     historyApiFallback: true,
+    hot: true,
   },
   entry: './src/frontend/js/index.js',
   output: {
@@ -69,6 +70,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './src/frontend/index.html',
     }),
+    new webpack.HotModuleReplacementPlugin(),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('development'),
     }),
