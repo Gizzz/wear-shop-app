@@ -7,6 +7,14 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   context: __dirname,
   devtool: 'source-map',
+  devServer: {
+    contentBase: false,
+    port: 9000,
+    proxy: {
+      '/api': 'http://localhost:3000',
+    },
+    historyApiFallback: true,
+  },
   entry: './src/frontend/js/index.js',
   output: {
     path: path.join(__dirname, '/dist'),
