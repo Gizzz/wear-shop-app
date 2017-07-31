@@ -1,3 +1,8 @@
+/**
+ * To spot diffs between dev and prod configs - some diff tool meant to be used.
+ * vs code: explorer - right click on file - select for compare
+ */
+
 const path = require('path');
 const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
@@ -49,13 +54,13 @@ module.exports = {
       {
         test: /\.woff$/,
         use: [
-          'file-loader'
+          { loader: 'file-loader', options: { name: 'fonts/[name].[ext]' } },
         ]
       },
       {
         test: /\.(jpg|png|svg|gif)$/,
         use: [
-          'file-loader'
+          { loader: 'file-loader', options: { name: 'img/[name].[ext]' } },
         ]
       },
     ]
