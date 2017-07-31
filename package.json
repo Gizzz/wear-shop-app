@@ -6,8 +6,8 @@
   "main": "app.js",
   "scripts": {
     "start": "node src/backend/app.js",
-    "dev": "nodemon src/backend/app.js",
-    "wds": "webpack-dev-server --config webpack.dev.js --open",
+    "server:dev": "nodemon src/backend/app.js",
+    "server:wds": "webpack-dev-server --config webpack.dev.js --progress",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint ./",
     "lint-fix": "eslint ./ --fix",
