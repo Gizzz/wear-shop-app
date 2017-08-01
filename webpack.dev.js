@@ -30,8 +30,8 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/, 
-        exclude: /node_modules/, 
+        test: /\.js$/,
+        exclude: /node_modules/,
         loader: 'babel-loader',
         options: {
           'presets': [
@@ -45,9 +45,10 @@ module.exports = {
       },
       {
         test: /\.less$/,
+        exclude: /node_modules/,
         use: [
-          { loader: 'style-loader' }, 
-          { loader: 'css-loader' }, 
+          { loader: 'style-loader' },
+          { loader: 'css-loader' },
           { loader: 'less-loader' },
         ]
       },
