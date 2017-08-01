@@ -53,21 +53,13 @@ module.exports = {
       },
       {
         test: /\.woff$/,
-        use: [
-          { 
-            loader: 'file-loader', 
-            options: { name: 'fonts/[name].[ext]' },
-          },
-        ]
+        loader: 'file-loader',
+        options: { name: 'fonts/[name].[ext]' },
       },
       {
         test: /\.(jpg|png|svg|gif)$/,
-        use: [
-          { 
-            loader: 'file-loader', 
-            options: { name: 'img/[name].[ext]' } 
-          },
-        ]
+        loader: 'file-loader',
+        options: { name: 'img/[name].[ext]' },
       },
     ]
   },
