@@ -3,6 +3,14 @@
   "version": "1.0.0",
   "description": "Wear shop app inspired by polymer demo project",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Gizzz/wear-shop-app.git"
+  },
+  "engines": {
+    "node": "8.2.1",
+    "npm": "5.3.0"
+  },
   "main": "app.js",
   "scripts": {
     "start": "node src/backend/app.js",
@@ -53,14 +61,5 @@
     "style-loader": "^0.18.2",
     "webpack": "^3.1.0",
     "webpack-dev-server": "^2.6.1"
-  },
-  "engines": {
-    "node": "8.2.1",
-    "npm": "5.3.0"
-  },
-  "author": "Bulat Husainov",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/Gizzz/wear-shop-app.git"
   }
 }
