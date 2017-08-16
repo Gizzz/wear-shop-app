@@ -3,6 +3,7 @@
 const { 
   Builder, 
   By, 
+  Key,
   promise,
 } = require('selenium-webdriver')
 
@@ -29,7 +30,7 @@ const selectors = {
 
 describe('app', () => {
   let driver
-  
+
   beforeEach(async function() {
     driver = await new Builder().forBrowser('chrome').build()
     await driver.manage().window().setSize(1500, 900)
@@ -75,4 +76,31 @@ describe('app', () => {
       .findElements(By.css('.app .content.cart .items li'))
       .then((elements) => expect(elements.length).toBe(1))
   })
+
+  test('remove item from cart', async () => {
+    await addItemToCart(driver)
+    
+    // click delete icon on cart item
+    await driver
+      .navigate().to(baseUrl + '/cart')
+      .then(() => driver.findElement(By.css('.app .content.cart .items li')))
+      .then((cartItem_element) => cartItem_element.findElement(By.css('.delete button')).click())
+      
+    // cart should be empty
+    await driver
+      .findElement(By.css('.app .content.cart .empty-cart'))
+      .isDisplayed()
+      .then((result) => expect(result).toBe(true))
+  })
 })
+
+// helpers
+
+async function addItemToCart(driver) {
+  await driver
+    .navigate().to(baseUrl + '/detail/mens_outerwear/Anvil+L+S+Crew+Neck+-+Grey')
+    .then(() => driver.findElement(By.css(selectors.detailPage.addToCartBtn)).click())
+    .then(() => driver.findElement(By.css('body')).sendKeys(Key.ESCAPE))
+
+  await driver.navigate().to(baseUrl)
+}
