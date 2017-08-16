@@ -3,7 +3,8 @@ module.exports = {
     "browser": true,
     "commonjs": true,
     "es6": true,
-    "node": true
+    "node": true,
+    "jest": true
   },
   "extends": ["eslint:recommended", "plugin:react/recommended"],
   "parser": "babel-eslint",
@@ -24,7 +25,7 @@ module.exports = {
     ],
     "indent": [
       "error",
-      2,
+      2
     ],
     "linebreak-style": [
       "error",

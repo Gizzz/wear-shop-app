@@ -20,6 +20,7 @@
     "server:dev": "nodemon src/backend/app.js",
     "server:wds": "webpack-dev-server --config webpack.dev.js --progress",
     "test": "echo \"Error: no test specified\" && exit 1",
+    "test:e2e": "jest e2e",
     "lint": "eslint ./",
     "lint-fix": "eslint ./ --fix",
     "build:dev": "webpack --env=dev --progress",
