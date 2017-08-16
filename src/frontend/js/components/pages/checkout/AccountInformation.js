@@ -1,8 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import TextField from 'material-ui/TextField';
+import React from 'react'
+import PropTypes from 'prop-types'
+import TextField from 'material-ui/TextField'
 
-import { textFieldDefaultProps } from '../../../common-styles';
+import { textFieldDefaultProps } from '../../../common-styles'
 
 export default class AccountInformation extends React.Component {
  static propTypes = {
@@ -13,29 +13,29 @@ export default class AccountInformation extends React.Component {
  }
 
  handleEmailChange = (e, newValue) => {
-   this.props.onTextFieldChange(newValue, 'accountInformation', 'email');
+   this.props.onTextFieldChange(newValue, 'accountInformation', 'email')
  }
 
  handleEmailFocus = () => {
-   this.props.onTextFieldFocus('accountInformation', 'email');
+   this.props.onTextFieldFocus('accountInformation', 'email')
  }
 
  handleEmailBlur = (e) => {
-   const newValue = e.target.value;
-   this.props.onTextFieldBlur(newValue, 'accountInformation', 'email');
+   const newValue = e.target.value
+   this.props.onTextFieldBlur(newValue, 'accountInformation', 'email')
  }
 
  handlePhoneNumberChange = (e, newValue) => {
-   this.props.onTextFieldChange(newValue, 'accountInformation', 'phoneNumber');
+   this.props.onTextFieldChange(newValue, 'accountInformation', 'phoneNumber')
  }
 
  handlePhoneNumberFocus = () => {
-   this.props.onTextFieldFocus('accountInformation', 'phoneNumber');
+   this.props.onTextFieldFocus('accountInformation', 'phoneNumber')
  }
 
  handlePhoneNumberBlur = (e) => {
-   const newValue = e.target.value;
-   this.props.onTextFieldBlur(newValue, 'accountInformation', 'phoneNumber');
+   const newValue = e.target.value
+   this.props.onTextFieldBlur(newValue, 'accountInformation', 'phoneNumber')
  }
 
  render() {
@@ -62,6 +62,6 @@ export default class AccountInformation extends React.Component {
           onBlur={this.handlePhoneNumberBlur}
         />
       </div>
-    );
+    )
   }
 }

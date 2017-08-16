@@ -1,8 +1,8 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import RaisedButton from 'material-ui/RaisedButton';
+import React from 'react'
+import { Link } from 'react-router-dom'
+import RaisedButton from 'material-ui/RaisedButton'
 
-import { raisedButtonDefaultProps } from '../../common-styles';
+import { raisedButtonDefaultProps } from '../../common-styles'
 
 const CheckoutSuccess = () => {
   return (
@@ -17,7 +17,7 @@ const CheckoutSuccess = () => {
         />
       </Link>
     </div>
-  );
-};
+  )
+}
 
-export default CheckoutSuccess;
+export default CheckoutSuccess

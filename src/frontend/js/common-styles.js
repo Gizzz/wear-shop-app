@@ -1,6 +1,6 @@
 const colors = {
   fontPrimary: '#202020',
-};
+}
 
 const styles = {
   raisedButton: {
@@ -34,24 +34,24 @@ const styles = {
       borderColor: colors.fontPrimary,
     },
   },
-};
+}
 
 export const raisedButtonDefaultProps = {
   buttonStyle: styles.raisedButton.buttonStyle,
   labelStyle: styles.raisedButton.labelStyle,
-};
+}
 
 export const selectFieldDefaultProps = {
   fullWidth: true,
   floatingLabelStyle: styles.selectField.floatingLabelStyle,
   selectedMenuItemStyle: styles.selectField.selectedMenuItemStyle,
   underlineFocusStyle: styles.selectField.underlineFocusStyle,
-};
+}
 
 export const textFieldDefaultProps = {
   fullWidth: true,
   floatingLabelFocusStyle: styles.textField.floatingLabelFocusStyle,
   underlineFocusStyle: styles.textField.underlineFocusStyle,
-};
+}
 
-export { colors };
+export { colors }

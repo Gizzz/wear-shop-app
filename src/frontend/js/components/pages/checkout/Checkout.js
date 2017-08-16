@@ -1,13 +1,13 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Checkbox from 'material-ui/Checkbox';
-import RaisedButton from 'material-ui/RaisedButton';
+import React from 'react'
+import PropTypes from 'prop-types'
+import Checkbox from 'material-ui/Checkbox'
+import RaisedButton from 'material-ui/RaisedButton'
 
-import { raisedButtonDefaultProps } from '../../../common-styles';
-import AccountInformation from './AccountInformation';
-import AddressInformation from './AddressInformation';
-import PaymentMethod from './PaymentMethod';
-import OrderSummary from './OrderSummary';
+import { raisedButtonDefaultProps } from '../../../common-styles'
+import AccountInformation from './AccountInformation'
+import AddressInformation from './AddressInformation'
+import PaymentMethod from './PaymentMethod'
+import OrderSummary from './OrderSummary'
 
 const validationRegexes = {
   email: /.+@.+\..+/,
@@ -19,7 +19,7 @@ const validationRegexes = {
   cardholderName: /.{3,}/,
   cardNumber: /[\d\s]{15,}/,
   cvv: /\d{3,4}/,
-};
+}
 
 class Checkout extends React.Component {
   static propTypes = {
@@ -32,7 +32,7 @@ class Checkout extends React.Component {
   }
 
   constructor(props) {
-    super(props);
+    super(props)
 
     this.state = {
       showBillingAddressArea: false,
@@ -74,17 +74,17 @@ class Checkout extends React.Component {
         isCardNumberValid: true,
         isCvvValid: true,
       },
-    };
+    }
   }
 
   handle_billingAddressCheckbox_check = (e) => {
-    const isChecked = e.target.checked;
+    const isChecked = e.target.checked
 
     this.setState(() => {
       return {
         showBillingAddressArea: isChecked
-      };
-    });
+      }
+    })
   }
 
   handleTextFieldChange = (newValue, stateKey, fieldName) => {
@@ -94,12 +94,12 @@ class Checkout extends React.Component {
           ...prevState[stateKey],
           [fieldName]: newValue,
         }
-      };
-    });
+      }
+    })
   }
 
   handleTextFieldFocus = (stateKey, fieldName) => {
-    const fieldNameInPascalCase = fieldName[0].toUpperCase() + fieldName.slice(1);
+    const fieldNameInPascalCase = fieldName[0].toUpperCase() + fieldName.slice(1)
 
     this.setState((prevState) => {
       return {
@@ -107,15 +107,15 @@ class Checkout extends React.Component {
           ...prevState[stateKey],
           [`is${fieldNameInPascalCase}Valid`]: true,
         }
-      };
-    });
+      }
+    })
   }
 
   handleTextFieldBlur = (newValue, stateKey, fieldName) => {
-    if (newValue.trim() === '') return;
+    if (newValue.trim() === '') return
 
-    const isFieldValid = validationRegexes[fieldName].test(newValue);
-    const fieldNameInPascalCase = fieldName[0].toUpperCase() + fieldName.slice(1);
+    const isFieldValid = validationRegexes[fieldName].test(newValue)
+    const fieldNameInPascalCase = fieldName[0].toUpperCase() + fieldName.slice(1)
 
     this.setState((prevState) => {
       return {
@@ -123,8 +123,8 @@ class Checkout extends React.Component {
           ...prevState[stateKey],
           [`is${fieldNameInPascalCase}Valid`]: isFieldValid,
         }
-      };
-    });
+      }
+    })
   }
 
   handleSelectFieldChange = (newValue, stateKey, fieldName) => {
@@ -134,23 +134,23 @@ class Checkout extends React.Component {
           ...prevState[stateKey],
           [fieldName]: newValue,
         }
-      };
-    });
+      }
+    })
   }
 
   handle_placeOrderBtn_click = () => {
-    const isFormValid = this.checkFormValidity();
+    const isFormValid = this.checkFormValidity()
 
     if (isFormValid) {
-      this.props.onPlaceOrder();
-      this.context.router.history.push('/checkout/success');
+      this.props.onPlaceOrder()
+      this.context.router.history.push('/checkout/success')
     } else {
-      this.setValidationErrors();
+      this.setValidationErrors()
     }
   }
 
   checkFormValidity = () => {
-    let isFormValid = true;
+    let isFormValid = true
 
     const stateValidationMap = {
       accountInformation: [
@@ -174,24 +174,24 @@ class Checkout extends React.Component {
         'cardNumber',
         'cvv',
       ]
-    };
+    }
 
     Object.keys(stateValidationMap).forEach((rootLevelKey) => {
-      const subKeysToValidate = stateValidationMap[rootLevelKey];
+      const subKeysToValidate = stateValidationMap[rootLevelKey]
       subKeysToValidate.forEach((subKey) => {
-        const skipFieldValidation = rootLevelKey === 'billingAddress' && !this.state.showBillingAddressArea;
-        if (skipFieldValidation) return;
+        const skipFieldValidation = rootLevelKey === 'billingAddress' && !this.state.showBillingAddressArea
+        if (skipFieldValidation) return
 
-        const currentValue = this.state[rootLevelKey][subKey];
-        const isFieldValid = validationRegexes[subKey].test(currentValue);
+        const currentValue = this.state[rootLevelKey][subKey]
+        const isFieldValid = validationRegexes[subKey].test(currentValue)
 
         if (!isFieldValid) {
-          isFormValid = false;
+          isFormValid = false
         }
-      });
-    });
+      })
+    })
 
-    return isFormValid;
+    return isFormValid
   }
 
   setValidationErrors = () => {
@@ -217,34 +217,34 @@ class Checkout extends React.Component {
         'cardNumber',
         'cvv',
       ]
-    };
+    }
 
     const newState = {
       accountInformation: {},
       shippingAddress: {},
       billingAddress: {},
       paymentMethod: {},
-    };
+    }
 
     Object.keys(stateValidationMap).forEach((rootLevelKey) => {
-      const subKeysToValidate = stateValidationMap[rootLevelKey];
+      const subKeysToValidate = stateValidationMap[rootLevelKey]
       subKeysToValidate.forEach((subKey) => {
-        const currentValue = this.state[rootLevelKey][subKey];
-        const keyInPascalCase = subKey[0].toUpperCase() + subKey.slice(1);
-        const validationKey = `is${keyInPascalCase}Valid`;
+        const currentValue = this.state[rootLevelKey][subKey]
+        const keyInPascalCase = subKey[0].toUpperCase() + subKey.slice(1)
+        const validationKey = `is${keyInPascalCase}Valid`
 
-        newState[rootLevelKey][subKey] = currentValue;
-        newState[rootLevelKey][validationKey] = validationRegexes[subKey].test(currentValue);
-      });
-    });
+        newState[rootLevelKey][subKey] = currentValue
+        newState[rootLevelKey][validationKey] = validationRegexes[subKey].test(currentValue)
+      })
+    })
 
     // add select field values to preserve them in state
-    newState.shippingAddress['country'] = this.state.shippingAddress['country'];
-    newState.billingAddress['country'] = this.state.billingAddress['country'];
-    newState.paymentMethod['expiryMonth'] = this.state.paymentMethod['expiryMonth'];
-    newState.paymentMethod['expiryYear'] = this.state.paymentMethod['expiryYear'];
+    newState.shippingAddress['country'] = this.state.shippingAddress['country']
+    newState.billingAddress['country'] = this.state.billingAddress['country']
+    newState.paymentMethod['expiryMonth'] = this.state.paymentMethod['expiryMonth']
+    newState.paymentMethod['expiryYear'] = this.state.paymentMethod['expiryYear']
 
-    this.setState(newState);
+    this.setState(newState)
   }
 
   render() {
@@ -311,8 +311,8 @@ class Checkout extends React.Component {
           </section>
         </div>
       </div>
-    );
+    )
   }
 }
 
-export default Checkout;
+export default Checkout

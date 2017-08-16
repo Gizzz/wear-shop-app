@@ -1,25 +1,25 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import React from 'react'
+import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
 
-import Heading from './Heading';
+import Heading from './Heading'
 
 class List extends React.Component {
   constructor(props) {
-    super(props);
-    this.state = {};
+    super(props)
+    this.state = {}
   }
 
   componentDidMount() {
-    const category = this.props.match.params.category;
-    this.loadData(category);
+    const category = this.props.match.params.category
+    this.loadData(category)
   }
 
   componentWillReceiveProps(nextProps) {
-    const isLocationChanged = nextProps.location !== this.props.location;
+    const isLocationChanged = nextProps.location !== this.props.location
     if (isLocationChanged) {
-      const category = nextProps.match.params.category;
-      this.loadData(category);
+      const category = nextProps.match.params.category
+      this.loadData(category)
     }
   }
 
@@ -27,16 +27,16 @@ class List extends React.Component {
     fetch(`/api/shop_items/category/${category}`)
       .then(response => response.json())
       .then((json) => {
-        this.setState({ shopItems: json });
+        this.setState({ shopItems: json })
       })
-      .catch(e => console.error(e));
+      .catch(e => console.error(e))
   }
 
   render() {
-    const category = this.props.match.params.category;
-    let shopItems = this.state.shopItems;
+    const category = this.props.match.params.category
+    let shopItems = this.state.shopItems
 
-    const isItemsLoaded = shopItems != null;
+    const isItemsLoaded = shopItems != null
     if (isItemsLoaded) {
       shopItems = shopItems.map((item) => (
         <li key={item.name}>
@@ -46,10 +46,10 @@ class List extends React.Component {
             <span className="price">${ item.price.toFixed(2) }</span>
           </Link>
         </li>
-      ));
+      ))
     }
 
-    const itemsCount = isItemsLoaded ? shopItems.length : null;
+    const itemsCount = isItemsLoaded ? shopItems.length : null
 
     return (
       <div className="content list">
@@ -59,13 +59,13 @@ class List extends React.Component {
           { shopItems }
         </ul>
       </div>
-    );
+    )
   }
 }
 
 List.propTypes = {
   match: PropTypes.object,
   location: PropTypes.object,
-};
+}
 
-export default List;
+export default List

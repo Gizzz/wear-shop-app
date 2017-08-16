@@ -1,8 +1,8 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import RaisedButton from 'material-ui/RaisedButton';
+import React from 'react'
+import { Link } from 'react-router-dom'
+import RaisedButton from 'material-ui/RaisedButton'
 
-import { raisedButtonDefaultProps } from '../../common-styles';
+import { raisedButtonDefaultProps } from '../../common-styles'
 
 const Home = () => (
   <div className="content index">
@@ -37,6 +37,6 @@ const Home = () => (
       </div>
     </div>
   </div>
-);
+)
 
-export default Home;
+export default Home

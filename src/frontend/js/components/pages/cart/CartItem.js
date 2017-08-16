@@ -1,18 +1,18 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
-import SelectField from 'material-ui/SelectField';
-import MenuItem from 'material-ui/MenuItem';
-import IconButton from 'material-ui/IconButton';
-import SvgIcon from 'material-ui/SvgIcon';
+import React from 'react'
+import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
+import SelectField from 'material-ui/SelectField'
+import MenuItem from 'material-ui/MenuItem'
+import IconButton from 'material-ui/IconButton'
+import SvgIcon from 'material-ui/SvgIcon'
 
-import { selectFieldDefaultProps } from '../../../common-styles';
+import { selectFieldDefaultProps } from '../../../common-styles'
 
 const DeleteIcon = (props) => (
   <SvgIcon {...props}>
     <path fill="#757575" d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path>
   </SvgIcon>
-);
+)
 
 export default class CartItem extends React.Component {
  static propTypes = {
@@ -22,22 +22,22 @@ export default class CartItem extends React.Component {
  }
 
  constructor(props) {
-    super(props);
+    super(props)
   }
 
  handleQuantityChange = (e, i, newValue) => {
-   const itemName = this.props.item.itemData.name;
-   const size = this.props.item.size;
-   const quantity = parseInt(newValue);
+   const itemName = this.props.item.itemData.name
+   const size = this.props.item.size
+   const quantity = parseInt(newValue)
 
-   this.props.onQuantityChange(itemName, size, quantity);
+   this.props.onQuantityChange(itemName, size, quantity)
  }
 
  handleDeleteBtnClick = () => {
-   const itemName = this.props.item.itemData.name;
-   const size = this.props.item.size;
+   const itemName = this.props.item.itemData.name
+   const size = this.props.item.size
 		
-   this.props.onRemove(itemName, size);
+   this.props.onRemove(itemName, size)
  }
 
  render() {
@@ -86,6 +86,6 @@ export default class CartItem extends React.Component {
           </div>
         </div>
       </li>
-    );
+    )
   }
 }

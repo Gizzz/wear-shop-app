@@ -1,11 +1,11 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
+import PropTypes from 'prop-types'
 
-import TextField from 'material-ui/TextField';
-import SelectField from 'material-ui/SelectField';
-import MenuItem from 'material-ui/MenuItem';
+import TextField from 'material-ui/TextField'
+import SelectField from 'material-ui/SelectField'
+import MenuItem from 'material-ui/MenuItem'
 
-import { selectFieldDefaultProps, textFieldDefaultProps } from '../../../common-styles';
+import { selectFieldDefaultProps, textFieldDefaultProps } from '../../../common-styles'
 
 const AddressInformation = ({ 
   addressData, 
@@ -16,64 +16,64 @@ const AddressInformation = ({
   onSelectFieldChange 
 }) => {
   const handleAddressChange = (e, newValue) => {
-    onTextFieldChange(newValue, stateKey, 'address');
-  };
+    onTextFieldChange(newValue, stateKey, 'address')
+  }
 
   const handleAddressFocus = () => {
-    onTextFieldFocus(stateKey, 'address');
-  };
+    onTextFieldFocus(stateKey, 'address')
+  }
 
   const handleAddressBlur = (e) => {
-    const newValue = e.target.value;
-    onTextFieldBlur(newValue, stateKey, 'address');
-  };
+    const newValue = e.target.value
+    onTextFieldBlur(newValue, stateKey, 'address')
+  }
 
 
   const handleCityChange = (e, newValue) => {
-    onTextFieldChange(newValue, stateKey, 'city');
-  };
+    onTextFieldChange(newValue, stateKey, 'city')
+  }
 
   const handleCityFocus = () => {
-    onTextFieldFocus(stateKey, 'city');
-  };
+    onTextFieldFocus(stateKey, 'city')
+  }
 
   const handleCityBlur = (e) => {
-    const newValue = e.target.value;
-    onTextFieldBlur(newValue, stateKey, 'city');
-  };
+    const newValue = e.target.value
+    onTextFieldBlur(newValue, stateKey, 'city')
+  }
 
 
   const handleStateChange = (e, newValue) => {
-    onTextFieldChange(newValue, stateKey, 'state');
-  };
+    onTextFieldChange(newValue, stateKey, 'state')
+  }
 
   const handleStateFocus = () => {
-    onTextFieldFocus(stateKey, 'state');
-  };
+    onTextFieldFocus(stateKey, 'state')
+  }
 
   const handleStateBlur = (e) => {
-    const newValue = e.target.value;
-    onTextFieldBlur(newValue, stateKey, 'state');
-  };
+    const newValue = e.target.value
+    onTextFieldBlur(newValue, stateKey, 'state')
+  }
 
 
   const handleZipCodeChange = (e, newValue) => {
-    onTextFieldChange(newValue, stateKey, 'zipCode');
-  };
+    onTextFieldChange(newValue, stateKey, 'zipCode')
+  }
 
   const handleZipCodeFocus = () => {
-    onTextFieldFocus(stateKey, 'zipCode');
-  };
+    onTextFieldFocus(stateKey, 'zipCode')
+  }
 
   const handleZipCodeBlur = (e) => {
-    const newValue = e.target.value;
-    onTextFieldBlur(newValue, stateKey, 'zipCode');
-  };
+    const newValue = e.target.value
+    onTextFieldBlur(newValue, stateKey, 'zipCode')
+  }
 
 
   const handleCountryChange = (e, i, newValue) => {
-    onSelectFieldChange(newValue, stateKey, 'country');
-  };
+    onSelectFieldChange(newValue, stateKey, 'country')
+  }
 
   return (
     <div>
@@ -129,8 +129,8 @@ const AddressInformation = ({
         <MenuItem value="Canada" primaryText="Canada" />
       </SelectField>
     </div>
-  );
-};
+  )
+}
 
 AddressInformation.propTypes = {
   addressData: PropTypes.object.isRequired,
@@ -139,6 +139,6 @@ AddressInformation.propTypes = {
   onTextFieldFocus: PropTypes.func.isRequired,
   onTextFieldBlur: PropTypes.func.isRequired,
   onSelectFieldChange: PropTypes.func.isRequired,
-};
+}
 
-export default AddressInformation;
+export default AddressInformation

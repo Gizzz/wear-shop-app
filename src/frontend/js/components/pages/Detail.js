@@ -1,13 +1,13 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
+import PropTypes from 'prop-types'
 
-import Dialog from 'material-ui/Dialog';
-import FlatButton from 'material-ui/FlatButton';
-import RaisedButton from 'material-ui/RaisedButton';
-import SelectField from 'material-ui/SelectField';
-import MenuItem from 'material-ui/MenuItem';
+import Dialog from 'material-ui/Dialog'
+import FlatButton from 'material-ui/FlatButton'
+import RaisedButton from 'material-ui/RaisedButton'
+import SelectField from 'material-ui/SelectField'
+import MenuItem from 'material-ui/MenuItem'
 
-import { raisedButtonDefaultProps, selectFieldDefaultProps } from '../../common-styles';
+import { raisedButtonDefaultProps, selectFieldDefaultProps } from '../../common-styles'
 
 export default class Detail extends React.Component {
  static propTypes = {
@@ -27,16 +27,16 @@ export default class Detail extends React.Component {
  }
 
  componentDidMount() {
-    const category = this.props.match.params.category;
-    this.loadData(category);
+    const category = this.props.match.params.category
+    this.loadData(category)
   }
 
  handleSizeChange = (e, i, newValue) => {
-   this.setState(() => ({ size: newValue }));
+   this.setState(() => ({ size: newValue }))
  }
 
  handleQuantityChange = (e, i, newValue) => {
-   this.setState(() => ({ quantity: newValue }));
+   this.setState(() => ({ quantity: newValue }))
  }
 
  handleAddBtnClick = () => {
@@ -44,53 +44,53 @@ export default class Detail extends React.Component {
      this.state.itemData, 
      this.state.size,
      this.state.quantity
-   );
+   )
 
-   this.openDialog();
+   this.openDialog()
  }
 
  openDialog = () => {
-   this.setState({isDialogOpen: true});
+   this.setState({isDialogOpen: true})
  }
 
  closeDialog = () => {
-   this.setState({isDialogOpen: false});
+   this.setState({isDialogOpen: false})
  }
 
  handle_viewCartBtn_click = () => {
-   this.context.router.history.push('/cart');
+   this.context.router.history.push('/cart')
  }
 
  handle_checkoutBtn_click = () => {
-   this.context.router.history.push('/checkout');
+   this.context.router.history.push('/checkout')
  }
 
  loadData(category) {
     fetch(`/api/shop_items/category/${category}`)
       .then(response => response.json())
       .then((json) => {
-        const itemName = this.props.match.params.itemName;
-        const itemData = json.find((item) => item.name === itemName);
-        this.setState({ itemData });
+        const itemName = this.props.match.params.itemName
+        const itemData = json.find((item) => item.name === itemName)
+        this.setState({ itemData })
       })
-      .catch(e => console.error(e));
+      .catch(e => console.error(e))
   }
 
  createDescriptionMarkup() {
-    let descriptionText = 'Loading data...';
+    let descriptionText = 'Loading data...'
 
     if (this.state.itemData) {
       // hack: use textarea to decode html entities
-      const textarea = document.createElement('textarea');
-      textarea.innerHTML = this.state.itemData.description;
-      descriptionText = textarea.value;
+      const textarea = document.createElement('textarea')
+      textarea.innerHTML = this.state.itemData.description
+      descriptionText = textarea.value
     }
 
-    return { __html: descriptionText };
+    return { __html: descriptionText }
   }
 
  render() {
-    const loadingText = 'Loading data...';
+    const loadingText = 'Loading data...'
 
     const actions = [
       <FlatButton
@@ -101,7 +101,7 @@ export default class Detail extends React.Component {
         label="Checkout"
         onTouchTap={this.handle_checkoutBtn_click}
       />,
-    ];
+    ]
 
     return (
       <div className="content detail">
@@ -168,6 +168,6 @@ export default class Detail extends React.Component {
           onRequestClose={this.closeDialog}
         />
       </div>
-    );
+    )
   }
 }

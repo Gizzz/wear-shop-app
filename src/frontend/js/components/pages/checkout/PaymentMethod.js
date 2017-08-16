@@ -1,11 +1,11 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
+import PropTypes from 'prop-types'
 
-import TextField from 'material-ui/TextField';
-import SelectField from 'material-ui/SelectField';
-import MenuItem from 'material-ui/MenuItem';
+import TextField from 'material-ui/TextField'
+import SelectField from 'material-ui/SelectField'
+import MenuItem from 'material-ui/MenuItem'
 
-import { selectFieldDefaultProps, textFieldDefaultProps } from '../../../common-styles';
+import { selectFieldDefaultProps, textFieldDefaultProps } from '../../../common-styles'
 
 export default class PaymentMethod extends React.Component {
  static propTypes = {
@@ -17,54 +17,54 @@ export default class PaymentMethod extends React.Component {
  }
 
  handleCardholderNameChange = (e, newValue) => {
-   const formattedInput = newValue.toUpperCase();
-   this.props.onTextFieldChange(formattedInput, 'paymentMethod', 'cardholderName');
+   const formattedInput = newValue.toUpperCase()
+   this.props.onTextFieldChange(formattedInput, 'paymentMethod', 'cardholderName')
  }
 
  handleCardholderNameFocus = () => {
-   this.props.onTextFieldFocus('paymentMethod', 'cardholderName');
+   this.props.onTextFieldFocus('paymentMethod', 'cardholderName')
  }
 
  handleCardholderNameBlur = (e) => {
-   const newValue = e.target.value;
-   this.props.onTextFieldBlur(newValue, 'paymentMethod', 'cardholderName');
+   const newValue = e.target.value
+   this.props.onTextFieldBlur(newValue, 'paymentMethod', 'cardholderName')
  }
 
 
  handleCardNumberChange = (e, newValue) => {
-   this.props.onTextFieldChange(newValue, 'paymentMethod', 'cardNumber');
+   this.props.onTextFieldChange(newValue, 'paymentMethod', 'cardNumber')
  }
 
  handleCardNumberFocus = () => {
-   this.props.onTextFieldFocus('paymentMethod', 'cardNumber');
+   this.props.onTextFieldFocus('paymentMethod', 'cardNumber')
  }
 
  handleCardNumberBlur = (e) => {
-   const newValue = e.target.value;
-   this.props.onTextFieldBlur(newValue, 'paymentMethod', 'cardNumber');
+   const newValue = e.target.value
+   this.props.onTextFieldBlur(newValue, 'paymentMethod', 'cardNumber')
  }
 
 
  handleExpiryMonthChange = (e, i, newValue) => {
-   this.props.onSelectFieldChange(newValue, 'paymentMethod', 'expiryMonth');
+   this.props.onSelectFieldChange(newValue, 'paymentMethod', 'expiryMonth')
  };
 
  handleExpiryYearChange = (e, i, newValue) => {
-   this.props.onSelectFieldChange(newValue, 'paymentMethod', 'expiryYear');
+   this.props.onSelectFieldChange(newValue, 'paymentMethod', 'expiryYear')
  };
 
 
  handleCvvChange = (e, newValue) => {
-   this.props.onTextFieldChange(newValue, 'paymentMethod', 'cvv');
+   this.props.onTextFieldChange(newValue, 'paymentMethod', 'cvv')
  }
 
  handleCvvFocus = () => {
-   this.props.onTextFieldFocus('paymentMethod', 'cvv');
+   this.props.onTextFieldFocus('paymentMethod', 'cvv')
  }
 
  handleCvvBlur = (e) => {
-   const newValue = e.target.value;
-   this.props.onTextFieldBlur(newValue, 'paymentMethod', 'cvv');
+   const newValue = e.target.value
+   this.props.onTextFieldBlur(newValue, 'paymentMethod', 'cvv')
  }
 
  render() {
@@ -143,6 +143,6 @@ export default class PaymentMethod extends React.Component {
           </div>
         </div>
       </div>
-    );
+    )
   }
 }

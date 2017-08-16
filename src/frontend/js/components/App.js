@@ -1,27 +1,27 @@
-import React from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { CSSTransitionGroup } from 'react-transition-group';
+import React from 'react'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import { CSSTransitionGroup } from 'react-transition-group'
 
-import Header from './Header';
-import Footer from './Footer';
-import Home from './pages/Home';
-import List from './pages/list/List';
-import Detail from './pages/Detail';
-import Cart from './pages/cart/Cart';
-import Checkout from './pages/checkout/Checkout';
-import CheckoutSuccess from './pages/CheckoutSuccess';
-import PageNotFound from './pages/PageNotFound';
+import Header from './Header'
+import Footer from './Footer'
+import Home from './pages/Home'
+import List from './pages/list/List'
+import Detail from './pages/Detail'
+import Cart from './pages/cart/Cart'
+import Checkout from './pages/checkout/Checkout'
+import CheckoutSuccess from './pages/CheckoutSuccess'
+import PageNotFound from './pages/PageNotFound'
 
-import storageHelper from '../utils/storage-helper';
-import '../../styles/bundle.less';
+import storageHelper from '../utils/storage-helper'
+import '../../styles/bundle.less'
 
 export default class App extends React.Component {
   constructor(props) {
-    super(props);
-    this.addCartItem = this.addCartItem.bind(this);
-    this.updateCartItemQuantity = this.updateCartItemQuantity.bind(this);
-    this.removeCartItem = this.removeCartItem.bind(this);
-    this.clearCart = this.clearCart.bind(this);
+    super(props)
+    this.addCartItem = this.addCartItem.bind(this)
+    this.updateCartItemQuantity = this.updateCartItemQuantity.bind(this)
+    this.removeCartItem = this.removeCartItem.bind(this)
+    this.clearCart = this.clearCart.bind(this)
 
     this.state = {
       cartItems: [
@@ -33,40 +33,40 @@ export default class App extends React.Component {
         // 	quantity: 1,
         // },
       ],
-    };
+    }
   }
 
   componentDidMount() {
     // restore app state from storage
-    const restoredState = storageHelper.loadState();
+    const restoredState = storageHelper.loadState()
     if (restoredState) {
-      this.setState(restoredState);
+      this.setState(restoredState)
     }
 
     // save app state to storage on window.beforeunload
     window.addEventListener('beforeunload', () => {
-      storageHelper.saveState(this.state);
-    });
+      storageHelper.saveState(this.state)
+    })
   }
 
   addCartItem(itemData, size, quantity) {
     this.setState((prevState) => {
-      const cartItemToUpdate = prevState.cartItems.find(ci => ci.itemData.name === itemData.name && ci.size === size);
+      const cartItemToUpdate = prevState.cartItems.find(ci => ci.itemData.name === itemData.name && ci.size === size)
 
       if (cartItemToUpdate) {
-        cartItemToUpdate.quantity += quantity;
-        const maxItemQuantity = 10;
-        if (cartItemToUpdate.quantity > maxItemQuantity) cartItemToUpdate.quantity = maxItemQuantity;
+        cartItemToUpdate.quantity += quantity
+        const maxItemQuantity = 10
+        if (cartItemToUpdate.quantity > maxItemQuantity) cartItemToUpdate.quantity = maxItemQuantity
 
         return {
           cartItems: prevState.cartItems.map((ci) => {
             if (ci.itemData.name === itemData.name && ci.size === size) {
-              return cartItemToUpdate;
+              return cartItemToUpdate
             }
 						
-            return ci;
+            return ci
           })
-        };
+        }
       }
 
       return {
@@ -78,8 +78,8 @@ export default class App extends React.Component {
             quantity,
           }
         ]
-      };
-    });
+      }
+    })
   }
 
   updateCartItemQuantity(itemName, size, quantity) {
@@ -87,35 +87,35 @@ export default class App extends React.Component {
       return { 
         cartItems: prevState.cartItems.map((cartItem) => {
           if (cartItem.itemData.name === itemName && cartItem.size === size) {
-            return Object.assign({}, cartItem, { quantity });
+            return Object.assign({}, cartItem, { quantity })
           }
 
-          return cartItem;
+          return cartItem
         }),
-      };
-    });
+      }
+    })
   }
 
   removeCartItem(itemName, size) {
     this.setState((prevState) => {
       const cartItems = prevState.cartItems.filter(cartItem => {
-        if (cartItem.itemData.name !== itemName) return true;
-        if (cartItem.size !== size) return true;
-        return false;
-      });
-      return { cartItems };
-    });
+        if (cartItem.itemData.name !== itemName) return true
+        if (cartItem.size !== size) return true
+        return false
+      })
+      return { cartItems }
+    })
   }
 
   clearCart() {
     this.setState({
       cartItems: [],
-    });
+    })
   }
 
   render() {
     // don't forget to change css
-    const transitionDuration = 400;
+    const transitionDuration = 400
 		
     return (
       <BrowserRouter>
@@ -153,6 +153,6 @@ export default class App extends React.Component {
           <Footer />
         </div>
       </BrowserRouter>
-    );
+    )
   }
 }

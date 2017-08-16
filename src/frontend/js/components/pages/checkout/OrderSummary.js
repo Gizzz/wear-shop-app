@@ -1,5 +1,5 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
+import PropTypes from 'prop-types'
 
 const OrderSummary = ({ cartItems }) => {
   const cartItemsDom = cartItems.map((ci) => {
@@ -8,12 +8,12 @@ const OrderSummary = ({ cartItems }) => {
         <div className="flex">{ ci.itemData.title }</div>
         <div>${ (ci.itemData.price * ci.quantity).toFixed(2) }</div>
       </div>
-    );
-  });
+    )
+  })
 
   const totalPrice = cartItems.reduce((acc, cartItem) => {
-    return acc + cartItem.itemData.price * cartItem.quantity;
-  }, 0);
+    return acc + cartItem.itemData.price * cartItem.quantity
+  }, 0)
 
   return (
     <div className="order-summary">
@@ -24,11 +24,11 @@ const OrderSummary = ({ cartItems }) => {
         <div>${ totalPrice.toFixed(2) }</div>
       </div>
     </div>
-  );
-};
+  )
+}
 
 OrderSummary.propTypes = {
   cartItems: PropTypes.array.isRequired,
-};
+}
 
-export default OrderSummary;
+export default OrderSummary
