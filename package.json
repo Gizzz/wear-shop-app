@@ -58,10 +58,12 @@
     "eslint-plugin-react": "^6.10.3",
     "file-loader": "^0.11.2",
     "html-webpack-plugin": "^2.29.0",
+    "jest": "^20.0.4",
     "less": "^2.7.2",
     "less-loader": "^4.0.5",
     "postcss-loader": "^2.0.6",
     "pre-commit": "^1.2.2",
+    "selenium-webdriver": "^3.5.0",
     "style-loader": "^0.18.2",
     "webpack": "^3.1.0",
     "webpack-dev-server": "^2.6.1"
