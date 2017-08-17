@@ -1,5 +1,3 @@
-/* global jasmine */
-
 const { 
   Builder, 
   By, 
@@ -12,7 +10,7 @@ promise.USE_PROMISE_MANAGER = false
 
 const oneHour = 1000 * 60 * 60 // eslint-disable-line no-unused-vars
 const halfMinute = 30000 // eslint-disable-line no-unused-vars
-jasmine.DEFAULT_TIMEOUT_INTERVAL = halfMinute
+jasmine.DEFAULT_TIMEOUT_INTERVAL = halfMinute // eslint-disable-line no-undef
 
 const baseUrl = 'http://localhost:3000'
 const selectors = {
@@ -91,6 +89,30 @@ describe('app', () => {
       .findElement(By.css('.app .content.cart .empty-cart'))
       .isDisplayed()
       .then((result) => expect(result).toBe(true))
+  })
+
+  test('add two identical items to cart', async () => {
+    await addItemToCart(driver)
+    await addItemToCart(driver)
+
+    await driver.navigate().to(baseUrl + '/cart')
+
+    // cart should contain 1 entry
+    await driver
+      .findElements(By.css('.app .content.cart .items li'))
+      .then((cartItems) => expect(cartItems.length).toBe(1))
+
+    // cart entry's quantity should be 2
+    await driver
+      .findElement(By.css('.app .content.cart .items li .quantity .hiddenValue'))
+      .then(element => element.getText())
+      .then((text) => expect(text).toBe('2'))
+
+    // overall quantity of items in cart-badge should be 2
+    await driver
+      .findElement(By.css('.app header.page .topline .cart .cart-badge'))
+      .then(cartBadge => cartBadge.getText())
+      .then(text => expect(text).toBe('2'))
   })
 })
 
