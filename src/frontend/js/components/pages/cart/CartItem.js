@@ -72,9 +72,7 @@ export default class CartItem extends React.Component {
               <MenuItem value={10} primaryText="10" />
             </SelectField>
             {/* this element is used in e2e tests */}
-            <div className="hiddenValue" style={{ position: 'absolute', color: 'transparent' }}>
-              {this.props.item.quantity}
-            </div>
+            <div className="hidden-value">{ this.props.item.quantity }</div>
           </div>
           <div className="size">
 						Size: <span>{ this.props.item.size }</span>
