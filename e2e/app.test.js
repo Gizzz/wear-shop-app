@@ -3,6 +3,7 @@ const {
   By, 
   Key,
   promise,
+  // until,
 } = require('selenium-webdriver')
 
 // disable promise manager for web-driver
@@ -91,7 +92,7 @@ describe('app', () => {
       .then((result) => expect(result).toBe(true))
   })
 
-  test('add two identical items to cart', async () => {
+  test('add two same items of same size to cart', async () => {
     await addItemToCart(driver)
     await addItemToCart(driver)
 
@@ -104,7 +105,7 @@ describe('app', () => {
 
     // cart entry's quantity should be 2
     await driver
-      .findElement(By.css('.app .content.cart .items li .quantity .hiddenValue'))
+      .findElement(By.css('.app .content.cart .items li .quantity .hidden-value'))
       .then(element => element.getText())
       .then((text) => expect(text).toBe('2'))
 
@@ -114,14 +115,67 @@ describe('app', () => {
       .then(cartBadge => cartBadge.getText())
       .then(text => expect(text).toBe('2'))
   })
+
+  test('add two same items of diffirent size to cart', async () => {
+    await addItemToCart(driver, { quantity: 1, size: 'S' })
+    await addItemToCart(driver, { quantity: 1, size: 'L' })
+
+    await driver.navigate().to(baseUrl + '/cart')
+
+    // cart should contain two entries
+    await driver
+      .findElements(By.css('.app .content.cart .items li'))
+      .then((elements) => expect(elements.length).toBe(2))
+
+    // first entry's size should be S
+    await driver
+      .findElement(By.css('.app .content.cart .items li:nth-child(1) .size .value'))
+      .getText()
+      .then((text) => expect(text).toBe('S'))
+
+    // second entry's size should be L
+    await driver
+      .findElement(By.css('.app .content.cart .items li:nth-child(2) .size .value'))
+      .getText()
+      .then((text) => expect(text).toBe('L'))
+  })
 })
 
 // helpers
 
-async function addItemToCart(driver) {
+async function addItemToCart(driver, options = { quantity: 1, size: 'M' }) {
+  const sizeMap = {
+    'XS': 1,
+    'S': 2,
+    'M': 3,
+    'L': 4,
+    'XL': 5,
+  }
+  
+  await driver.navigate().to(baseUrl + '/detail/mens_outerwear/Men+s+Tech+Shell+Full-Zip')
+  
+  // set size value
   await driver
-    .navigate().to(baseUrl + '/detail/mens_outerwear/Anvil+L+S+Crew+Neck+-+Grey')
-    .then(() => driver.findElement(By.css(selectors.detailPage.addToCartBtn)).click())
+    .findElement(By.css('.app .content.detail .size .ui-control'))
+    .click()
+    .then(() => driver.sleep(100))
+    .then(() => driver.findElement(By.css(`div[role=menu] > div:nth-child(${sizeMap[options.size]}) span[role=menuitem]`)))
+    .then(element => element.click())
+    .then(() => driver.sleep(500))
+
+  // set quantity value
+  await driver
+    .findElement(By.css('.app .content.detail .quantity .ui-control'))
+    .click()
+    .then(() => driver.sleep(100))
+    .then(() => driver.findElement(By.css(`div[role=menu] > div:nth-child(${options.quantity}) span[role=menuitem]`)))
+    .then(element => element.click())
+    .then(() => driver.sleep(500))
+  
+  // add item to cart    
+  await driver
+    .findElement(By.css(selectors.detailPage.addToCartBtn))
+    .click()
     .then(() => driver.findElement(By.css('body')).sendKeys(Key.ESCAPE))
 
   await driver.navigate().to(baseUrl)
