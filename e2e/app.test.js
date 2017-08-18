@@ -6,7 +6,6 @@ const {
   // until,
 } = require('selenium-webdriver')
 
-// disable promise manager for web-driver
 promise.USE_PROMISE_MANAGER = false
 
 const oneHour = 1000 * 60 * 60 // eslint-disable-line no-unused-vars
