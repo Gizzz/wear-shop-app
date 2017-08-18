@@ -92,7 +92,7 @@ describe('app', () => {
       .then((result) => expect(result).toBe(true))
   })
 
-  test.only('add two same items of same size to cart', async () => {
+  test('add two same items of same size to cart', async () => {
     await addItemToCart(driver)
     await addItemToCart(driver)
 
