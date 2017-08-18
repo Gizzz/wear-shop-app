@@ -74,6 +74,12 @@ describe('app', () => {
     await driver
       .findElements(By.css('.app .content.cart .items li'))
       .then((elements) => expect(elements.length).toBe(1))
+
+    // overall quantity of items in cart-badge should be 1
+    await driver
+      .findElement(By.css(selectors.header.cartBadge))
+      .getText()
+      .then(text => expect(text).toBe('1'))
   })
 
   test('remove item from cart', async () => {
@@ -90,6 +96,12 @@ describe('app', () => {
       .findElement(By.css('.app .content.cart .empty-cart'))
       .isDisplayed()
       .then((result) => expect(result).toBe(true))
+
+    // cart-badge should not be visible
+    await driver
+      .findElement(By.css(selectors.header.cartBadge))
+      .getCssValue('display')
+      .then(value => expect(value).toBe('none'))
   })
 
   test('add two same items of same size to cart', async () => {
@@ -126,6 +138,12 @@ describe('app', () => {
     await driver
       .findElements(By.css('.app .content.cart .items li'))
       .then((elements) => expect(elements.length).toBe(2))
+
+    // overall quantity of items in cart-badge should be 2
+    await driver
+      .findElement(By.css(selectors.header.cartBadge))
+      .getText()
+      .then(text => expect(text).toBe('2'))
 
     // first entry's size should be S
     await driver
