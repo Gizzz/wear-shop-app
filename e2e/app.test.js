@@ -16,6 +16,7 @@ const baseUrl = 'http://localhost:3000'
 const selectors = {
   header: {
     mensOutwearLink: 'div#root > div.app:nth-child(1) > header.page:nth-child(1) > div.nav:nth-child(2) > div:nth-child(1) > div:nth-child(1) > button:nth-child(1) > div:nth-child(1) > div:nth-child(1)',
+    cartBadge: '.app header.page .topline .cart .cart-badge',
   },
   listPage: {
     firstItemInList: '.app .content.list .items li:nth-child(1) a img',
@@ -69,7 +70,7 @@ describe('app', () => {
       .then(() => driver.executeScript('return window.location.pathname'))
       .then((path) => expect(path).toBe('/cart'))
 
-    // cart should contain an item
+    // cart should contain one entry
     await driver
       .findElements(By.css('.app .content.cart .items li'))
       .then((elements) => expect(elements.length).toBe(1))
@@ -91,7 +92,7 @@ describe('app', () => {
       .then((result) => expect(result).toBe(true))
   })
 
-  test('add two same items of same size to cart', async () => {
+  test.only('add two same items of same size to cart', async () => {
     await addItemToCart(driver)
     await addItemToCart(driver)
 
@@ -105,13 +106,13 @@ describe('app', () => {
     // cart entry's quantity should be 2
     await driver
       .findElement(By.css('.app .content.cart .items li .quantity .hidden-value'))
-      .then(element => element.getText())
+      .getText()
       .then((text) => expect(text).toBe('2'))
 
     // overall quantity of items in cart-badge should be 2
     await driver
-      .findElement(By.css('.app header.page .topline .cart .cart-badge'))
-      .then(cartBadge => cartBadge.getText())
+      .findElement(By.css(selectors.header.cartBadge))
+      .getText()
       .then(text => expect(text).toBe('2'))
   })
 
