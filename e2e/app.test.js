@@ -104,6 +104,34 @@ describe('app', () => {
       .then(value => expect(value).toBe('none'))
   })
 
+  test('add item with custom size and quantity to cart', async () => {
+    await addItemToCart(driver, { quantity: 5, size: 'XL' })
+    await driver.navigate().to(baseUrl + '/cart')
+
+    // cart-badge counter should be 5
+    await driver
+      .findElement(By.css(selectors.header.cartBadge))
+      .getText()
+      .then(text => expect(text).toBe('5'))
+
+    // cart should contain one entry
+    await driver
+      .findElements(By.css('.app .content.cart .items li'))
+      .then((elements) => expect(elements.length).toBe(1))
+
+    // cart entry's size should be XL
+    await driver
+      .findElement(By.css('.app .content.cart .items li:nth-child(1) .size .value'))
+      .getText()
+      .then((text) => expect(text).toBe('XL'))
+
+    // cart entry's quantity should be 5
+    await driver
+      .findElement(By.css('.app .content.cart .items li .quantity .hidden-value'))
+      .getText()
+      .then((text) => expect(text).toBe('5'))
+  })
+
   test('add two same items of same size to cart', async () => {
     await addItemToCart(driver)
     await addItemToCart(driver)
