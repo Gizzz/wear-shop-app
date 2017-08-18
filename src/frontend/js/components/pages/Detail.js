@@ -123,6 +123,7 @@ export default class Detail extends React.Component {
               <div className="size">
                 <SelectField
                   {...selectFieldDefaultProps}
+                  className="ui-control"
                   floatingLabelText="Size"
                   value={this.state.size}
                   onChange={this.handleSizeChange}
@@ -133,10 +134,13 @@ export default class Detail extends React.Component {
                   <MenuItem value={'L'} primaryText="L" />
                   <MenuItem value={'XL'} primaryText="XL" />
                 </SelectField>
+                {/* this element is used in e2e tests */}
+                <div className="hidden-value">{ this.state.size }</div>
               </div>
               <div className="quantity">
                 <SelectField
                   {...selectFieldDefaultProps}
+                  className="ui-control"
                   floatingLabelText="Quantity"
                   value={this.state.quantity}
                   onChange={this.handleQuantityChange}
@@ -147,6 +151,8 @@ export default class Detail extends React.Component {
                   <MenuItem value={4} primaryText="4" />
                   <MenuItem value={5} primaryText="5" />
                 </SelectField>
+                {/* this element is used in e2e tests */}
+                <div className="hidden-value">{ this.state.quantity }</div>
               </div>
               <div className="description">
                 <h2>Description</h2>

@@ -75,7 +75,7 @@ export default class CartItem extends React.Component {
             <div className="hidden-value">{ this.props.item.quantity }</div>
           </div>
           <div className="size">
-						Size: <span>{ this.props.item.size }</span>
+						Size: <span className="value">{ this.props.item.size }</span>
           </div>
           <div className="price">${ this.props.item.itemData.price.toFixed(2) }</div>
           <div className="delete">
