@@ -185,11 +185,28 @@ describe('app', () => {
       .getText()
       .then((text) => expect(text).toBe('L'))
   })
+
+  test('cart page should change total price when adding item to cart', async () => {
+    const itemName = 'Anvil+L+S+Crew+Neck+-+Grey'
+    const itemPrice = await getItemPrice(driver, itemName)
+
+    await addItemToCart(driver, { name: itemName })
+    await driver.navigate().to(baseUrl + '/cart')
+
+    await driver
+      .findElement(By.css('.app .content.cart .subtotal'))
+      .getText()
+      .then(text => expect(text).toBe(itemPrice))
+  })
 })
 
 // helpers
 
-async function addItemToCart(driver, options = { quantity: 1, size: 'M' }) {
+async function addItemToCart(driver, options = {}) {
+  options.name = options.name || 'Men+s+Tech+Shell+Full-Zip'
+  options.size = options.size || 'M'
+  options.quantity = options.quantity || 1
+
   const sizeMap = {
     'XS': 1,
     'S': 2,
@@ -198,8 +215,8 @@ async function addItemToCart(driver, options = { quantity: 1, size: 'M' }) {
     'XL': 5,
   }
   
-  await driver.navigate().to(baseUrl + '/detail/mens_outerwear/Men+s+Tech+Shell+Full-Zip')
-  
+  await driver.navigate().to(`${baseUrl}/detail/mens_outerwear/${options.name}`)
+
   // set size value
   await driver
     .findElement(By.css('.app .content.detail .size .ui-control'))
@@ -225,4 +242,15 @@ async function addItemToCart(driver, options = { quantity: 1, size: 'M' }) {
     .then(() => driver.findElement(By.css('body')).sendKeys(Key.ESCAPE))
 
   await driver.navigate().to(baseUrl)
+}
+
+async function getItemPrice(driver, itemName) {
+  await driver.navigate().to(`${baseUrl}/detail/mens_outerwear/${itemName}`)
+  
+  const itemPrice = await driver
+    .findElement(By.css('.app .content.detail .price'))
+    .getText()
+
+  await driver.navigate().to(baseUrl)
+  return itemPrice
 }
