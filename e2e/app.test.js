@@ -187,16 +187,51 @@ describe('app', () => {
   })
 
   test('cart page should change total price when adding item to cart', async () => {
-    const itemName = 'Anvil+L+S+Crew+Neck+-+Grey'
-    const itemPrice = await getItemPrice(driver, itemName)
+    await driver.navigate().to(baseUrl + '/cart')
+
+    // cart should be empty
+    await driver
+      .findElement(By.css('.app .content.cart .empty-cart'))
+      .isDisplayed()
+      .then((result) => expect(result).toBe(true))
+
+    const itemName = 'Men+s+Tech+Shell+Full-Zip'
+    const itemPriceText = await getItemPriceText(driver, itemName)
+    const itemPrice = parseFloat(itemPriceText.replace('$', ''))
 
     await addItemToCart(driver, { name: itemName })
     await driver.navigate().to(baseUrl + '/cart')
 
+    // total price should match to price of item
     await driver
       .findElement(By.css('.app .content.cart .subtotal'))
       .getText()
-      .then(text => expect(text).toBe(itemPrice))
+      .then(text => expect(text).toBe(itemPriceText))
+
+    // add one more item 
+    await addItemToCart(driver, { name: itemName })
+    await driver.navigate().to(baseUrl + '/cart')
+
+    // total price should match to price of two added items
+    const expectedPriceText = `$${(itemPrice * 2).toFixed(2)}`
+    await driver
+      .findElement(By.css('.app .content.cart .subtotal'))
+      .getText()
+      .then(text => expect(text).toBe(expectedPriceText))
+
+    const anotherItemName = 'Anvil+L+S+Crew+Neck+-+Grey'
+    const anotherItemPriceText = await getItemPriceText(driver, anotherItemName)
+    const anotherItemPrice = parseFloat(anotherItemPriceText.replace('$', ''))
+
+    await addItemToCart(driver, { name: anotherItemName })
+    await driver.navigate().to(baseUrl + '/cart')
+
+    // total price should match to price of all items with respect to their quantity
+    const anotherExpectedPriceText = `$${(itemPrice * 2 + anotherItemPrice).toFixed(2)}`
+    await driver
+      .findElement(By.css('.app .content.cart .subtotal'))
+      .getText()
+      .then(text => expect(text).toBe(anotherExpectedPriceText))
   })
 })
 
@@ -244,7 +279,8 @@ async function addItemToCart(driver, options = {}) {
   await driver.navigate().to(baseUrl)
 }
 
-async function getItemPrice(driver, itemName) {
+// returns item's price as text prefixed with $: "$44.30"
+async function getItemPriceText(driver, itemName) {
   await driver.navigate().to(`${baseUrl}/detail/mens_outerwear/${itemName}`)
   
   const itemPrice = await driver
