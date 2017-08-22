@@ -4,4 +4,4 @@ dist/
 
 npm-debug.log
 project.todo.txt
-chromedriver.exe
+chromedriver*
