@@ -1,5 +1,6 @@
 @import (inline) "vendor/normalize.css";
 
+// global vars
 @color-font-main: #202020;
 @color-font-secondary: #757575;
 
@@ -108,92 +109,6 @@ body {
 .hidden-value {
 	position: absolute;
 	color: transparent;
-}
-
-header.page {
-	.topline {
-		position: relative;
-		padding-top: 22px;
-		padding-bottom: 10px;
-
-		h1 { 
-			text-align: center; 
-		}
-
-		.cart {
-			position: absolute;
-			right: 12px;
-    	top: 16px;
-
-			.cart-badge {
-				position: absolute;
-				top: 0px;
-				right: 2px;
-				display: flex;
-				flex-direction: column;
-				align-items: center;
-				justify-content: center;
-				border-radius: 50%;
-				width: 20px;
-				height: 20px;
-				background-color: #172C50;
-				color: white;
-				font-size: 12px;
-    		font-weight: 500;
-				font-style: normal;
-				pointer-events: none;
-				cursor: default;
-			}
-		}
-	}
-
-	.nav {
-		width: 1440px; 
-		margin: auto; 
-		padding-top: 14px, 
-	}
-}
-
-footer.page {
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	line-height: 24px;
-	text-align: center;
-
-	a {
-		display: block;
-		color: @color-font-secondary;
-		text-decoration: none;
-
-		&:hover {
-			text-decoration: underline;
-		}
-	}
-
-	.demo-label {
-    width: 120px;
-    padding: 6px;
-    margin: 8px auto 0;
-    background-color: @color-font-main;
-    color: #fff;
-    text-transform: uppercase;
-	}
-}
-
-section.main {
-	padding-bottom: 64px;
-
-	.wrapper {
-		width: 1440px;	
-		margin: 0 auto;
-
-		.content {
-			// make vertical scroll always visible
-			min-height: 100vh;
-		}
-	}
 }
 
 // styles for react-transition-group transitions
