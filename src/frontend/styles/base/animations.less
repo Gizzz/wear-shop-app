@@ -1,0 +1,35 @@
+// styles for react-transition-group transitions
+// 
+// don't forget to change js
+@transition-duration: 400ms;
+@transition-easing: ease-out;
+@appear-opacity-min: .01;
+@opacity-min: .25;
+@opacity-max: 1;
+
+.route_change-appear {
+  opacity: @appear-opacity-min;
+}
+
+.route_change-appear.route_change-appear-active {
+  opacity: @opacity-max;
+  transition: opacity @transition-duration @transition-easing;
+}
+
+.route_change-enter {
+  opacity: @opacity-min;
+}
+
+.route_change-enter.route_change-enter-active {
+  opacity: @opacity-max;
+  transition: opacity @transition-duration @transition-easing;
+}
+
+.route_change-leave {
+  opacity: @opacity-max;
+}
+
+.route_change-leave.route_change-leave-active {
+  opacity: @opacity-min;
+  transition: opacity @transition-duration @transition-easing;
+}
