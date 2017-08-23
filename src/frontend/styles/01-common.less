@@ -56,15 +56,6 @@ body {
 	color: @color-font-main;
 }
 
-.wrapper {
-	width: 1440px;	
-	margin: 0 auto;
-}
-
-.row {
-  .clearfix();
-}
-
 // Clearfix
 //
 // For modern browsers
@@ -86,6 +77,10 @@ body {
   &:after {
     clear: both;
   }
+}
+
+.row {
+  .clearfix();
 }
 
 .btn {
@@ -189,9 +184,14 @@ footer.page {
 section.main {
 	padding-bottom: 64px;
 
-	.content {
-		// make vertical scroll always visible
-		min-height: 100vh;
+	.wrapper {
+		width: 1440px;	
+		margin: 0 auto;
+
+		.content {
+			// make vertical scroll always visible
+			min-height: 100vh;
+		}
 	}
 }
 
