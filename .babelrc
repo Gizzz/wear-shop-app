@@ -1,0 +1,4 @@
+// for jest usage only; in webpack - config is passed directly to babel-loader 
+{
+  "presets": ["env", "react"]
+}
