@@ -10,10 +10,10 @@ const CheckoutSuccess = () => {
       <h1>Thank you</h1>
       <p>Demo checkout process complete.</p>
       <Link to="/">
-        <RaisedButton 
-          {...raisedButtonDefaultProps} 
-          className="finish-btn" 
-          label="Finish" 
+        <RaisedButton
+          {...raisedButtonDefaultProps}
+          className="finish-btn"
+          label="Finish"
         />
       </Link>
     </div>

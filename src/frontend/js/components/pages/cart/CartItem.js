@@ -36,7 +36,7 @@ export default class CartItem extends React.Component {
  handleDeleteBtnClick = () => {
    const itemName = this.props.item.itemData.name
    const size = this.props.item.size
-		
+
    this.props.onRemove(itemName, size)
  }
 
@@ -79,8 +79,8 @@ export default class CartItem extends React.Component {
           </div>
           <div className="price">${ this.props.item.itemData.price.toFixed(2) }</div>
           <div className="delete">
-            <IconButton 
-              iconStyle={{ width: '18px', height: '18px', }} 
+            <IconButton
+              iconStyle={{ width: '18px', height: '18px', }}
               onTouchTap={this.handleDeleteBtnClick}
             >
               <DeleteIcon />

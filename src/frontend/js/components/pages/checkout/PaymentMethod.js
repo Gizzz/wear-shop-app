@@ -70,21 +70,21 @@ export default class PaymentMethod extends React.Component {
  render() {
     return (
       <div>
-        <TextField 
-          {...textFieldDefaultProps} 
-          floatingLabelText="Cardholder Name"  
+        <TextField
+          {...textFieldDefaultProps}
+          floatingLabelText="Cardholder Name"
           errorText={this.props.formData.isCardholderNameValid ? '' : 'Invalid Cardholder Name. Example: JOHN SMITH'}
-          value={this.props.formData.cardholderName} 
+          value={this.props.formData.cardholderName}
           onChange={this.handleCardholderNameChange}
           onFocus={this.handleCardholderNameFocus}
           onBlur={this.handleCardholderNameBlur}
         />
         <br />
-        <TextField 
-          {...textFieldDefaultProps} 
-          floatingLabelText="Card Number" 
+        <TextField
+          {...textFieldDefaultProps}
+          floatingLabelText="Card Number"
           errorText={this.props.formData.isCardNumberValid ? '' : 'Invalid Card Number. Example: 1020 3040 5060 7080'}
-          value={this.props.formData.cardNumber} 
+          value={this.props.formData.cardNumber}
           onChange={this.handleCardNumberChange}
           onFocus={this.handleCardNumberFocus}
           onBlur={this.handleCardNumberBlur}
@@ -131,11 +131,11 @@ export default class PaymentMethod extends React.Component {
             </SelectField>
           </div>
           <div className="col third-width">
-            <TextField 
-              {...textFieldDefaultProps} 
-              floatingLabelText="CVV" 
+            <TextField
+              {...textFieldDefaultProps}
+              floatingLabelText="CVV"
               errorText={this.props.formData.isCvvValid ? '' : 'Invalid CVV'}
-              value={this.props.formData.cvv} 
+              value={this.props.formData.cvv}
               onChange={this.handleCvvChange}
               onFocus={this.handleCvvFocus}
               onBlur={this.handleCvvBlur}

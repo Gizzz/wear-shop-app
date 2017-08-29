@@ -90,7 +90,7 @@ class Header extends React.Component {
  }
 
  calculateCartItemsCount = () => {
-   const cartItems = this.props.cartItems		
+   const cartItems = this.props.cartItems
    if (!cartItems.length) return 0
 
    const itemsCount = cartItems.reduce((count, cartItem) => {
@@ -112,20 +112,20 @@ class Header extends React.Component {
 
  render() {
     const labelStyle = {
-      fontSize: '16px', 
-      fontWeight: '600', 
+      fontSize: '16px',
+      fontWeight: '600',
       letterSpacing: '0.3em',
     }
 
-    const inkBarStyle = { 
-      marginTop: '-6px', 
-      height: '6px', 
+    const inkBarStyle = {
+      marginTop: '-6px',
+      height: '6px',
       borderBottom: '4px solid black',
-      backgroundColor: 'rgba(255, 255, 255, .7)', 
+      backgroundColor: 'rgba(255, 255, 255, .7)',
     }
 
     const tabItemContainerStyle = {
-      backgroundColor: colors.fontPrimary, 
+      backgroundColor: colors.fontPrimary,
     }
 
     return (
@@ -139,10 +139,10 @@ class Header extends React.Component {
           <HeaderCart itemsCount={this.calculateCartItemsCount()} />
         </div>
         <div className="nav" style={{ visibility: this.isNavigationVisible() ? 'visible' : 'hidden' }}>
-          <Tabs 
+          <Tabs
             inkBarStyle={inkBarStyle}
             tabItemContainerStyle={tabItemContainerStyle}
-            value={this.state.selectedTabValue}	
+            value={this.state.selectedTabValue}
           >
             <Tab label="Men's Outerwear" value="mens_outerwear" onClick={() => { this.handleTabClick('mens_outerwear') }} />
             <Tab label="Ladies Outerwear" value="ladies_outerwear" onClick={() => { this.handleTabClick('ladies_outerwear') }} />

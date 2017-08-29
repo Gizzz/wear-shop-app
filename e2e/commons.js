@@ -1,5 +1,5 @@
-const { 
-  By, 
+const {
+  By,
   Key,
 } = require('selenium-webdriver')
 
@@ -31,7 +31,7 @@ async function addItemToCart(driver, options = {}) {
     'L': 4,
     'XL': 5,
   }
-  
+
   await driver.navigate().to(`${baseUrl}/detail/mens_outerwear/${options.name}`)
 
   // set size value
@@ -51,7 +51,7 @@ async function addItemToCart(driver, options = {}) {
     .then(() => driver.findElement(By.css(`div[role=menu] > div:nth-child(${options.quantity}) span[role=menuitem]`)))
     .then(element => element.click())
     .then(() => driver.sleep(500))
-  
+
   // add item to cart    
   await driver
     .findElement(By.css(selectors.detailPage.addToCartBtn))
@@ -64,7 +64,7 @@ async function addItemToCart(driver, options = {}) {
 // returns item's price as text prefixed with $: "$44.30"
 async function getItemPriceText(driver, itemName) {
   await driver.navigate().to(`${baseUrl}/detail/mens_outerwear/${itemName}`)
-  
+
   const itemPrice = await driver
     .findElement(By.css('.app .content.detail .price'))
     .getText()

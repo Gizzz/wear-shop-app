@@ -32,6 +32,7 @@ module.exports = {
       "windows"
     ],
     "no-console": "off",
+    "no-trailing-spaces": "error",
     "jsx-quotes": [
       "error", 
       "prefer-double"

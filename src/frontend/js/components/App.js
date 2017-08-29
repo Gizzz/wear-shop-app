@@ -63,7 +63,7 @@ export default class App extends React.Component {
             if (ci.itemData.name === itemData.name && ci.size === size) {
               return cartItemToUpdate
             }
-						
+
             return ci
           })
         }
@@ -84,7 +84,7 @@ export default class App extends React.Component {
 
   updateCartItemQuantity(itemName, size, quantity) {
     this.setState((prevState) => {
-      return { 
+      return {
         cartItems: prevState.cartItems.map((cartItem) => {
           if (cartItem.itemData.name === itemName && cartItem.size === size) {
             return Object.assign({}, cartItem, { quantity })
@@ -116,7 +116,7 @@ export default class App extends React.Component {
   render() {
     // don't forget to change css
     const transitionDuration = 400
-		
+
     return (
       <BrowserRouter>
         <div className="app">
@@ -130,7 +130,7 @@ export default class App extends React.Component {
                   transitionAppearTimeout={transitionDuration}
                   transitionEnterTimeout={transitionDuration}
                   transitionLeaveTimeout={transitionDuration}
-                >	
+                >
                   <Switch location={location} key={location.key}>
                     <Route exact path="/" component={Home} />
                     <Route path="/list/:category" component={List} />

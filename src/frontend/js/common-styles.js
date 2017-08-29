@@ -4,21 +4,21 @@ const colors = {
 
 const styles = {
   raisedButton: {
-    buttonStyle: { 
+    buttonStyle: {
       border: `1px solid ${colors.fontPrimary}`,
     },
-    labelStyle: { 
-      paddingLeft: '45px', 
-      paddingRight: '45px', 
-      lineHeight: 1 
+    labelStyle: {
+      paddingLeft: '45px',
+      paddingRight: '45px',
+      lineHeight: 1
     },
   },
   selectField: {
-    floatingLabelStyle: { 
-      color: 'rgba(0, 0, 0, 0.3)', 
+    floatingLabelStyle: {
+      color: 'rgba(0, 0, 0, 0.3)',
     },
     selectedMenuItemStyle: {
-      fontWeight: 'bold', 
+      fontWeight: 'bold',
       color: colors.fontPrimary,
     },
     underlineFocusStyle: {
@@ -27,7 +27,7 @@ const styles = {
   },
   textField: {
     floatingLabelFocusStyle: {
-      color: colors.fontPrimary, 
+      color: colors.fontPrimary,
       opacity: '.7',
     },
     underlineFocusStyle: {

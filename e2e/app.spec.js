@@ -1,14 +1,14 @@
-const { 
-  Builder, 
-  By, 
+const {
+  Builder,
+  By,
   promise,
 } = require('selenium-webdriver')
 
-const { 
+const {
   baseUrl,
   selectors,
-  addItemToCart, 
-  getItemPriceText, 
+  addItemToCart,
+  getItemPriceText,
 } = require('./commons')
 
 promise.USE_PROMISE_MANAGER = false
@@ -46,7 +46,7 @@ describe('app', () => {
       .findElement(By.css(selectors.header.mensOutwearLink)).click()
       .then(() => driver.executeScript('return window.location.pathname'))
       .then((path) => expect(path).toBe('/list/mens_outerwear'))
-    
+
     // go to item page
     await driver
       .findElement(By.css(selectors.listPage.firstItemInList)).click()
@@ -74,13 +74,13 @@ describe('app', () => {
 
   test('remove item from cart', async () => {
     await addItemToCart(driver)
-    
+
     // click delete icon on cart item
     await driver
       .navigate().to(baseUrl + '/cart')
       .then(() => driver.findElement(By.css('.app .content.cart .items li')))
       .then((cartItem_element) => cartItem_element.findElement(By.css('.delete button')).click())
-      
+
     // cart should be empty
     await driver
       .findElement(By.css('.app .content.cart .empty-cart'))

@@ -27,7 +27,7 @@ const HeaderCart = (props, context) => {
       </IconButton>
       <i className="cart-badge" style={{ display: props.itemsCount ? 'flex' : 'none' }}>
         { props.itemsCount }
-      </i>						
+      </i>
     </Link>
   )
 }

@@ -21,6 +21,6 @@ ReactDOM.render(
     <Provider store={store}>
       <App />
     </Provider>
-  </MuiThemeProvider>, 
+  </MuiThemeProvider>,
   document.getElementById('root'),
 )

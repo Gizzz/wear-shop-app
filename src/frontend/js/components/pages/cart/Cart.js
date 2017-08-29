@@ -39,9 +39,9 @@ class Cart extends React.Component {
     const itemsCountText = `(${items.length} ${itemOrItems})`
 
     const itemsMarkup = items.map((item) => (
-      <CartItem key={`name=${item.itemData.name}&size=${item.size}`} item={item} 
-        onQuantityChange={this.handleQuantityChange} 
-        onRemove={this.handleRemove} 
+      <CartItem key={`name=${item.itemData.name}&size=${item.size}`} item={item}
+        onQuantityChange={this.handleQuantityChange}
+        onRemove={this.handleRemove}
       />
     ))
 

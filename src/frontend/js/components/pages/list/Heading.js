@@ -15,8 +15,8 @@ const Heading = (props) => {
   let itemsCountText = 'Loading data...'
 
   if (props.itemsCount !== null) {
-    itemsCountText = props.itemsCount === 1 
-      ? '1 item' 
+    itemsCountText = props.itemsCount === 1
+      ? '1 item'
       : `${props.itemsCount} items`
   }
 

@@ -41,7 +41,7 @@ export default class Detail extends React.Component {
 
  handleAddBtnClick = () => {
    this.props.onAddBtnClick(
-     this.state.itemData, 
+     this.state.itemData,
      this.state.size,
      this.state.quantity
    )
@@ -107,8 +107,8 @@ export default class Detail extends React.Component {
       <div className="content detail">
         <div className="row">
           <div className="col image">
-            <img 
-              src={this.state.itemData ? this.state.itemData.largeImage : ''} 
+            <img
+              src={this.state.itemData ? this.state.itemData.largeImage : ''}
               alt={loadingText}
             />
           </div>
@@ -158,11 +158,11 @@ export default class Detail extends React.Component {
                 <h2>Description</h2>
                 <div className="desc" dangerouslySetInnerHTML={this.createDescriptionMarkup()}></div>
               </div>
-              <RaisedButton 
-                {...raisedButtonDefaultProps} 
+              <RaisedButton
+                {...raisedButtonDefaultProps}
                 className="add_to_cart-btn"
-                label="Add to Cart" 
-                onClick={this.handleAddBtnClick} 
+                label="Add to Cart"
+                onClick={this.handleAddBtnClick}
               />
             </form>
           </div>
