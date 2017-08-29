@@ -15,4 +15,11 @@ describe('<HeaderCart />', () => {
     const cartBadge_styleProp = wrapper.find('.cart-badge').prop('style')
     expect(cartBadge_styleProp.display).not.toBe('none')
   })
+
+  test('cart-badge should show passed items-count', () => {
+    const passedItemsCount = 9
+    const wrapper = shallow(<HeaderCart itemsCount={passedItemsCount} />)
+    const renderedItemsCount = wrapper.find('.cart-badge').text()
+    expect(renderedItemsCount).toBe(String(passedItemsCount))
+  })
 })
