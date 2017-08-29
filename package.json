@@ -23,7 +23,7 @@
     "test:unit": "jest src",
     "test:e2e": "jest e2e",
     "lint": "eslint ./",
-    "lint-fix": "eslint ./ --fix",
+    "lint:fix": "eslint ./ --fix",
     "build:dev": "webpack --env=dev --progress",
     "build:prod": "webpack --env=prod --progress",
     "build:watch": "npm run build:dev -- --watch",
