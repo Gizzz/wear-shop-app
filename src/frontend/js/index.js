@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { createStore, applyMiddleware } from 'redux'
+import { createStore,  applyMiddleware, compose } from 'redux'
 import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
 import { createLogger } from 'redux-logger'
@@ -10,9 +10,7 @@ import injectTapEventPlugin from 'react-tap-event-plugin'
 
 import App from './components/App'
 
-// from material-ui docs:
-// Needed for onTouchTap
-// http://stackoverflow.com/a/34015469/988941
+// material-ui's implementation detail
 injectTapEventPlugin()
 
 const middlewares = [ thunk ]
@@ -21,9 +19,10 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 const reducer = () => {}
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 const store = createStore(
   reducer,
-  applyMiddleware(...middlewares),
+  composeEnhancers(applyMiddleware(...middlewares)),
 )
 
 ReactDOM.render(
