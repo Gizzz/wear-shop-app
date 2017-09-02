@@ -1,14 +1,21 @@
 import * as actionTypes from './action-types'
 
 const initialState = {
-  shopItems: [],
-  isLoading: false,
-  // shopItemsByCategory: {
-  //   mensOutwear: [],
-  //   ladiesOutwear: [],
-  //   mensTshirts: [],
-  //   ladiesTshirts: [],
-  // }
+  // -- > prev
+  // shopItems: [],
+  // isLoading: false,
+
+  shopItems: {
+    itemsByCategory: {
+      mens_outerwear: [],
+      ladies_outerwear: [],
+      mens_tshirts: [],
+      ladies_tshirts: [],
+    },
+    isItemsLoading: false,
+  },
+
+  // -- > next
   // cartEntries: [],
 }
 
@@ -17,14 +24,23 @@ function rootReducer(state = initialState, action) {
     case actionTypes.LOAD_SHOP_ITEMS__REQUEST:
       return {
         ...state,
-        shopItems: [],
-        isLoading: true,
+        shopItems: {
+          ...state.shopItems,
+          isItemsLoading: true,
+        },
       }
     case actionTypes.LOAD_SHOP_ITEMS__SUCCESS:
       return {
         ...state,
-        shopItems: action.result,
-        isLoading: false,
+        shopItems: {
+          itemsByCategory: {
+            ...state.shopItems.itemsByCategory,
+            [action.category]: action.result,
+          },
+          isItemsLoading: false,
+        },
+        // shopItems: action.result,
+        // isLoading: false,
       }
     case actionTypes.LOAD_SHOP_ITEMS__FAILURE:
       return state

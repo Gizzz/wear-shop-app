@@ -6,7 +6,7 @@ import List from './List'
 const mapStateToProps = (state) => {
   return {
     shopItems: state.shopItems,
-    isLoading: state.isLoading,
+    isItemsLoading: state.shopItems.isItemsLoading,
   }
 }
 

@@ -25,17 +25,22 @@ class List extends React.Component {
 
   render() {
     const category = this.props.match.params.category
-    const shopItems = this.props.shopItems
-    const isItemsLoaded = !this.props.isLoading
-    const itemsCount = isItemsLoaded ? shopItems.length : 0
+    // replace with selector
+    const shopItemsOfCategory = this.props.shopItems.itemsByCategory[category]
+    const isItemsLoaded = !this.props.isItemsLoading
+    const itemsCount = isItemsLoaded ? shopItemsOfCategory.length : 0
 
     return (
       <div className="content list">
         <div className={`billboard ${category}`}></div>
-        <Heading category={category} isItemsLoading={this.props.isLoading} itemsCount={itemsCount} />
+        <Heading
+          category={category}
+          isItemsLoading={this.props.isItemsLoading}
+          itemsCount={itemsCount}
+        />
         <ul className="items">
           {
-            shopItems.map((item) => (
+            shopItemsOfCategory.map((item) => (
               <li key={item.name}>
                 <Link to={`/detail/${category}/${item.name}`}>
                   <img src={item.image} alt="" />
@@ -53,8 +58,8 @@ class List extends React.Component {
 
 List.propTypes = {
   // redux
-  shopItems: PropTypes.array.isRequired,
-  isLoading: PropTypes.bool.isRequired,
+  shopItems: PropTypes.object.isRequired,
+  isItemsLoading: PropTypes.bool.isRequired,
   loadShopItems: PropTypes.func.isRequired,
   // router
   match: PropTypes.object.isRequired,
