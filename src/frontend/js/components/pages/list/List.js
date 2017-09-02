@@ -12,51 +12,39 @@ class List extends React.Component {
 
   componentDidMount() {
     const category = this.props.match.params.category
-    this.loadData(category)
+    this.props.loadShopItems(category)
   }
 
   componentWillReceiveProps(nextProps) {
     const isLocationChanged = nextProps.location !== this.props.location
     if (isLocationChanged) {
       const category = nextProps.match.params.category
-      this.loadData(category)
+      this.props.loadShopItems(category)
     }
-  }
-
-  loadData(category) {
-    fetch(`/api/shop_items/category/${category}`)
-      .then(response => response.json())
-      .then((json) => {
-        this.setState({ shopItems: json })
-      })
-      .catch(e => console.error(e))
   }
 
   render() {
     const category = this.props.match.params.category
-    let shopItems = this.state.shopItems
-
-    const isItemsLoaded = shopItems != null
-    if (isItemsLoaded) {
-      shopItems = shopItems.map((item) => (
-        <li key={item.name}>
-          <Link to={`/detail/${category}/${item.name}`}>
-            <img src={item.image} alt="" />
-            <div className="title">{ item.title }</div>
-            <span className="price">${ item.price.toFixed(2) }</span>
-          </Link>
-        </li>
-      ))
-    }
-
-    const itemsCount = isItemsLoaded ? shopItems.length : null
+    const shopItems = this.props.shopItems
+    const isItemsLoaded = !this.props.isLoading
+    const itemsCount = isItemsLoaded ? shopItems.length : 0
 
     return (
       <div className="content list">
         <div className={`billboard ${category}`}></div>
-        <Heading category={category} itemsCount={itemsCount} />
+        <Heading category={category} isItemsLoading={this.props.isLoading} itemsCount={itemsCount} />
         <ul className="items">
-          { shopItems }
+          {
+            shopItems.map((item) => (
+              <li key={item.name}>
+                <Link to={`/detail/${category}/${item.name}`}>
+                  <img src={item.image} alt="" />
+                  <div className="title">{item.title}</div>
+                  <span className="price">${item.price.toFixed(2)}</span>
+                </Link>
+              </li>
+            ))
+          }
         </ul>
       </div>
     )
@@ -64,8 +52,13 @@ class List extends React.Component {
 }
 
 List.propTypes = {
-  match: PropTypes.object,
-  location: PropTypes.object,
+  // redux
+  shopItems: PropTypes.array.isRequired,
+  isLoading: PropTypes.bool.isRequired,
+  loadShopItems: PropTypes.func.isRequired,
+  // router
+  match: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired,
 }
 
 export default List

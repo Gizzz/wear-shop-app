@@ -5,7 +5,7 @@ import { CSSTransitionGroup } from 'react-transition-group'
 import Header from './Header'
 import Footer from './Footer'
 import Home from './pages/Home'
-import List from './pages/list/List'
+import ListContainer from './pages/list/ListContainer'
 import Detail from './pages/Detail'
 import Cart from './pages/cart/Cart'
 import Checkout from './pages/checkout/Checkout'
@@ -133,7 +133,7 @@ export default class App extends React.Component {
                 >
                   <Switch location={location} key={location.key}>
                     <Route exact path="/" component={Home} />
-                    <Route path="/list/:category" component={List} />
+                    <Route path="/list/:category" component={ListContainer} />
                     <Route path="/detail/:category/:itemName" render={({ match }) => (
                       <Detail match={match} onAddBtnClick={this.addCartItem} />
                     )} />

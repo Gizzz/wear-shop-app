@@ -3,18 +3,19 @@ import PropTypes from 'prop-types'
 
 const Heading = (props) => {
   const category = props.category
-
   const categoryName_to_title = {
     mens_outerwear: 'Men\'s Outerwear',
     ladies_outerwear: 'Ladies Outerwear',
     mens_tshirts: 'Men\'s T-Shirts',
     ladies_tshirts: 'Ladies T-Shirts',
   }
+
   const categoryTitle = categoryName_to_title[category]
+  let itemsCountText
 
-  let itemsCountText = 'Loading data...'
-
-  if (props.itemsCount !== null) {
+  if (props.isItemsLoading) {
+    itemsCountText = 'Loading data...'
+  } else {
     itemsCountText = props.itemsCount === 1
       ? '1 item'
       : `${props.itemsCount} items`
@@ -29,9 +30,9 @@ const Heading = (props) => {
 }
 
 Heading.propTypes = {
-  category: PropTypes.string,
-  // itemsCount: number | null
-  itemsCount: PropTypes.any,
+  category: PropTypes.string.isRequired,
+  isItemsLoading: PropTypes.bool.isRequired,
+  itemsCount: PropTypes.number.isRequired,
 }
 
 export default Heading
