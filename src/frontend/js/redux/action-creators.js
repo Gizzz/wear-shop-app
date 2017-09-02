@@ -23,7 +23,7 @@ export function loadShopItems(category) {
           error => dispatch({
             type: actionTypes.LOAD_SHOP_ITEMS__FAILURE,
             category,
-            error,
+            errorMessage: error.message,
           })
         )
     }, 500)

@@ -43,7 +43,13 @@ function rootReducer(state = initialState, action) {
         // isLoading: false,
       }
     case actionTypes.LOAD_SHOP_ITEMS__FAILURE:
-      return state
+      return {
+        ...state,
+        shopItems: {
+          ...state.shopItems,
+          isItemsLoading: false,
+        }
+      }
     default:
       return state
   }
