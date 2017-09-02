@@ -25,10 +25,9 @@ class List extends React.Component {
 
   render() {
     const category = this.props.match.params.category
-    // replace with selector
-    const shopItemsOfCategory = this.props.shopItems.itemsByCategory[category]
+    const shopItems = this.props.shopItems
     const isItemsLoaded = !this.props.isItemsLoading
-    const itemsCount = isItemsLoaded ? shopItemsOfCategory.length : 0
+    const itemsCount = isItemsLoaded ? shopItems.length : 0
 
     return (
       <div className="content list">
@@ -40,7 +39,7 @@ class List extends React.Component {
         />
         <ul className="items">
           {
-            shopItemsOfCategory.map((item) => (
+            shopItems.map((item) => (
               <li key={item.name}>
                 <Link to={`/detail/${category}/${item.name}`}>
                   <img src={item.image} alt="" />
@@ -58,7 +57,7 @@ class List extends React.Component {
 
 List.propTypes = {
   // redux
-  shopItems: PropTypes.object.isRequired,
+  shopItems: PropTypes.array.isRequired,
   isItemsLoading: PropTypes.bool.isRequired,
   loadShopItems: PropTypes.func.isRequired,
   // router

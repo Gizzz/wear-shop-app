@@ -56,3 +56,9 @@ function rootReducer(state = initialState, action) {
 }
 
 export default rootReducer
+
+// selectors
+
+export function getShopItemsByCategory(state, category) {
+  return state.shopItems.itemsByCategory[category]
+}

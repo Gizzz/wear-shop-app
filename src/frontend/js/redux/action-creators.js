@@ -1,9 +1,9 @@
 import * as actionTypes from './action-types'
+import { getShopItemsByCategory } from './reducers'
 
 export function loadShopItems(category) {
   return (dispatch, getState) => {
-    // replace with selector
-    const isItemsAlreadyLoaded = getState().shopItems.itemsByCategory[category].length > 0
+    const isItemsAlreadyLoaded = getShopItemsByCategory(getState(), category).length > 0
     if (isItemsAlreadyLoaded) return
 
     dispatch({

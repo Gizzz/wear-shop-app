@@ -1,11 +1,12 @@
 import { connect } from 'react-redux'
 
 import * as actionCreators from '../../../redux/action-creators'
+import { getShopItemsByCategory } from '../../../redux/reducers'
 import List from './List'
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
   return {
-    shopItems: state.shopItems,
+    shopItems: getShopItemsByCategory(state, ownProps.match.params.category),
     isItemsLoading: state.shopItems.isItemsLoading,
   }
 }
