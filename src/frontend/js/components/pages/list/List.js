@@ -38,17 +38,15 @@ class List extends React.Component {
           itemsCount={itemsCount}
         />
         <ul className="items">
-          {
-            shopItems.map((item) => (
-              <li key={item.name}>
-                <Link to={`/detail/${category}/${item.name}`}>
-                  <img src={item.image} alt="" />
-                  <div className="title">{item.title}</div>
-                  <span className="price">${item.price.toFixed(2)}</span>
-                </Link>
-              </li>
-            ))
-          }
+          {shopItems.map((item) => (
+            <li key={item.name}>
+              <Link to={`/detail/${category}/${item.name}`}>
+                <img src={item.image} alt="" />
+                <div className="title">{item.title}</div>
+                <span className="price">${item.price.toFixed(2)}</span>
+              </Link>
+            </li>
+          ))}
         </ul>
       </div>
     )
