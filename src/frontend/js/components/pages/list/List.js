@@ -34,8 +34,9 @@ class List extends React.Component {
         <div className={`billboard ${category}`}></div>
         <Heading
           category={category}
-          isItemsLoading={this.props.isItemsLoading}
           itemsCount={itemsCount}
+          isItemsLoading={this.props.isItemsLoading}
+          errorMessage={this.props.errorMessage}
         />
         <ul className="items">
           {shopItems.map((item) => (
@@ -57,6 +58,7 @@ List.propTypes = {
   // redux
   shopItems: PropTypes.array.isRequired,
   isItemsLoading: PropTypes.bool.isRequired,
+  errorMessage: PropTypes.string,
   loadShopItems: PropTypes.func.isRequired,
   // router
   match: PropTypes.object.isRequired,

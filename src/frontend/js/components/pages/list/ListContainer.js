@@ -8,6 +8,7 @@ const mapStateToProps = (state, ownProps) => {
   return {
     shopItems: getShopItemsByCategory(state, ownProps.match.params.category),
     isItemsLoading: state.shopItems.isItemsLoading,
+    errorMessage: state.shopItems.errorMessage,
   }
 }
 

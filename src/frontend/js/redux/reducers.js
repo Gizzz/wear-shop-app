@@ -1,10 +1,6 @@
 import * as actionTypes from './action-types'
 
 const initialState = {
-  // -- > prev
-  // shopItems: [],
-  // isLoading: false,
-
   shopItems: {
     itemsByCategory: {
       mens_outerwear: [],
@@ -13,6 +9,7 @@ const initialState = {
       ladies_tshirts: [],
     },
     isItemsLoading: false,
+    errorMessage: null,
   },
 
   // -- > next
@@ -27,6 +24,7 @@ function rootReducer(state = initialState, action) {
         shopItems: {
           ...state.shopItems,
           isItemsLoading: true,
+          errorMessage: null,
         },
       }
     case actionTypes.LOAD_SHOP_ITEMS__SUCCESS:
@@ -38,9 +36,8 @@ function rootReducer(state = initialState, action) {
             [action.category]: action.result,
           },
           isItemsLoading: false,
+          errorMessage: null,
         },
-        // shopItems: action.result,
-        // isLoading: false,
       }
     case actionTypes.LOAD_SHOP_ITEMS__FAILURE:
       return {
@@ -48,7 +45,17 @@ function rootReducer(state = initialState, action) {
         shopItems: {
           ...state.shopItems,
           isItemsLoading: false,
+          errorMessage: action.message,
         }
+      }
+    case actionTypes.LOAD_SHOP_ITEMS__CANCEL:
+      return {
+        ...state,
+        shopItems: {
+          ...state.shopItems,
+          isItemsLoading: false,
+          errorMessage: null,
+        },
       }
     default:
       return state

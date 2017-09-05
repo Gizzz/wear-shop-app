@@ -11,12 +11,14 @@ const Heading = (props) => {
   }
 
   const categoryTitle = categoryName_to_title[category]
-  let itemsCountText
+  let statusText
 
-  if (props.isItemsLoading) {
-    itemsCountText = 'Loading data...'
+  if (props.errorMessage !== null) {
+    statusText = 'Error: ' + props.errorMessage
+  } else if (props.isItemsLoading) {
+    statusText = 'Loading data...'
   } else {
-    itemsCountText = props.itemsCount === 1
+    statusText = props.itemsCount === 1
       ? '1 item'
       : `${props.itemsCount} items`
   }
@@ -24,15 +26,16 @@ const Heading = (props) => {
   return (
     <div className="heading">
       <h2>{ categoryTitle }</h2>
-      <span>{ itemsCountText }</span>
+      <span>{ statusText }</span>
     </div>
   )
 }
 
 Heading.propTypes = {
   category: PropTypes.string.isRequired,
-  isItemsLoading: PropTypes.bool.isRequired,
   itemsCount: PropTypes.number.isRequired,
+  isItemsLoading: PropTypes.bool.isRequired,
+  errorMessage: PropTypes.string,
 }
 
 export default Heading
