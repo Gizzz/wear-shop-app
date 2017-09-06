@@ -26,15 +26,13 @@ class List extends React.Component {
   render() {
     const category = this.props.match.params.category
     const shopItems = this.props.shopItems
-    const isItemsLoaded = !this.props.isItemsLoading
-    const itemsCount = isItemsLoaded ? shopItems.length : 0
 
     return (
       <div className="content list">
         <div className={`billboard ${category}`}></div>
         <Heading
           category={category}
-          itemsCount={itemsCount}
+          itemsCount={shopItems.length}
           isItemsLoading={this.props.isItemsLoading}
           errorMessage={this.props.errorMessage}
         />
