@@ -36,6 +36,9 @@ export default class Detail extends React.Component {
   }
 
   handleAddBtnClick = () => {
+    const isShopItemLoaded = this.props.shopItem != undefined
+    if (!isShopItemLoaded) return
+
     this.props.onAddBtnClick(
       this.props.shopItem,
       this.state.size,
