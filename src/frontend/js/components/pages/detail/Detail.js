@@ -10,62 +10,62 @@ import MenuItem from 'material-ui/MenuItem'
 import { raisedButtonDefaultProps, selectFieldDefaultProps } from '../../../common-styles'
 
 export default class Detail extends React.Component {
- static propTypes = {
-   match: PropTypes.object.isRequired,
-   onAddBtnClick: PropTypes.func.isRequired,
- }
+  static propTypes = {
+    match: PropTypes.object.isRequired,
+    onAddBtnClick: PropTypes.func.isRequired,
+  }
 
- static contextTypes = {
-   router: PropTypes.object
- }
+  static contextTypes = {
+    router: PropTypes.object
+  }
 
- state = {
-   itemData: undefined,
-   size: 'M',
-   quantity: 1,
-   isDialogOpen: false,
- }
+  state = {
+    itemData: undefined,
+    size: 'M',
+    quantity: 1,
+    isDialogOpen: false,
+  }
 
- componentDidMount() {
+  componentDidMount() {
     const category = this.props.match.params.category
     this.loadData(category)
   }
 
- handleSizeChange = (e, i, newValue) => {
-   this.setState(() => ({ size: newValue }))
- }
+  handleSizeChange = (e, i, newValue) => {
+    this.setState(() => ({ size: newValue }))
+  }
 
- handleQuantityChange = (e, i, newValue) => {
-   this.setState(() => ({ quantity: newValue }))
- }
+  handleQuantityChange = (e, i, newValue) => {
+    this.setState(() => ({ quantity: newValue }))
+  }
 
- handleAddBtnClick = () => {
-   this.props.onAddBtnClick(
-     this.state.itemData,
-     this.state.size,
-     this.state.quantity
-   )
+  handleAddBtnClick = () => {
+    this.props.onAddBtnClick(
+      this.state.itemData,
+      this.state.size,
+      this.state.quantity
+    )
 
-   this.openDialog()
- }
+    this.openDialog()
+  }
 
- openDialog = () => {
-   this.setState({isDialogOpen: true})
- }
+  openDialog = () => {
+    this.setState({ isDialogOpen: true })
+  }
 
- closeDialog = () => {
-   this.setState({isDialogOpen: false})
- }
+  closeDialog = () => {
+    this.setState({ isDialogOpen: false })
+  }
 
- handle_viewCartBtn_click = () => {
-   this.context.router.history.push('/cart')
- }
+  handle_viewCartBtn_click = () => {
+    this.context.router.history.push('/cart')
+  }
 
- handle_checkoutBtn_click = () => {
-   this.context.router.history.push('/checkout')
- }
+  handle_checkoutBtn_click = () => {
+    this.context.router.history.push('/checkout')
+  }
 
- loadData(category) {
+  loadData(category) {
     fetch(`/api/shop_items/category/${category}`)
       .then(response => response.json())
       .then((json) => {
@@ -76,7 +76,7 @@ export default class Detail extends React.Component {
       .catch(e => console.error(e))
   }
 
- createDescriptionMarkup() {
+  createDescriptionMarkup() {
     let descriptionText = 'Loading data...'
 
     if (this.state.itemData) {
@@ -89,7 +89,7 @@ export default class Detail extends React.Component {
     return { __html: descriptionText }
   }
 
- render() {
+  render() {
     const loadingText = 'Loading data...'
 
     const actions = [
@@ -114,10 +114,10 @@ export default class Detail extends React.Component {
           </div>
           <div className="col text">
             <h1>
-              { this.state.itemData ? this.state.itemData.title : loadingText }
+              {this.state.itemData ? this.state.itemData.title : loadingText}
             </h1>
             <div className="price">
-              { this.state.itemData ? '$' + this.state.itemData.price.toFixed(2) : loadingText }
+              {this.state.itemData ? '$' + this.state.itemData.price.toFixed(2) : loadingText}
             </div>
             <form onSubmit={e => e.preventDefault()}>
               <div className="size">
@@ -135,7 +135,7 @@ export default class Detail extends React.Component {
                   <MenuItem value={'XL'} primaryText="XL" />
                 </SelectField>
                 {/* this element is used in e2e tests */}
-                <div className="hidden-value">{ this.state.size }</div>
+                <div className="hidden-value">{this.state.size}</div>
               </div>
               <div className="quantity">
                 <SelectField
@@ -152,7 +152,7 @@ export default class Detail extends React.Component {
                   <MenuItem value={5} primaryText="5" />
                 </SelectField>
                 {/* this element is used in e2e tests */}
-                <div className="hidden-value">{ this.state.quantity }</div>
+                <div className="hidden-value">{this.state.quantity}</div>
               </div>
               <div className="description">
                 <h2>Description</h2>
