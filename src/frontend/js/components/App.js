@@ -6,7 +6,7 @@ import Header from './Header'
 import Footer from './Footer'
 import Home from './pages/Home'
 import ListContainer from './pages/list/ListContainer'
-import Detail from './pages/Detail'
+import DetailContainer from './pages/detail/DetailContainer'
 import Cart from './pages/cart/Cart'
 import Checkout from './pages/checkout/Checkout'
 import CheckoutSuccess from './pages/CheckoutSuccess'
@@ -135,7 +135,7 @@ export default class App extends React.Component {
                     <Route exact path="/" component={Home} />
                     <Route path="/list/:category" component={ListContainer} />
                     <Route path="/detail/:category/:itemName" render={({ match }) => (
-                      <Detail match={match} onAddBtnClick={this.addCartItem} />
+                      <DetailContainer match={match} onAddBtnClick={this.addCartItem} />
                     )} />
                     <Route path="/cart" render={() => (
                       <Cart items={this.state.cartItems} onQuantityChange={this.updateCartItemQuantity} onRemove={this.removeCartItem} />

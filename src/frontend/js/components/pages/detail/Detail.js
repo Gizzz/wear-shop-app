@@ -7,7 +7,7 @@ import RaisedButton from 'material-ui/RaisedButton'
 import SelectField from 'material-ui/SelectField'
 import MenuItem from 'material-ui/MenuItem'
 
-import { raisedButtonDefaultProps, selectFieldDefaultProps } from '../../common-styles'
+import { raisedButtonDefaultProps, selectFieldDefaultProps } from '../../../common-styles'
 
 export default class Detail extends React.Component {
  static propTypes = {
