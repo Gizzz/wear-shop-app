@@ -1,13 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import Dialog from 'material-ui/Dialog'
-import FlatButton from 'material-ui/FlatButton'
 import RaisedButton from 'material-ui/RaisedButton'
 import SelectField from 'material-ui/SelectField'
 import MenuItem from 'material-ui/MenuItem'
 
 import { raisedButtonDefaultProps, selectFieldDefaultProps } from '../../../common-styles'
+import PostActionDialog from './PostActionDialog'
 
 export default class Detail extends React.Component {
   static propTypes = {
@@ -15,10 +14,6 @@ export default class Detail extends React.Component {
     onAddBtnClick: PropTypes.func.isRequired,
     // redux
     shopItem: PropTypes.object,
-  }
-
-  static contextTypes = {
-    router: PropTypes.object,
   }
 
   state = {
@@ -56,14 +51,6 @@ export default class Detail extends React.Component {
     this.setState({ isDialogOpen: false })
   }
 
-  handle_viewCartBtn_click = () => {
-    this.context.router.history.push('/cart')
-  }
-
-  handle_checkoutBtn_click = () => {
-    this.context.router.history.push('/checkout')
-  }
-
   createDescriptionMarkup() {
     let descriptionText = 'Loading data...'
 
@@ -79,17 +66,6 @@ export default class Detail extends React.Component {
 
   render() {
     const loadingText = 'Loading data...'
-
-    const actions = [
-      <FlatButton
-        label="View Cart"
-        onTouchTap={this.handle_viewCartBtn_click}
-      />,
-      <FlatButton
-        label="Checkout"
-        onTouchTap={this.handle_checkoutBtn_click}
-      />,
-    ]
 
     return (
       <div className="content detail">
@@ -155,11 +131,9 @@ export default class Detail extends React.Component {
             </form>
           </div>
         </div>
-        <Dialog
-          title="Item added to cart"
-          actions={actions}
-          open={this.state.isDialogOpen}
-          onRequestClose={this.closeDialog}
+        <PostActionDialog
+          isOpen={this.state.isDialogOpen}
+          onClose={this.closeDialog}
         />
       </div>
     )
