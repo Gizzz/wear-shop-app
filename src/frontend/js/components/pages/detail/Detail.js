@@ -13,22 +13,18 @@ export default class Detail extends React.Component {
   static propTypes = {
     match: PropTypes.object.isRequired,
     onAddBtnClick: PropTypes.func.isRequired,
+    // redux
+    shopItem: PropTypes.object,
   }
 
   static contextTypes = {
-    router: PropTypes.object
+    router: PropTypes.object,
   }
 
   state = {
-    itemData: undefined,
     size: 'M',
     quantity: 1,
     isDialogOpen: false,
-  }
-
-  componentDidMount() {
-    const category = this.props.match.params.category
-    this.loadData(category)
   }
 
   handleSizeChange = (e, i, newValue) => {
@@ -41,7 +37,7 @@ export default class Detail extends React.Component {
 
   handleAddBtnClick = () => {
     this.props.onAddBtnClick(
-      this.state.itemData,
+      this.props.shopItem,
       this.state.size,
       this.state.quantity
     )
@@ -65,24 +61,13 @@ export default class Detail extends React.Component {
     this.context.router.history.push('/checkout')
   }
 
-  loadData(category) {
-    fetch(`/api/shop_items/category/${category}`)
-      .then(response => response.json())
-      .then((json) => {
-        const itemName = this.props.match.params.itemName
-        const itemData = json.find((item) => item.name === itemName)
-        this.setState({ itemData })
-      })
-      .catch(e => console.error(e))
-  }
-
   createDescriptionMarkup() {
     let descriptionText = 'Loading data...'
 
-    if (this.state.itemData) {
+    if (this.props.shopItem) {
       // hack: use textarea to decode html entities
       const textarea = document.createElement('textarea')
-      textarea.innerHTML = this.state.itemData.description
+      textarea.innerHTML = this.props.shopItem.description
       descriptionText = textarea.value
     }
 
@@ -108,16 +93,16 @@ export default class Detail extends React.Component {
         <div className="row">
           <div className="col image">
             <img
-              src={this.state.itemData ? this.state.itemData.largeImage : ''}
+              src={this.props.shopItem ? this.props.shopItem.largeImage : ''}
               alt={loadingText}
             />
           </div>
           <div className="col text">
             <h1>
-              {this.state.itemData ? this.state.itemData.title : loadingText}
+              {this.props.shopItem ? this.props.shopItem.title : loadingText}
             </h1>
             <div className="price">
-              {this.state.itemData ? '$' + this.state.itemData.price.toFixed(2) : loadingText}
+              {this.props.shopItem ? '$' + this.props.shopItem.price.toFixed(2) : loadingText}
             </div>
             <form onSubmit={e => e.preventDefault()}>
               <div className="size">
