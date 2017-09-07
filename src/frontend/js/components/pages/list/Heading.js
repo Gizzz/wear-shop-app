@@ -13,7 +13,7 @@ const Heading = (props) => {
   const categoryTitle = categoryName_to_title[category]
   let statusText
 
-  if (props.errorMessage !== null) {
+  if (props.errorMessage != null) {
     statusText = 'Error: ' + props.errorMessage
   } else if (props.isItemsLoading) {
     statusText = 'Loading data...'
