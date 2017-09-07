@@ -19,15 +19,14 @@
     "start": "node src/backend/app.js",
     "server:dev": "nodemon src/backend/app.js",
     "server:wds": "webpack-dev-server --config webpack.dev.js --progress",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "test:unit": "jest src",
+    "test": "jest src",
     "test:e2e": "jest e2e",
     "lint": "eslint ./",
     "lint:fix": "eslint ./ --fix",
     "build:dev": "webpack --env=dev --progress",
     "build:prod": "webpack --env=prod --progress",
-    "build:watch": "npm run build:dev -- --watch",
-    "heroku-postbuild": "npm run build:prod"
+    "heroku-postbuild": "npm run build:prod",
+    "watch": "npm run build:dev -- --watch"
   },
   "pre-commit": [
     "lint"
