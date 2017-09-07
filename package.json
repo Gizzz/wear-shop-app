@@ -29,7 +29,8 @@
     "watch": "npm run build:dev -- --watch"
   },
   "pre-commit": [
-    "lint"
+    "lint",
+    "test"
   ],
   "dependencies": {
     "express": "^4.15.2",
