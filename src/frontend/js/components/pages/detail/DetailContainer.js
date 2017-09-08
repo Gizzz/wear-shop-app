@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
 import * as actionCreators from '../../../redux/action-creators'
-import { getShopItem } from '../../../redux/reducers'
+import { getShopItem } from '../../../redux/selectors'
 import Detail from './Detail'
 
 class DetailWrapper extends React.Component {
