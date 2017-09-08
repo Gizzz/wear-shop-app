@@ -46,3 +46,15 @@ function shopItems(state = initialState, action) {
 }
 
 export default shopItems
+
+// selectors
+
+export function getShopItemsByCategory(state, category) {
+  return state.itemsByCategory[category]
+}
+
+export function getShopItem(state, category, name) {
+  const itemsInCategory = state.itemsByCategory[category]
+  const item = itemsInCategory.find(item => item.name === name)
+  return item
+}
