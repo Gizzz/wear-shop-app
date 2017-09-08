@@ -1,5 +1,5 @@
 import * as actionTypes from './action-types'
-import { getShopItemsByCategory } from './selectors'
+import { getShopItemsByCategory } from './reducers'
 
 export function loadShopItems(category) {
   return (dispatch, getState) => {
