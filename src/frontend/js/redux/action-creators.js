@@ -1,9 +1,9 @@
 import * as actionTypes from './action-types'
-import { getShopItemsByCategory } from './reducers'
+import { selectors } from './reducers'
 
 export function loadShopItems(category) {
   return (dispatch, getState) => {
-    const isItemsAlreadyLoaded = getShopItemsByCategory(getState(), category).length > 0
+    const isItemsAlreadyLoaded = selectors.shopItems.getShopItemsByCategory(getState(), category).length > 0
     if (isItemsAlreadyLoaded) {
       dispatch({
         type: actionTypes.LOAD_SHOP_ITEMS__CANCEL,

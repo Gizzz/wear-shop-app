@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
 import * as actionCreators from '../../../redux/action-creators'
-import { getShopItem } from '../../../redux/reducers'
+import { selectors } from '../../../redux/reducers'
 import Detail from './Detail'
 
 class DetailWrapper extends React.Component {
@@ -38,7 +38,7 @@ const mapStateToProps = (state, ownProps) => {
   const name = ownProps.match.params.itemName
 
   return {
-    shopItem: getShopItem(state, category, name)
+    shopItem: selectors.shopItems.getShopItem(state, category, name)
   }
 }
 
