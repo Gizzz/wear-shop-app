@@ -5,7 +5,7 @@ function byId(state = {}, action) {
   switch (action.type) {
     case actionTypes.LOAD_SHOP_ITEMS__SUCCESS: {
       const itemsByName = {}
-      action.result.forEach((item) => {
+      action.items.forEach((item) => {
         itemsByName[item.name] = item
       })
 
@@ -23,7 +23,7 @@ function allIds(state = [], action) {
   switch (action.type) {
     case actionTypes.LOAD_SHOP_ITEMS__SUCCESS: {
       const itemNames = [ ...state ]
-      action.result.forEach((item) => {
+      action.items.forEach((item) => {
         if (!itemNames.includes(item.name)) {
           itemNames.push(item.name)
         }

@@ -25,7 +25,7 @@ export function loadShopItems(category) {
           result => dispatch({
             type: actionTypes.LOAD_SHOP_ITEMS__SUCCESS,
             category,
-            result,
+            items: result,
           }),
           error => dispatch({
             type: actionTypes.LOAD_SHOP_ITEMS__FAILURE,
