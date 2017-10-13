@@ -1,7 +1,9 @@
 import { combineReducers } from 'redux'
-import shopItems, * as shopItemsSelectors from './shop-items'
 
-const rootReducer = combineReducers({ shopItems })
+import shopItems, * as shopItemsSelectors from './shop-items'
+import ui, * as uiSelectors from './ui'
+
+const rootReducer = combineReducers({ shopItems, ui })
 export default rootReducer
 
 // selectors
@@ -14,7 +16,15 @@ export function getShopItem(state, category, name) {
   return shopItemsSelectors.getShopItem(state.shopItems, category, name)
 }
 
-// const initialState = {
+export function get_isItemsLoading(state) {
+  return uiSelectors.get_isItemsLoading(state.ui)
+}
+
+export function get_errorMessage(state) {
+  return uiSelectors.get_errorMessage(state.ui)
+}
+
+// const overallState = {
 //   shopItems: {
 //     itemsByCategory: {
 //       mens_outerwear: [],
@@ -22,9 +32,11 @@ export function getShopItem(state, category, name) {
 //       mens_tshirts: [],
 //       ladies_tshirts: [],
 //     },
+//   },
+//   ui: {
 //     isItemsLoading: false,
 //     errorMessage: null,
-//   },
+//   }
 
 //   // -- > next
 //   // cartEntries: [],
