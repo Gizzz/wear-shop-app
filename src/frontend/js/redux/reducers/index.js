@@ -1,18 +1,19 @@
 import { combineReducers } from 'redux'
 
-import shopItems, * as shopItemsSelectors from './shop-items'
+import entities from './entities'
+import * as shopItemsSelectors from './entities/shop-items'
 import ui, * as uiSelectors from './ui'
 
-const rootReducer = combineReducers({ shopItems, ui })
+const rootReducer = combineReducers({ entities, ui })
 export default rootReducer
 
 export const selectors = {
   shopItems: {
     getShopItemsByCategory(state, category) {
-      return shopItemsSelectors.getShopItemsByCategory(state.shopItems, category)
+      return shopItemsSelectors.getShopItemsByCategory(state.entities.shopItems, category)
     },
     getShopItem(state, category, name) {
-      return shopItemsSelectors.getShopItem(state.shopItems, category, name)
+      return shopItemsSelectors.getShopItem(state.entities.shopItems, category, name)
     },
   },
   ui: {
