@@ -1,6 +1,7 @@
 const {
   By,
   Key,
+  until,
 } = require('selenium-webdriver')
 
 const baseUrl = 'http://localhost:3000'
@@ -65,12 +66,12 @@ async function addItemToCart(driver, options = {}) {
 async function getItemPriceText(driver, itemName) {
   await driver.navigate().to(`${baseUrl}/detail/mens_outerwear/${itemName}`)
 
-  const itemPrice = await driver
-    .findElement(By.css('.app .content.detail .price'))
-    .getText()
+  const itemPriceText = await driver
+    .wait(until.elementTextContains(driver.findElement(By.css('.app .content.detail .price')), '$'))
+    .then(() => driver.findElement(By.css('.app .content.detail .price')).getText())
 
   await driver.navigate().to(baseUrl)
-  return itemPrice
+  return itemPriceText
 }
 
 exports.baseUrl = baseUrl
