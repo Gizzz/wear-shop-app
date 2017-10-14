@@ -42,10 +42,9 @@ const mapStateToProps = (state, ownProps) => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    loadShopItems: (category) => { dispatch(actionCreators.loadShopItems(category)) }
-  }
+const mapDispatchToProps = {
+  loadShopItems: actionCreators.loadShopItems,
+  addShopItemToCart: actionCreators.addShopItemToCart,
 }
 
 const DetailContainer = connect(mapStateToProps, mapDispatchToProps)(DetailWrapper)

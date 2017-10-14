@@ -14,6 +14,7 @@ export default class Detail extends React.Component {
     onAddBtnClick: PropTypes.func.isRequired,
     // redux
     shopItem: PropTypes.object,
+    addShopItemToCart: PropTypes.func.isRequired,
   }
 
   state = {
@@ -34,12 +35,7 @@ export default class Detail extends React.Component {
     const isShopItemLoaded = this.props.shopItem != undefined
     if (!isShopItemLoaded) return
 
-    this.props.onAddBtnClick(
-      this.props.shopItem,
-      this.state.size,
-      this.state.quantity
-    )
-
+    this.props.addShopItemToCart(this.props.shopItem.name, this.state.size, this.state.quantity)
     this.openDialog()
   }
 

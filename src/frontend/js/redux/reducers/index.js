@@ -27,16 +27,35 @@ export const selectors = {
 }
 
 // const overallState = {
-//   shopItems: {
-//     byId: {},
-//     allIds: [],
+//   entities: {
+//     shopItems: {
+//       byId: {
+//         name: {
+//           name,
+//           title,
+//           category,
+//           price,
+//           description,
+//           image,
+//           largeImage,
+//         }
+//       },
+//       allIds: [],
+//     },
+//     cartEntries: {
+//       byId: {
+//         id: {
+//           id,
+//           shopItemId,
+//           size,
+//           quantity,
+//         }
+//       },
+//       allIds: [],
+//     },
 //   },
 //   ui: {
 //     isItemsLoading: false,
 //     errorMessage: null,
 //   }
-
-//   // -- > next
-//   // cartEntries: [],
-
 // }

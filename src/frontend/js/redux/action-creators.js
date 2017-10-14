@@ -1,3 +1,5 @@
+import uuid_v4 from 'uuid/v4'
+
 import * as actionTypes from './action-types'
 import { selectors } from './reducers'
 
@@ -34,5 +36,15 @@ export function loadShopItems(category) {
           })
         )
     }, 500)
+  }
+}
+
+export function addShopItemToCart(shopItemId, size, quantity) {
+  return {
+    type: actionTypes.ADD_SHOP_ITEM_TO_CART,
+    id: uuid_v4(),
+    shopItemId,
+    size,
+    quantity,
   }
 }
