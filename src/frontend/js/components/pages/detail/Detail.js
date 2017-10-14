@@ -35,7 +35,7 @@ export default class Detail extends React.Component {
     const isShopItemLoaded = this.props.shopItem != undefined
     if (!isShopItemLoaded) return
 
-    this.props.addShopItemToCart(this.props.shopItem.name, this.state.size, this.state.quantity)
+    this.props.addShopItemToCart(this.props.shopItem.id, this.state.size, this.state.quantity)
     this.openDialog()
   }
 

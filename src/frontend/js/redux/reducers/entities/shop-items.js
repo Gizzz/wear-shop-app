@@ -4,14 +4,14 @@ import * as actionTypes from '../../action-types'
 function byId(state = {}, action) {
   switch (action.type) {
     case actionTypes.LOAD_SHOP_ITEMS__SUCCESS: {
-      const itemsByName = {}
+      const itemsById = {}
       action.items.forEach((item) => {
-        itemsByName[item.name] = item
+        itemsById[item.id] = item
       })
 
       return {
         ...state,
-        ...itemsByName,
+        ...itemsById,
       }
     }
     default:
@@ -22,14 +22,14 @@ function byId(state = {}, action) {
 function allIds(state = [], action) {
   switch (action.type) {
     case actionTypes.LOAD_SHOP_ITEMS__SUCCESS: {
-      const itemNames = [ ...state ]
+      const itemIds = [ ...state ]
       action.items.forEach((item) => {
-        if (!itemNames.includes(item.name)) {
-          itemNames.push(item.name)
+        if (!itemIds.includes(item.id)) {
+          itemIds.push(item.id)
         }
       })
 
-      return [ ...itemNames ]
+      return [ ...itemIds ]
     }
     default:
       return state

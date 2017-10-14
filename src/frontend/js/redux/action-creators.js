@@ -24,11 +24,19 @@ export function loadShopItems(category) {
       fetch(`/api/shop_items/category/${category}`)
         .then(response => response.json())
         .then(
-          result => dispatch({
-            type: actionTypes.LOAD_SHOP_ITEMS__SUCCESS,
-            category,
-            items: result,
-          }),
+          (result) => {
+            const rawItems = result
+            const itemsWithId = rawItems.map((item) => ({
+              id: uuid_v4(),
+              ...item,
+            }))
+
+            dispatch({
+              type: actionTypes.LOAD_SHOP_ITEMS__SUCCESS,
+              category,
+              items: itemsWithId,
+            })
+          },
           error => dispatch({
             type: actionTypes.LOAD_SHOP_ITEMS__FAILURE,
             category,

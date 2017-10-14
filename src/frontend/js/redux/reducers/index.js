@@ -30,7 +30,8 @@ export const selectors = {
 //   entities: {
 //     shopItems: {
 //       byId: {
-//         name: {
+//         id: {
+//           id,
 //           name,
 //           title,
 //           category,
