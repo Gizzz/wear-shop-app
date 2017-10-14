@@ -28,7 +28,7 @@ module.exports = {
           'babelrc': false,
           'presets': [
             ['react'],
-            ['es2015', { 'modules': false }],
+            ['env'],
           ],
           'plugins': [
             'transform-class-properties',
