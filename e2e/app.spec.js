@@ -2,6 +2,7 @@ const {
   Builder,
   By,
   promise,
+  until,
 } = require('selenium-webdriver')
 
 const {
@@ -49,7 +50,8 @@ describe('app', () => {
 
     // go to item page
     await driver
-      .findElement(By.css(selectors.listPage.firstItemInList)).click()
+      .wait(until.elementLocated(By.css(selectors.listPage.firstItemInList)))
+      .then(() => driver.findElement(By.css(selectors.listPage.firstItemInList)).click())
       .then(() => driver.executeScript('return window.location.pathname'))
       .then((path) => expect(path.startsWith('/detail/mens_outerwear')).toBe(true))
 
