@@ -35,6 +35,16 @@ export default class Detail extends React.Component {
     const isShopItemLoaded = this.props.shopItem != undefined
     if (!isShopItemLoaded) return
 
+    // todo: remove me
+    // --
+    // this line is added for compatability with react-component-state solution
+    // it will be removed when redux integration is finished
+    this.props.onAddBtnClick(
+      this.props.shopItem,
+      this.state.size,
+      this.state.quantity,
+    )
+
     this.props.addShopItemToCart(this.props.shopItem.id, this.state.size, this.state.quantity)
     this.openDialog()
   }
