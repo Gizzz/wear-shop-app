@@ -11,7 +11,6 @@ import PostActionDialog from './PostActionDialog'
 export default class Detail extends React.Component {
   static propTypes = {
     match: PropTypes.object.isRequired,
-    onAddBtnClick: PropTypes.func.isRequired,
     // redux
     shopItem: PropTypes.object,
     addShopItemToCart: PropTypes.func.isRequired,
