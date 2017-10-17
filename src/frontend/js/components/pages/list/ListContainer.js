@@ -6,7 +6,7 @@ import List from './List'
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    shopItems: selectors.shopItems.getShopItemsByCategory(state, ownProps.match.params.category),
+    shopItems: selectors.entities.shopItems.getShopItemsByCategory(state, ownProps.match.params.category),
     isItemsLoading: selectors.ui.get_isItemsLoading(state),
     errorMessage: selectors.ui.get_errorMessage(state),
   }

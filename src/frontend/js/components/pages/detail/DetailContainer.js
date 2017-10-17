@@ -38,7 +38,7 @@ const mapStateToProps = (state, ownProps) => {
   const name = ownProps.match.params.itemName
 
   return {
-    shopItem: selectors.shopItems.getShopItem(state, category, name)
+    shopItem: selectors.entities.shopItems.getShopItem(state, category, name)
   }
 }
 

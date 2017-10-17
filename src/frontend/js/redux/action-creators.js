@@ -6,7 +6,7 @@ import { selectors } from './reducers'
 function loadShopItems(category) {
   return (dispatch, getState) => {
     const isItemsAlreadyLoaded = () => {
-      return selectors.shopItems.getShopItemsByCategory(getState(), category).length > 0
+      return selectors.entities.shopItems.getShopItemsByCategory(getState(), category).length > 0
     }
 
     if (isItemsAlreadyLoaded()) {
@@ -61,7 +61,7 @@ function loadShopItems(category) {
 
 function addShopItemToCart(shopItemId, size, quantity) {
   return (dispatch, getState) => {
-    const cartEntries = selectors.cartEntries.getCartEntries(getState())
+    const cartEntries = selectors.entities.cartEntries.getCartEntries(getState())
     const cartEntryToUpdate = cartEntries.find(ce => ce.shopItemId === shopItemId && ce.size === size)
 
     const isNewCartEntry = cartEntryToUpdate === undefined

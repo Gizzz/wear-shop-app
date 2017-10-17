@@ -9,18 +9,20 @@ const rootReducer = combineReducers({ entities, ui })
 export default rootReducer
 
 export const selectors = {
-  shopItems: {
-    getShopItemsByCategory(state, category) {
-      return shopItemsSelectors.getShopItemsByCategory(state.entities.shopItems, category)
+  entities: {
+    shopItems: {
+      getShopItemsByCategory(state, category) {
+        return shopItemsSelectors.getShopItemsByCategory(state.entities.shopItems, category)
+      },
+      getShopItem(state, category, name) {
+        return shopItemsSelectors.getShopItem(state.entities.shopItems, category, name)
+      },
     },
-    getShopItem(state, category, name) {
-      return shopItemsSelectors.getShopItem(state.entities.shopItems, category, name)
+    cartEntries: {
+      getCartEntries(state) {
+        return cartEntriesSelectors.getCartEntries(state.entities.cartEntries)
+      }
     },
-  },
-  cartEntries: {
-    getCartEntries(state) {
-      return cartEntriesSelectors.getCartEntries(state.entities.cartEntries)
-    }
   },
   ui: {
     get_isItemsLoading(state) {
