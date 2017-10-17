@@ -3,7 +3,7 @@ import uuid_v4 from 'uuid/v4'
 import * as actionTypes from './action-types'
 import { selectors } from './reducers'
 
-export function loadShopItems(category) {
+function loadShopItems(category) {
   return (dispatch, getState) => {
     const isItemsAlreadyLoaded = () => {
       return selectors.shopItems.getShopItemsByCategory(getState(), category).length > 0
@@ -59,7 +59,7 @@ export function loadShopItems(category) {
   }
 }
 
-export function addShopItemToCart(shopItemId, size, quantity) {
+function addShopItemToCart(shopItemId, size, quantity) {
   return {
     type: actionTypes.ADD_SHOP_ITEM_TO_CART,
     id: uuid_v4(),
@@ -67,4 +67,9 @@ export function addShopItemToCart(shopItemId, size, quantity) {
     size,
     quantity,
   }
+}
+
+export {
+  loadShopItems,
+  addShopItemToCart,
 }
