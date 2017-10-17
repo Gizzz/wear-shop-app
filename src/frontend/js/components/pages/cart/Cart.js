@@ -7,17 +7,17 @@ import { raisedButtonDefaultProps } from '../../../common-styles'
 import CartItem from './CartItem'
 
 class Cart extends React.Component {
-  constructor(props) {
-    super(props)
-    this.handleQuantityChange = this.handleQuantityChange.bind(this)
-    this.handleRemove = this.handleRemove.bind(this)
+  static propTypes = {
+    items: PropTypes.array.isRequired,
+    onQuantityChange: PropTypes.func.isRequired,
+    onRemove: PropTypes.func.isRequired,
   }
 
-  handleQuantityChange(itemName, size, quantity) {
+  handleQuantityChange = (itemName, size, quantity) => {
     this.props.onQuantityChange(itemName, size, quantity)
   }
 
-  handleRemove(itemName, size) {
+  handleRemove = (itemName, size) => {
     this.props.onRemove(itemName, size)
   }
 
@@ -27,14 +27,13 @@ class Cart extends React.Component {
       return (
         <div className="content cart">
           <p className="empty-cart">
-						Your <i className="cart"></i> is empty.
+            Your <i className="cart"></i> is empty.
           </p>
         </div>
       )
     }
 
     const items = this.props.items
-
     const itemOrItems = items.length === 1 ? 'item' : 'items'
     const itemsCountText = `(${items.length} ${itemOrItems})`
 
@@ -59,7 +58,7 @@ class Cart extends React.Component {
           { itemsMarkup }
         </ul>
         <div className="checkout-box">
-					Total: <span className="subtotal">${ totalPrice.toFixed(2) }</span>
+          Total: <span className="subtotal">${ totalPrice.toFixed(2) }</span>
           <Link to="/checkout">
             <RaisedButton {...raisedButtonDefaultProps} label="Checkout" />
           </Link>
@@ -67,12 +66,6 @@ class Cart extends React.Component {
       </div>
     )
   }
-}
-
-Cart.propTypes = {
-  items: PropTypes.array.isRequired,
-  onQuantityChange: PropTypes.func.isRequired,
-  onRemove: PropTypes.func.isRequired,
 }
 
 export default Cart
