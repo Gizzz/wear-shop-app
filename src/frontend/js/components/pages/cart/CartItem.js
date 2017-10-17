@@ -15,32 +15,32 @@ const DeleteIcon = (props) => (
 )
 
 export default class CartItem extends React.Component {
- static propTypes = {
-   item: PropTypes.object.isRequired,
-   onQuantityChange: PropTypes.func.isRequired,
-   onRemove: PropTypes.func.isRequired,
- }
+  static propTypes = {
+    item: PropTypes.object.isRequired,
+    onQuantityChange: PropTypes.func.isRequired,
+    onRemove: PropTypes.func.isRequired,
+  }
 
- constructor(props) {
+  constructor(props) {
     super(props)
   }
 
- handleQuantityChange = (e, i, newValue) => {
-   const itemName = this.props.item.itemData.name
-   const size = this.props.item.size
-   const quantity = parseInt(newValue)
+  handleQuantityChange = (e, i, newValue) => {
+    const itemName = this.props.item.itemData.name
+    const size = this.props.item.size
+    const quantity = parseInt(newValue)
 
-   this.props.onQuantityChange(itemName, size, quantity)
- }
+    this.props.onQuantityChange(itemName, size, quantity)
+  }
 
- handleDeleteBtnClick = () => {
-   const itemName = this.props.item.itemData.name
-   const size = this.props.item.size
+  handleDeleteBtnClick = () => {
+    const itemName = this.props.item.itemData.name
+    const size = this.props.item.size
 
-   this.props.onRemove(itemName, size)
- }
+    this.props.onRemove(itemName, size)
+  }
 
- render() {
+  render() {
     return (
       <li>
         <div className="left">
@@ -48,7 +48,7 @@ export default class CartItem extends React.Component {
             <img src={this.props.item.itemData.image} />
           </Link>
           <Link className="name" to={`/detail/${this.props.item.itemData.category}/${this.props.item.itemData.name}`}>
-            { this.props.item.itemData.title }
+            {this.props.item.itemData.title}
           </Link>
         </div>
         <div className="right">
@@ -72,12 +72,12 @@ export default class CartItem extends React.Component {
               <MenuItem value={10} primaryText="10" />
             </SelectField>
             {/* this element is used in e2e tests */}
-            <div className="hidden-value">{ this.props.item.quantity }</div>
+            <div className="hidden-value">{this.props.item.quantity}</div>
           </div>
           <div className="size">
-						Size: <span className="value">{ this.props.item.size }</span>
+            Size: <span className="value">{this.props.item.size}</span>
           </div>
-          <div className="price">${ this.props.item.itemData.price.toFixed(2) }</div>
+          <div className="price">${this.props.item.itemData.price.toFixed(2)}</div>
           <div className="delete">
             <IconButton
               iconStyle={{ width: '18px', height: '18px', }}
