@@ -60,12 +60,26 @@ function loadShopItems(category) {
 }
 
 function addShopItemToCart(shopItemId, size, quantity) {
-  return {
-    type: actionTypes.ADD_SHOP_ITEM_TO_CART,
-    id: uuid_v4(),
-    shopItemId,
-    size,
-    quantity,
+  return (dispatch, getState) => {
+    const cartEntries = selectors.cartEntries.getCartEntries(getState())
+    const cartEntryToUpdate = cartEntries.find(ce => ce.shopItemId === shopItemId && ce.size === size)
+
+    const isNewCartEntry = cartEntryToUpdate === undefined
+    if (isNewCartEntry) {
+      dispatch({
+        type: actionTypes.ADD_CART_ENTRY,
+        id: uuid_v4(),
+        shopItemId,
+        size,
+        quantity,
+      })
+    } else {
+      dispatch({
+        type: actionTypes.UPDATE_CART_ENTRY,
+        id: cartEntryToUpdate.id,
+        quantity,
+      })
+    }
   }
 }
 

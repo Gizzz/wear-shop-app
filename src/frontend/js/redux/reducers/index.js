@@ -2,6 +2,7 @@ import { combineReducers } from 'redux'
 
 import entities from './entities'
 import * as shopItemsSelectors from './entities/shop-items'
+import * as cartEntriesSelectors from './entities/cart-entries'
 import ui, * as uiSelectors from './ui'
 
 const rootReducer = combineReducers({ entities, ui })
@@ -15,6 +16,11 @@ export const selectors = {
     getShopItem(state, category, name) {
       return shopItemsSelectors.getShopItem(state.entities.shopItems, category, name)
     },
+  },
+  cartEntries: {
+    getCartEntries(state) {
+      return cartEntriesSelectors.getCartEntries(state.entities.cartEntries)
+    }
   },
   ui: {
     get_isItemsLoading(state) {
