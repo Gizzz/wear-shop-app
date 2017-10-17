@@ -5,8 +5,11 @@ import { selectors } from './reducers'
 
 export function loadShopItems(category) {
   return (dispatch, getState) => {
-    const isItemsAlreadyLoaded = selectors.shopItems.getShopItemsByCategory(getState(), category).length > 0
-    if (isItemsAlreadyLoaded) {
+    const isItemsAlreadyLoaded = () => {
+      return selectors.shopItems.getShopItemsByCategory(getState(), category).length > 0
+    }
+
+    if (isItemsAlreadyLoaded()) {
       dispatch({
         type: actionTypes.LOAD_SHOP_ITEMS__CANCEL,
         category,
@@ -25,6 +28,15 @@ export function loadShopItems(category) {
         .then(response => response.json())
         .then(
           (result) => {
+            if (isItemsAlreadyLoaded()) {
+              dispatch({
+                type: actionTypes.LOAD_SHOP_ITEMS__CANCEL,
+                category,
+              })
+
+              return
+            }
+
             const rawItems = result
             const itemsWithId = rawItems.map((item) => ({
               id: uuid_v4(),
