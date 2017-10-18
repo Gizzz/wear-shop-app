@@ -41,6 +41,11 @@ export default shopItems
 
 // selectors
 
+export function getShopItems(state) {
+  const allItems = state.allIds.map(id => state.byId[id])
+  return allItems
+}
+
 export function getShopItemsByCategory(state, category) {
   const allItems = state.allIds.map(id => state.byId[id])
   const itemsInCategory = allItems.filter((item) => { return item.category === category })

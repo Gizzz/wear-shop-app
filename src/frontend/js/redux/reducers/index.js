@@ -11,6 +11,9 @@ export default rootReducer
 export const selectors = {
   entities: {
     shopItems: {
+      getShopItems(state) {
+        return shopItemsSelectors.getShopItems(state.entities.shopItems)
+      },
       getShopItemsByCategory(state, category) {
         return shopItemsSelectors.getShopItemsByCategory(state.entities.shopItems, category)
       },
