@@ -7,7 +7,7 @@ import Footer from './Footer'
 import Home from './pages/Home'
 import ListContainer from './pages/list/ListContainer'
 import DetailContainer from './pages/detail/DetailContainer'
-import Cart from './pages/cart/Cart'
+import CartContainer from './pages/cart/CartContainer'
 import Checkout from './pages/checkout/Checkout'
 import CheckoutSuccess from './pages/CheckoutSuccess'
 import PageNotFound from './pages/PageNotFound'
@@ -104,7 +104,7 @@ export default class App extends React.Component {
                       <DetailContainer match={match} />
                     )} />
                     <Route path="/cart" render={() => (
-                      <Cart items={this.state.cartItems} onQuantityChange={this.updateCartItemQuantity} onRemove={this.removeCartItem} />
+                      <CartContainer onQuantityChange={this.updateCartItemQuantity} onRemove={this.removeCartItem} />
                     )} />
                     <Route exact path="/checkout" render={() => (
                       <Checkout cartItems={this.state.cartItems} onPlaceOrder={this.clearCart} />

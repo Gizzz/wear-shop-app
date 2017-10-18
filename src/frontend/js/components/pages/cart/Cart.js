@@ -8,9 +8,11 @@ import CartItem from './CartItem'
 
 class Cart extends React.Component {
   static propTypes = {
-    items: PropTypes.array.isRequired,
     onQuantityChange: PropTypes.func.isRequired,
     onRemove: PropTypes.func.isRequired,
+    // redux
+    shopItems: PropTypes.array.isRequired,
+    cartEntries: PropTypes.array.isRequired,
   }
 
   handleQuantityChange = (itemName, size, quantity) => {
@@ -22,7 +24,7 @@ class Cart extends React.Component {
   }
 
   render() {
-    const isCartEmpty = !this.props.items || !this.props.items.length
+    const isCartEmpty = this.props.cartEntries.length === 0
     if (isCartEmpty) {
       return (
         <div className="content cart">
@@ -33,29 +35,38 @@ class Cart extends React.Component {
       )
     }
 
-    const items = this.props.items
-    const itemOrItems = items.length === 1 ? 'item' : 'items'
-    const itemsCountText = `(${items.length} ${itemOrItems})`
+    const cartEntries = this.props.cartEntries
+    const shopItems = this.props.shopItems
 
-    const itemsMarkup = items.map((item) => (
-      <CartItem key={`name=${item.itemData.name}&size=${item.size}`} item={item}
-        onQuantityChange={this.handleQuantityChange}
-        onRemove={this.handleRemove}
-      />
-    ))
+    const entryOrEntries = cartEntries.length === 1 ? 'entry' : 'entries'
+    const entriesCountText = `(${cartEntries.length} ${entryOrEntries})`
 
-    const totalPrice = items.reduce((sum, item) => {
-      return sum + item.itemData.price * item.quantity
+    const entriesMarkup = cartEntries.map((entry) => {
+      const shopItem = shopItems.find(i => i.id === entry.shopItemId)
+      return (
+        <CartItem
+          key={entry.id}
+          cartEntry={entry}
+          shopItem={shopItem}
+          onQuantityChange={this.handleQuantityChange}
+          onRemove={this.handleRemove}
+        />
+      )
+    })
+
+    const totalPrice = cartEntries.reduce((sum, entry) => {
+      const itemPrice = shopItems.find(i => i.id === entry.shopItemId).price
+      return sum + itemPrice * entry.quantity
     }, 0)
 
     return (
       <div className="content cart">
         <div className="heading">
           <h1>Your Cart</h1>
-          <span>{ itemsCountText }</span>
+          <span>{ entriesCountText }</span>
         </div>
         <ul className="items">
-          { itemsMarkup }
+          { entriesMarkup }
         </ul>
         <div className="checkout-box">
           Total: <span className="subtotal">${ totalPrice.toFixed(2) }</span>
