@@ -27,6 +27,15 @@ function byId(state = {}, action) {
         }
       }
     }
+    case actionTypes.UPDATE_CART_ENTRY__SET_QUANTITY: {
+      return {
+        ...state,
+        [action.id]: {
+          ...state[action.id],
+          quantity: action.quantity,
+        }
+      }
+    }
     default: {
       return state
     }
@@ -38,10 +47,11 @@ function allIds(state = [], action) {
     case actionTypes.ADD_CART_ENTRY: {
       return [
         ...state,
-        action.id
+        action.id,
       ]
     }
     case actionTypes.UPDATE_CART_ENTRY__ADD_QUANTITY:
+    case actionTypes.UPDATE_CART_ENTRY__SET_QUANTITY:
     default: {
       return state
     }

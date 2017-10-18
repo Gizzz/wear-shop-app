@@ -18,7 +18,6 @@ import '../../styles/index.less'
 export default class App extends React.Component {
   constructor(props) {
     super(props)
-    this.updateCartItemQuantity = this.updateCartItemQuantity.bind(this)
     this.removeCartItem = this.removeCartItem.bind(this)
     this.clearCart = this.clearCart.bind(this)
 
@@ -45,20 +44,6 @@ export default class App extends React.Component {
     // save app state to storage on window.beforeunload
     window.addEventListener('beforeunload', () => {
       storageHelper.saveState(this.state)
-    })
-  }
-
-  updateCartItemQuantity(itemName, size, quantity) {
-    this.setState((prevState) => {
-      return {
-        cartItems: prevState.cartItems.map((cartItem) => {
-          if (cartItem.itemData.name === itemName && cartItem.size === size) {
-            return Object.assign({}, cartItem, { quantity })
-          }
-
-          return cartItem
-        }),
-      }
     })
   }
 
@@ -104,7 +89,7 @@ export default class App extends React.Component {
                       <DetailContainer match={match} />
                     )} />
                     <Route path="/cart" render={() => (
-                      <CartContainer onQuantityChange={this.updateCartItemQuantity} onRemove={this.removeCartItem} />
+                      <CartContainer onRemove={this.removeCartItem} />
                     )} />
                     <Route exact path="/checkout" render={() => (
                       <Checkout cartItems={this.state.cartItems} onPlaceOrder={this.clearCart} />

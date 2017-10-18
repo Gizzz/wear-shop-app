@@ -83,7 +83,16 @@ function addShopItemToCart(shopItemId, size, quantity) {
   }
 }
 
+function updateCartEntry_setQuantity(cartEntryId, quantity) {
+  return {
+    type: actionTypes.UPDATE_CART_ENTRY__SET_QUANTITY,
+    id: cartEntryId,
+    quantity,
+  }
+}
+
 export {
   loadShopItems,
   addShopItemToCart,
+  updateCartEntry_setQuantity,
 }

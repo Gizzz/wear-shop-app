@@ -23,11 +23,11 @@ export default class CartItem extends React.Component {
   }
 
   handleQuantityChange = (e, i, newValue) => {
-    const itemName = this.props.shopItem.name
-    const size = this.props.cartEntry.size
     const quantity = parseInt(newValue)
-
-    this.props.onQuantityChange(itemName, size, quantity)
+    this.props.onQuantityChange(
+      this.props.cartEntry.id,
+      quantity,
+    )
   }
 
   handleDeleteBtnClick = () => {
