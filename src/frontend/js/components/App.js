@@ -18,7 +18,6 @@ import '../../styles/index.less'
 export default class App extends React.Component {
   constructor(props) {
     super(props)
-    this.removeCartItem = this.removeCartItem.bind(this)
     this.clearCart = this.clearCart.bind(this)
 
     this.state = {
@@ -44,17 +43,6 @@ export default class App extends React.Component {
     // save app state to storage on window.beforeunload
     window.addEventListener('beforeunload', () => {
       storageHelper.saveState(this.state)
-    })
-  }
-
-  removeCartItem(itemName, size) {
-    this.setState((prevState) => {
-      const cartItems = prevState.cartItems.filter(cartItem => {
-        if (cartItem.itemData.name !== itemName) return true
-        if (cartItem.size !== size) return true
-        return false
-      })
-      return { cartItems }
     })
   }
 
@@ -89,7 +77,7 @@ export default class App extends React.Component {
                       <DetailContainer match={match} />
                     )} />
                     <Route path="/cart" render={() => (
-                      <CartContainer onRemove={this.removeCartItem} />
+                      <CartContainer />
                     )} />
                     <Route exact path="/checkout" render={() => (
                       <Checkout cartItems={this.state.cartItems} onPlaceOrder={this.clearCart} />

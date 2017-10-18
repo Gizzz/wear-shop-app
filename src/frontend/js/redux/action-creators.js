@@ -91,8 +91,16 @@ function updateCartEntry_setQuantity(cartEntryId, quantity) {
   }
 }
 
+function removeCartEntry(cartEntryId) {
+  return {
+    type: actionTypes.REMOVE_CART_ENTRY,
+    id: cartEntryId,
+  }
+}
+
 export {
   loadShopItems,
   addShopItemToCart,
   updateCartEntry_setQuantity,
+  removeCartEntry,
 }

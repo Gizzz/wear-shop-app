@@ -8,11 +8,11 @@ import CartItem from './CartItem'
 
 class Cart extends React.Component {
   static propTypes = {
-    onRemove: PropTypes.func.isRequired,
     // redux
     shopItems: PropTypes.array.isRequired,
     cartEntries: PropTypes.array.isRequired,
     onQuantityChange: PropTypes.func.isRequired,
+    onRemove: PropTypes.func.isRequired,
   }
 
   handleQuantityChange = (itemName, size, quantity) => {
@@ -49,7 +49,7 @@ class Cart extends React.Component {
           cartEntry={entry}
           shopItem={shopItem}
           onQuantityChange={this.props.onQuantityChange}
-          onRemove={this.handleRemove}
+          onRemove={this.props.onRemove}
         />
       )
     })

@@ -13,6 +13,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
   onQuantityChange: actionCreators.updateCartEntry_setQuantity,
+  onRemove: actionCreators.removeCartEntry,
 }
 
 const CartContainer = connect(mapStateToProps, mapDispatchToProps)(Cart)

@@ -36,6 +36,12 @@ function byId(state = {}, action) {
         }
       }
     }
+    case actionTypes.REMOVE_CART_ENTRY: {
+      const newState = { ...state }
+      delete newState[action.id]
+
+      return newState
+    }
     default: {
       return state
     }
@@ -49,6 +55,10 @@ function allIds(state = [], action) {
         ...state,
         action.id,
       ]
+    }
+    case actionTypes.REMOVE_CART_ENTRY: {
+      const newState = state.filter((id) => { return id !== action.id })
+      return newState
     }
     case actionTypes.UPDATE_CART_ENTRY__ADD_QUANTITY:
     case actionTypes.UPDATE_CART_ENTRY__SET_QUANTITY:
