@@ -37,16 +37,10 @@ function loadShopItems(category) {
               return
             }
 
-            const rawItems = result
-            const itemsWithId = rawItems.map((item) => ({
-              id: uuid_v4(),
-              ...item,
-            }))
-
             dispatch({
               type: actionTypes.LOAD_SHOP_ITEMS__SUCCESS,
               category,
-              items: itemsWithId,
+              items: result,
             })
           },
           error => dispatch({
