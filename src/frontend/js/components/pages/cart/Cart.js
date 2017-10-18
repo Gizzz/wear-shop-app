@@ -15,14 +15,6 @@ class Cart extends React.Component {
     onRemove: PropTypes.func.isRequired,
   }
 
-  handleQuantityChange = (itemName, size, quantity) => {
-    this.props.onQuantityChange(itemName, size, quantity)
-  }
-
-  handleRemove = (itemName, size) => {
-    this.props.onRemove(itemName, size)
-  }
-
   render() {
     const isCartEmpty = this.props.cartEntries.length === 0
     if (isCartEmpty) {
