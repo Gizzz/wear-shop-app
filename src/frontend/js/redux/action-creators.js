@@ -75,7 +75,7 @@ function addShopItemToCart(shopItemId, size, quantity) {
       })
     } else {
       dispatch({
-        type: actionTypes.UPDATE_CART_ENTRY,
+        type: actionTypes.UPDATE_CART_ENTRY__ADD_QUANTITY,
         id: cartEntryToUpdate.id,
         quantity,
       })

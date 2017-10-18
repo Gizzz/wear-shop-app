@@ -14,7 +14,7 @@ function byId(state = {}, action) {
         }
       }
     }
-    case actionTypes.UPDATE_CART_ENTRY: {
+    case actionTypes.UPDATE_CART_ENTRY__ADD_QUANTITY: {
       const maxQuantity = 10
       const currentQuantiry = state[action.id].quantity
       const quantity = Math.min(currentQuantiry + action.quantity, maxQuantity)
