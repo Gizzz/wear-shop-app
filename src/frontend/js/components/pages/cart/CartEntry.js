@@ -14,7 +14,7 @@ const DeleteIcon = (props) => (
   </SvgIcon>
 )
 
-export default class CartItem extends React.Component {
+export default class CartEntry extends React.Component {
   static propTypes = {
     cartEntry: PropTypes.object.isRequired,
     shopItem: PropTypes.object.isRequired,

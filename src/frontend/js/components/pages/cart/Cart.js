@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import RaisedButton from 'material-ui/RaisedButton'
 
 import { raisedButtonDefaultProps } from '../../../common-styles'
-import CartItem from './CartItem'
+import CartEntry from './CartEntry'
 
 class Cart extends React.Component {
   static propTypes = {
@@ -44,7 +44,7 @@ class Cart extends React.Component {
     const entriesMarkup = cartEntries.map((entry) => {
       const shopItem = shopItems.find(i => i.id === entry.shopItemId)
       return (
-        <CartItem
+        <CartEntry
           key={entry.id}
           cartEntry={entry}
           shopItem={shopItem}
