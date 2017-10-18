@@ -32,14 +32,17 @@ export default class CartEntry extends React.Component {
   }
 
   render() {
+    const cartEntry = this.props.cartEntry
+    const shopItem = this.props.shopItem
+
     return (
       <li>
         <div className="left">
-          <Link className="image" to={`/detail/${this.props.shopItem.category}/${this.props.shopItem.name}`}>
-            <img src={this.props.shopItem.image} />
+          <Link className="image" to={`/detail/${shopItem.category}/${shopItem.name}`}>
+            <img src={shopItem.image} />
           </Link>
-          <Link className="name" to={`/detail/${this.props.shopItem.category}/${this.props.shopItem.name}`}>
-            {this.props.shopItem.title}
+          <Link className="name" to={`/detail/${shopItem.category}/${shopItem.name}`}>
+            {shopItem.title}
           </Link>
         </div>
         <div className="right">
@@ -48,7 +51,7 @@ export default class CartEntry extends React.Component {
             <SelectField
               {...selectFieldDefaultProps}
               underlineStyle={{ visibility: 'hidden' }}
-              value={this.props.cartEntry.quantity}
+              value={cartEntry.quantity}
               onChange={this.handleQuantityChange}
             >
               <MenuItem value={1} primaryText="1" />
@@ -63,12 +66,12 @@ export default class CartEntry extends React.Component {
               <MenuItem value={10} primaryText="10" />
             </SelectField>
             {/* this element is used in e2e tests */}
-            <div className="hidden-value">{this.props.cartEntry.quantity}</div>
+            <div className="hidden-value">{cartEntry.quantity}</div>
           </div>
           <div className="size">
-            Size: <span className="value">{this.props.cartEntry.size}</span>
+            Size: <span className="value">{cartEntry.size}</span>
           </div>
-          <div className="price">${this.props.shopItem.price.toFixed(2)}</div>
+          <div className="price">${shopItem.price.toFixed(2)}</div>
           <div className="delete">
             <IconButton
               iconStyle={{ width: '18px', height: '18px', }}
