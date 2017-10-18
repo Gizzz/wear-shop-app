@@ -41,7 +41,7 @@ function allIds(state = [], action) {
         action.id
       ]
     }
-    case actionTypes.UPDATE_CART_ENTRY:
+    case actionTypes.UPDATE_CART_ENTRY__ADD_QUANTITY:
     default: {
       return state
     }
