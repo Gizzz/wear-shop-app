@@ -3,53 +3,61 @@ import uuid_v4 from 'uuid/v4'
 import * as actionTypes from './action-types'
 import { selectors } from './reducers'
 
-function loadShopItems(category) {
+function loadShopItems(category = 'all') {
   return (dispatch, getState) => {
-    const isItemsAlreadyLoaded = () => {
-      return selectors.entities.shopItems.getShopItemsByCategory(getState(), category).length > 0
+    let categories
+    if (category === 'all') {
+      categories = [
+        'mens_outerwear',
+        'ladies_outerwear',
+        'mens_tshirts',
+        'ladies_tshirts',
+      ]
+    } else {
+      categories = [ category ]
     }
 
-    if (isItemsAlreadyLoaded()) {
-      dispatch({
-        type: actionTypes.LOAD_SHOP_ITEMS__CANCEL,
-        category,
-      })
-
-      return
-    }
+    const categoriesToLoad = categories.filter((categoryName) => { return !isShopItemsLoaded(categoryName, selectors, getState) })
+    if (categoriesToLoad.length === 0) return
 
     dispatch({
       type: actionTypes.LOAD_SHOP_ITEMS__REQUEST,
       category,
     })
 
-    setTimeout(() => {
-      fetch(`/api/shop_items/category/${category}`)
-        .then(response => response.json())
-        .then(
-          (result) => {
-            if (isItemsAlreadyLoaded()) {
-              dispatch({
-                type: actionTypes.LOAD_SHOP_ITEMS__CANCEL,
-                category,
-              })
+    const categoryRequests = categoriesToLoad.map((categoryName) => {
+      return new Promise((res, rej) => {
+        setTimeout(() => {
+          fetch(`/api/shop_items/category/${categoryName}`)
+            .then(response => response.json())
+            .then(
+              result => res(result),
+              error => rej(error),
+            )
+        }, 500)
+      })
+    })
 
-              return
-            }
+    Promise.all(categoryRequests).then(
+      (results) => {
+        const flattenResults = results.reduce((acc, resultArray) => {
+          return acc.concat(resultArray)
+        }, [])
 
-            dispatch({
-              type: actionTypes.LOAD_SHOP_ITEMS__SUCCESS,
-              category,
-              items: result,
-            })
-          },
-          error => dispatch({
-            type: actionTypes.LOAD_SHOP_ITEMS__FAILURE,
-            category,
-            message: error.message || 'Something went wrong.',
-          })
-        )
-    }, 500)
+        dispatch({
+          type: actionTypes.LOAD_SHOP_ITEMS__SUCCESS,
+          category,
+          items: flattenResults,
+        })
+      },
+      (error) => {
+        dispatch({
+          type: actionTypes.LOAD_SHOP_ITEMS__FAILURE,
+          category,
+          message: error.message || 'Something went wrong.',
+        })
+      },
+    )
   }
 }
 
@@ -90,6 +98,11 @@ function removeCartEntry(cartEntryId) {
     type: actionTypes.REMOVE_CART_ENTRY,
     id: cartEntryId,
   }
+}
+
+// helper
+function isShopItemsLoaded(category, selectors, getState) {
+  return selectors.entities.shopItems.getShopItemsByCategory(getState(), category).length > 0
 }
 
 export {
