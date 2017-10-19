@@ -14,29 +14,38 @@ class CartWrapper extends React.Component {
   }
 
   componentDidMount() {
+    if (!this.isRelatedShopItemsLoaded()) {
+      this.props.loadShopItems()
+    }
+  }
+
+  isRelatedShopItemsLoaded = () => {
     const shopItems = this.props.shopItems
     const cartEntries = this.props.cartEntries
 
-    let isRelatedShopItemsLoaded = true
+    let isShopItemsLoaded = true
 
     cartEntries.forEach((entry) => {
-      const isShopItemLoaded = shopItems.find(item => item.id === entry.shopItemId) !== undefined
-      if (!isShopItemLoaded) {
-        isRelatedShopItemsLoaded = false
+      const isItemLoaded = shopItems.find(item => item.id === entry.shopItemId) !== undefined
+      if (!isItemLoaded) {
+        isShopItemsLoaded = false
       }
     })
 
-    if (!isRelatedShopItemsLoaded) {
-      this.props.loadShopItems()
-    }
+    return isShopItemsLoaded
   }
 
   render() {
     // eslint-disable-next-line no-unused-vars
     const { loadShopItems: notUsed, ...rest } = this.props
+    let isRelatedDataLoading = false
+
+    if (!this.isRelatedShopItemsLoaded()) {
+      isRelatedDataLoading = true
+    }
 
     return (
-      <Cart {...rest} />
+      <Cart {...rest} isRelatedDataLoading={isRelatedDataLoading} />
     )
   }
 }
