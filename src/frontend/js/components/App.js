@@ -12,7 +12,6 @@ import Checkout from './pages/checkout/Checkout'
 import CheckoutSuccess from './pages/CheckoutSuccess'
 import PageNotFound from './pages/PageNotFound'
 
-import storageHelper from '../utils/storage-helper'
 import '../../styles/index.less'
 
 export default class App extends React.Component {
@@ -31,19 +30,6 @@ export default class App extends React.Component {
         // },
       ],
     }
-  }
-
-  componentDidMount() {
-    // restore app state from storage
-    const restoredState = storageHelper.loadState()
-    if (restoredState) {
-      this.setState(restoredState)
-    }
-
-    // save app state to storage on window.beforeunload
-    window.addEventListener('beforeunload', () => {
-      storageHelper.saveState(this.state)
-    })
   }
 
   clearCart() {
