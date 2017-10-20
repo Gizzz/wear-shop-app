@@ -14,47 +14,47 @@ import PageNotFound from './pages/PageNotFound'
 
 import '../../styles/index.less'
 
-export default class App extends React.Component {
-  render() {
-    // don't forget to change css
-    const transitionDuration = 400
+const App = () => {
+  // don't forget to change css
+  const transitionDuration = 400
 
-    return (
-      <BrowserRouter>
-        <div className="app">
-          <Header />
-          <section className="main">
-            <div className="wrapper">
-              <Route render={({ location }) => (
-                <CSSTransitionGroup
-                  transitionName="route_change"
-                  transitionAppear={true}
-                  transitionAppearTimeout={transitionDuration}
-                  transitionEnterTimeout={transitionDuration}
-                  transitionLeaveTimeout={transitionDuration}
-                >
-                  <Switch location={location} key={location.key}>
-                    <Route exact path="/" component={Home} />
-                    <Route path="/list/:category" component={ListContainer} />
-                    <Route path="/detail/:category/:itemName" render={({ match }) => (
-                      <DetailContainer match={match} />
-                    )} />
-                    <Route path="/cart" render={() => (
-                      <CartContainer />
-                    )} />
-                    <Route exact path="/checkout" render={() => (
-                      <CheckoutContainer />
-                    )} />
-                    <Route path="/checkout/success" component={CheckoutSuccess} />
-                    <Route component={PageNotFound}/>
-                  </Switch>
-                </CSSTransitionGroup>
-              )} />
-            </div>
-          </section>
-          <Footer />
-        </div>
-      </BrowserRouter>
-    )
-  }
+  return (
+    <BrowserRouter>
+      <div className="app">
+        <Header />
+        <section className="main">
+          <div className="wrapper">
+            <Route render={({ location }) => (
+              <CSSTransitionGroup
+                transitionName="route_change"
+                transitionAppear={true}
+                transitionAppearTimeout={transitionDuration}
+                transitionEnterTimeout={transitionDuration}
+                transitionLeaveTimeout={transitionDuration}
+              >
+                <Switch location={location} key={location.key}>
+                  <Route exact path="/" component={Home} />
+                  <Route path="/list/:category" component={ListContainer} />
+                  <Route path="/detail/:category/:itemName" render={({ match }) => (
+                    <DetailContainer match={match} />
+                  )} />
+                  <Route path="/cart" render={() => (
+                    <CartContainer />
+                  )} />
+                  <Route exact path="/checkout" render={() => (
+                    <CheckoutContainer />
+                  )} />
+                  <Route path="/checkout/success" component={CheckoutSuccess} />
+                  <Route component={PageNotFound}/>
+                </Switch>
+              </CSSTransitionGroup>
+            )} />
+          </div>
+        </section>
+        <Footer />
+      </div>
+    </BrowserRouter>
+  )
 }
+
+export default App
