@@ -45,7 +45,7 @@ export default class App extends React.Component {
     return (
       <BrowserRouter>
         <div className="app">
-          <Header cartItems={this.state.cartItems} />
+          <Header />
           <section className="main">
             <div className="wrapper">
               <Route render={({ location }) => (

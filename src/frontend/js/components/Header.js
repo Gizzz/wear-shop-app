@@ -5,12 +5,11 @@ import FlatButton from 'material-ui/FlatButton'
 import { Tabs, Tab } from 'material-ui/Tabs'
 
 import { colors } from '../common-styles'
-import HeaderCart from './HeaderCart'
+import HeaderCartContainer from './HeaderCartContainer'
 
 class Header extends React.Component {
  static propTypes = {
    location: PropTypes.object.isRequired,
-   cartItems: PropTypes.array.isRequired,
  }
 
  static contextTypes = {
@@ -89,17 +88,6 @@ class Header extends React.Component {
    }
  }
 
- calculateCartItemsCount = () => {
-   const cartItems = this.props.cartItems
-   if (!cartItems.length) return 0
-
-   const itemsCount = cartItems.reduce((count, cartItem) => {
-     return count + cartItem.quantity
-   }, 0)
-
-   return itemsCount
- }
-
  isNavigationVisible = () => {
    const pathname = this.props.location.pathname
 
@@ -136,7 +124,7 @@ class Header extends React.Component {
               <FlatButton label="SHOP" hoverColor="white" rippleColor="silver" labelStyle={labelStyle} />
             </Link>
           </h1>
-          <HeaderCart itemsCount={this.calculateCartItemsCount()} />
+          <HeaderCartContainer />
         </div>
         <div className="nav" style={{ visibility: this.isNavigationVisible() ? 'visible' : 'hidden' }}>
           <Tabs
