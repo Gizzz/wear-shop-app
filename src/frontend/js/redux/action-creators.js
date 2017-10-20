@@ -25,7 +25,9 @@ function loadShopItems(category = 'all') {
       category,
     })
 
-    const networkDelay = process.env.NODE_ENV !== 'production' ? 500 : 0
+    // const networkDelay = process.env.NODE_ENV !== 'production' ? 500 : 0
+    const networkDelay = 0
+
     const categoryRequests = categoriesToLoad.map((categoryName) => {
       return new Promise((res, rej) => {
         setTimeout(() => {
