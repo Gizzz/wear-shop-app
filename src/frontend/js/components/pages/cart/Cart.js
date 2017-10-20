@@ -20,7 +20,7 @@ class Cart extends React.Component {
     if (this.props.isRelatedDataLoading) {
       return (
         <div className="content cart">
-          <p className="empty-cart">
+          <p className="loading-data">
             Loading data...
           </p>
         </div>
