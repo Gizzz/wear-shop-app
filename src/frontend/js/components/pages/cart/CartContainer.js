@@ -60,7 +60,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = {
   onQuantityChange: actionCreators.updateCartEntry_setQuantity,
   onRemove: actionCreators.removeCartEntry,
-  loadShopItems: actionCreators.loadShopItems
+  loadShopItems: actionCreators.loadShopItems,
 }
 
 const CartContainer = connect(mapStateToProps, mapDispatchToProps)(CartWrapper)

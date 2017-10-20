@@ -9,7 +9,6 @@ import CartEntry from './CartEntry'
 class Cart extends React.Component {
   static propTypes = {
     isRelatedDataLoading: PropTypes.bool.isRequired,
-    // redux
     shopItems: PropTypes.array.isRequired,
     cartEntries: PropTypes.array.isRequired,
     onQuantityChange: PropTypes.func.isRequired,
@@ -17,7 +16,10 @@ class Cart extends React.Component {
   }
 
   render() {
-    if (this.props.isRelatedDataLoading) {
+    const isRelatedDataLoading = this.props.isRelatedDataLoading
+    const isCartEmpty = this.props.cartEntries.length === 0
+
+    if (isRelatedDataLoading) {
       return (
         <div className="content cart">
           <p className="loading-data">
@@ -25,10 +27,7 @@ class Cart extends React.Component {
           </p>
         </div>
       )
-    }
-
-    const isCartEmpty = this.props.cartEntries.length === 0
-    if (isCartEmpty) {
+    } else if (isCartEmpty) {
       return (
         <div className="content cart">
           <p className="empty-cart">

@@ -23,6 +23,7 @@ const validationRegexes = {
 
 class Checkout extends React.Component {
   static propTypes = {
+    isRelatedDataLoading: PropTypes.bool.isRequired,
     shopItems: PropTypes.array.isRequired,
     cartEntries: PropTypes.array.isRequired,
     onPlaceOrder: PropTypes.func.isRequired,
@@ -249,6 +250,27 @@ class Checkout extends React.Component {
   }
 
   render() {
+    const isRelatedDataLoading = this.props.isRelatedDataLoading
+    const isCartEmpty = this.props.cartEntries.length === 0
+
+    if (isRelatedDataLoading) {
+      return (
+        <div className="content cart">
+          <p className="loading-data">
+            Loading data...
+          </p>
+        </div>
+      )
+    } else if (isCartEmpty) {
+      return (
+        <div className="content cart">
+          <p className="empty-cart">
+            Your <i className="cart"></i> is empty.
+          </p>
+        </div>
+      )
+    }
+
     return (
       <div className="content checkout">
         <div className="heading">
