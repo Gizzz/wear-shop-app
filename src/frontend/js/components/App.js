@@ -15,29 +15,6 @@ import PageNotFound from './pages/PageNotFound'
 import '../../styles/index.less'
 
 export default class App extends React.Component {
-  constructor(props) {
-    super(props)
-    this.clearCart = this.clearCart.bind(this)
-
-    this.state = {
-      cartItems: [
-        // expample cart item:
-        // =================== 
-        // {
-        // 	itemData: {},
-        // 	size: "M",
-        // 	quantity: 1,
-        // },
-      ],
-    }
-  }
-
-  clearCart() {
-    this.setState({
-      cartItems: [],
-    })
-  }
-
   render() {
     // don't forget to change css
     const transitionDuration = 400
@@ -66,8 +43,7 @@ export default class App extends React.Component {
                       <CartContainer />
                     )} />
                     <Route exact path="/checkout" render={() => (
-                      // <CheckoutContainer cartItems={this.state.cartItems} onPlaceOrder={this.clearCart} />
-                      <CheckoutContainer onPlaceOrder={this.clearCart} />
+                      <CheckoutContainer />
                     )} />
                     <Route path="/checkout/success" component={CheckoutSuccess} />
                     <Route component={PageNotFound}/>

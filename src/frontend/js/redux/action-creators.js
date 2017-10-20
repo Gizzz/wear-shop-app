@@ -103,6 +103,12 @@ function removeCartEntry(cartEntryId) {
   }
 }
 
+function clearCart() {
+  return {
+    type: actionTypes.CLEAR_CART,
+  }
+}
+
 // helper
 function isShopItemsLoaded(category, selectors, getState) {
   return selectors.entities.shopItems.getShopItemsByCategory(getState(), category).length > 0
@@ -113,4 +119,5 @@ export {
   addShopItemToCart,
   updateCartEntry_setQuantity,
   removeCartEntry,
+  clearCart,
 }
