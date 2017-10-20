@@ -1,23 +1,26 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const OrderSummary = ({ cartItems }) => {
-  const cartItemsDom = cartItems.map((ci) => {
+const OrderSummary = ({ shopItems, cartEntries }) => {
+  const cartEntriesDom = cartEntries.map((cartEntry) => {
+    const shopItem = shopItems.find(item => item.id === cartEntry.shopItemId)
+
     return (
-      <div key={`${ci.itemData.name}-${ci.size}-${ci.quantity}`} className="row">
-        <div className="flex">{ ci.itemData.title }</div>
-        <div>${ (ci.itemData.price * ci.quantity).toFixed(2) }</div>
+      <div key={cartEntry.id} className="row">
+        <div className="flex">{ shopItem.title }</div>
+        <div>${ (shopItem.price * cartEntry.quantity).toFixed(2) }</div>
       </div>
     )
   })
 
-  const totalPrice = cartItems.reduce((acc, cartItem) => {
-    return acc + cartItem.itemData.price * cartItem.quantity
+  const totalPrice = cartEntries.reduce((acc, cartEntry) => {
+    const shopItem = shopItems.find(item => item.id === cartEntry.shopItemId)
+    return acc + shopItem.price * cartEntry.quantity
   }, 0)
 
   return (
     <div className="order-summary">
-      { cartItemsDom }
+      { cartEntriesDom }
 
       <div className="row total">
         <div className="flex">Total</div>
@@ -28,7 +31,8 @@ const OrderSummary = ({ cartItems }) => {
 }
 
 OrderSummary.propTypes = {
-  cartItems: PropTypes.array.isRequired,
+  shopItems: PropTypes.array.isRequired,
+  cartEntries: PropTypes.array.isRequired,
 }
 
 export default OrderSummary

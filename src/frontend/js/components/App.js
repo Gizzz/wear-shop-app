@@ -8,7 +8,7 @@ import Home from './pages/Home'
 import ListContainer from './pages/list/ListContainer'
 import DetailContainer from './pages/detail/DetailContainer'
 import CartContainer from './pages/cart/CartContainer'
-import Checkout from './pages/checkout/Checkout'
+import CheckoutContainer from './pages/checkout/CheckoutContainer'
 import CheckoutSuccess from './pages/CheckoutSuccess'
 import PageNotFound from './pages/PageNotFound'
 
@@ -66,7 +66,8 @@ export default class App extends React.Component {
                       <CartContainer />
                     )} />
                     <Route exact path="/checkout" render={() => (
-                      <Checkout cartItems={this.state.cartItems} onPlaceOrder={this.clearCart} />
+                      // <CheckoutContainer cartItems={this.state.cartItems} onPlaceOrder={this.clearCart} />
+                      <CheckoutContainer onPlaceOrder={this.clearCart} />
                     )} />
                     <Route path="/checkout/success" component={CheckoutSuccess} />
                     <Route component={PageNotFound}/>

@@ -23,7 +23,8 @@ const validationRegexes = {
 
 class Checkout extends React.Component {
   static propTypes = {
-    cartItems: PropTypes.array.isRequired,
+    shopItems: PropTypes.array.isRequired,
+    cartEntries: PropTypes.array.isRequired,
     onPlaceOrder: PropTypes.func.isRequired,
   }
 
@@ -302,7 +303,10 @@ class Checkout extends React.Component {
               onSelectFieldChange={this.handleSelectFieldChange}
             />
             <h2>Order Summary</h2>
-            <OrderSummary cartItems={this.props.cartItems} />
+            <OrderSummary
+              shopItems={this.props.shopItems}
+              cartEntries={this.props.cartEntries}
+            />
             <RaisedButton
               {...raisedButtonDefaultProps}
               label="Place Order"
