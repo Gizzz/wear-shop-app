@@ -12,12 +12,9 @@ const mapStateToProps = (state, ownProps) => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    loadShopItems: (category) => { dispatch(actionCreators.loadShopItems(category)) }
-  }
-}
+const mapDispatchToProps = (dispatch) => ({
+  loadShopItems: (category) => { dispatch(actionCreators.loadShopItems(category)) }
+})
 
 const ListContainer = connect(mapStateToProps, mapDispatchToProps)(List)
-
 export default ListContainer
