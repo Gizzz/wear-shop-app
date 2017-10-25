@@ -38,12 +38,8 @@ const App = () => {
                   <Route path="/detail/:category/:itemName" render={({ match }) => (
                     <DetailContainer match={match} />
                   )} />
-                  <Route path="/cart" render={() => (
-                    <CartContainer />
-                  )} />
-                  <Route exact path="/checkout" render={() => (
-                    <CheckoutContainer />
-                  )} />
+                  <Route path="/cart" component={CartContainer} />
+                  <Route exact path="/checkout" component={CheckoutContainer} />
                   <Route path="/checkout/success" component={CheckoutSuccess} />
                   <Route component={PageNotFound}/>
                 </Switch>
