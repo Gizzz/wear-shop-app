@@ -1,4 +1,8 @@
 // for jest usage only; in webpack - config is passed directly to babel-loader 
 {
-  "presets": ["env", "react"]
+  "presets": ["env", "react"],
+  "plugins": [
+    "transform-class-properties",
+    "transform-object-rest-spread"
+  ]
 }
