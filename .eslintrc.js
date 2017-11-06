@@ -20,7 +20,7 @@ module.exports = {
   ],
   "rules": {
     "eol-last": [
-      "error", 
+      "error",
       "always"
     ],
     "indent": [
@@ -35,20 +35,23 @@ module.exports = {
     "no-console": "off",
     "no-trailing-spaces": "error",
     "jsx-quotes": [
-      "error", 
+      "error",
       "prefer-double"
     ],
     "quotes": [
       "error",
       "single"
     ],
+    "semi": [
+      "error",
+      "never"
+    ],
     "react/jsx-curly-spacing": [
       "error",
       "never"
     ],
-    "semi": [
-      "error",
-      "never"
+    "react/no-unescaped-entities": [
+      "off",
     ],
   },
 };
