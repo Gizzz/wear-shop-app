@@ -29,10 +29,12 @@ export default class PostActionDialog extends React.Component {
   render() {
     const actions = [
       <FlatButton
+        key="1"
         label="View Cart"
         onTouchTap={this.handle_viewCartBtn_click}
       />,
       <FlatButton
+        key="2"
         label="Checkout"
         onTouchTap={this.handle_checkoutBtn_click}
       />,
