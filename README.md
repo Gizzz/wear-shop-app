@@ -1,5 +1,5 @@
 # wear-shop-app
-Wear shop app written on React and inspired by polymer demo project.
+Simple e-shop written on React and inspired by Google's Polymer demo project. Design and and behavior are reverse-engineered from [the original](https://shop.polymer-project.org/)
 
 ## Installation and usage
 Install all dependencies:
