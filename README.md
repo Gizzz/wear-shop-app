@@ -23,4 +23,4 @@ Versions:
 - v1 - uses react component's state feature to manage its state. It has v1.0.0 tag and can be found in `react-component-state` branch.  
 - v2 - uses redux to manage its state. It has v2.0.0 tag and can be found in `redux-integration` branch.  
 
-`master` branch contains the most recent version of the app.
+`master` branch contains the latest changes to the app.
