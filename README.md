@@ -17,7 +17,7 @@ App now is ready to start:
 npm start
 ```
 
-## Versions
+## Releases
 
 - v1 - uses react component's state feature to manage its state.
 - v2 - uses redux to manage its state.
