@@ -17,10 +17,7 @@ App now is ready to start:
 npm start
 ```
 
-## Versions and branches
+## Versions
 
-Versions:  
-- v1 - uses react component's state feature to manage its state. It has v1.0.0 tag and can be found in `react-component-state` branch.  
-- v2 - uses redux to manage its state. It has v2.0.0 tag and can be found in `redux-integration` branch.  
-
-`master` branch contains the latest changes to the app.
+- v1 - uses react component's state feature to manage its state.
+- v2 - uses redux to manage its state.
