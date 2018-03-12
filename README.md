@@ -6,7 +6,7 @@ E-shop app written on React and inspired by Google Polymer's demo project. Desig
 - Items list page by categories
 - Item details page
 - Cart management
-- Checkout
+- Checkout process
 - e2e tests (up to checkout page)
 
 ## Tech Stack
