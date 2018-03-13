@@ -21,7 +21,7 @@ E-shop app written on React and inspired by Google Polymer's demo project. Desig
 - Linting: ESLint
 - E2E tests: WebDriverJS
 
-## Installation and usage
+## Installation and Usage
 Install all dependencies:
 ```
 npm i
